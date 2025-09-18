@@ -1,13 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://mv6bknoqjys1"]
+[gd_scene load_steps=4 format=3 uid="uid://mv6bknoqjys1"]
 
 [ext_resource type="Texture2D" uid="uid://qkiad3l367ut" path="res://локации/Test/testy.png" id="1_r46jy"]
+[ext_resource type="PackedScene" uid="uid://j6oehfe0lyn4" path="res://Враги/Воин/Воин.tscn" id="2_xware"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_co2oh"]
-vertices = PackedVector2Array(907.227, 265, 907.75, 286.922, 786.117, 286.07, 805.938, 265, 788.133, 126, 806.938, 109, 627.938, 109, 648.18, 126, 626.938, 263.719, 645.18, 287.078, 447, 288.898, 468.188, 268.289, 447, 125.898, 465.18, 106.922, 347, 106.07, 347, 126.891)
+vertices = PackedVector2Array(902.352, 270, 902.633, 281.891, 791.18, 281.102, 800.898, 270, 793.188, 121, 801.898, 114, 632.898, 114, 643.281, 121, 631.906, 268.578, 640.273, 282.133, 452, 283.859, 463.281, 273.43, 452, 120.852, 460.273, 111.891, 352, 111.102, 352, 121.844)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5), PackedInt32Array(6, 5, 4, 7), PackedInt32Array(8, 6, 7, 9), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(11, 10, 12, 13), PackedInt32Array(14, 13, 12, 15)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(337, 96, 337, 137, 437, 136, 437, 299, 655, 297, 658, 136, 778, 136, 776, 296, 918, 297, 917, 255, 816, 255, 817, 99, 618, 99, 617, 254, 478, 258, 475, 97)])
+agent_radius = 15.0
 
-[node name="Node2D" type="Node2D"]
+[node name="Test" type="Node2D"]
 texture_filter = 1
 
 [node name="Testy" type="Sprite2D" parent="."]
@@ -18,3 +20,16 @@ texture = ExtResource("1_r46jy")
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(-336, -34)
 navigation_polygon = SubResource("NavigationPolygon_co2oh")
+
+[node name="Воин" parent="." instance=ExtResource("2_xware")]
+position = Vector2(28, 83)
+SPEED = 100
+
+[node name="Marker" type="Marker2D" parent="."]
+position = Vector2(582, 240)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(29, 84)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(373, 125)

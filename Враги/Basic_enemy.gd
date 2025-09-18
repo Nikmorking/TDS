@@ -14,7 +14,7 @@ var top = false
 func move_to_player(delta: float) -> void:
 	if player == null:
 		player = self
-	nav.target_position = player.position
+	nav.target_position = Gs.pos_kindom
 	var current_agent_position: Vector2 = global_position
 	var next_path_position: Vector2 = nav.get_next_path_position()
 
@@ -50,22 +50,13 @@ func get_player() -> void:
 
 
 func tik() -> void:
-	$hot_bar.visible = false
 	if($GPUParticles2D != null):
 		$GPUParticles2D.emitting = false
 	pass # Replace with function body.
-
-func vis_health() -> void:
-	var hot_bar:TextureProgressBar = get_node("hot_bar/ProgressBar")
-	hot_bar.max_value = max_health
-	hot_bar.value = health
-	$hot_bar.visible = true
-	pass
 
 func _ready() -> void:
 	health = max_health
 	if(self.name != "Enemy"):
 		tik()
-		vis_health()
 		get_player()
 	pass
