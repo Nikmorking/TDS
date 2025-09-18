@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://j6oehfe0lyn4"]
+[gd_scene load_steps=4 format=3 uid="uid://j6oehfe0lyn4"]
 
-[ext_resource type="Script" path="res://scripts/воин.gd" id="1_6458y"]
-[ext_resource type="Texture2D" uid="uid://dipbxlyv4cqq0" path="res://asset/враги/воин.png" id="2_lmmeq"]
-[ext_resource type="PackedScene" uid="uid://0uc8e6pla322" path="res://сцены/hot_bar.tscn" id="3_jlkgc"]
+[ext_resource type="Script" path="res://Враги/Воин/воин.gd" id="1_6458y"]
+[ext_resource type="Texture2D" uid="uid://c10b8t3n676lj" path="res://Враги/Воин/воин.png" id="2_lmmeq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aqp5a"]
 radius = 4.28571
@@ -44,11 +43,6 @@ autostart = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.85714)
 shape = SubResource("CapsuleShape2D_aqp5a")
-
-[node name="hot_bar" parent="." instance=ExtResource("3_jlkgc")]
-visible = false
-offset_top = -601.429
-offset_bottom = 108.571
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
