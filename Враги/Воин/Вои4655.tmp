@@ -11,6 +11,8 @@ height = 11.4286
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_6458y")
+pri = null
+mib = null
 max_health = 130
 SPEED = 100
 tipy = "враг"
@@ -29,9 +31,12 @@ polygon = PackedVector2Array(7, 13, 11, 4, 13, -9, 6, -19, -8, -19, -13, -5, -10
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
-radius = 12.0
-neighbor_distance = 1008.75
+radius = 312.12
+neighbor_distance = 40904.0
 max_neighbors = 1
+time_horizon_agents = 4.75
+time_horizon_obstacles = 5.45
+max_speed = 250.25
 avoidance_layers = 3
 avoidance_mask = 3
 debug_enabled = true
@@ -44,8 +49,6 @@ autostart = true
 position = Vector2(0, 2.85714)
 shape = SubResource("CapsuleShape2D_aqp5a")
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="call_down"]

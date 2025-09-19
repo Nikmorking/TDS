@@ -1,29 +1,34 @@
-[gd_scene load_steps=4 format=3 uid="uid://mv6bknoqjys1"]
+[gd_scene load_steps=6 format=3 uid="uid://mv6bknoqjys1"]
 
+[ext_resource type="Script" path="res://локации/Test/spawner.gd" id="1_5g40l"]
 [ext_resource type="Texture2D" uid="uid://qkiad3l367ut" path="res://локации/Test/testy.png" id="1_r46jy"]
 [ext_resource type="PackedScene" uid="uid://j6oehfe0lyn4" path="res://Враги/Воин/Воин.tscn" id="2_xware"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_co2oh"]
-vertices = PackedVector2Array(902.352, 270, 902.633, 281.891, 791.18, 281.102, 800.898, 270, 793.188, 121, 801.898, 114, 632.898, 114, 643.281, 121, 631.906, 268.578, 640.273, 282.133, 452, 283.859, 463.281, 273.43, 452, 120.852, 460.273, 111.891, 352, 111.102, 352, 121.844)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5), PackedInt32Array(6, 5, 4, 7), PackedInt32Array(8, 6, 7, 9), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(11, 10, 12, 13), PackedInt32Array(14, 13, 12, 15)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(337, 96, 337, 137, 437, 136, 437, 299, 655, 297, 658, 136, 778, 136, 776, 296, 918, 297, 917, 255, 816, 255, 817, 99, 618, 99, 617, 254, 478, 258, 475, 97)])
-agent_radius = 15.0
+vertices = PackedVector2Array(898.828, 258, 920.961, 258, 922.977, 299, 899.961, 299, 792.461, 288.758, 798.68, 266.773, 787.438, 118.75, 793.609, 106.891, 641.398, 106.102, 646.367, 113.211, 636.422, 273.852, 643.352, 281, 470.773, 281, 471, 275.156, 468.773, 112.211, 471, 105.711, 374.438, 104.297, 374.578, 111.203)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(5, 4, 6, 7), PackedInt32Array(8, 7, 6, 9), PackedInt32Array(10, 8, 9, 11), PackedInt32Array(10, 11, 12, 13), PackedInt32Array(13, 12, 14, 15), PackedInt32Array(16, 15, 14, 17)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(354, 84, 355, 131, 449, 132, 451, 301, 663, 301, 666, 134, 768, 138, 773, 307, 899, 319, 944, 319, 940, 238, 898, 238, 818, 245, 813, 87, 622, 86, 617, 254, 491, 255, 491, 86)])
+source_geometry_mode = 1
+agent_radius = 20.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7coqn"]
+size = Vector2(18, 79)
 
 [node name="Test" type="Node2D"]
 texture_filter = 1
+script = ExtResource("1_5g40l")
 
 [node name="Testy" type="Sprite2D" parent="."]
-position = Vector2(321, 162)
-scale = Vector2(20, 20)
+position = Vector2(304.5, 161)
+scale = Vector2(18.9688, 21.125)
 texture = ExtResource("1_r46jy")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-position = Vector2(-336, -34)
+position = Vector2(-355, -33)
 navigation_polygon = SubResource("NavigationPolygon_co2oh")
 
 [node name="Воин" parent="." instance=ExtResource("2_xware")]
 position = Vector2(28, 83)
-SPEED = 100
 
 [node name="Marker" type="Marker2D" parent="."]
 position = Vector2(582, 240)
@@ -32,4 +37,23 @@ position = Vector2(582, 240)
 position = Vector2(29, 84)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(373, 125)
+position = Vector2(305, 161)
+zoom = Vector2(1.9, 1.9)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(553, 235)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-545, -203, -389, -197, -390, -14, -316, -17, -324, -202, -85, -202, -75, -34, 21, -38, 8, -242, -552, -244)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(5, -4)
+polygon = PackedVector2Array(-557, -102, -484, -110, -488, 40, -215, 39, -216, -128, -155, -127, -172, 40, 28, 56, 29, 96, -551, 96)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(552, 245.5)
+shape = SubResource("RectangleShape2D_7coqn")

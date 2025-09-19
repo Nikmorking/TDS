@@ -13,8 +13,6 @@ func _process(delta: float) -> void:
 		if movi:
 			move_to_player(delta)
 			#$CollisionPolygon2D.disabled = false
-		else:
-			hit_player()
 		#$CollisionPolygon2D.disabled = true
 		if health < 100 and mib:
 			play = false
