@@ -26,6 +26,7 @@ texture = ExtResource("1_r46jy")
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(-355, -33)
 navigation_polygon = SubResource("NavigationPolygon_co2oh")
+metadata/_edit_lock_ = true
 
 [node name="Воин" parent="." instance=ExtResource("2_xware")]
 position = Vector2(28, 83)
@@ -50,10 +51,19 @@ polygon = PackedVector2Array(-545, -203, -389, -197, -390, -14, -316, -17, -324,
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(5, -4)
-polygon = PackedVector2Array(-557, -102, -484, -110, -488, 40, -215, 39, -216, -128, -155, -127, -172, 40, 28, 56, 29, 96, -551, 96)
+polygon = PackedVector2Array(-558, -117, -484, -117, -488, 40, -215, 39, -216, -128, -155, -127, -172, 40, 28, 56, 29, 96, -551, 96)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(552, 245.5)
 shape = SubResource("RectangleShape2D_7coqn")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 21.0
+offset_top = 118.0
+offset_right = 58.0
+offset_bottom = 161.0
+flat = true
+
+[connection signal="button_down" from="Button" to="." method="tawer1"]

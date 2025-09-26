@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dy1yjbxa0g2dh"]
+
+[ext_resource type="Texture2D" uid="uid://b8y1yq3upx0tr" path="res://tower/арбалет низ.png" id="1_kyipx"]
+[ext_resource type="Script" path="res://tower/tawer_1.gd" id="1_wkdko"]
+[ext_resource type="Texture2D" uid="uid://caw5wgptdstne" path="res://tower/арбалет верх.png" id="2_c774u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6qhmy"]
+radius = 82.0
+
+[node name="tawer 1" type="Node2D"]
+script = ExtResource("1_wkdko")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_6qhmy")
+
+[node name="АрбалетНиз" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_kyipx")
+
+[node name="АрбалетВерх" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1, 0)
+texture = ExtResource("2_c774u")
