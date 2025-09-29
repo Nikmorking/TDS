@@ -46,22 +46,9 @@ func wait(time: float) -> void:
 		hit = true
 	pass
 
-func get_player() -> void:
-	player = get_parent().get_node("Player")
-	pass
-
-
-func tik() -> void:
-	if($GPUParticles2D != null):
-		$GPUParticles2D.emitting = false
-	pass # Replace with function body.
-
 func _ready() -> void:
 	nav.velocity_computed.connect(char_mode)
 	health = max_health
-	if(self.name != "Enemy"):
-		tik()
-		get_player()
 	pass
 
 func _on_area_2d_area_entered(area: Area2D) -> void:

@@ -1,16 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://dy1yjbxa0g2dh"]
+[gd_scene load_steps=6 format=3 uid="uid://dy1yjbxa0g2dh"]
 
 [ext_resource type="Texture2D" uid="uid://b8y1yq3upx0tr" path="res://tower/арбалет низ.png" id="1_kyipx"]
 [ext_resource type="Script" path="res://tower/tawer_1.gd" id="1_wkdko"]
 [ext_resource type="Texture2D" uid="uid://caw5wgptdstne" path="res://tower/арбалет верх.png" id="2_c774u"]
+[ext_resource type="Texture2D" uid="uid://ceqnegkkk86j7" path="res://Спрайт-0001.png" id="4_hta2w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6qhmy"]
-radius = 82.0
+radius = 97.7394
 
 [node name="tawer 1" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_wkdko")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_6qhmy")
@@ -22,4 +25,19 @@ texture = ExtResource("1_kyipx")
 [node name="АрбалетВерх" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(1, 0)
+rotation = 7.82199
 texture = ExtResource("2_c774u")
+
+[node name="Спрайт-0001" type="Sprite2D" parent="АрбалетВерх"]
+position = Vector2(-1.80709, -6.06089)
+rotation = -1.53881
+scale = Vector2(2.14297, 1.13273)
+texture = ExtResource("4_hta2w")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

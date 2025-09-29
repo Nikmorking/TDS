@@ -11,6 +11,6 @@ func _input(event: InputEvent) -> void:
 
 func tawer1() -> void:
 	var q = load("res://tower/tawer_1.tscn").instantiate()
-	q.position = $Button.position
+	q.position = $Button/Marker2D.global_position
 	add_child(q) 
 	pass # Replace with function body.

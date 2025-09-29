@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://mv6bknoqjys1"]
+[gd_scene load_steps=7 format=3 uid="uid://mv6bknoqjys1"]
 
 [ext_resource type="Script" path="res://локации/Test/spawner.gd" id="1_5g40l"]
 [ext_resource type="Texture2D" uid="uid://qkiad3l367ut" path="res://локации/Test/testy.png" id="1_r46jy"]
@@ -13,6 +13,8 @@ agent_radius = 20.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7coqn"]
 size = Vector2(18, 79)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n8yq5"]
 
 [node name="Test" type="Node2D"]
 texture_filter = 1
@@ -60,10 +62,25 @@ position = Vector2(552, 245.5)
 shape = SubResource("RectangleShape2D_7coqn")
 
 [node name="Button" type="Button" parent="."]
-offset_left = 21.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
 offset_top = 118.0
-offset_right = 58.0
+offset_right = 57.0
 offset_bottom = 161.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(18, 21)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n8yq5")
 flat = true
+
+[node name="Marker2D" type="Marker2D" parent="Button"]
+position = Vector2(18, 22)
 
 [connection signal="button_down" from="Button" to="." method="tawer1"]
