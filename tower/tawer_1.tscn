@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://dy1yjbxa0g2dh"]
+[gd_scene load_steps=8 format=3 uid="uid://dy1yjbxa0g2dh"]
 
 [ext_resource type="Texture2D" uid="uid://b8y1yq3upx0tr" path="res://tower/арбалет низ.png" id="1_kyipx"]
 [ext_resource type="Script" path="res://tower/tawer_1.gd" id="1_wkdko"]
 [ext_resource type="Texture2D" uid="uid://caw5wgptdstne" path="res://tower/арбалет верх.png" id="2_c774u"]
 [ext_resource type="Texture2D" uid="uid://ceqnegkkk86j7" path="res://Спрайт-0001.png" id="4_hta2w"]
+[ext_resource type="Texture2D" uid="uid://0r1r2555ofji" path="res://tower/пушка.png" id="5_cec3v"]
+[ext_resource type="AudioStream" uid="uid://diq5fewjx2dqw" path="res://tower/Voicy_Bonk Sound effect.mp3" id="6_buen3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6qhmy"]
-radius = 97.7394
+radius = 127.193
 
 [node name="tawer 1" type="Node2D"]
 texture_filter = 1
@@ -37,7 +39,17 @@ texture = ExtResource("4_hta2w")
 [node name="RayCast2D" type="RayCast2D" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 1.2
+
+[node name="Пушка" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(3, -8)
+texture = ExtResource("5_cec3v")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_buen3")
+pitch_scale = 1.47
+max_polyphony = 5
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

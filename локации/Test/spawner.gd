@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _input(event: InputEvent) -> void:
@@ -11,6 +11,6 @@ func _input(event: InputEvent) -> void:
 
 func tawer1() -> void:
 	var q = load("res://tower/tawer_1.tscn").instantiate()
-	q.position = $Button/Marker2D.global_position
+	q.position = $Marker2D.position
 	add_child(q) 
 	pass # Replace with function body.

@@ -23,6 +23,9 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func _on_timer_timeout() -> void:
 	if $"АрбалетВерх/Спрайт-0001".visible:
 		$"АрбалетВерх/Спрайт-0001".hide()
+		$AudioStreamPlayer.pitch_scale = randf_range(1.0, 3.0) 
+
+		$AudioStreamPlayer.play()
 	else:
 		$"АрбалетВерх/Спрайт-0001".show()
 	pass # Replace with function body.
