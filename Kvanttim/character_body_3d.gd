@@ -23,9 +23,12 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
+		$monk_character_Walking/AnimationPlayer.play("mixamo_com")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+		$monk_character_Walking/AnimationPlayer.play("RESET")
+		
 
 	move_and_slide()
 	#$Camera3D.rotate_y(deg_to_rad(-event.relative.x * mouse_sens))
