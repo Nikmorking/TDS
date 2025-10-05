@@ -18,6 +18,7 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and !isOnMenu:
 		velocity.y = JUMP_VELOCITY
+		$monk_character_Walking/AnimationPlayer.play("jump")
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -26,13 +27,15 @@ func _physics_process(delta: float) -> void:
 	if direction and !isOnMenu and is_on_floor():
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
-		$monk_character_Walking/AnimationPlayer.play("mixamo_com")
+		$monk_character_Walking/AnimationPlayer.play("walking")
 		JumpVel = direction
 	else:
 		if is_on_floor():
 			velocity.x = move_toward(velocity.x * 1.8, 0, SPEED)
 			velocity.z = move_toward(velocity.z * 1.8, 0, SPEED)
+			
 		if !is_on_floor():
+			$monk_character_Walking/AnimationPlayer.play("jump")
 			velocity.x = move_toward(velocity.x * 2, JumpVel.x * 4.5, SPEED)
 			velocity.z = move_toward(velocity.z * 2, JumpVel.z * 4.5, SPEED)
 

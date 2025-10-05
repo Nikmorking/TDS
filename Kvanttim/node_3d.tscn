@@ -1,14 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://dri1jxy6uig6i"]
+[gd_scene load_steps=9 format=3 uid="uid://dri1jxy6uig6i"]
 
 [ext_resource type="Script" path="res://character_body_3d.gd" id="1_2l44u"]
 [ext_resource type="Script" path="res://node_3d.gd" id="1_q5u30"]
 [ext_resource type="PackedScene" uid="uid://dsyoj7madsypa" path="res://monk_character@Walking.tscn" id="3_o557r"]
+[ext_resource type="Texture2D" uid="uid://2esedbkwu2ph" path="res://jump_0.png" id="4_eoq7s"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ofohs"]
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_2byhm"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mvrgj"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4kab"]
+albedo_texture = ExtResource("4_eoq7s")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_omn30"]
 
@@ -20,13 +22,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76964, 0)
 script = ExtResource("1_2l44u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.253923, 0)
 shape = SubResource("CapsuleShape3D_ofohs")
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.867965, 0.496626, 0, -0.496626, 0.867965, 0, 1.21018, 1.00986)
+transform = Transform3D(1, 0, 0, 0, 1, -0.000872344, 0, 0.000872344, 1, -0.074915, 0.77426, -0.488947)
 
 [node name="monk_character_Walking" parent="CharacterBody3D" instance=ExtResource("3_o557r")]
-transform = Transform3D(-100, 0, -8.74228e-06, 0, 100, 0, 8.74228e-06, 0, -100, 0, -0.506127, 0)
+transform = Transform3D(-100, 0, -8.74228e-06, 0, 100, 0, 8.74228e-06, 0, -100, -0.197834, 0.222574, 0.570051)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -36,7 +39,7 @@ shape = SubResource("HeightMapShape3D_2byhm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_mvrgj")
+material_override = SubResource("StandardMaterial3D_g4kab")
 mesh = SubResource("PlaneMesh_omn30")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
