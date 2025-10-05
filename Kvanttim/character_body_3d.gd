@@ -8,8 +8,6 @@ var mouse_sens = 0.3
 var camera_anglev=0
 var JumpVel: Vector3
 
-var mouse_sens = 0.1
-
 var isOnMenu = false
 
 func _physics_process(delta: float) -> void:
