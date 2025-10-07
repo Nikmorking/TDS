@@ -3,14 +3,14 @@
 [ext_resource type="Script" path="res://character_body_3d.gd" id="1_2l44u"]
 [ext_resource type="Script" path="res://node_3d.gd" id="1_q5u30"]
 [ext_resource type="PackedScene" uid="uid://dsyoj7madsypa" path="res://monk_character@Walking.tscn" id="3_o557r"]
-[ext_resource type="Texture2D" uid="uid://2esedbkwu2ph" path="res://jump_0.png" id="4_eoq7s"]
+[ext_resource type="Texture2D" uid="uid://ev6wh7yv8rxy" path="res://monk_character@Walking_0.png" id="4_856go"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ofohs"]
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_2byhm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4kab"]
-albedo_texture = ExtResource("4_eoq7s")
+albedo_texture = ExtResource("4_856go")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_omn30"]
 
@@ -29,7 +29,7 @@ shape = SubResource("CapsuleShape3D_ofohs")
 transform = Transform3D(1, 0, 0, 0, 1, -0.000872344, 0, 0.000872344, 1, -0.074915, 0.77426, -0.488947)
 
 [node name="monk_character_Walking" parent="CharacterBody3D" instance=ExtResource("3_o557r")]
-transform = Transform3D(-100, 0, -8.74228e-06, 0, 100, 0, 8.74228e-06, 0, -100, -0.197834, 0.222574, 0.570051)
+transform = Transform3D(-100, 0, -8.74228e-06, 0, 100, 0, 8.74228e-06, 0, -100, -0.197834, -0.236724, -0.0891156)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
