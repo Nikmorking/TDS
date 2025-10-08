@@ -62,7 +62,9 @@ func _input(event):
 		if $Camera3D.rotation.x - deg_to_rad(event.relative.y) < deg_to_rad(90) and $Camera3D.rotation.x - deg_to_rad(event.relative.y) > deg_to_rad(-70):
 			$Camera3D.rotation += Vector3(deg_to_rad(-event.relative.y * mouse_sens), 0, 0)
 		rotation += Vector3(0 ,deg_to_rad(-event.relative.x * mouse_sens), 0)
+	pass
 
 func _ready() -> void:
 	st_mac = $monk_character_Walking/AnimationTree["parameters/playback"]
 	anim_tree = $monk_character_Walking/AnimationTree
+	pass

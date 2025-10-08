@@ -7,9 +7,3 @@ var direct = Vector3()
 func _ready():
 	anim = get_node("AnimationTree")
 	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	print(direct)
-	pass

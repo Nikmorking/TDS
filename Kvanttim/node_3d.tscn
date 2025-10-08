@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dri1jxy6uig6i"]
+[gd_scene load_steps=12 format=3 uid="uid://dri1jxy6uig6i"]
 
 [ext_resource type="Script" path="res://character_body_3d.gd" id="1_2l44u"]
 [ext_resource type="Script" path="res://node_3d.gd" id="1_q5u30"]
@@ -14,6 +14,15 @@ albedo_texture = ExtResource("4_856go")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_omn30"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v1vmu"]
+
+[sub_resource type="Sky" id="Sky_n4ldd"]
+sky_material = SubResource("ProceduralSkyMaterial_v1vmu")
+
+[sub_resource type="Environment" id="Environment_px1ad"]
+background_mode = 2
+sky = SubResource("Sky_n4ldd")
+
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_q5u30")
 
@@ -26,10 +35,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.253923, 0)
 shape = SubResource("CapsuleShape3D_ofohs")
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, -0.000872344, 0, 0.000872344, 1, -0.074915, 0.77426, -0.488947)
+transform = Transform3D(1, 0, 0, 0, 1, -0.000872344, 0, 0.000872344, 1, 0.123359, 0.874778, -0.489087)
 
 [node name="monk_character_Walking" parent="CharacterBody3D" instance=ExtResource("3_o557r")]
-transform = Transform3D(-100, 0, -8.74228e-06, 0, 100, 0, 8.74228e-06, 0, -100, -0.197834, -0.236724, -0.0891156)
+transform = Transform3D(-100, 0, -8.74228e-06, 0, 100, 0, 8.74228e-06, 0, -100, -0.014972, -0.236724, -0.0891156)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -58,3 +67,9 @@ offset_left = 331.0
 offset_top = 406.0
 offset_right = 844.0
 offset_bottom = 500.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_px1ad")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.834435, 0.551107, 0, -0.551107, 0.834435, -2.07726, 7.76066, 10.6829)
