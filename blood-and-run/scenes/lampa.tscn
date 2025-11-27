@@ -6,7 +6,7 @@ albedo_color = Color(0.223103, 0.223103, 0.223103, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tcgl4"]
 albedo_color = Color(0.763283, 0.748489, 2.69532e-06, 1)
 
-[node name="Node3D" type="Node3D"]
+[node name="LAmpa" type="Node3D"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
@@ -22,6 +22,6 @@ material = SubResource("StandardMaterial3D_tcgl4")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
-light_color = Color(0.978505, 0.967504, 0, 1)
-light_energy = 0.354
+light_color = Color(0.994218, 1, 0.739167, 1)
+light_energy = 0.5
 omni_range = 15.0

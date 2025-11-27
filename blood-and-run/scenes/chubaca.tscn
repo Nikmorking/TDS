@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbiqj08qvqdce"]
+
+[ext_resource type="Script" uid="uid://d0o4vup0elpo5" path="res://scripts/Chubaca.gd" id="1_ykyt4"]
+[ext_resource type="Texture2D" uid="uid://bsh52cshc3o40" path="res://scenes/018QND274AE9HFPWJH4V35ZF50-Photoroom-fotor-20251127214023.png" id="2_lli5l"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o6xl0"]
+size = Vector3(1.78259, 2.02594, 0.382324)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tipki"]
+albedo_texture = ExtResource("2_lli5l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7dm0k"]
+albedo_color = Color(0.190757, 0.182133, 0.173511, 1)
+metallic = 0.3
+
+[node name="Chubaka" type="Node3D"]
+script = ExtResource("1_ykyt4")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0670063, 1.36829, 1.29091)
+spot_angle = 53.6148
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.183769, 0.947004, 0.919603)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0740356, 0.51297, -0.308838)
+shape = SubResource("BoxShape3D_o6xl0")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="."]
+transform = Transform3D(1.52579e-10, -4.37109e-08, 0.999995, -0.999993, -0.00349058, 0, 0.0034906, -0.999988, -4.37112e-08, 0.0835682, 1.42274, 0.0217896)
+material_override = SubResource("StandardMaterial3D_tipki")
+size = Vector3(2.29503, 0.297974, 1.7718)
+material = SubResource("StandardMaterial3D_7dm0k")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

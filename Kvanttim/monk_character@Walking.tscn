@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=4 uid="uid://dsyoj7madsypa"]
 
 [ext_resource type="Texture2D" uid="uid://ev6wh7yv8rxy" path="res://monk_character@Walking_0.png" id="1_mtbj8"]
-[ext_resource type="Script" path="res://anim_contr.gd" id="1_nvtyy"]
+[ext_resource type="Script" uid="uid://uo6yx7w5w8cr" path="res://anim_contr.gd" id="1_nvtyy"]
 [ext_resource type="Animation" uid="uid://bcvneewvfg8e2" path="res://jump.res" id="3_7dp8r"]
 [ext_resource type="Animation" uid="uid://ca01i8ltfoinf" path="res://idel.res" id="4_n5nb8"]
 
@@ -442,9 +442,9 @@ tracks/39/keys = PackedFloat32Array(0, 1, 3.77871e-05, 0.00260772, 0.0107101, 0.
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_og78i"]
 _data = {
-"idel": ExtResource("4_n5nb8"),
-"jump": ExtResource("3_7dp8r"),
-"walking": SubResource("Animation_2luho")
+&"idel": ExtResource("4_n5nb8"),
+&"jump": ExtResource("3_7dp8r"),
+&"walking": SubResource("Animation_2luho")
 }
 
 [sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_awlem"]
