@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://diq5fewjx2dqw"
+path="res://.godot/imported/Voicy_Bonk Sound effect.mp3-9e019bf70699c64b57e14ed4aa2ca423.mp3str"
+
+[deps]
+
+source_file="res://tower/Voicy_Bonk Sound effect.mp3"
+dest_files=["res://.godot/imported/Voicy_Bonk Sound effect.mp3-9e019bf70699c64b57e14ed4aa2ca423.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
