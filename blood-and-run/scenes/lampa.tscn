@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3dx2242gqhlh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7huvx"]
+albedo_color = Color(0.223103, 0.223103, 0.223103, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tcgl4"]
+albedo_color = Color(0.763283, 0.748489, 2.69532e-06, 1)
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3125, 0)
+radius = 5.0
+height = 6.625
+material = SubResource("StandardMaterial3D_7huvx")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+radius = 4.0
+material = SubResource("StandardMaterial3D_tcgl4")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+light_color = Color(0.978505, 0.967504, 0, 1)
+light_energy = 0.354
+omni_range = 15.0
