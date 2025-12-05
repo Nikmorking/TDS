@@ -1,10 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3dx2242gqhlh"]
+[gd_scene load_steps=7 format=3 uid="uid://c3dx2242gqhlh"]
+
+[ext_resource type="Texture2D" uid="uid://cv26yr05sejrc" path="res://Models/smoke_02.png" id="1_0t8sk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7huvx"]
 albedo_color = Color(0.223103, 0.223103, 0.223103, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tcgl4"]
 albedo_color = Color(0.763283, 0.748489, 2.69532e-06, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_roemw"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, -0.1, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = -2.2351742e-06
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q6xv8"]
+metallic = 1.0
+metallic_texture = ExtResource("1_0t8sk")
+roughness_texture = ExtResource("1_0t8sk")
+roughness_texture_channel = 4
+
+[sub_resource type="SphereMesh" id="SphereMesh_0t8sk"]
+material = SubResource("StandardMaterial3D_q6xv8")
+radius = 0.004
+height = 0.008
 
 [node name="LAmpa" type="Node3D"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
@@ -24,4 +44,12 @@ material = SubResource("StandardMaterial3D_tcgl4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
 light_color = Color(0.994218, 1, 0.739167, 1)
 light_energy = 0.5
+light_volumetric_fog_energy = 0.5
 omni_range = 15.0
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(7, 0, 0, 0, 10, 0, 0, 0, 7, 0, -9.62016, 0)
+amount = 50
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_roemw")
+draw_pass_1 = SubResource("SphereMesh_0t8sk")

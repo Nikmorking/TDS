@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bvmyaqt4cgpaj" path="res://scenes/318748684_bc04d5c7d7c38229a9a8e5933851aab1.png" id="2_ykyt4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o6xl0"]
-size = Vector3(1.78259, 2.02594, 0.382324)
+size = Vector3(1.78259, 2.02594, 1.8385)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lli5l"]
 albedo_texture = ExtResource("2_ykyt4")
@@ -18,13 +18,14 @@ script = ExtResource("1_ykyt4")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0670063, 1.36829, 1.29091)
+light_volumetric_fog_energy = 5.48
 spot_angle = 53.6148
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.183769, 0.947004, 0.919603)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0740356, 0.51297, -0.308838)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0740356, 0.51297, 0.41925)
 shape = SubResource("BoxShape3D_o6xl0")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="."]
