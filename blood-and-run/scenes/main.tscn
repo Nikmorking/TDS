@@ -51,6 +51,7 @@ albedo = Color(0.560955, 0.560955, 0.560955, 1)
 edge_fade = 1.25533
 
 [node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0400076, -0.120033)
 script = ExtResource("1_o6xl0")
 
 [node name="Lampa" parent="." instance=ExtResource("1_ig7tw")]
