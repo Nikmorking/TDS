@@ -1,0 +1,10 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://bqb2hmstwspcv"]
+
+[resource]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, -0.1, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = -2.2351742e-06
+radial_accel_min = 14.8899975
+radial_accel_max = 37.229996
