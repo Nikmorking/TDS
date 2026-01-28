@@ -15,3 +15,8 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 	$Chubaka.queue_free()
 	$FogVolume.show()
 	pass # Replace with function body.
+
+
+func _on_area_3d_body_entered(body):
+	body.position = $Marker3D.position
+	pass # Replace with function body.

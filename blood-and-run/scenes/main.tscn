@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://bthsh26dmspk2"]
+[gd_scene format=4 uid="uid://bthsh26dmspk2"]
 
 [ext_resource type="PackedScene" uid="uid://c3dx2242gqhlh" path="res://scenes/lampa.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://dm85tsj7yy8ua" path="res://scripts/main.gd" id="1_o6xl0"]
@@ -15,17 +15,6 @@ height = 1.62492
 density = 0.7
 albedo = Color(0.423651, 0.423651, 0.423651, 1)
 emission = Color(0.140447, 0.140447, 0.140447, 1)
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tbgi4"]
-emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
-gravity = Vector3(0, -0.1, 0)
-linear_accel_min = -2.2351742e-06
-linear_accel_max = -2.2351742e-06
-
-[sub_resource type="SphereMesh" id="SphereMesh_tefeu"]
-radius = 0.004
-height = 0.008
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0wfyh"]
 
@@ -75,109 +64,116 @@ _surfaces = [{
 }]
 
 [sub_resource type="SphereMesh" id="SphereMesh_o6xl0"]
-radius = 0.05
-height = 0.1
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_tipki"]
-size = Vector3(1.84668, 1.83887, 0.257324)
+radius = 0.03
+height = 0.05
 
 [sub_resource type="FogMaterial" id="FogMaterial_o6xl0"]
 density = 2.0467
 albedo = Color(0.560955, 0.560955, 0.560955, 1)
 edge_fade = 1.25533
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_tefeu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tipki"]
+size = Vector3(1.84668, 1.83887, 0.257324)
+
+[node name="Node3D" type="Node3D" unique_id=501175308]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0400076, -0.120033)
 script = ExtResource("1_o6xl0")
 
-[node name="Lampa" parent="." instance=ExtResource("1_ig7tw")]
+[node name="Lampa" parent="." unique_id=690197804 instance=ExtResource("1_ig7tw")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.420735, 2.61445, 0.452519)
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1805449800]
 script = ExtResource("2_0xm2m")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=563192533]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07942, 0)
 shape = SubResource("CapsuleShape3D_0xm2m")
 
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=80571526]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40317, -0.0345466)
 
-[node name="FogVolume2" type="FogVolume" parent="CharacterBody3D"]
+[node name="FogVolume2" type="FogVolume" parent="CharacterBody3D" unique_id=846880752]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4446, 1.37464, -10.8548)
 size = Vector3(14.2228, 2.58569, 3.38476)
 material = SubResource("FogMaterial_0wfyh")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2557008, 0)
-amount = 50
-trail_enabled = true
-process_material = SubResource("ParticleProcessMaterial_tbgi4")
-draw_pass_1 = SubResource("SphereMesh_tefeu")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=164886437]
 environment = SubResource("Environment_jyhfs")
 
-[node name="Lampa2" parent="." instance=ExtResource("1_ig7tw")]
+[node name="Lampa2" parent="." unique_id=1161190039 instance=ExtResource("1_ig7tw")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.420735, 2.61445, -13.6224)
 
-[node name="Lampa3" parent="." instance=ExtResource("1_ig7tw")]
+[node name="Lampa3" parent="." unique_id=807508108 instance=ExtResource("1_ig7tw")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.41942, 2.61855, 16.9061)
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="Node3D" type="Node3D" parent="." unique_id=1837624876]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D" unique_id=245723180]
 
-[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Node3D/StaticBody3D"]
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Node3D/StaticBody3D" unique_id=1480117538]
 shape = SubResource("ConcavePolygonShape3D_tbgi4")
 
-[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="Node3D/StaticBody3D"]
+[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="Node3D/StaticBody3D" unique_id=728734538]
 mesh = SubResource("ArrayMesh_tefeu")
 skeleton = NodePath("../../..")
 
-[node name="Node3D2" type="Node3D" parent="."]
+[node name="Node3D2" type="Node3D" parent="." unique_id=1074995887]
 transform = Transform3D(-0.105501, 0, 0.994419, 0, 1, 0, -0.994419, 0, -0.105501, 16.4956, 0, 15.2621)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node3D2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D2" unique_id=1437969379]
 
-[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Node3D2/StaticBody3D"]
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Node3D2/StaticBody3D" unique_id=1436599568]
 shape = SubResource("ConcavePolygonShape3D_jyhfs")
 
-[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="Node3D2/StaticBody3D"]
+[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="Node3D2/StaticBody3D" unique_id=1365399224]
 mesh = SubResource("ArrayMesh_tbgi4")
 skeleton = NodePath("../..")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Node3D2/StaticBody3D"]
-transform = Transform3D(1.0000004, 0, 0, 0, 1, 0, 0, 0, 1.0000004, -0.2092228, 1.5865726, 16.57294)
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Node3D2/StaticBody3D" unique_id=618500021]
+transform = Transform3D(1.0000004, 0, 0, 0, 1, 0, 0, 0, 1.0000004, -0.5313816, 1.5865726, -2.5721483)
 amount = 60
 amount_ratio = 0.9
 process_material = ExtResource("5_tefeu")
 draw_pass_1 = SubResource("SphereMesh_o6xl0")
 
-[node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="Node3D2/StaticBody3D/GPUParticles3D"]
+[node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="Node3D2/StaticBody3D/GPUParticles3D" unique_id=165187047]
 strength = 1.4
 radius = 3.5399315
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Node3D2"]
+[node name="FogVolume" type="FogVolume" parent="Node3D2/StaticBody3D/GPUParticles3D" unique_id=1664389948]
+transform = Transform3D(0.99999547, 0, -6.7055225e-08, 0, 1, 0, 6.7055225e-08, 0, 0.99999547, 0.60975647, -0.26768327, 3.820509)
+size = Vector3(4.63287, 2.832275, 3.90869)
+material = SubResource("FogMaterial_o6xl0")
 
-[node name="Marker3D" type="Marker3D" parent="."]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Node3D2" unique_id=1931499454]
+
+[node name="Area3D" type="Area3D" parent="Node3D2" unique_id=1527268648]
+transform = Transform3D(1.0000004, 0, 0, 0, 1, 0, 0, 0, 1.0000004, -0.40270805, 1.4682773, -2.7194433)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D2/Area3D" unique_id=1729051125]
+shape = SubResource("BoxShape3D_tefeu")
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=2059807318]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.458235, 47.7597)
 
-[node name="Chubaka" parent="." instance=ExtResource("6_tefeu")]
+[node name="Chubaka" parent="." unique_id=262640773 instance=ExtResource("6_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.429446, 0, -16.6677)
 posis = [NodePath("../Marker3D")]
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=326547706]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.940426, 8.87604)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=474249448]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.266113, 0.419434, -0.371338)
 shape = SubResource("BoxShape3D_tipki")
 
-[node name="FogVolume" type="FogVolume" parent="."]
+[node name="FogVolume" type="FogVolume" parent="." unique_id=296542878]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0438538, 1.55182, 9.98124)
 visible = false
 size = Vector3(4.63287, 3.28955, 3.90869)
 material = SubResource("FogMaterial_o6xl0")
 
+[connection signal="body_entered" from="Node3D2/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
