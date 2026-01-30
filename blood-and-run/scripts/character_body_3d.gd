@@ -1,8 +1,8 @@
 extends CharacterBody3D
 
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+var SPEED = 5.0
+var JUMP_VELOCITY = 4.5
 
 var mouse_sens = 0.3
 var camera_anglev=0
@@ -12,6 +12,8 @@ var isOnMenu = false
 var is_jumping := false
 var anim_tree: AnimationTree
 var walk = false
+
+var run = false
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -26,6 +28,14 @@ func _physics_process(_delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 		is_jumping = true
 	
+	if Input.is_action_just_pressed("Run"):
+		if !run and !is_jumping and !isOnMenu:
+			run = true
+			SPEED += 3
+	if Input.is_action_just_released("Run"):
+		if run and !is_jumping and !isOnMenu:
+			run = false
+			SPEED -= 3
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("A", "D", "W", "S")
