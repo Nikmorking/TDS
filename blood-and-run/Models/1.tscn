@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://djscstv0lleby"]
+[gd_scene format=3 uid="uid://djscstv0lleby"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_813lh"]
 emission_shape = 3
@@ -11,9 +11,9 @@ linear_accel_max = -2.2351742e-06
 radius = 0.004
 height = 0.008
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" unique_id=2120470836]
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=244984871]
 amount = 50
 trail_enabled = true
 process_material = SubResource("ParticleProcessMaterial_813lh")
