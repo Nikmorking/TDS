@@ -3,26 +3,25 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cvln6ln4vfdee"
-path.s3tc="res://.godot/imported/dZI264Kn3kWyvT7qRo4e0IbZ28qqWdrjzGNY3s8TwDM4NAnM3GUbRA9qD2pBfGS4uzLPxZV_cYc2BcLVqwNmC-Ld.jpg-408880e882a22ee1929bdb73b8c7f09c.s3tc.ctex"
+path="res://.godot/imported/dZI264Kn3kWyvT7qRo4e0IbZ28qqWdrjzGNY3s8TwDM4NAnM3GUbRA9qD2pBfGS4uzLPxZV_cYc2BcLVqwNmC-Ld.jpg-408880e882a22ee1929bdb73b8c7f09c.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://scenes/dZI264Kn3kWyvT7qRo4e0IbZ28qqWdrjzGNY3s8TwDM4NAnM3GUbRA9qD2pBfGS4uzLPxZV_cYc2BcLVqwNmC-Ld.jpg"
-dest_files=["res://.godot/imported/dZI264Kn3kWyvT7qRo4e0IbZ28qqWdrjzGNY3s8TwDM4NAnM3GUbRA9qD2pBfGS4uzLPxZV_cYc2BcLVqwNmC-Ld.jpg-408880e882a22ee1929bdb73b8c7f09c.s3tc.ctex"]
+dest_files=["res://.godot/imported/dZI264Kn3kWyvT7qRo4e0IbZ28qqWdrjzGNY3s8TwDM4NAnM3GUbRA9qD2pBfGS4uzLPxZV_cYc2BcLVqwNmC-Ld.jpg-408880e882a22ee1929bdb73b8c7f09c.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
-compress/uastc_level=0
+compress/uastc_level=2
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=2
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1

@@ -1,16 +1,16 @@
-[gd_scene format=3 uid="uid://c3dx2242gqhlh"]
+[gd_scene format=3 uid="uid://ki8fgnhihyot"]
 
-[ext_resource type="Texture2D" uid="uid://cv26yr05sejrc" path="res://Models/smoke_02.png" id="1_0t8sk"]
+[ext_resource type="Texture2D" uid="uid://cv26yr05sejrc" path="res://Models/smoke_02.png" id="1_ulgab"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7huvx"]
 albedo_color = Color(0.223103, 0.223103, 0.223103, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tcgl4"]
-albedo_color = Color(0.763283, 0.748489, 2.69532e-06, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ulgab"]
+albedo_color = Color(0.6279029, 0.626343, 5.7756904e-07, 1)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_roemw"]
 emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
+emission_box_extents = Vector3(2, 1, 1)
 initial_velocity_min = -0.29999998
 initial_velocity_max = 0.29999998
 gravity = Vector3(0, -0.1, 0)
@@ -19,8 +19,8 @@ linear_accel_max = -2.2351742e-06
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q6xv8"]
 metallic = 1.0
-metallic_texture = ExtResource("1_0t8sk")
-roughness_texture = ExtResource("1_0t8sk")
+metallic_texture = ExtResource("1_ulgab")
+roughness_texture = ExtResource("1_ulgab")
 roughness_texture_channel = 4
 
 [sub_resource type="SphereMesh" id="SphereMesh_0t8sk"]
@@ -32,26 +32,27 @@ height = 0.008
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=348361088]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3125, 0)
+transform = Transform3D(-4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 0, 0, 1, 0, 5.5495243, 0)
 radius = 5.0
-height = 6.625
+height = 24.317871
 material = SubResource("StandardMaterial3D_7huvx")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=1059070482]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-radius = 4.0
-material = SubResource("StandardMaterial3D_tcgl4")
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." unique_id=1591826687]
+transform = Transform3D(-4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 0, 0, 1, -0.22987358, 2.979608, 0)
+radius = 3.7885742
+height = 19.724457
+material = SubResource("StandardMaterial3D_ulgab")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1372773227]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -5.1097345, 0)
 light_color = Color(0.994218, 1, 0.739167, 1)
-light_energy = 0.5
+light_energy = 0.7
 light_volumetric_fog_energy = 0.5
 shadow_enabled = true
-omni_range = 15.0
+omni_range = 1.875
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=126648999]
-transform = Transform3D(7, 0, 0, 0, 10, 0, 0, 0, 7, 0, -9.62016, 0)
+transform = Transform3D(7, 0, 0, 0, 10, 0, 0, 0, 7, 0, -8.373217, 0)
 amount = 50
 lifetime = 2.0599999999999996
 trail_enabled = true

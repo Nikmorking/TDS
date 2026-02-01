@@ -14,10 +14,10 @@ uniform float normal_strength : hint_range(0.0, 16.0) = 8.0;
 uniform sampler2D normal_map : hint_normal;
 
 group_uniforms misc;
-uniform vec4 edge_color : source_color = vec4(1.0, 0.0, 0.0, 1.0);
+uniform vec4 edge_color : source_color = vec4(0.0, 0.8, 0.0, 1.0);
 
 float SchlickFresnel(float u) {
-	float m = 1.6 - u;
+	float m = 1.1 - u;
 	float m2 = m * m;
 	return m2 * m2 * m;
 }
@@ -33,7 +33,7 @@ void fragment() {
 	
 	// apply glass look
 	float a = mix(0.001, 1.0, _albedo.a);
-	ALPHA = mix(fresnel * edge_color.a, 1.0, a);
+	ALPHA = mix(fresnel * edge_color.a, 4.0, a);
 	ALBEDO = mix(edge_color.rgb * edge_color.a, _albedo.rgb, a);
 	
 	ROUGHNESS = _roughness;

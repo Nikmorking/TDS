@@ -1,0 +1,190 @@
+[gd_scene format=3 uid="uid://dism06b1iip8u"]
+
+[ext_resource type="Script" uid="uid://cm2ts4rcn04mw" path="res://scripts/Open_door.gd" id="1_hxdes"]
+[ext_resource type="AudioStream" uid="uid://wmk5up3buta7" path="res://Models/door-lock-3_zkwogmvd.mp3" id="2_jwqke"]
+[ext_resource type="Shader" uid="uid://dq81n42ia7ync" path="res://Models/Glass.gdshader" id="3_jwqke"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b0ws2"]
+size = Vector3(2.7865295, 0.855713, 1.07117)
+
+[sub_resource type="Animation" id="Animation_vvcv5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.1415927, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StaticBody3D2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nurhv"]
+resource_name = "close door"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.03333333, 0.96666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.89739597, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody3D2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.03333336, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.84891075, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_83dcw"]
+resource_name = "close_door"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.89739597, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody3D2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.84891075, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uvdjg"]
+resource_name = "open_door"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.74533, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6867o"]
+_data = {
+&"RESET": SubResource("Animation_vvcv5"),
+&"close door": SubResource("Animation_nurhv"),
+&"close_door": SubResource("Animation_83dcw"),
+&"open_door": SubResource("Animation_uvdjg")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v0ymc"]
+size = Vector3(1.4116833, 2.5862856, 0.09425)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jwqke"]
+render_priority = 0
+shader = ExtResource("3_jwqke")
+shader_parameter/albedo = Color(6, 1, 1, 0)
+shader_parameter/roughness = 0.5
+shader_parameter/normal_strength = 8.0
+shader_parameter/edge_color = Color(0, 0.8, 0, 1)
+
+[node name="Door" type="StaticBody3D" unique_id=1663869990]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+script = ExtResource("1_hxdes")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1247519616]
+transform = Transform3D(-0.870721, 0, -7.61208e-08, 0, 0.870721, 0, 7.61208e-08, 0, -0.870721, 0.442379, 0.724123, -0.048361)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1635672074]
+transform = Transform3D(-1, 0, -8.742282e-08, 0, 1, 0, 8.742282e-08, 0, -1, 0.7785231, -0.18581402, 0.62166595)
+shape = SubResource("BoxShape3D_b0ws2")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" unique_id=1154411167]
+transform = Transform3D(-1, 0, -8.742282e-08, 0, 1, 0, 8.742282e-08, 0, -1, 0.77848697, -0.18581402, -0.8504143)
+shape = SubResource("BoxShape3D_b0ws2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1373957410]
+libraries/ = SubResource("AnimationLibrary_6867o")
+
+[node name="Open" type="AudioStreamPlayer" parent="." unique_id=554820941]
+stream = ExtResource("2_jwqke")
+
+[node name="Key" type="AudioStreamPlayer" parent="." unique_id=13068273]
+
+[node name="Timer" type="Timer" parent="." unique_id=996576025]
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1445018575]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=815021876]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3949416, 0.8276905, 1.0476617e-07)
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D" unique_id=6471536]
+transform = Transform3D(-0.870693, 0, -7.61184e-08, 0, 0.870721, 0, 7.61184e-08, 0, -0.870693, -0.6252943, 0.18950021, -0.005317016)
+shape = SubResource("BoxShape3D_v0ymc")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="StaticBody3D/CollisionShape3D5" unique_id=39202005]
+transform = Transform3D(1.1485101, 0, -5.684342e-14, 0, 1.1484735, 0, 5.684342e-14, 0, 1.1485101, 0.005697429, -0.0009971857, -0.07046274)
+size = Vector3(1.1912842, 2.2838745, 0.13378906)
+material = SubResource("ShaderMaterial_jwqke")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=1097800055]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2040253, 0.9922543, -1.0525923e-07)
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D2" unique_id=2085124440]
+transform = Transform3D(-0.870693, 0, -7.61184e-08, 0, 0.870721, 0, 7.61184e-08, 0, -0.870693, 0.5246164, 0.00345546, -0.0053169397)
+shape = SubResource("BoxShape3D_v0ymc")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="StaticBody3D2/CollisionShape3D6" unique_id=1473794803]
+transform = Transform3D(1.1485101, 0, -5.684342e-14, 0, 1.1484735, 0, 5.684342e-14, 0, 1.1485101, -0.010220468, 0.008816481, -0.07046274)
+size = Vector3(1.2174072, 2.3009644, 0.13378906)
+material = SubResource("ShaderMaterial_jwqke")
+
+[connection signal="body_entered" from="Area3D" to="." method="Next_to_door"]
+[connection signal="body_exited" from="Area3D" to="." method="come_back"]
