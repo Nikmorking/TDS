@@ -19,6 +19,10 @@ run/main_scene="uid://bthsh26dmspk2"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*uid://cf612yait5ek5"
+
 [input]
 
 Escape={

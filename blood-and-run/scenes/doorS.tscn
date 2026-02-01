@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dism06b1iip8u"]
 
 [ext_resource type="Script" uid="uid://cm2ts4rcn04mw" path="res://scripts/Open_door.gd" id="1_hxdes"]
-[ext_resource type="AudioStream" uid="uid://wmk5up3buta7" path="res://Models/door-lock-3_zkwogmvd.mp3" id="2_jwqke"]
+[ext_resource type="AudioStream" uid="uid://bnakg681bn2le" path="res://Models/store-entrance-bell_m1bp86nu.mp3" id="2_jwqke"]
 [ext_resource type="Shader" uid="uid://dq81n42ia7ync" path="res://Models/Glass.gdshader" id="3_jwqke"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b0ws2"]
@@ -138,6 +138,7 @@ shader_parameter/edge_color = Color(0, 0.8, 0, 1)
 [node name="Door" type="StaticBody3D" unique_id=1663869990]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_hxdes")
+door_open = false
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1247519616]
 transform = Transform3D(-0.870721, 0, -7.61208e-08, 0, 0.870721, 0, 7.61208e-08, 0, -0.870721, 0.442379, 0.724123, -0.048361)
@@ -154,9 +155,9 @@ shape = SubResource("BoxShape3D_b0ws2")
 libraries/ = SubResource("AnimationLibrary_6867o")
 
 [node name="Open" type="AudioStreamPlayer" parent="." unique_id=554820941]
-stream = ExtResource("2_jwqke")
 
 [node name="Key" type="AudioStreamPlayer" parent="." unique_id=13068273]
+stream = ExtResource("2_jwqke")
 
 [node name="Timer" type="Timer" parent="." unique_id=996576025]
 

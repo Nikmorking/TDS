@@ -81,3 +81,6 @@ func _input(event):
 		else:
 			isOnMenu = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if Input.is_action_just_pressed("ui_open"):
+		if $RayCast3D.is_colliding():
+			$RayCast3D.collision_mask

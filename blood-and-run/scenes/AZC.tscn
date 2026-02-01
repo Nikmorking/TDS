@@ -2,13 +2,17 @@
 
 [ext_resource type="PackedScene" uid="uid://bt1ygpf4pknjx" path="res://scenes/door.tscn" id="1_0u5sq"]
 [ext_resource type="PackedScene" uid="uid://c3dx2242gqhlh" path="res://scenes/lampa.tscn" id="1_hnl5y"]
+[ext_resource type="Script" uid="uid://2a77xvtsjape" path="res://scripts/azc.gd" id="1_p6l7r"]
 [ext_resource type="Script" uid="uid://ciw0wsurkg36p" path="res://scripts/character_body_3d.gd" id="2_y5rpb"]
 [ext_resource type="Texture2D" uid="uid://cv26yr05sejrc" path="res://Models/smoke_02.png" id="3_ui2ee"]
+[ext_resource type="Texture2D" uid="uid://cd6jlki7g1b2i" path="res://scenes/Comp.jpg" id="4_8oxcy"]
 [ext_resource type="Texture2D" uid="uid://cvln6ln4vfdee" path="res://scenes/dZI264Kn3kWyvT7qRo4e0IbZ28qqWdrjzGNY3s8TwDM4NAnM3GUbRA9qD2pBfGS4uzLPxZV_cYc2BcLVqwNmC-Ld.jpg" id="4_g0orn"]
 [ext_resource type="Shader" uid="uid://dq81n42ia7ync" path="res://Models/Glass.gdshader" id="4_ui2ee"]
 [ext_resource type="PackedScene" uid="uid://dism06b1iip8u" path="res://scenes/doorS.tscn" id="5_vynuk"]
 [ext_resource type="AudioStream" uid="uid://chnxkeejyec1k" path="res://Models/ghjk.mp3" id="6_aeg34"]
+[ext_resource type="Script" uid="uid://cvkighcpdolaw" path="res://scripts/radio-sc.gd" id="8_42sn8"]
 [ext_resource type="PackedScene" uid="uid://ki8fgnhihyot" path="res://scenes/lampa_mini.tscn" id="8_ro5by"]
+[ext_resource type="Texture2D" uid="uid://cjmevthgqo8bv" path="res://318748684_bc04d5c7d7c38229a9a8e5933851aab1.png" id="10_42sn8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_esnxl"]
 albedo_color = Color(0.24840015, 0.24840018, 0.24840015, 1)
@@ -18,7 +22,11 @@ size = Vector3(49.96718, 1, 45.09082)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0u5sq"]
 radius = 0.382215
-height = 1.62492
+height = 1.829824
+
+[sub_resource type="LabelSettings" id="LabelSettings_8oxcy"]
+line_spacing = 7.0
+font_size = 42
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y5rpb"]
 
@@ -37,12 +45,16 @@ glow_map = ExtResource("3_ui2ee")
 volumetric_fog_enabled = true
 volumetric_fog_emission = Color(0.31102076, 0.10981911, 0.36823004, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8oxcy"]
-albedo_texture = ExtResource("4_g0orn")
-metallic = 1.0
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vynuk"]
 albedo_color = Color(0, 0.38073853, 0.42591783, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p6l7r"]
+albedo_color = Color(0.24985075, 0.24985075, 0.24985075, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_42sn8"]
+albedo_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+disable_receive_shadows = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ro5by"]
 size = Vector3(1.0648651, 4.694702, 6.21077)
@@ -76,6 +88,64 @@ size = Vector3(1, 2.2877808, 2.8248444)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ro5by"]
 albedo_color = Color(0.9176606, 0.59637296, 3.85046e-07, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_cfvsp"]
+size = Vector3(2.2872314, 1.0596924, 2.8095398)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5dt2e"]
+albedo_color = Color(0.27314225, 0.27314225, 0.27314222, 1)
+disable_receive_shadows = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q1pnm"]
+size = Vector3(8.746548, 1, 1.0871582)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8oxcy"]
+albedo_texture = ExtResource("4_8oxcy")
+metallic = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g0orn"]
+albedo_texture = ExtResource("4_g0orn")
+metallic = 1.0
+disable_receive_shadows = true
+
+[sub_resource type="Theme" id="Theme_8oxcy"]
+default_font_size = 27
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_selected_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/selection_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/table_border = Color(0, 0, 0, 1)
+RichTextLabel/colors/table_even_row_bg = Color(0, 0, 0, 1)
+RichTextLabel/colors/table_odd_row_bg = Color(0, 0, 0, 1)
+RichTextLabel/constants/line_separation = 0
+RichTextLabel/constants/outline_size = 0
+RichTextLabel/constants/paragraph_separation = 0
+RichTextLabel/constants/shadow_offset_x = 0
+RichTextLabel/constants/shadow_offset_y = 0
+RichTextLabel/constants/shadow_outline_size = 0
+RichTextLabel/constants/strikethrough_alpha = 0
+RichTextLabel/constants/table_h_separation = 0
+RichTextLabel/constants/table_v_separation = 0
+RichTextLabel/constants/text_highlight_h_padding = 0
+RichTextLabel/constants/text_highlight_v_padding = 0
+RichTextLabel/constants/underline_alpha = 0
+RichTextLabel/font_sizes/bold_font_size = 27
+RichTextLabel/font_sizes/bold_italics_font_size = 27
+RichTextLabel/font_sizes/italics_font_size = 27
+RichTextLabel/font_sizes/mono_font_size = 27
+RichTextLabel/font_sizes/normal_font_size = 27
+RichTextLabel/fonts/bold_font = null
+RichTextLabel/fonts/bold_italics_font = null
+RichTextLabel/fonts/italics_font = null
+RichTextLabel/fonts/mono_font = null
+RichTextLabel/fonts/normal_font = null
+RichTextLabel/icons/horizontal_rule = null
+RichTextLabel/styles/focus = null
+RichTextLabel/styles/normal = null
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8oxcy"]
+viewport_path = NodePath("Заправка/Table/CSGPolygon3D2/SubViewport")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y5rpb"]
 albedo_color = Color(0, 0, 0, 1)
 
@@ -90,9 +160,10 @@ albedo = Color(0.423651, 0.423651, 0.423651, 1)
 emission = Color(0.140447, 0.140447, 0.140447, 1)
 
 [node name="Node3D" type="Node3D" unique_id=2010904094]
+script = ExtResource("1_p6l7r")
 
 [node name="Пол" type="CSGBox3D" parent="." unique_id=857516586]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.958508, -0.44677734, -5.8991623)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.934713, -0.42009532, -5.9063215)
 size = Vector3(50.25428, 0.10644531, 46.102432)
 material = SubResource("StandardMaterial3D_esnxl")
 
@@ -107,36 +178,38 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.054842, 0, 0.67859983)
 script = ExtResource("2_y5rpb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=2046173346]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07942, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1818719, 0)
 shape = SubResource("CapsuleShape3D_0u5sq")
 
 [node name="Camera3D" type="Camera3D" parent="Player" unique_id=1919301848]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40317, -0.0345466)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6756717, -0.034546614)
+
+[node name="Control" type="Control" parent="Player/Camera3D" unique_id=92873430]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1156.0
+offset_bottom = 637.0
+
+[node name="Label" type="Label" parent="Player/Camera3D/Control" unique_id=229889781]
+layout_mode = 0
+offset_left = 565.0
+offset_top = 251.0
+offset_right = 606.0
+offset_bottom = 323.0
+text = "O"
+label_settings = SubResource("LabelSettings_8oxcy")
+
+[node name="Marker3D" type="Marker3D" parent="Player" unique_id=1519376558]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0656533, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="Player" unique_id=1754273479]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7069986, 0)
+target_position = Vector3(0, 0, -2.5)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=919561544]
 environment = SubResource("Environment_0u5sq")
 
 [node name="Заправка" type="Node" parent="." unique_id=126791314]
-
-[node name="Касса" type="CSGBox3D" parent="Заправка" unique_id=1456230582]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -18.42976, 0.12693405, -13.877781)
-size = Vector3(8.938673, 1.1860514, 1.543396)
-
-[node name="CSGBox3D12" type="CSGBox3D" parent="Заправка/Касса" unique_id=92263054]
-transform = Transform3D(-4.3711182e-08, 0, 0.99999654, 0, 1, 0, -0.99999654, 0, -4.3711182e-08, -4.1841946, -0.2977178, -0.9444046)
-size = Vector3(3.0139294, 0.7618184, 0.66064453)
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Заправка/Касса" unique_id=868973482]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3602524, 0.42142558, -1.4770861)
-stream = ExtResource("6_aeg34")
-unit_size = 3.0
-autoplay = true
-
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Заправка/Касса" unique_id=1054754920]
-transform = Transform3D(-4.371135e-08, 0, 0.9999992, 0, 1, 0, -0.9999992, 0, -4.371135e-08, -2.5034657, 0.5863527, 0.7161484)
-polygon = PackedVector2Array(0, 0, 0.023889542, 0.3864416, 1, 1, 1, 0)
-depth = 1.5
-material = SubResource("StandardMaterial3D_8oxcy")
 
 [node name="Door" parent="Заправка" unique_id=582810663 instance=ExtResource("1_0u5sq")]
 transform = Transform3D(-2.0000002, 0, -1.7484557e-07, 0, 1.3631004, 0, 1.7484557e-07, 0, -2.0000002, -28.869555, -0.63350385, -2.679078)
@@ -206,10 +279,12 @@ size = Vector3(13.479904, 4.799576, 1)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="Заправка/Стены" unique_id=1971031681]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.859018, 1.8997879, -2.3150964)
+material_override = SubResource("StandardMaterial3D_p6l7r")
 size = Vector3(19.992432, 4.799576, 1)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Заправка/Стены" unique_id=869551575]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -31.354115, 1.9015045, -5.476163)
+material_override = SubResource("StandardMaterial3D_p6l7r")
 size = Vector3(25.439697, 4.803009, 1)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Заправка/Стены" unique_id=1537774041]
@@ -219,6 +294,7 @@ size = Vector3(10.134445, 4.788948, 0.8569336)
 [node name="CSGBox3D8" type="CSGBox3D" parent="Заправка/Стены" unique_id=1212698081]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -29.942007, 3.2125769, -2.3234894)
 size = Vector3(2.6511765, 2.1527424, 1)
+material = SubResource("StandardMaterial3D_42sn8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Заправка/Стены" unique_id=1173668754]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.318975, 1.8473511, -5.0185804)
@@ -226,6 +302,7 @@ shape = SubResource("BoxShape3D_ro5by")
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="Заправка/Стены/CollisionShape3D" unique_id=1761571483]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.024288177, 0.04605484, 0.005203247)
+material_override = SubResource("StandardMaterial3D_p6l7r")
 size = Vector3(6.3370667, 4.786812, 1)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="Заправка/Стены/CollisionShape3D/CSGBox3D11" unique_id=181922146]
@@ -258,6 +335,7 @@ shape = SubResource("BoxShape3D_ro5by")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Заправка/Стены/CollisionShape3D2" unique_id=532216980]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.041316986, 0.04605484, 0.01229763)
+material_override = SubResource("StandardMaterial3D_p6l7r")
 size = Vector3(6.3370667, 4.786812, 1)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="Заправка/Стены/CollisionShape3D2/CSGBox3D5" unique_id=1556925006]
@@ -278,6 +356,7 @@ shape = SubResource("BoxShape3D_g0orn")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Заправка/Стены/CollisionShape3D4" unique_id=788519571]
 transform = Transform3D(-0.010349608, 0, -0.9999463, 0, 1, 0, 0.9999463, 0, -0.010349608, -0.051553726, 0.06855774, 0.027130127)
+material_override = SubResource("StandardMaterial3D_p6l7r")
 size = Vector3(22.999512, 4.8318176, 1)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="Заправка/Стены/CollisionShape3D4/CSGBox3D2" unique_id=1460090033]
@@ -316,6 +395,7 @@ shape = SubResource("BoxShape3D_8oxcy")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Заправка/Стены/CollisionShape3D3" unique_id=1076416606]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.03447151, 0.080397606, 0.63946533)
+material_override = SubResource("StandardMaterial3D_p6l7r")
 size = Vector3(4.444729, 2.3539143, 0.9501953)
 
 [node name="Лампы" type="Node" parent="Заправка" unique_id=499887456]
@@ -340,10 +420,130 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -13.332328, 4.1033936, 
 
 [node name="Ящики" type="Node" parent="Заправка" unique_id=1511721321]
 
-[node name="CSGBox3D25" type="CSGBox3D" parent="Заправка/Ящики" unique_id=1182617510]
+[node name="Со стаканами" type="CSGBox3D" parent="Заправка/Ящики" unique_id=1182617510]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.438679, 1.1547642, 5.9884896)
 size = Vector3(2.2050781, 3.3095284, 1)
 material = SubResource("StandardMaterial3D_ro5by")
+
+[node name="Table" type="Node" parent="Заправка" unique_id=467835246]
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Заправка/Table" unique_id=92263054]
+transform = Transform3D(-4.371118e-08, 0, 0.9999965, 0, 1, 0, -0.9999965, 0, -4.371118e-08, -22.61944, -0.1759361, -14.8214855)
+size = Vector3(3.0139294, 0.7618184, 0.66064453)
+script = ExtResource("8_42sn8")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Заправка/Table/CSGBox3D12" unique_id=868973482]
+transform = Transform3D(-4.3711488e-08, 0, -1.0000035, 0, 1, 0, 1.0000035, 0, -4.3711488e-08, 0.5326834, 0.7191434, 0.8239441)
+stream = ExtResource("6_aeg34")
+unit_size = 3.0
+
+[node name="Area3D" type="Area3D" parent="Заправка/Table/CSGBox3D12" unique_id=989827045]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Заправка/Table/CSGBox3D12/Area3D" unique_id=1810327434]
+transform = Transform3D(0.9999853, 0, -6.430412e-13, 0, 1, 0, 6.430412e-13, 0, 0.9999853, 1.2091932, 0.53359205, -0.00016784668)
+shape = SubResource("BoxShape3D_cfvsp")
+
+[node name="Sprite3D" type="Sprite3D" parent="Заправка/Table/CSGBox3D12" unique_id=1445084859]
+transform = Transform3D(0.5, 0, -8.881785e-15, 0, 0.5, 0, 8.881785e-15, 0, 0.5, 0.688674, 0.990533, 0.23306465)
+visible = false
+texture = ExtResource("10_42sn8")
+
+[node name="Касса" type="CSGBox3D" parent="Заправка/Table" unique_id=1456230582]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -18.435246, 0.12178171, -13.877081)
+material_override = SubResource("StandardMaterial3D_5dt2e")
+size = Vector3(8.938673, 1.1860514, 1.543396)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Заправка/Table/Касса" unique_id=1416952522]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Заправка/Table/Касса/StaticBody3D" unique_id=81443600]
+transform = Transform3D(0.9999792, 0, 0, 0, 1, 0, 0, 0, 0.9999792, -0.0018634796, 0, -0.011597633)
+shape = SubResource("BoxShape3D_q1pnm")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Заправка/Table" unique_id=1054754920]
+transform = Transform3D(-4.3711346e-08, 0, 0.99999917, 0, 1, 0, -0.99999917, 0, -4.3711346e-08, -20.938711, 0.7081344, -13.160933)
+polygon = PackedVector2Array(0, 0, 0.023889542, 0.3864416, 1, 1, 1, 0)
+depth = 1.5
+material = SubResource("StandardMaterial3D_8oxcy")
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="Заправка/Table" unique_id=1539352119]
+transform = Transform3D(0.7009826, 0, -0.71317554, 0, 1, 0, 0.71317554, 0, 0.7009826, -18.518547, 0.7081344, -13.179781)
+polygon = PackedVector2Array(0, 0, 0.01517868, 0.009165406, 0.9687004, 1.4401264, 1, 0)
+depth = 2.0
+material = SubResource("StandardMaterial3D_g0orn")
+
+[node name="SubViewport" type="SubViewport" parent="Заправка/Table/CSGPolygon3D2" unique_id=414021016]
+transparent_bg = true
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="Заправка/Table/CSGPolygon3D2/SubViewport" unique_id=1983560083]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 118.0
+offset_top = 42.0
+offset_right = 425.0
+offset_bottom = 340.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Заправка/Table/CSGPolygon3D2/SubViewport/Control" unique_id=1189726967]
+layout_mode = 0
+offset_left = -111.0
+offset_top = 21.0
+offset_right = 85.50003
+offset_bottom = 275.00003
+theme = SubResource("Theme_8oxcy")
+bbcode_enabled = true
+text = "* Бензин
+* Кофе
+* Попкорн
+* Кекс"
+tab_size = 0
+
+[node name="Control" type="Control" parent="Заправка/Table/CSGPolygon3D2/SubViewport/Control" unique_id=1299914037]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CheckBox" type="CheckBox" parent="Заправка/Table/CSGPolygon3D2/SubViewport/Control/Control" unique_id=1457942839]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 96.0
+offset_right = 67.0
+offset_bottom = 120.0
+scale = Vector2(1.7, 1.7)
+
+[node name="CheckBox4" type="CheckBox" parent="Заправка/Table/CSGPolygon3D2/SubViewport/Control/Control" unique_id=174613191]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 133.0
+offset_right = 67.0
+offset_bottom = 157.0
+scale = Vector2(1.7, 1.7)
+
+[node name="CheckBox2" type="CheckBox" parent="Заправка/Table/CSGPolygon3D2/SubViewport/Control/Control" unique_id=1595226234]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 59.0
+offset_right = 67.0
+offset_bottom = 83.0
+scale = Vector2(1.7, 1.7)
+flat = true
+
+[node name="CheckBox3" type="CheckBox" parent="Заправка/Table/CSGPolygon3D2/SubViewport/Control/Control" unique_id=977980273]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 24.0
+offset_right = 67.0
+offset_bottom = 48.0
+scale = Vector2(1.7, 1.7)
+flat = true
+
+[node name="Sprite3D" type="Sprite3D" parent="Заправка/Table/CSGPolygon3D2" unique_id=321021058]
+transform = Transform3D(0.02189833, 0.5697504, -0.8215254, 0.016285006, 0.82141066, 0.5701046, 0.9996266, -0.025862843, 0.0087091625, 0.55988693, 0.8742696, -0.7425623)
+texture = SubResource("ViewportTexture_8oxcy")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Заправка/Table" unique_id=504610296]
+transform = Transform3D(0.9999961, 0, 0, 0, 1, 0, 0, 0, 0.9999961, -15.792486, 1.2390217, -13.877081)
+height = 1.0844727
 
 [node name="CSGBox3D25" type="CSGBox3D" parent="." unique_id=734250329]
 transform = Transform3D(-4.3711392e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711392e-08, 0.24350154, 1.4954605, -2.0402222)
@@ -516,3 +716,6 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -22.631876, 3.387203, 2
 
 [node name="LAmpa2" parent="." unique_id=1996781391 instance=ExtResource("8_ro5by")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -27.111565, 3.387203, 2.3273993)
+
+[connection signal="body_entered" from="Заправка/Table/CSGBox3D12/Area3D" to="Заправка/Table/CSGBox3D12" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Заправка/Table/CSGBox3D12/Area3D" to="Заправка/Table/CSGBox3D12" method="_on_area_3d_body_exited"]
