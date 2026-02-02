@@ -18,3 +18,7 @@ func _tovar_otdan(number: int):
 	var cheaks = kasa.get_children()
 	cheaks[number].button_pressed = true
 	pass
+
+
+func cofe_gotovo():
+	pass # Replace with function body.

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cbe6pu0sxv4kl"]
+
+[ext_resource type="Script" uid="uid://6mu3mfjfp1wg" path="res://Models/1.gd" id="1_d5ioe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d5ioe"]
+albedo_color = Color(0.8907334, 0.8907335, 0.89073336, 0.505)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_d5ioe"]
+height = 0.5612793
+radius = 0.23095703
+
+[node name="Stakan" type="RigidBody3D" unique_id=1350055056]
+collision_layer = 2
+collision_mask = 2
+mass = 1000.0
+gravity_scale = 0.0
+freeze = true
+script = ExtResource("1_d5ioe")
+named = "Stakan"
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=544691532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10996246, 0)
+radius = 0.21972656
+height = 0.54512024
+material = SubResource("StandardMaterial3D_d5ioe")
+
+[node name="Coll" type="CollisionShape3D" parent="." unique_id=2122706237]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.101620674, 0)
+shape = SubResource("CylinderShape3D_d5ioe")
+disabled = true

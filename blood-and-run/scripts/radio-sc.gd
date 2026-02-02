@@ -22,25 +22,3 @@ func _process(delta):
 	if into:
 		$Sprite3D.look_at(marker.global_position)
 	pass
-
-
-func _on_area_3d_body_entered(body):
-	if body.name == "Player":
-		$Sprite3D.show()
-		into = true
-	pass # Replace with function body.
-
-
-func _on_area_3d_body_exited(body):
-	if body.name == "Player":
-		$Sprite3D.hide()
-		into = false
-	pass # Replace with function body.
-
-
-func statan_voshol(body: Node3D):
-	if body.named == "Stakanchiki" and !$CSGCylinder3D.visible:
-		body.queue_free()
-		$CSGCylinder3D.show()
-		kol_stakan = 10
-	pass # Replace with function body.

@@ -2,6 +2,8 @@ extends CharacterBody3D
 class_name Player
 
 var stakanchiki = load("res://Models/1.tscn")
+var cofe = load("res://Models/cofe.tscn")
+var stakan = load("res://Models/Stakan.tscn")
 
 var SPEED = 5.0
 var JUMP_VELOCITY = 4.5
@@ -88,16 +90,22 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_open"):
 		print("click")
 		if !in_door and obj:
-			var rachodnik: RigidBody3D
+			var rashodnik: RigidBody3D
 			if obj.named == "Stakanchiki":
-				rachodnik = stakanchiki.instantiate()
-			rachodnik.position = obj.global_position
-			rachodnik.freeze = false
-			rachodnik.gravity_scale = 1.4
-			obj.queue_free()
-			var coll: CollisionShape3D = rachodnik.get_node("Coll")
+				rashodnik = stakanchiki.instantiate()
+			if obj.named == "Cofe":
+				rashodnik = cofe.instantiate()
+			if obj.named == "Stakan":
+				rashodnik = stakan.instantiate()
+			rashodnik.position = obj.global_position
+			rashodnik.freeze = false
+			rashodnik.gravity_scale = 1.4
+			for i in $Camera3D.get_children():
+				if i.is_class("RigidBody3D"):
+					i.queue_free()
+			var coll: CollisionShape3D = rashodnik.get_node("Coll")
 			coll.disabled = false
-			get_parent().get_node("Расходники").add_child(rachodnik)
+			get_parent().get_node("Расходники").add_child(rashodnik)
 		if !obj and !in_door:
 			if $Camera3D/RayCast3D.is_colliding():
 				print("coll")
@@ -106,8 +114,19 @@ func _input(event):
 					print(col.name)
 					if col.name == "Stakan":
 						if col.get_parent().kol_stakan > 0:
-							add_to_hand("Stakanchiki")
+							add_to_hand("Stakan")
 							col.get_parent().kol_stakan -= 1
+					elif col.name == "Cofe_machine":
+						var kasa = col.get_parent()
+						if kasa.cofe > 0:
+							if kasa.stakan:
+								kasa.sel("Варка")
+							else:
+								kasa.sel("нет стакана")
+						else:
+							kasa.sel("Нет кофе")
+						
+							
 				if col.is_class("RigidBody3D"):
 					add_to_hand(col.named)
 					if col.get_parent().name == "Расходники":
@@ -129,6 +148,10 @@ func player_out():
 func add_to_hand(name: String):
 	if name == "Со стаканами" or name == "Stakanchiki":
 		obj = stakanchiki.instantiate()
+	if name == "С кофе" or name == "Cofe":
+		obj = cofe.instantiate()
+	if name == "Stakan":
+		obj = stakan.instantiate()
 	if obj:
 		obj.position -= Vector3(0,0,2)
 		obj.name = obj.name + str(kol)
