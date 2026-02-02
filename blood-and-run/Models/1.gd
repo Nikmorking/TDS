@@ -1,10 +1,8 @@
-extends Node
+extends RigidBody3D
+class_name Stakanchiki
 
-var player: Node3D
+@export var named:String
 
-func get_player():
-	player = get_parent().get_node("Node3D/Player")
-	pass
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

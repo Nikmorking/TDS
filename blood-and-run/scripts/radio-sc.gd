@@ -1,9 +1,12 @@
 extends CSGBox3D
 
 var into = false
+
+var kol_stakan = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Global._get_player()
+	Global.get_player()
 	pass # Replace with function body.
 
 func _input(event):
@@ -32,4 +35,12 @@ func _on_area_3d_body_exited(body):
 	if body.name == "Player":
 		$Sprite3D.hide()
 		into = false
+	pass # Replace with function body.
+
+
+func statan_voshol(body: Node3D):
+	if body.named == "Stakanchiki" and !$CSGCylinder3D.visible:
+		body.queue_free()
+		$CSGCylinder3D.show()
+		kol_stakan = 10
 	pass # Replace with function body.

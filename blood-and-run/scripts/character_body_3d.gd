@@ -1,9 +1,11 @@
 extends CharacterBody3D
 class_name Player
 
+var stakanchiki = load("res://Models/1.tscn")
 
 var SPEED = 5.0
 var JUMP_VELOCITY = 4.5
+var in_door = false
 
 var mouse_sens = 0.3
 var camera_anglev=0
@@ -13,6 +15,8 @@ var isOnMenu = false
 var is_jumping := false
 var anim_tree: AnimationTree
 var walk = false
+var obj: RigidBody3D
+var kol = 0
 
 var run = false
 
@@ -82,5 +86,53 @@ func _input(event):
 			isOnMenu = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if Input.is_action_just_pressed("ui_open"):
-		if $RayCast3D.is_colliding():
-			$RayCast3D.collision_mask
+		print("click")
+		if !in_door and obj:
+			var rachodnik: RigidBody3D
+			if obj.named == "Stakanchiki":
+				rachodnik = stakanchiki.instantiate()
+			rachodnik.position = obj.global_position
+			rachodnik.freeze = false
+			rachodnik.gravity_scale = 1.4
+			obj.queue_free()
+			var coll: CollisionShape3D = rachodnik.get_node("Coll")
+			coll.disabled = false
+			get_parent().get_node("Расходники").add_child(rachodnik)
+		if !obj and !in_door:
+			if $Camera3D/RayCast3D.is_colliding():
+				print("coll")
+				var col: Node3D = $Camera3D/RayCast3D.get_collider()
+				if col.is_class("Area3D"):
+					print(col.name)
+					if col.name == "Stakan":
+						if col.get_parent().kol_stakan > 0:
+							add_to_hand("Stakanchiki")
+							col.get_parent().kol_stakan -= 1
+				if col.is_class("RigidBody3D"):
+					add_to_hand(col.named)
+					if col.get_parent().name == "Расходники":
+						col.queue_free()
+				else:
+					add_to_hand(col.name)
+
+
+func player_in():
+	in_door = true
+	pass # Replace with function body.
+
+
+func player_out():
+	in_door = false
+	pass # Replace with function body.
+
+
+func add_to_hand(name: String):
+	if name == "Со стаканами" or name == "Stakanchiki":
+		obj = stakanchiki.instantiate()
+	if obj:
+		obj.position -= Vector3(0,0,2)
+		obj.name = obj.name + str(kol)
+		$Camera3D.add_child(obj)
+		kol += 1
+		print(obj.get_class())
+	pass

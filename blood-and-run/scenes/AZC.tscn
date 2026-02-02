@@ -18,7 +18,7 @@
 albedo_color = Color(0.24840015, 0.24840018, 0.24840015, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y5rpb"]
-size = Vector3(49.96718, 1, 45.09082)
+size = Vector3(49.96718, 1.1186523, 45.09082)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0u5sq"]
 radius = 0.382215
@@ -88,8 +88,17 @@ size = Vector3(1, 2.2877808, 2.8248444)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ro5by"]
 albedo_color = Color(0.9176606, 0.59637296, 3.85046e-07, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_88m6n"]
+size = Vector3(2.1687012, 3.0854492, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_cfvsp"]
 size = Vector3(2.2872314, 1.0596924, 2.8095398)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b3ns2"]
+albedo_color = Color(1, 1, 1, 0.37100002)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r1ed2"]
+size = Vector3(0.73535156, 0.76452637, 0.5235596)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5dt2e"]
 albedo_color = Color(0.27314225, 0.27314225, 0.27314222, 1)
@@ -168,9 +177,11 @@ size = Vector3(50.25428, 0.10644531, 46.102432)
 material = SubResource("StandardMaterial3D_esnxl")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Пол" unique_id=1945745178]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Пол/StaticBody3D" unique_id=1356334168]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12561798, 0, 1.0375977)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12561798, -0.49546385, 1.0375977)
 shape = SubResource("BoxShape3D_y5rpb")
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=1428253305]
@@ -199,12 +210,15 @@ offset_bottom = 323.0
 text = "O"
 label_settings = SubResource("LabelSettings_8oxcy")
 
+[node name="RayCast3D" type="RayCast3D" parent="Player/Camera3D" unique_id=1754273479]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03132689, 0.034546614)
+target_position = Vector3(0, 0, -3)
+collision_mask = 3
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 0, 1, 1)
+
 [node name="Marker3D" type="Marker3D" parent="Player" unique_id=1519376558]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0656533, 0)
-
-[node name="RayCast3D" type="RayCast3D" parent="Player" unique_id=1754273479]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7069986, 0)
-target_position = Vector3(0, 0, -2.5)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=919561544]
 environment = SubResource("Environment_0u5sq")
@@ -272,6 +286,8 @@ size = Vector3(2.2050781, 2.157547, 1)
 material = SubResource("StandardMaterial3D_vynuk")
 
 [node name="Стены" type="StaticBody3D" parent="Заправка" unique_id=1628848288]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Заправка/Стены" unique_id=1794297407]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.122362, 1.8997879, 6.8107686)
@@ -425,6 +441,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.438679, 1.1547642, 5.9884
 size = Vector3(2.2050781, 3.3095284, 1)
 material = SubResource("StandardMaterial3D_ro5by")
 
+[node name="Со стаканами" type="StaticBody3D" parent="Заправка/Ящики/Со стаканами" unique_id=857294547]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Заправка/Ящики/Со стаканами/Со стаканами" unique_id=1291196441]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009643555, 0.07788086, 0)
+shape = SubResource("BoxShape3D_88m6n")
+
 [node name="Table" type="Node" parent="Заправка" unique_id=467835246]
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="Заправка/Table" unique_id=92263054]
@@ -437,9 +459,9 @@ transform = Transform3D(-4.3711488e-08, 0, -1.0000035, 0, 1, 0, 1.0000035, 0, -4
 stream = ExtResource("6_aeg34")
 unit_size = 3.0
 
-[node name="Area3D" type="Area3D" parent="Заправка/Table/CSGBox3D12" unique_id=989827045]
+[node name="Radio" type="Area3D" parent="Заправка/Table/CSGBox3D12" unique_id=989827045]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Заправка/Table/CSGBox3D12/Area3D" unique_id=1810327434]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Заправка/Table/CSGBox3D12/Radio" unique_id=1810327434]
 transform = Transform3D(0.9999853, 0, -6.430412e-13, 0, 1, 0, 6.430412e-13, 0, 0.9999853, 1.2091932, 0.53359205, -0.00016784668)
 shape = SubResource("BoxShape3D_cfvsp")
 
@@ -448,12 +470,30 @@ transform = Transform3D(0.5, 0, -8.881785e-15, 0, 0.5, 0, 8.881785e-15, 0, 0.5, 
 visible = false
 texture = ExtResource("10_42sn8")
 
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Заправка/Table/CSGBox3D12" unique_id=2051049449]
+transform = Transform3D(-4.3711488e-08, 0, -1.0000035, 0, 1, 0, 1.0000035, 0, -4.3711488e-08, -1.1232691, 1.7091235, 7.947998)
+visible = false
+material_override = SubResource("StandardMaterial3D_b3ns2")
+radius = 0.2397461
+height = 1.6525879
+
+[node name="Stakan" type="Area3D" parent="Заправка/Table/CSGBox3D12" unique_id=115846323]
+transform = Transform3D(-4.3711488e-08, 0, -1.0000035, 0, 1, 0, 1.0000035, 0, -4.3711488e-08, -1.1232691, 1.214379, 7.7373943)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Заправка/Table/CSGBox3D12/Stakan" unique_id=1676746753]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24295807, 0.10905111, -0.23822021)
+shape = SubResource("BoxShape3D_r1ed2")
+
 [node name="Касса" type="CSGBox3D" parent="Заправка/Table" unique_id=1456230582]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -18.435246, 0.12178171, -13.877081)
 material_override = SubResource("StandardMaterial3D_5dt2e")
 size = Vector3(8.938673, 1.1860514, 1.543396)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Заправка/Table/Касса" unique_id=1416952522]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Заправка/Table/Касса/StaticBody3D" unique_id=81443600]
 transform = Transform3D(0.9999792, 0, 0, 0, 1, 0, 0, 0, 0.9999792, -0.0018634796, 0, -0.011597633)
@@ -575,7 +615,7 @@ material = SubResource("StandardMaterial3D_esnxl")
 [node name="StaticBody3D" type="StaticBody3D" parent="Дорога/CSGBox3D6" unique_id=22293861]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Дорога/CSGBox3D6/StaticBody3D" unique_id=1794367576]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12561798, 0, -0.24316406)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12561798, 0.46337748, -0.24316406)
 shape = SubResource("BoxShape3D_y5rpb")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="Дорога" unique_id=1049790445]
@@ -586,7 +626,7 @@ material = SubResource("StandardMaterial3D_esnxl")
 [node name="StaticBody3D" type="StaticBody3D" parent="Дорога/CSGBox3D7" unique_id=987342595]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Дорога/CSGBox3D7/StaticBody3D" unique_id=661168124]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12561798, 0, -0.24316406)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12561798, 0.5004535, -0.24316406)
 shape = SubResource("BoxShape3D_y5rpb")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Дорога" unique_id=349273777]
@@ -717,5 +757,12 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -22.631876, 3.387203, 2
 [node name="LAmpa2" parent="." unique_id=1996781391 instance=ExtResource("8_ro5by")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -27.111565, 3.387203, 2.3273993)
 
-[connection signal="body_entered" from="Заправка/Table/CSGBox3D12/Area3D" to="Заправка/Table/CSGBox3D12" method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Заправка/Table/CSGBox3D12/Area3D" to="Заправка/Table/CSGBox3D12" method="_on_area_3d_body_exited"]
+[node name="Расходники" type="Node" parent="." unique_id=637064146]
+
+[connection signal="_player_in" from="Заправка/Door" to="Player" method="player_in"]
+[connection signal="_player_out" from="Заправка/Door" to="Player" method="player_out"]
+[connection signal="_player_in" from="Заправка/Door2" to="Player" method="player_in"]
+[connection signal="_player_out" from="Заправка/Door2" to="Player" method="player_out"]
+[connection signal="body_entered" from="Заправка/Table/CSGBox3D12/Radio" to="Заправка/Table/CSGBox3D12" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Заправка/Table/CSGBox3D12/Radio" to="Заправка/Table/CSGBox3D12" method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="Заправка/Table/CSGBox3D12/Stakan" to="Заправка/Table/CSGBox3D12" method="statan_voshol"]

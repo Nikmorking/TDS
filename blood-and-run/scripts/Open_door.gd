@@ -1,21 +1,24 @@
 extends StaticBody3D
 
+signal _player_in
+signal _player_out
+
 @export var rot = 0
 @export var door_open = true
+@export var start_rot = Vector3()
 
 var need_door = false
-@export var start_rot = Vector3()
-var player
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	rot = 0
+	Global.get_player()
 	pass # Replace with function body.
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_open"):
-		if need_door:
+		if need_door and !Global.player.obj:
 			print("door")
 			if door_open:
 				$AnimationPlayer.play("close door")
@@ -38,6 +41,7 @@ func _process(_delta: float) -> void:
 
 func Next_to_door(body: Node3D) -> void:
 	if body.name == "Player":
+		_player_in.emit()
 		need_door = true
 	pass # Replace with function body.
 
@@ -45,4 +49,5 @@ func Next_to_door(body: Node3D) -> void:
 func come_back(body: Node3D) -> void:
 	if body.name == "Player":
 		need_door = false
+		_player_out.emit()
 	pass # Replace with function body.
