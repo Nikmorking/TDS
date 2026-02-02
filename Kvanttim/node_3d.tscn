@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dri1jxy6uig6i"]
 
-[ext_resource type="Script" path="res://character_body_3d.gd" id="1_2l44u"]
-[ext_resource type="Script" path="res://node_3d.gd" id="1_q5u30"]
+[ext_resource type="Script" uid="uid://bevveav15brnx" path="res://character_body_3d.gd" id="1_2l44u"]
+[ext_resource type="Script" uid="uid://c7u17dprm3w0d" path="res://node_3d.gd" id="1_q5u30"]
 [ext_resource type="PackedScene" uid="uid://dsyoj7madsypa" path="res://monk_character@Walking.tscn" id="3_o557r"]
 [ext_resource type="Texture2D" uid="uid://ev6wh7yv8rxy" path="res://monk_character@Walking_0.png" id="4_856go"]
 

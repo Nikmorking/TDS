@@ -1,0 +1,9 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://ceiebplai51ar"]
+
+[resource]
+emission_shape_scale = Vector3(1.7, 1.7, 1.07)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, -0.1, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = -2.2351742e-06
