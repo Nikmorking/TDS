@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://djbnqo186r3wp"]
+
+[ext_resource type="Script" uid="uid://6mu3mfjfp1wg" path="res://Models/1.gd" id="1_tvytk"]
+[ext_resource type="PackedScene" uid="uid://cbaviyah5c6ud" path="res://Models/button/source/poly.glb" id="2_16v82"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vkxbk"]
+albedo_color = Color(0.47021204, 0.27875346, 4.813075e-08, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_16v82"]
+radius = 0.27441406
+height = 1.7573242
+
+[node name="ahabka_buttonov" type="RigidBody3D" unique_id=1350055056]
+collision_layer = 2
+collision_mask = 2
+mass = 1000.0
+gravity_scale = 0.0
+freeze = true
+script = ExtResource("1_tvytk")
+named = "ahabka_buttonov"
+
+[node name="poly" parent="." unique_id=1145727214 instance=ExtResource("2_16v82")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23363733, -0.14917874, 0.14927298)
+
+[node name="poly2" parent="." unique_id=1037103539 instance=ExtResource("2_16v82")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29806948, -0.14917874, 0.56434447)
+
+[node name="poly3" parent="." unique_id=612766075 instance=ExtResource("2_16v82")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25680947, -0.14917874, -0.2922173)
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="." unique_id=1986864540]
+transform = Transform3D(-2.2781133e-07, -5.259953, 0, 5.211716, -2.2991983e-07, 0, 0, 0, 12.916824, 0.24392194, 0, -0.033189654)
+inner_radius = 0.05
+outer_radius = 0.1
+sides = 20
+ring_sides = 10
+material = SubResource("StandardMaterial3D_vkxbk")
+
+[node name="Coll" type="CollisionShape3D" parent="." unique_id=435933655]
+transform = Transform3D(-1.2923567e-07, -0.99999994, 0, -1.2923567e-07, 1.9106853e-15, -0.99999994, 2.9565675, -4.3711385e-08, -4.3711385e-08, 0.28024608, -0.017982244, 0.10519683)
+shape = SubResource("CapsuleShape3D_16v82")
+disabled = true

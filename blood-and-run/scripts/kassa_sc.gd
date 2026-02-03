@@ -5,6 +5,7 @@ var kol_stakan = 0
 var cofe = 0
 var stakan = false
 var cofe_gotova = false
+var buttons = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -49,4 +50,11 @@ func cofe_gotovo():
 	cofe -= 1
 	cofe_gotova = true
 	stakan = false
+	pass # Replace with function body.
+
+
+func on_хлебница(body):
+	if body.named == "ahabka_buttonov":
+		buttons = 10
+		body.queue_free()
 	pass # Replace with function body.

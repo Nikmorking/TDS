@@ -56,8 +56,6 @@ func _physics_process(_delta: float) -> void:
 			velocity.z = move_toward(velocity.z * 2, JumpVel.z * 4.5, SPEED)
 
 	move_and_slide()
-	$AudioStreamPlayer3D.playing = direction != Vector3(0,0,0)
-	print(direction)
 	if is_on_floor() and is_jumping:
 		is_jumping = false
 	#$Camera3D.rotate_y(deg_to_rad(-event.relative.x * mouse_sens))

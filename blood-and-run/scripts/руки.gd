@@ -5,8 +5,11 @@ var stakanchiki = load("res://Расходники/1.tscn")
 var cofe = load("res://Расходники/cofe.tscn")
 var stakan = load("res://Расходники/Stakan.tscn")
 var stakan_s_cofe = load("res://Расходники/Stakan_s_cofe.tscn")
+var ahabka_buttonov = load("res://Расходники/ahabka_buttonov.tscn")
+var button = load("res://Models/button/source/poly.glb")
 
-var obj: RigidBody3D
+#var obj: RigidBody3D
+var obj: Node3D
 var kol = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -26,6 +29,8 @@ func _input(event):
 				rashodnik = stakan.instantiate()
 			if obj.named == "Stakan_s_cofe":
 				rashodnik = stakan_s_cofe.instantiate()
+			if obj.named == "ahabka_buttonov":
+				rashodnik = ahabka_buttonov.instantiate()
 			rashodnik.position = obj.global_position
 			rashodnik.freeze = false
 			rashodnik.gravity_scale = 1.4
@@ -41,12 +46,12 @@ func _input(event):
 				var col: Node3D = $RayCast3D.get_collider()
 				if col.is_class("Area3D"):
 					print(col.name)
+					var kasa = col.get_parent()
 					if col.name == "Stakan":
-						if col.get_parent().kol_stakan > 0:
+						if kasa.kol_stakan > 0:
 							add_to_hand("Stakan")
-							col.get_parent().kol_stakan -= 1
+							kasa.kol_stakan -= 1
 					elif col.name == "Cofe_machine":
-						var kasa = col.get_parent()
 						if kasa.cofe > 0:
 							if kasa.stakan:
 								kasa.sel("Варка")
@@ -58,7 +63,10 @@ func _input(event):
 							kasa.cofe_gotova = false
 							add_to_hand("Stakan_s_cofe")
 							kasa.sel(str(kasa.cofe)+"/10")
-							
+					elif col.name == "хлебница":
+						if kasa.buttons > 0:
+							add_to_hand("button")
+							kasa.buttons -= 1
 				if col.is_class("RigidBody3D"):
 					add_to_hand(col.named)
 					if col.get_parent().name == "Расходники":
@@ -68,6 +76,7 @@ func _input(event):
 	
 
 func add_to_hand(name: String):
+	print(name)
 	if name == "Со стаканами" or name == "Stakanchiki":
 		obj = stakanchiki.instantiate()
 	if name == "С кофе" or name == "Cofe":
@@ -76,6 +85,10 @@ func add_to_hand(name: String):
 		obj = stakan.instantiate()
 	if name == "Stakan_s_cofe":
 		obj = stakan_s_cofe.instantiate()
+	if name == "batonovo" or name == "ahabka_buttonov":
+		obj = ahabka_buttonov.instantiate()
+	if name == "button":
+		obj = button.instantiate()
 	if obj:
 		obj.position -= Vector3(0,0,2)
 		obj.name = obj.name + str(kol)
