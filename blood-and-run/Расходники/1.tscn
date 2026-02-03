@@ -1,8 +1,15 @@
 [gd_scene format=3 uid="uid://djscstv0lleby"]
 
 [ext_resource type="Script" uid="uid://6mu3mfjfp1wg" path="res://Models/1.gd" id="1_lww6m"]
+[ext_resource type="Shader" uid="uid://dq81n42ia7ync" path="res://Models/Glass.gdshader" id="2_5bt6k"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_813lh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5bt6k"]
+render_priority = 0
+shader = ExtResource("2_5bt6k")
+shader_parameter/albedo = Color(6, 1, 1, 0)
+shader_parameter/roughness = 0.5
+shader_parameter/normal_strength = 8.0
+shader_parameter/edge_color = Color(2, 2, 2, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_813lh"]
 radius = 0.22558594
@@ -19,9 +26,9 @@ named = "Stakanchiki"
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=544691532]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49649048, 0)
-material_override = SubResource("StandardMaterial3D_813lh")
 radius = 0.21972656
 height = 1.3181763
+material = SubResource("ShaderMaterial_5bt6k")
 
 [node name="Coll" type="CollisionShape3D" parent="." unique_id=2122706237]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47838783, 0)
