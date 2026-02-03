@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://bt1ygpf4pknjx"]
 
 [ext_resource type="Script" uid="uid://cm2ts4rcn04mw" path="res://scripts/Open_door.gd" id="1_pjrhx"]
-[ext_resource type="AudioStream" uid="uid://wmk5up3buta7" path="res://Models/door-lock-3_zkwogmvd.mp3" id="3_vdjkt"]
+[ext_resource type="AudioStream" uid="uid://wmk5up3buta7" path="res://sounds/door-lock-3_zkwogmvd.mp3" id="3_vdjkt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v0ymc"]
 size = Vector3(1.02271, 2.3615, 0.001)

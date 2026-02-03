@@ -4,10 +4,13 @@ extends CSGBox3D
 var kol_stakan = 0
 var cofe = 0
 var stakan = false
+var cofe_gotova = false
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	cofe = 10
+	stakan = true
 	Global.get_player()
 	pass # Replace with function body.
 
@@ -28,14 +31,9 @@ func on_cofe_machine(body: Node3D):
 	body.queue_free()
 	if body.named == "Cofe" and cofe <10:
 		cofe = 10
-		if stakan:
-			stakan = false
-			cofe -= 1
+		sel(str(cofe)+"/10")
 	elif body.named == "Stakan":
-		if cofe >10:
-			cofe -= 1
-		else:
-			stakan = true
+		stakan = true
 	pass # Replace with function body.
 
 
@@ -48,4 +46,7 @@ func sel(str: String):
 
 func cofe_gotovo():
 	$Cofe_machine/SubViewport/Control/Label.text = "Кофе готово"
+	cofe -= 1
+	cofe_gotova = true
+	stakan = false
 	pass # Replace with function body.

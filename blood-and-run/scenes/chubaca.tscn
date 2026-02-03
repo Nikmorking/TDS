@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d0o4vup0elpo5" path="res://scripts/Chubaca.gd" id="1_ykyt4"]
 [ext_resource type="Texture2D" uid="uid://bvmyaqt4cgpaj" path="res://scenes/318748684_bc04d5c7d7c38229a9a8e5933851aab1.png" id="2_ykyt4"]
-[ext_resource type="AudioStream" uid="uid://b0xk585wovjmy" path="res://Models/monster-single-spooky.ogg" id="3_lli5l"]
+[ext_resource type="AudioStream" uid="uid://b0xk585wovjmy" path="res://sounds/monster-single-spooky.ogg" id="3_lli5l"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o6xl0"]
 size = Vector3(1.78259, 2.02594, 1.8385)

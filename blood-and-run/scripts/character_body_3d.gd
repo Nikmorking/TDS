@@ -1,10 +1,6 @@
 extends CharacterBody3D
 class_name Player
 
-var stakanchiki = load("res://Models/1.tscn")
-var cofe = load("res://Models/cofe.tscn")
-var stakan = load("res://Models/Stakan.tscn")
-
 var SPEED = 5.0
 var JUMP_VELOCITY = 4.5
 var in_door = false
@@ -17,8 +13,6 @@ var isOnMenu = false
 var is_jumping := false
 var anim_tree: AnimationTree
 var walk = false
-var obj: RigidBody3D
-var kol = 0
 
 var run = false
 
@@ -57,13 +51,13 @@ func _physics_process(_delta: float) -> void:
 		if is_on_floor():
 			velocity.x = move_toward(velocity.x * 1.8, 0, SPEED)
 			velocity.z = move_toward(velocity.z * 1.8, 0, SPEED)
-			
 		if !is_on_floor():
 			velocity.x = move_toward(velocity.x * 2, JumpVel.x * 4.5, SPEED)
 			velocity.z = move_toward(velocity.z * 2, JumpVel.z * 4.5, SPEED)
 
 	move_and_slide()
-	
+	$AudioStreamPlayer3D.playing = direction != Vector3(0,0,0)
+	print(direction)
 	if is_on_floor() and is_jumping:
 		is_jumping = false
 	#$Camera3D.rotate_y(deg_to_rad(-event.relative.x * mouse_sens))
@@ -87,52 +81,7 @@ func _input(event):
 		else:
 			isOnMenu = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	if Input.is_action_just_pressed("ui_open"):
-		print("click")
-		if !in_door and obj:
-			var rashodnik: RigidBody3D
-			if obj.named == "Stakanchiki":
-				rashodnik = stakanchiki.instantiate()
-			if obj.named == "Cofe":
-				rashodnik = cofe.instantiate()
-			if obj.named == "Stakan":
-				rashodnik = stakan.instantiate()
-			rashodnik.position = obj.global_position
-			rashodnik.freeze = false
-			rashodnik.gravity_scale = 1.4
-			for i in $Camera3D.get_children():
-				if i.is_class("RigidBody3D"):
-					i.queue_free()
-			var coll: CollisionShape3D = rashodnik.get_node("Coll")
-			coll.disabled = false
-			get_parent().get_node("Расходники").add_child(rashodnik)
-		if !obj and !in_door:
-			if $Camera3D/RayCast3D.is_colliding():
-				print("coll")
-				var col: Node3D = $Camera3D/RayCast3D.get_collider()
-				if col.is_class("Area3D"):
-					print(col.name)
-					if col.name == "Stakan":
-						if col.get_parent().kol_stakan > 0:
-							add_to_hand("Stakan")
-							col.get_parent().kol_stakan -= 1
-					elif col.name == "Cofe_machine":
-						var kasa = col.get_parent()
-						if kasa.cofe > 0:
-							if kasa.stakan:
-								kasa.sel("Варка")
-							else:
-								kasa.sel("нет стакана")
-						else:
-							kasa.sel("Нет кофе")
-						
-							
-				if col.is_class("RigidBody3D"):
-					add_to_hand(col.named)
-					if col.get_parent().name == "Расходники":
-						col.queue_free()
-				else:
-					add_to_hand(col.name)
+	
 
 
 func player_in():
@@ -143,19 +92,3 @@ func player_in():
 func player_out():
 	in_door = false
 	pass # Replace with function body.
-
-
-func add_to_hand(name: String):
-	if name == "Со стаканами" or name == "Stakanchiki":
-		obj = stakanchiki.instantiate()
-	if name == "С кофе" or name == "Cofe":
-		obj = cofe.instantiate()
-	if name == "Stakan":
-		obj = stakan.instantiate()
-	if obj:
-		obj.position -= Vector3(0,0,2)
-		obj.name = obj.name + str(kol)
-		$Camera3D.add_child(obj)
-		kol += 1
-		print(obj.get_class())
-	pass

@@ -18,7 +18,7 @@ func _ready() -> void:
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_open"):
-		if need_door and !Global.player.obj:
+		if need_door and !Global.player.get_node("Camera3D/руки").obj:
 			print("door")
 			if door_open:
 				$AnimationPlayer.play("close door")

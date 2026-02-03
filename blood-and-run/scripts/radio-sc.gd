@@ -22,3 +22,18 @@ func _process(delta):
 	if into:
 		$Sprite3D.look_at(marker.global_position)
 	pass
+
+
+
+func _on_radio_body_entered(body):
+	if body.name == "Player":
+		$Sprite3D.show()
+		into = true
+	pass # Replace with function body.
+
+
+func _on_radio_body_exited(body):
+	if body.name == "Player":
+		$Sprite3D.hide()
+		into = false
+	pass # Replace with function body.
