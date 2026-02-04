@@ -63,10 +63,11 @@ func _input(event):
 							kasa.cofe_gotova = false
 							add_to_hand("Stakan_s_cofe")
 							kasa.sel(str(kasa.cofe)+"/10")
-					elif col.name == "хлебница":
-						if kasa.buttons > 0:
-							add_to_hand("button")
-							kasa.buttons -= 1
+					##elif col.name == "хлебница":
+						#if kasa.buttons > 0:
+							#add_to_hand("button")
+							#kasa.buttons -= 1
+							#kasa.set_hleb()
 				if col.is_class("RigidBody3D"):
 					add_to_hand(col.named)
 					if col.get_parent().name == "Расходники":

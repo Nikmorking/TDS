@@ -57,4 +57,8 @@ func on_хлебница(body):
 	if body.named == "ahabka_buttonov":
 		buttons = 10
 		body.queue_free()
+		set_hleb()
 	pass # Replace with function body.
+
+func set_hleb():
+	$"хлебница/SubViewport/Control/Label".text = str(buttons) + "/10"
