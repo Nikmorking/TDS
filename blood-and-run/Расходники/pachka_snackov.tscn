@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://d3rabg2sk7hno"]
+
+[ext_resource type="Script" uid="uid://6mu3mfjfp1wg" path="res://Models/1.gd" id="1_kuua7"]
+[ext_resource type="Texture2D" uid="uid://fx0j60fr2p68" path="res://Texture/Boxs_12.jpg" id="2_kuua7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m3jal"]
+size = Vector3(1.6064453, 0.819458, 0.6894531)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bhac"]
+albedo_texture = ExtResource("2_kuua7")
+
+[node name="pachka_snackov" type="RigidBody3D" unique_id=1350055056]
+collision_layer = 2
+collision_mask = 2
+mass = 1000.0
+gravity_scale = 0.0
+freeze = true
+script = ExtResource("1_kuua7")
+named = "pachka_snackov"
+
+[node name="Coll" type="CollisionShape3D" parent="." unique_id=2122706237]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14406824, 0.011349678, -0.012451172)
+shape = SubResource("BoxShape3D_m3jal")
+disabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1009616703]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16149902, -0.044677734, -0.016418457)
+material_override = SubResource("StandardMaterial3D_1bhac")
+size = Vector3(1.6374512, 0.91064453, 0.68933105)

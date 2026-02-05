@@ -7,6 +7,7 @@ var stakan = load("res://Расходники/Stakan.tscn")
 var stakan_s_cofe = load("res://Расходники/Stakan_s_cofe.tscn")
 var ahabka_buttonov = load("res://Расходники/ahabka_buttonov.tscn")
 var button = load("res://Models/button/source/poly.glb")
+var pachka_snackov = load("res://Расходники/pachka_snackov.tscn")
 
 #var obj: RigidBody3D
 var obj: Node3D
@@ -31,6 +32,8 @@ func _input(event):
 				rashodnik = stakan_s_cofe.instantiate()
 			if obj.named == "ahabka_buttonov":
 				rashodnik = ahabka_buttonov.instantiate()
+			if obj.named == "pachka_snackov":
+				rashodnik= pachka_snackov.instantiate()
 			rashodnik.position = obj.global_position
 			rashodnik.freeze = false
 			rashodnik.gravity_scale = 1.4
@@ -90,6 +93,8 @@ func add_to_hand(name: String):
 		obj = ahabka_buttonov.instantiate()
 	if name == "button":
 		obj = button.instantiate()
+	if name == "pachka_snackov" or name == "с снеками":
+		obj = pachka_snackov.instantiate()
 	if obj:
 		obj.position -= Vector3(0,0,2)
 		obj.name = obj.name + str(kol)
