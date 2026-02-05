@@ -5,9 +5,13 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_062ft"]
 height = 3.4802246
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wlgop"]
+radius = 0.7011719
+height = 3.4472656
+
 [node name="No_human" type="CharacterBody3D" unique_id=266263789]
 transform = Transform3D(-2.6226834e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.6226834e-08, 0, 0, 0)
-collision_layer = 2
+collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_wlgop")
 
@@ -45,3 +49,13 @@ shape = SubResource("CapsuleShape3D_062ft")
 avoidance_enabled = true
 debug_enabled = true
 debug_path_custom_color = Color(1, 0, 0, 1)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1813067330]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1901331121]
+transform = Transform3D(0.99999976, 0, 4.7961635e-13, 0, 0.99999976, 0, -4.7961635e-13, 0, 0.99999976, 0, 1.7455314, 0)
+shape = SubResource("CapsuleShape3D_wlgop")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

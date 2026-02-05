@@ -663,6 +663,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="CheckBox" type="CheckBox" parent="Заправка/Table/CSGPolygon3D2/SubViewport/Control/Control" unique_id=1457942839]
+visible = false
 layout_mode = 0
 offset_left = 43.0
 offset_top = 96.0
@@ -671,6 +672,7 @@ offset_bottom = 120.0
 scale = Vector2(1.7, 1.7)
 
 [node name="CheckBox4" type="CheckBox" parent="Заправка/Table/CSGPolygon3D2/SubViewport/Control/Control" unique_id=174613191]
+visible = false
 layout_mode = 0
 offset_left = 43.0
 offset_top = 133.0
@@ -679,6 +681,7 @@ offset_bottom = 157.0
 scale = Vector2(1.7, 1.7)
 
 [node name="CheckBox2" type="CheckBox" parent="Заправка/Table/CSGPolygon3D2/SubViewport/Control/Control" unique_id=1595226234]
+visible = false
 layout_mode = 0
 offset_left = 43.0
 offset_top = 59.0
@@ -688,6 +691,7 @@ scale = Vector2(1.7, 1.7)
 flat = true
 
 [node name="CheckBox3" type="CheckBox" parent="Заправка/Table/CSGPolygon3D2/SubViewport/Control/Control" unique_id=977980273]
+visible = false
 layout_mode = 0
 offset_left = 43.0
 offset_top = 24.0
@@ -935,4 +939,5 @@ use_3d_avoidance = true
 [connection signal="body_entered" from="Заправка/Table/Касса/Cofe_machine" to="Заправка/Table/Касса" method="on_cofe_machine"]
 [connection signal="timeout" from="Заправка/Table/Касса/Cofe_machine/Timer" to="Заправка/Table/Касса" method="cofe_gotovo"]
 [connection signal="body_entered" from="Заправка/Table/Касса/хлебница" to="Заправка/Table/Касса" method="on_хлебница"]
+[connection signal="body_entered" from="No_human" to="." method="_on_no_human_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
