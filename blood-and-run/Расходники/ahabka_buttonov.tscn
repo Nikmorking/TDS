@@ -2,13 +2,27 @@
 
 [ext_resource type="Script" uid="uid://6mu3mfjfp1wg" path="res://Models/1.gd" id="1_tvytk"]
 [ext_resource type="PackedScene" uid="uid://cbaviyah5c6ud" path="res://Models/button/source/poly.glb" id="2_16v82"]
+[ext_resource type="Shader" uid="uid://dq81n42ia7ync" path="res://Models/Glass.gdshader" id="3_vkxbk"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vkxbk"]
-albedo_color = Color(0.47021204, 0.27875346, 4.813075e-08, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2af0q"]
+render_priority = 0
+shader = ExtResource("3_vkxbk")
+shader_parameter/albedo = Color(6, 1, 1, 0)
+shader_parameter/roughness = 0.5
+shader_parameter/normal_strength = 8.0
+shader_parameter/edge_color = Color(1, 1, 1, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_16v82"]
 radius = 0.27441406
 height = 1.7573242
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rqutn"]
+render_priority = 0
+shader = ExtResource("3_vkxbk")
+shader_parameter/albedo = Color(6, 1, 1, 0)
+shader_parameter/roughness = 0.5
+shader_parameter/normal_strength = 8.0
+shader_parameter/edge_color = Color(1, 1, 1, 1)
 
 [node name="ahabka_buttonov" type="RigidBody3D" unique_id=1350055056]
 collision_layer = 2
@@ -29,14 +43,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29806948, -0.14917874, 0.56
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25680947, -0.14917874, -0.2922173)
 
 [node name="CSGTorus3D" type="CSGTorus3D" parent="." unique_id=1986864540]
-transform = Transform3D(-2.2781133e-07, -5.259953, 0, 5.211716, -2.2991983e-07, 0, 0, 0, 12.916824, 0.24392194, 0, -0.033189654)
+transform = Transform3D(-2.2781136e-07, -33.09647, 0, 5.2117167, -1.4466925e-06, 0, 0, 0, 12.916824, 0.24392194, 0, -0.033189654)
 inner_radius = 0.05
 outer_radius = 0.1
 sides = 20
 ring_sides = 10
-material = SubResource("StandardMaterial3D_vkxbk")
+material = SubResource("ShaderMaterial_2af0q")
 
 [node name="Coll" type="CollisionShape3D" parent="." unique_id=435933655]
 transform = Transform3D(-1.2923567e-07, -0.99999994, 0, -1.2923567e-07, 1.9106853e-15, -0.99999994, 2.9565675, -4.3711385e-08, -4.3711385e-08, 0.28024608, -0.017982244, 0.10519683)
 shape = SubResource("CapsuleShape3D_16v82")
 disabled = true
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=1668595733]
+transform = Transform3D(0.31219006, 0, 0, 0, 0.80072516, 0, 0, 0, 2.1415493, -0.5670735, 0, -0.01700288)
+material = SubResource("ShaderMaterial_rqutn")

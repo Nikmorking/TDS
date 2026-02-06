@@ -8,10 +8,7 @@ var in_door = false
 var mouse_sens = 0.3
 var camera_anglev=0
 var JumpVel: Vector3
-var st_mac: AnimationNodeStateMachinePlayback
 var isOnMenu = false
-var is_jumping := false
-var anim_tree: AnimationTree
 var walk = false
 
 var run = false
@@ -27,14 +24,14 @@ func _physics_process(_delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and !isOnMenu:
 		velocity.y = JUMP_VELOCITY
-		is_jumping = true
+		JumpVel = velocity
 	
 	if Input.is_action_just_pressed("Run"):
-		if !run and !is_jumping and !isOnMenu:
+		if !run and !isOnMenu and JumpVel == Vector3(0,0,0):
 			run = true
 			SPEED += 3
 	if Input.is_action_just_released("Run"):
-		if run and !is_jumping and !isOnMenu:
+		if run and !isOnMenu :
 			run = false
 			SPEED -= 3
 	# Get the input direction and handle the movement/deceleration.
@@ -44,20 +41,18 @@ func _physics_process(_delta: float) -> void:
 	if direction and !isOnMenu and is_on_floor():
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
-		JumpVel = direction
 		walk = true
 	else:
 		walk = false
 		if is_on_floor():
 			velocity.x = move_toward(velocity.x * 1.8, 0, SPEED)
 			velocity.z = move_toward(velocity.z * 1.8, 0, SPEED)
+			JumpVel = Vector3(0,0,0)
 		if !is_on_floor():
-			velocity.x = move_toward(velocity.x * 2, JumpVel.x * 4.5, SPEED)
-			velocity.z = move_toward(velocity.z * 2, JumpVel.z * 4.5, SPEED)
+			velocity.x = move_toward(velocity.x * 2, JumpVel.x * 0.9, SPEED)
+			velocity.z = move_toward(velocity.z * 2, JumpVel.z * 0.9, SPEED)
 
 	move_and_slide()
-	if is_on_floor() and is_jumping:
-		is_jumping = false
 	#$Camera3D.rotate_y(deg_to_rad(-event.relative.x * mouse_sens))
 		#var changev= -event.relative.y * mouse_sens
 		#if camera_anglev +changev>-50 and camera_anglev + changev < 50:

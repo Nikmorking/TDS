@@ -30,7 +30,9 @@ func set_movement_target(movement_target: Vector3):
 func _physics_process(delta):
 	if navigation_agent.is_navigation_finished():
 		if movement_target_position != $"../Markers/Marker3D".position: get_parent().next()
-		else: queue_free()
+		else: 
+			position.x = 10000
+			$"../Timer".start()
 		return
 
 	var current_agent_position: Vector3 = global_position

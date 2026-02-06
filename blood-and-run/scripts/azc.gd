@@ -40,7 +40,7 @@ func back():
 	print("back")
 
 
-func _on_timer_timeout():
+func _pridi():
 	nd = true
 	$No_human.movement_target_position = $Markers/Marker3D2.position
 	$No_human.actor_setup() 
@@ -62,6 +62,13 @@ func _on_no_human_body_entered(body: Node):
 				var chexk:CheckBox = Check_boxes[zakaz.find(i)]
 				chexk.button_pressed = true
 				zakaz.remove_at(zakaz.find(i))
-				body.queue_free()
+				body.position.x = 10000
 		if 0 == zakaz.size(): back()
+	pass # Replace with function body.
+
+
+func _on_timer_timeout() -> void:
+	if randi_range(0, 100) < 30:
+		_pridi()
+	else: $Timer.start()
 	pass # Replace with function body.
