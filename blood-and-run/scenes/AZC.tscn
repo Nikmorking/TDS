@@ -182,6 +182,7 @@ emission = Color(0.140447, 0.140447, 0.140447, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_esnxl"]
 albedo_color = Color(0.24840015, 0.24840018, 0.24840015, 1)
+disable_receive_shadows = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y5rpb"]
 size = Vector3(49.96718, 1.1186523, 45.09082)
