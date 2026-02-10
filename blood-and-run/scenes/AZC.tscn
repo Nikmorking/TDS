@@ -17,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://cjmevthgqo8bv" path="res://318748684_bc04d5c7d7c38229a9a8e5933851aab1.png" id="10_42sn8"]
 [ext_resource type="Script" uid="uid://b3mb2sb58j25f" path="res://scripts/kassa_sc.gd" id="11_b3ns2"]
 [ext_resource type="Texture2D" uid="uid://b0qqtrbqwbcya" path="res://Texture/Shelf_Store_09.jpg" id="15_r1ed2"]
-[ext_resource type="PackedScene" uid="uid://d1sin47h48beq" path="res://scenes/no_human.tscn" id="17_r1ed2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0u5sq"]
 radius = 0.382215
@@ -193,8 +192,8 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ui2ee"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_r1ed2"]
-vertices = PackedVector3Array(-14.624069, 0.026682496, -4.764866, -13.374069, 0.026682496, -5.014866, -13.374069, 0.026682496, -18.514866, -27.87407, 0.026682496, -0.26486588, -15.624069, 0.026682496, -0.014865875, -27.87407, 0.026682496, -18.514866, -3.3740692, 0.026682496, -0.26486588, -3.3740692, 0.026682496, -1.7648659, -8.874069, 0.026682496, -1.7648659, -12.374069, 0.026682496, -0.26486588, -9.124069, 0.026682496, -4.764866, -6.874069, 0.026682496, -5.014866, -6.874069, 0.026682496, -18.514866, -11.874069, 0.026682496, -4.764866, -2.1240692, 0.026682496, -5.264866, -1.8740692, 0.026682496, -18.514866, -0.6240692, 0.026682496, -5.264866, -0.3740692, 0.026682496, -4.264866, 21.37593, 0.026682496, -4.264866, 21.37593, 0.026682496, -18.514866, -1.1240692, 0.026682496, -1.7648659, -0.6240692, 0.026682496, -0.014865875, -0.3740692, 0.026682496, 1.2351341, 21.37593, 0.026682496, 1.2351341, -27.87407, 0.026682496, 3.4851341, -15.624069, 0.026682496, 3.2351341, -16.12407, 0.026682496, 2.9851341, -16.12407, 0.026682496, 1.4851341, -0.6240692, 0.026682496, 2.7351341, -1.3740692, 0.026682496, 3.4851341, -1.3740692, 0.026682496, 26.485134, 21.37593, 0.026682496, 26.485134, -12.124069, 0.026682496, 3.7351341, -12.374069, 0.026682496, 3.2351341, -27.87407, 0.026682496, 26.485134)
-polygons = [PackedInt32Array(0, 2, 1), PackedInt32Array(4, 3, 0), PackedInt32Array(0, 3, 2), PackedInt32Array(2, 3, 5), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(13, 1, 10), PackedInt32Array(10, 1, 11), PackedInt32Array(11, 1, 2), PackedInt32Array(11, 2, 12), PackedInt32Array(10, 8, 13), PackedInt32Array(13, 8, 9), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 11), PackedInt32Array(16, 14, 15), PackedInt32Array(16, 15, 17), PackedInt32Array(17, 15, 18), PackedInt32Array(18, 15, 19), PackedInt32Array(7, 20, 6), PackedInt32Array(6, 20, 21), PackedInt32Array(21, 17, 22), PackedInt32Array(22, 17, 18), PackedInt32Array(22, 18, 23), PackedInt32Array(21, 20, 17), PackedInt32Array(26, 25, 24), PackedInt32Array(3, 4, 27), PackedInt32Array(26, 24, 27), PackedInt32Array(27, 24, 3), PackedInt32Array(28, 22, 23), PackedInt32Array(28, 23, 29), PackedInt32Array(29, 23, 30), PackedInt32Array(30, 23, 31), PackedInt32Array(33, 32, 25), PackedInt32Array(25, 32, 24), PackedInt32Array(24, 32, 34), PackedInt32Array(34, 32, 30), PackedInt32Array(32, 29, 30)]
+vertices = PackedVector3Array(-14.624069, 0.026682496, -4.764866, -12.874069, 0.026682496, -5.014866, -12.874069, 0.026682496, -5.764866, -12.124069, 0.026682496, -6.014866, -12.124069, 0.026682496, -18.514866, -27.87407, 0.026682496, -0.26486588, -15.624069, 0.026682496, -0.014865875, -27.87407, 0.026682496, -18.514866, -2.1240692, 0.026682496, -5.264866, -1.8740692, 0.026682496, -18.514866, -0.6240692, 0.026682496, -5.264866, -0.3740692, 0.026682496, -4.264866, 21.37593, 0.026682496, -4.264866, 21.37593, 0.026682496, -18.514866, -12.124069, 0.026682496, -3.7648659, -12.374069, 0.026682496, -1.5148659, -12.374069, 0.026682496, -0.26486588, -1.3740692, 0.026682496, -0.26486588, -1.1240692, 0.026682496, -1.7648659, -0.3740692, 0.026682496, 0.23513412, -0.3740692, 0.026682496, 1.2351341, 21.37593, 0.026682496, 1.2351341, -27.87407, 0.026682496, 3.4851341, -15.624069, 0.026682496, 3.2351341, -16.12407, 0.026682496, 2.9851341, -16.12407, 0.026682496, 1.4851341, -0.6240692, 0.026682496, 2.7351341, -1.3740692, 0.026682496, 3.4851341, -1.3740692, 0.026682496, 26.485134, 21.37593, 0.026682496, 26.485134, -12.124069, 0.026682496, 3.7351341, -12.374069, 0.026682496, 3.2351341, -27.87407, 0.026682496, 26.485134)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 2), PackedInt32Array(4, 2, 0), PackedInt32Array(6, 5, 0), PackedInt32Array(0, 5, 7), PackedInt32Array(0, 7, 4), PackedInt32Array(4, 9, 3), PackedInt32Array(3, 9, 8), PackedInt32Array(10, 8, 9), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 12), PackedInt32Array(12, 9, 13), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 17), PackedInt32Array(17, 14, 18), PackedInt32Array(21, 20, 19), PackedInt32Array(17, 18, 19), PackedInt32Array(19, 18, 11), PackedInt32Array(19, 11, 12), PackedInt32Array(19, 12, 21), PackedInt32Array(24, 23, 22), PackedInt32Array(5, 6, 25), PackedInt32Array(24, 22, 25), PackedInt32Array(25, 22, 5), PackedInt32Array(26, 20, 21), PackedInt32Array(26, 21, 27), PackedInt32Array(27, 21, 28), PackedInt32Array(28, 21, 29), PackedInt32Array(31, 30, 23), PackedInt32Array(23, 30, 22), PackedInt32Array(22, 30, 32), PackedInt32Array(32, 30, 28), PackedInt32Array(30, 27, 28)]
 geometry_parsed_geometry_type = 0
 
 [node name="Node3D" type="Node3D" unique_id=2010904094]
@@ -438,9 +437,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.301947, 3.0315933, -9.6463
 shape = SubResource("BoxShape3D_8oxcy")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Заправка/Стены/CollisionShape3D3" unique_id=1076416606]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.03447151, 0.080397606, -1.3238392)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.03447151, 0.080397606, -1.3346491)
 material_override = SubResource("StandardMaterial3D_p6l7r")
-size = Vector3(2.5098147, 2.3539143, 0.9501953)
+size = Vector3(2.8214235, 2.3539143, 0.9501953)
 
 [node name="Лампы" type="Node" parent="Заправка" unique_id=499887456]
 
@@ -631,7 +630,7 @@ text = "0/10"
 label_settings = SubResource("LabelSettings_88m6n")
 
 [node name="Sprite3D" type="Sprite3D" parent="Заправка/Table/Касса/Снеки" unique_id=1687161695]
-transform = Transform3D(-0.99999845, 0, -8.7422684e-08, 0, 0.9999999, 0, 8.7422634e-08, 0, -0.99999905, -0.014579773, -0.11235607, 0.32469082)
+transform = Transform3D(0.9999984, 0, 0, 0, 0.9999999, 0, 0, 0, 0.999999, -0.5735893, -0.11235607, 0.32469082)
 texture = SubResource("ViewportTexture_88m6n")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Заправка/Table" unique_id=1054754920]
@@ -814,11 +813,8 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -27.111565, 3.387203, 2
 
 [node name="Расходники" type="Node" parent="." unique_id=637064146]
 
-[node name="No_human" parent="." unique_id=866322150 instance=ExtResource("17_r1ed2")]
-transform = Transform3D(-2.6226832e-08, 0, -0.59999996, 0, 0.59999996, 0, 0.59999996, 0, -2.6226832e-08, -1000, -0.356, -12.698)
-
 [node name="Timer" type="Timer" parent="." unique_id=1117997177]
-wait_time = 2.0
+wait_time = 5.0
 one_shot = true
 
 [node name="Markers" type="Node" parent="." unique_id=828007322]
@@ -930,7 +926,7 @@ affect_navigation_mesh = true
 
 [node name="NavigationObstacle3D3" type="NavigationObstacle3D" parent="NavigationRegion3D" unique_id=284500078]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.58295596, 0.39566994)
-vertices = PackedVector3Array(-1.3381596, 0, -2.651556, -8.552484, 0, -2.7156792, -8.623984, 0, -4.8569803, -0.8497553, 0, -5.1322203)
+vertices = PackedVector3Array(-1.3381596, 0, -2.651556, -12.398122, 0, -4.6968956, -12.271995, 0, -5.812133, -0.8497553, 0, -5.1322203)
 affect_navigation_mesh = true
 
 [node name="NavigationObstacle3D2" type="NavigationObstacle3D" parent="NavigationRegion3D" unique_id=409752454]
@@ -948,6 +944,5 @@ use_3d_avoidance = true
 [connection signal="body_entered" from="Заправка/Table/Касса/Stakan" to="Заправка/Table/Касса" method="statan_voshol"]
 [connection signal="body_entered" from="Заправка/Table/Касса/Cofe_machine" to="Заправка/Table/Касса" method="on_cofe_machine"]
 [connection signal="timeout" from="Заправка/Table/Касса/Cofe_machine/Timer" to="Заправка/Table/Касса" method="cofe_gotovo"]
-[connection signal="body_entered" from="Заправка/Table/Касса/Снеки" to="Заправка/Table/Касса" method="on_хлебница"]
-[connection signal="body_entered" from="No_human" to="." method="_on_no_human_body_entered"]
+[connection signal="body_entered" from="Заправка/Table/Касса/Снеки" to="Заправка/Table/Касса" method="on_snaks"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

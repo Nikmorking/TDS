@@ -14,7 +14,7 @@ func _ready():
 	navigation_agent.target_desired_distance = 0.5
 
 	# Make sure to not await during _ready.
-	actor_setup.call_deferred()
+	#actor_setup.call_deferred()
 	movement_target_position = get_parent().position
 
 func actor_setup():
@@ -31,8 +31,8 @@ func _physics_process(delta):
 	if navigation_agent.is_navigation_finished():
 		if movement_target_position != $"../Markers/Marker3D".position: get_parent().next()
 		else: 
-			position.x = 10000
 			$"../Timer".start()
+			queue_free()
 		return
 
 	var current_agent_position: Vector3 = global_position

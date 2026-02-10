@@ -8,6 +8,7 @@ var stakan_s_cofe = load("res://Расходники/Stakan_s_cofe.tscn")
 var ahabka_buttonov = load("res://Расходники/ahabka_buttonov.tscn")
 var button = load("res://Models/button/source/poly.glb")
 var pachka_snackov = load("res://Расходники/pachka_snackov.tscn")
+var snack = load("res://Расходники/snack.tscn")
 
 #var obj: RigidBody3D
 var obj: Node3D
@@ -21,20 +22,10 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_open"):
 		print("click")
 		if !get_parent().get_parent().in_door and obj:
-			var rashodnik: RigidBody3D
-			if obj.named == "Stakanchiki":
-				rashodnik = stakanchiki.instantiate()
-			if obj.named == "Cofe":
-				rashodnik = cofe.instantiate()
-			if obj.named == "Stakan":
-				rashodnik = stakan.instantiate()
-			if obj.named == "Stakan_s_cofe":
-				rashodnik = stakan_s_cofe.instantiate()
-			if obj.named == "ahabka_buttonov":
-				rashodnik = ahabka_buttonov.instantiate()
-			if obj.named == "pachka_snackov":
-				rashodnik= pachka_snackov.instantiate()
-			rashodnik.position = obj.global_position
+			var rashodnik = instance_na(obj.named)
+			rashodnik.position = obj.global_position 
+			if rashodnik.named == "snack":
+				rashodnik.position += Vector3(2,0,0)
 			rashodnik.freeze = false
 			rashodnik.gravity_scale = 1.4
 			for i in get_children():
@@ -66,12 +57,12 @@ func _input(event):
 							kasa.cofe_gotova = false
 							add_to_hand("Stakan_s_cofe")
 							kasa.sel(str(kasa.cofe)+"/10")
-					##elif col.name == "хлебница":
-						#if kasa.buttons > 0:
-							#add_to_hand("button")
-							#kasa.buttons -= 1
-							#kasa.set_hleb()
-				if col.is_class("RigidBody3D"):
+					elif col.name == "Снеки":
+						if kasa.snacks > 0:
+							add_to_hand("snack")
+							kasa.snacks -= 1
+							kasa.set_snack()
+				elif col.is_class("RigidBody3D"):
 					add_to_hand(col.named)
 					if col.get_parent().name == "Расходники":
 						col.queue_free()
@@ -79,24 +70,31 @@ func _input(event):
 					add_to_hand(col.name)
 	
 
+func instance_na(name: String) -> Object:
+	var ret_obj
+	if name == "Со стаканами" or name == "Stakanchiki":
+		ret_obj = stakanchiki.instantiate()
+	if name == "С кофе" or name == "Cofe":
+		ret_obj = cofe.instantiate()
+	if name == "Stakan":
+		ret_obj = stakan.instantiate()
+	if name == "Stakan_s_cofe":
+		ret_obj = stakan_s_cofe.instantiate()
+	if name == "batonovo" or name == "ahabka_buttonov":
+		ret_obj = ahabka_buttonov.instantiate()
+	if name == "button":
+		ret_obj = button.instantiate()
+	if name == "pachka_snackov" or name == "с снеками":
+		ret_obj = pachka_snackov.instantiate()
+	if name == "snack":
+		ret_obj = snack.instantiate()
+	return ret_obj
+
 func add_to_hand(name: String):
 	print(name)
-	if name == "Со стаканами" or name == "Stakanchiki":
-		obj = stakanchiki.instantiate()
-	if name == "С кофе" or name == "Cofe":
-		obj = cofe.instantiate()
-	if name == "Stakan":
-		obj = stakan.instantiate()
-	if name == "Stakan_s_cofe":
-		obj = stakan_s_cofe.instantiate()
-	if name == "batonovo" or name == "ahabka_buttonov":
-		obj = ahabka_buttonov.instantiate()
-	if name == "button":
-		obj = button.instantiate()
-	if name == "pachka_snackov" or name == "с снеками":
-		obj = pachka_snackov.instantiate()
+	obj = instance_na(name)
 	if obj:
-		obj.position -= Vector3(0,0,2)
+		obj.position -= Vector3(0,0,1.7)
 		obj.name = obj.name + str(kol)
 		add_child(obj)
 		kol += 1

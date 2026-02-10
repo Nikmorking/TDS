@@ -5,7 +5,7 @@ var kol_stakan = 0
 var cofe = 0
 var stakan = false
 var cofe_gotova = false
-var buttons = 0
+var snacks = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -53,12 +53,14 @@ func cofe_gotovo():
 	pass # Replace with function body.
 
 
-func on_хлебница(body):
+
+func set_snack():
+	$"Снеки/SubViewport/Control/Label".text = str(snacks) + "/10"
+
+
+func on_snaks(body):
 	if body.named == "pachka_snackov":
-		buttons = 10
+		snacks = 10
 		body.queue_free()
 		set_snack()
 	pass # Replace with function body.
-
-func set_snack():
-	$"Снеки/SubViewport/Control/Label".text = str(buttons) + "/10"

@@ -1,23 +1,21 @@
 extends Node3D
 
 var zakaz:Array
-var zakaz_list = [["Cofe", "Cofe"], ["ahabka_buttonov", "Cofe"], ["Stakan_s_cofe", "Stakan"], ["snack"]]
+var zakaz_list = [["Cofe", "Cofe"], ["ahabka_buttonov", "Cofe"], ["Stakan_s_cofe", "snack"], ["snack"]]
 var nd = false
 var y_kassu = false
 
 var Check_boxes:Array
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$No_human.mtp_list = $Markers.get_children()
 	Check_boxes = $"Заправка/Table/CSGPolygon3D2/SubViewport/Control/Control".get_children()
-	zakaz = zakaz_list[1]
+	zakaz = zakaz_list[randi_range(0, 3)]
 	print(Check_boxes)
 	pass # Replace with function body.
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_copy"):
-		$No_human.position = $"Markers/Marker3D".position
-		$Timer.start()
+		_pridi()
 
 # Called every frame. 'delta' is the e		if Check_boxes[]lapsed time since the previous frame.
 func _process(delta):
@@ -41,11 +39,18 @@ func back():
 
 
 func _pridi():
+	for i in Check_boxes:
+		i.button_pressed = false
+	add_child(load("res://scenes/no_human.tscn").instantiate())
+	$No_human.connect("body_entered", _on_no_human_body_entered)
+	$No_human.mtp_list = $Markers.get_children()
+	$No_human.position = $"Markers/Marker3D".position 
 	nd = true
 	$No_human.movement_target_position = $Markers/Marker3D2.position
 	$No_human.actor_setup() 
 	for i in zakaz.size():
 		Check_boxes[i].show()
+	$"Заправка/Table/CSGPolygon3D2/SubViewport/Control/RichTextLabel".text = ""
 	for i in zakaz:
 		$"Заправка/Table/CSGPolygon3D2/SubViewport/Control/RichTextLabel".text += "* "
 		if i == "ahabka_buttonov": 
@@ -62,7 +67,7 @@ func _on_no_human_body_entered(body: Node):
 				var chexk:CheckBox = Check_boxes[zakaz.find(i)]
 				chexk.button_pressed = true
 				zakaz.remove_at(zakaz.find(i))
-				body.position.x = 10000
+				body.queue_free()
 		if 0 == zakaz.size(): back()
 	pass # Replace with function body.
 

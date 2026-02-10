@@ -20,6 +20,9 @@ func _physics_process(_delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += get_gravity().y * _delta
+		if run:
+			run = false
+			SPEED -= 3
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and !isOnMenu:
@@ -38,7 +41,7 @@ func _physics_process(_delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("A", "D", "W", "S")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction and !isOnMenu and is_on_floor():
+	if direction and !isOnMenu:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 		walk = true
@@ -48,9 +51,9 @@ func _physics_process(_delta: float) -> void:
 			velocity.x = move_toward(velocity.x * 1.8, 0, SPEED)
 			velocity.z = move_toward(velocity.z * 1.8, 0, SPEED)
 			JumpVel = Vector3(0,0,0)
-		if !is_on_floor():
-			velocity.x = move_toward(velocity.x * 2, JumpVel.x * 0.9, SPEED)
-			velocity.z = move_toward(velocity.z * 2, JumpVel.z * 0.9, SPEED)
+		#if !is_on_floor():
+			#velocity.x = move_toward(velocity.x * 2, velocity.x + JumpVel.x * 0.9, SPEED)
+			#velocity.z = move_toward(velocity.z * 2, velocity.z + JumpVel.z  * 0.9, SPEED)
 
 	move_and_slide()
 	#$Camera3D.rotate_y(deg_to_rad(-event.relative.x * mouse_sens))
