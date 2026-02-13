@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://6mu3mfjfp1wg" path="res://Models/1.gd" id="1_lww6m"]
 [ext_resource type="Shader" uid="uid://dq81n42ia7ync" path="res://Models/Glass.gdshader" id="2_5bt6k"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qrpuc"]
+rough = true
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5bt6k"]
 render_priority = 0
 shader = ExtResource("2_5bt6k")
@@ -19,8 +22,8 @@ height = 1.3520393
 collision_layer = 2
 collision_mask = 2
 mass = 1000.0
+physics_material_override = SubResource("PhysicsMaterial_qrpuc")
 gravity_scale = 0.0
-freeze = true
 script = ExtResource("1_lww6m")
 named = "Stakanchiki"
 

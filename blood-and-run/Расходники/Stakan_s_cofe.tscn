@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://6mu3mfjfp1wg" path="res://Models/1.gd" id="1_hkkfr"]
 [ext_resource type="Shader" uid="uid://dq81n42ia7ync" path="res://Models/Glass.gdshader" id="2_mj22q"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3g81v"]
+rough = true
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1wodg"]
 render_priority = 0
 shader = ExtResource("2_mj22q")
@@ -22,8 +25,8 @@ albedo_color = Color(0.36074692, 0.21508199, 0, 0.69100004)
 collision_layer = 2
 collision_mask = 2
 mass = 1000.0
+physics_material_override = SubResource("PhysicsMaterial_3g81v")
 gravity_scale = 0.0
-freeze = true
 script = ExtResource("1_hkkfr")
 named = "Stakan_s_cofe"
 
@@ -36,7 +39,6 @@ material = SubResource("ShaderMaterial_1wodg")
 [node name="Coll" type="CollisionShape3D" parent="." unique_id=2122706237]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.101620674, 0)
 shape = SubResource("CylinderShape3D_d5ioe")
-disabled = true
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." unique_id=242591208]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.172741, 0)

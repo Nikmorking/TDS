@@ -1,5 +1,6 @@
 extends Node3D
 
+@onready var hand_marker = $SpringArm3D/Hand
 
 var stakanchiki = load("res://Расходники/1.tscn")
 var cofe = load("res://Расходники/cofe.tscn")
@@ -22,13 +23,13 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_open"):
 		print("click")
 		if !get_parent().get_parent().in_door and obj:
-			var rashodnik = instance_na(obj.named)
+			var rashodnik: Node3D = instance_na(obj.named)
 			rashodnik.position = obj.global_position 
 			if rashodnik.named == "snack":
-				rashodnik.position += Vector3(2,0,0)
+				rashodnik.scale = Vector3(0.5, 0.7,0.5)
 			rashodnik.freeze = false
 			rashodnik.gravity_scale = 1.4
-			for i in get_children():
+			for i in hand_marker.get_children():
 				if i.is_class("RigidBody3D"):
 					i.queue_free()
 			var coll: CollisionShape3D = rashodnik.get_node("Coll")
@@ -94,9 +95,10 @@ func add_to_hand(name: String):
 	print(name)
 	obj = instance_na(name)
 	if obj:
-		obj.position -= Vector3(0,0,1.7)
+		obj.freeze = true
+		obj.position = Vector3.ZERO
 		obj.name = obj.name + str(kol)
-		add_child(obj)
+		hand_marker.add_child(obj)
 		kol += 1
 		print(obj.get_class())
 	pass

@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://6mu3mfjfp1wg" path="res://Models/1.gd" id="1_3ngne"]
 [ext_resource type="Texture2D" uid="uid://dic2nk8otrrsi" path="res://Texture/Door_03.jpg" id="2_3ngne"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3ngne"]
+rough = true
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_m3jal"]
 size = Vector3(1.6064453, 0.4043274, 0.55773926)
 
@@ -17,8 +20,8 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 collision_layer = 2
 collision_mask = 2
 mass = 1000.0
+physics_material_override = SubResource("PhysicsMaterial_3ngne")
 gravity_scale = 0.0
-freeze = true
 script = ExtResource("1_3ngne")
 named = "snack"
 

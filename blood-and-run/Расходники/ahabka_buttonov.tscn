@@ -4,6 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://cbaviyah5c6ud" path="res://Models/button/source/poly.glb" id="2_16v82"]
 [ext_resource type="Shader" uid="uid://dq81n42ia7ync" path="res://Models/Glass.gdshader" id="3_vkxbk"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vkxbk"]
+rough = true
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2af0q"]
 render_priority = 0
 shader = ExtResource("3_vkxbk")
@@ -28,8 +31,8 @@ shader_parameter/edge_color = Color(1, 1, 1, 1)
 collision_layer = 2
 collision_mask = 2
 mass = 1000.0
+physics_material_override = SubResource("PhysicsMaterial_vkxbk")
 gravity_scale = 0.0
-freeze = true
 script = ExtResource("1_tvytk")
 named = "ahabka_buttonov"
 

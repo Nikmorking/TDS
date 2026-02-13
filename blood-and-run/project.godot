@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Blood and run"
-run/main_scene="uid://bthsh26dmspk2"
+run/main_scene="uid://tesf5orvs46o"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

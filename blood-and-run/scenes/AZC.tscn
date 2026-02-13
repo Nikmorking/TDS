@@ -26,6 +26,9 @@ height = 1.829824
 line_spacing = 7.0
 font_size = 42
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_88m6n"]
+margin = 3.05
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y5rpb"]
 
 [sub_resource type="Sky" id="Sky_ui2ee"]
@@ -227,13 +230,25 @@ text = "O"
 label_settings = SubResource("LabelSettings_8oxcy")
 
 [node name="руки" type="Node3D" parent="Player/Camera3D" unique_id=460850154]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1837149)
 script = ExtResource("3_cfvsp")
 
 [node name="RayCast3D" type="RayCast3D" parent="Player/Camera3D/руки" unique_id=1754273479]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8498604)
 target_position = Vector3(0, 0, -3)
 collision_mask = 3
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0, 1, 1)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Player/Camera3D/руки" unique_id=531473740]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.0016896725, 0.46273375)
+collision_mask = 8
+shape = SubResource("SphereShape3D_88m6n")
+spring_length = 2.0
+margin = 0.1
+
+[node name="Hand" type="Node3D" parent="Player/Camera3D/руки/SpringArm3D" unique_id=1685671662]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.2554448)
 
 [node name="Marker3D" type="Marker3D" parent="Player" unique_id=1519376558]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0656533, 0)
@@ -312,8 +327,8 @@ size = Vector3(2.2050781, 2.157547, 1)
 material = SubResource("StandardMaterial3D_vynuk")
 
 [node name="Стены" type="StaticBody3D" parent="Заправка" unique_id=1628848288]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 11
+collision_mask = 11
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Заправка/Стены" unique_id=1794297407]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.122362, 1.8997879, 6.8107686)
@@ -912,8 +927,8 @@ size = Vector3(50.25428, 0.10644531, 46.102432)
 material = SubResource("StandardMaterial3D_esnxl")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Пол" unique_id=1945745178]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 11
+collision_mask = 11
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Пол/StaticBody3D" unique_id=1356334168]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12561798, -0.49546385, 1.0375977)
