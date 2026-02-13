@@ -1,7 +1,7 @@
 extends Node3D
 
 var zakaz:Array
-var zakaz_list = [["Cofe", "Cofe"], ["ahabka_buttonov", "Cofe"], ["Stakan_s_cofe", "snack"], ["snack"]]
+var zakaz_list = [["Cofe", "Cofe"], ["ahabka_buttonov", "Cofe"], ["Stakan_cofe", "snack"], ["snack"]]
 var nd = false
 var y_kassu = false
 
@@ -41,6 +41,8 @@ func back():
 func _pridi():
 	for i in Check_boxes:
 		i.button_pressed = false
+	for i in zakaz.size():
+		Check_boxes[i].show()
 	add_child(load("res://scenes/no_human.tscn").instantiate())
 	$No_human.connect("body_entered", _on_no_human_body_entered)
 	$No_human.mtp_list = $Markers.get_children()
@@ -67,16 +69,16 @@ func _on_no_human_body_entered(body: Node):
 				zakaz.remove_at(zakaz.find(i))
 				body.queue_free()
 		if 0 == zakaz.size(): 
-			for i in zakaz.size():
-				Check_boxes[i].show()
 			$"Заправка/Table/CSGPolygon3D2/SubViewport/Control/RichTextLabel".text = ""
+			for i in Check_boxes:
+				i.hide()
 			back()
 	pass # Replace with function body.
 
 
 func _on_timer_timeout() -> void:
 	if randi_range(0, 100) < 30:
-		zakaz = zakaz_list[randi_range(0, 3)]
+		zakaz = zakaz_list[randi_range(0, 2)]
 		_pridi()
 	else: $Timer.start()
 	pass # Replace with function body.

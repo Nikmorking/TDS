@@ -184,7 +184,6 @@ emission = Color(0.140447, 0.140447, 0.140447, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_esnxl"]
 albedo_color = Color(0.24840015, 0.24840018, 0.24840015, 1)
-disable_receive_shadows = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y5rpb"]
 size = Vector3(49.96718, 1.1186523, 45.09082)
@@ -195,8 +194,8 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ui2ee"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_r1ed2"]
-vertices = PackedVector3Array(-14.624069, 0.026682496, -4.764866, -12.874069, 0.026682496, -5.014866, -12.874069, 0.026682496, -5.764866, -12.124069, 0.026682496, -6.014866, -12.124069, 0.026682496, -18.514866, -27.87407, 0.026682496, -0.26486588, -15.624069, 0.026682496, -0.014865875, -27.87407, 0.026682496, -18.514866, -2.1240692, 0.026682496, -5.264866, -1.8740692, 0.026682496, -18.514866, -0.6240692, 0.026682496, -5.264866, -0.3740692, 0.026682496, -4.264866, 21.37593, 0.026682496, -4.264866, 21.37593, 0.026682496, -18.514866, -12.124069, 0.026682496, -3.7648659, -12.374069, 0.026682496, -1.5148659, -12.374069, 0.026682496, -0.26486588, -1.3740692, 0.026682496, -0.26486588, -1.1240692, 0.026682496, -1.7648659, -0.3740692, 0.026682496, 0.23513412, -0.3740692, 0.026682496, 1.2351341, 21.37593, 0.026682496, 1.2351341, -27.87407, 0.026682496, 3.4851341, -15.624069, 0.026682496, 3.2351341, -16.12407, 0.026682496, 2.9851341, -16.12407, 0.026682496, 1.4851341, -0.6240692, 0.026682496, 2.7351341, -1.3740692, 0.026682496, 3.4851341, -1.3740692, 0.026682496, 26.485134, 21.37593, 0.026682496, 26.485134, -12.124069, 0.026682496, 3.7351341, -12.374069, 0.026682496, 3.2351341, -27.87407, 0.026682496, 26.485134)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 2), PackedInt32Array(4, 2, 0), PackedInt32Array(6, 5, 0), PackedInt32Array(0, 5, 7), PackedInt32Array(0, 7, 4), PackedInt32Array(4, 9, 3), PackedInt32Array(3, 9, 8), PackedInt32Array(10, 8, 9), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 12), PackedInt32Array(12, 9, 13), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 17), PackedInt32Array(17, 14, 18), PackedInt32Array(21, 20, 19), PackedInt32Array(17, 18, 19), PackedInt32Array(19, 18, 11), PackedInt32Array(19, 11, 12), PackedInt32Array(19, 12, 21), PackedInt32Array(24, 23, 22), PackedInt32Array(5, 6, 25), PackedInt32Array(24, 22, 25), PackedInt32Array(25, 22, 5), PackedInt32Array(26, 20, 21), PackedInt32Array(26, 21, 27), PackedInt32Array(27, 21, 28), PackedInt32Array(28, 21, 29), PackedInt32Array(31, 30, 23), PackedInt32Array(23, 30, 22), PackedInt32Array(22, 30, 32), PackedInt32Array(32, 30, 28), PackedInt32Array(30, 27, 28)]
+vertices = PackedVector3Array(-14.624069, 0.026682496, -4.764866, -12.874069, 0.026682496, -5.014866, -12.624069, 0.026682496, -6.014866, -10.374069, 0.026682496, -6.014866, -10.624069, 0.026682496, -18.514866, -27.87407, 0.026682496, -0.26486588, -15.624069, 0.026682496, -0.014865875, -27.87407, 0.026682496, -18.514866, -3.1240692, 0.026682496, -6.764866, -2.8740692, 0.026682496, -6.264866, -2.6240692, 0.026682496, -18.514866, -4.874069, 0.026682496, -6.764866, -2.8740692, 0.026682496, -4.514866, 21.37593, 0.026682496, -4.264866, 21.37593, 0.026682496, -18.514866, -12.124069, 0.026682496, -3.7648659, -12.374069, 0.026682496, -0.7648659, -3.8740692, 0.026682496, -0.5148659, -3.1240692, 0.026682496, -2.7648659, -3.3740692, 0.026682496, 0.48513412, -3.3740692, 0.026682496, 2.7351341, 21.37593, 0.026682496, 3.2351341, -3.8740692, 0.026682496, 2.9851341, -27.87407, 0.026682496, 3.4851341, -15.624069, 0.026682496, 3.2351341, -16.12407, 0.026682496, 2.9851341, -16.12407, 0.026682496, 1.4851341, -5.874069, 0.026682496, 3.2351341, -5.624069, 0.026682496, 26.485134, 21.37593, 0.026682496, 26.485134, -27.87407, 0.026682496, 26.485134)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 2), PackedInt32Array(0, 6, 5), PackedInt32Array(2, 0, 4), PackedInt32Array(4, 0, 7), PackedInt32Array(7, 0, 5), PackedInt32Array(10, 9, 8), PackedInt32Array(10, 8, 11), PackedInt32Array(3, 4, 11), PackedInt32Array(11, 4, 10), PackedInt32Array(9, 10, 12), PackedInt32Array(12, 10, 14), PackedInt32Array(12, 14, 13), PackedInt32Array(18, 17, 15), PackedInt32Array(15, 17, 16), PackedInt32Array(18, 12, 19), PackedInt32Array(19, 12, 20), PackedInt32Array(20, 12, 13), PackedInt32Array(20, 13, 21), PackedInt32Array(19, 17, 18), PackedInt32Array(21, 22, 20), PackedInt32Array(25, 24, 23), PackedInt32Array(5, 6, 26), PackedInt32Array(25, 23, 26), PackedInt32Array(26, 23, 5), PackedInt32Array(27, 22, 28), PackedInt32Array(28, 22, 21), PackedInt32Array(28, 21, 29), PackedInt32Array(24, 27, 23), PackedInt32Array(23, 27, 30), PackedInt32Array(30, 27, 28)]
 geometry_parsed_geometry_type = 0
 
 [node name="Node3D" type="Node3D" unique_id=2010904094]
@@ -941,12 +940,12 @@ affect_navigation_mesh = true
 
 [node name="NavigationObstacle3D3" type="NavigationObstacle3D" parent="NavigationRegion3D" unique_id=284500078]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.58295596, 0.39566994)
-vertices = PackedVector3Array(-1.3381596, 0, -2.651556, -12.398122, 0, -4.6968956, -12.271995, 0, -5.812133, -0.8497553, 0, -5.1322203)
+vertices = PackedVector3Array(-3.4473114, 0, -3.5905132, -12.398122, 0, -4.6968956, -12.271995, 0, -5.812133, -3.3290415, 0, -6.66197)
 affect_navigation_mesh = true
 
 [node name="NavigationObstacle3D2" type="NavigationObstacle3D" parent="NavigationRegion3D" unique_id=409752454]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.58295596, 5.52699)
-vertices = PackedVector3Array(-1.3381596, 0, -2.651556, -11.08093, 0, -2.2583337, -12.041755, 0, -2.429061, -11.780595, 0, -5.6519203, -0.8497553, 0, -5.1322203)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.82820034, -0.19162524, 5.2913585)
+vertices = PackedVector3Array(-3.1465454, 0, -2.7905912, -11.08093, 0, -2.2583337, -12.041755, 0, -2.429061, -11.780595, 0, -5.6519203, -3.1791515, 0, -5.197683)
 affect_navigation_mesh = true
 use_3d_avoidance = true
 

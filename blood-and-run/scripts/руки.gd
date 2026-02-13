@@ -56,7 +56,7 @@ func _input(event):
 							kasa.sel("Нет кофе")
 						if kasa.cofe_gotova:
 							kasa.cofe_gotova = false
-							add_to_hand("Stakan_s_cofe")
+							add_to_hand("Stakan_cofe")
 							kasa.sel(str(kasa.cofe)+"/10")
 					elif col.name == "Снеки":
 						if kasa.snacks > 0:
@@ -79,7 +79,7 @@ func instance_na(name: String) -> Object:
 		ret_obj = cofe.instantiate()
 	if name == "Stakan":
 		ret_obj = stakan.instantiate()
-	if name == "Stakan_s_cofe":
+	if name == "Stakan_cofe":
 		ret_obj = stakan_s_cofe.instantiate()
 	if name == "batonovo" or name == "ahabka_buttonov":
 		ret_obj = ahabka_buttonov.instantiate()

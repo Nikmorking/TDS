@@ -52,6 +52,7 @@ omni_range = 15.0
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=126648999]
 transform = Transform3D(7, 0, 0, 0, 10, 0, 0, 0, 7, 0, -9.62016, 0)
+cast_shadow = 0
 amount = 50
 lifetime = 2.0599999999999996
 trail_enabled = true
