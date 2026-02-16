@@ -20,6 +20,9 @@ func _ready():
 	pass # Replace with function body.
 
 func _input(event):
+	if Input.is_action_just_pressed("ui_paste"):
+		var points: Array = $"../../../LineRenderer3D".points
+		points.append(global_position)
 	if Input.is_action_just_pressed("ui_open"):
 		print("click")
 		if !get_parent().get_parent().in_door and obj:
@@ -101,4 +104,9 @@ func add_to_hand(name: String):
 		hand_marker.add_child(obj)
 		kol += 1
 		print(obj.get_class())
+	pass
+
+func _process(delta):
+	var points: Array = $"../../../LineRenderer3D".points
+	points.set(1, global_position)
 	pass

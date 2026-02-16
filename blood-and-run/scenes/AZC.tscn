@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cjmevthgqo8bv" path="res://318748684_bc04d5c7d7c38229a9a8e5933851aab1.png" id="10_42sn8"]
 [ext_resource type="Script" uid="uid://b3mb2sb58j25f" path="res://scripts/kassa_sc.gd" id="11_b3ns2"]
 [ext_resource type="Texture2D" uid="uid://b0qqtrbqwbcya" path="res://Texture/Shelf_Store_09.jpg" id="15_r1ed2"]
+[ext_resource type="Script" uid="uid://hajl3xibw433" path="res://addons/LineRenderer/line_renderer.gd" id="17_r1ed2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0u5sq"]
 radius = 0.382215
@@ -174,6 +175,9 @@ RichTextLabel/styles/normal = null
 [sub_resource type="ViewportTexture" id="ViewportTexture_8oxcy"]
 viewport_path = NodePath("Заправка/Table/CSGPolygon3D2/SubViewport")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_m2ycm"]
+size = Vector3(3.5133057, 3.5631714, 5.3223267)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_vynuk"]
 size = Vector3(54.805267, 4.8321533, 4.310974)
 
@@ -197,6 +201,8 @@ albedo_color = Color(0, 0, 0, 1)
 vertices = PackedVector3Array(-14.624069, 0.026682496, -4.764866, -12.874069, 0.026682496, -5.014866, -12.624069, 0.026682496, -6.014866, -10.374069, 0.026682496, -6.014866, -10.624069, 0.026682496, -18.514866, -27.87407, 0.026682496, -0.26486588, -15.624069, 0.026682496, -0.014865875, -27.87407, 0.026682496, -18.514866, -3.1240692, 0.026682496, -6.764866, -2.8740692, 0.026682496, -6.264866, -2.6240692, 0.026682496, -18.514866, -4.874069, 0.026682496, -6.764866, -2.8740692, 0.026682496, -4.514866, 21.37593, 0.026682496, -4.264866, 21.37593, 0.026682496, -18.514866, -12.124069, 0.026682496, -3.7648659, -12.374069, 0.026682496, -0.7648659, -3.8740692, 0.026682496, -0.5148659, -3.1240692, 0.026682496, -2.7648659, -3.3740692, 0.026682496, 0.48513412, -3.3740692, 0.026682496, 2.7351341, 21.37593, 0.026682496, 3.2351341, -3.8740692, 0.026682496, 2.9851341, -27.87407, 0.026682496, 3.4851341, -15.624069, 0.026682496, 3.2351341, -16.12407, 0.026682496, 2.9851341, -16.12407, 0.026682496, 1.4851341, -5.874069, 0.026682496, 3.2351341, -5.624069, 0.026682496, 26.485134, 21.37593, 0.026682496, 26.485134, -27.87407, 0.026682496, 26.485134)
 polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 2), PackedInt32Array(0, 6, 5), PackedInt32Array(2, 0, 4), PackedInt32Array(4, 0, 7), PackedInt32Array(7, 0, 5), PackedInt32Array(10, 9, 8), PackedInt32Array(10, 8, 11), PackedInt32Array(3, 4, 11), PackedInt32Array(11, 4, 10), PackedInt32Array(9, 10, 12), PackedInt32Array(12, 10, 14), PackedInt32Array(12, 14, 13), PackedInt32Array(18, 17, 15), PackedInt32Array(15, 17, 16), PackedInt32Array(18, 12, 19), PackedInt32Array(19, 12, 20), PackedInt32Array(20, 12, 13), PackedInt32Array(20, 13, 21), PackedInt32Array(19, 17, 18), PackedInt32Array(21, 22, 20), PackedInt32Array(25, 24, 23), PackedInt32Array(5, 6, 26), PackedInt32Array(25, 23, 26), PackedInt32Array(26, 23, 5), PackedInt32Array(27, 22, 28), PackedInt32Array(28, 22, 21), PackedInt32Array(28, 21, 29), PackedInt32Array(24, 27, 23), PackedInt32Array(23, 27, 30), PackedInt32Array(30, 27, 28)]
 geometry_parsed_geometry_type = 0
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_r1ed2"]
 
 [node name="Node3D" type="Node3D" unique_id=2010904094]
 script = ExtResource("1_p6l7r")
@@ -732,20 +738,64 @@ transform = Transform3D(-4.3711392e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4
 size = Vector3(2.6132813, 3.990921, 1)
 material = SubResource("StandardMaterial3D_vynuk")
 
+[node name="Area3D" type="Area3D" parent="CSGBox3D25" unique_id=952690655]
+transform = Transform3D(1, 0, 1.4210855e-14, 0, 1, 0, -1.4210855e-14, 0, 1, 2.3841858e-07, -1.1100497, -3.0853431)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D25/Area3D" unique_id=389854252]
+transform = Transform3D(1, 0, 1.3145041e-12, 0, 1, 0, -1.3145041e-12, 0, 1, -0.24513698, 1.3745799, -0.47585464)
+shape = SubResource("BoxShape3D_m2ycm")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D25" unique_id=1341791362]
+transform = Transform3D(1, 0, 1.005418e-12, 0, 1, 0, -1.005418e-12, 0, 1, 0.6989374, -0.056485057, -0.5822646)
+size = Vector3(0.23693848, 0.63967896, 0.19476318)
+
 [node name="CSGBox3D26" type="CSGBox3D" parent="." unique_id=908224324]
 transform = Transform3D(-4.3711392e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711392e-08, 0.24350154, 1.4954605, -6.406519)
 size = Vector3(2.6132813, 3.990921, 1)
 material = SubResource("StandardMaterial3D_vynuk")
+
+[node name="Area3D" type="Area3D" parent="CSGBox3D26" unique_id=830853061]
+transform = Transform3D(1, 0, 1.4210855e-14, 0, 1, 0, -1.4210855e-14, 0, 1, 2.3841858e-07, -1.1100497, -3.0853431)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D26/Area3D" unique_id=803775516]
+transform = Transform3D(1, 0, 1.3145041e-12, 0, 1, 0, -1.3145041e-12, 0, 1, -0.24513698, 1.3745799, -0.47585464)
+shape = SubResource("BoxShape3D_m2ycm")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D26" unique_id=2013717197]
+transform = Transform3D(1, 0, 1.005418e-12, 0, 1, 0, -1.005418e-12, 0, 1, 0.6989374, -0.056485057, -0.5822646)
+size = Vector3(0.23693848, 0.63967896, 0.19476318)
 
 [node name="CSGBox3D27" type="CSGBox3D" parent="." unique_id=182278684]
 transform = Transform3D(-4.3711392e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711392e-08, 0.24350154, 1.4954605, -10.396199)
 size = Vector3(2.6132813, 3.990921, 1)
 material = SubResource("StandardMaterial3D_vynuk")
 
+[node name="Area3D" type="Area3D" parent="CSGBox3D27" unique_id=209511630]
+transform = Transform3D(1, 0, 1.4210855e-14, 0, 1, 0, -1.4210855e-14, 0, 1, 2.3841858e-07, -1.1100497, -3.0853431)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D27/Area3D" unique_id=935925628]
+transform = Transform3D(1, 0, 1.3145041e-12, 0, 1, 0, -1.3145041e-12, 0, 1, -0.24513698, 1.3745799, -0.47585464)
+shape = SubResource("BoxShape3D_m2ycm")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D27" unique_id=1751172304]
+transform = Transform3D(1, 0, 1.005418e-12, 0, 1, 0, -1.005418e-12, 0, 1, 0.6989374, -0.056485057, -0.5822646)
+size = Vector3(0.23693848, 0.63967896, 0.19476318)
+
 [node name="CSGBox3D28" type="CSGBox3D" parent="." unique_id=277126286]
 transform = Transform3D(-4.3711392e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711392e-08, 0.24350154, 1.4954605, -15.398497)
 size = Vector3(2.6132813, 3.990921, 1)
 material = SubResource("StandardMaterial3D_vynuk")
+
+[node name="Area3D" type="Area3D" parent="CSGBox3D28" unique_id=1739985038]
+transform = Transform3D(1, 0, 1.4210855e-14, 0, 1, 0, -1.4210855e-14, 0, 1, 2.3841858e-07, -1.1100497, -3.0853431)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D28/Area3D" unique_id=1058855203]
+transform = Transform3D(1, 0, 1.3145041e-12, 0, 1, 0, -1.3145041e-12, 0, 1, -0.24513698, 1.3745799, -0.47585464)
+shape = SubResource("BoxShape3D_m2ycm")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D28" unique_id=1490766751]
+transform = Transform3D(1, 0, 1.005418e-12, 0, 1, 0, -1.005418e-12, 0, 1, 0.6989374, -0.056485057, -0.5822646)
+size = Vector3(0.23693848, 0.63967896, 0.19476318)
 
 [node name="Тум-тум-туманище" type="StaticBody3D" parent="." unique_id=1175494086]
 
@@ -948,6 +998,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.82820034, -0.19162524, 5.2
 vertices = PackedVector3Array(-3.1465454, 0, -2.7905912, -11.08093, 0, -2.2583337, -12.041755, 0, -2.429061, -11.780595, 0, -5.6519203, -3.1791515, 0, -5.197683)
 affect_navigation_mesh = true
 use_3d_avoidance = true
+
+[node name="LineRenderer3D" type="MeshInstance3D" parent="." unique_id=157698636]
+transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -2.7813015)
+mesh = SubResource("ImmediateMesh_r1ed2")
+skeleton = NodePath("../CSGBox3D25/Area3D")
+script = ExtResource("17_r1ed2")
+points = Array[Vector3]([Vector3(-0.4, 2, -2.7)])
+metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [connection signal="_player_in" from="Заправка/Door" to="Player" method="player_in"]
 [connection signal="_player_out" from="Заправка/Door" to="Player" method="player_out"]
