@@ -17,7 +17,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_open"):
+	if Input.is_action_just_pressed("rush_e"):
 		if need_door and !Global.player.get_node("Camera3D/руки").obj:
 			print("door")
 			if door_open:

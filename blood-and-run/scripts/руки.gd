@@ -10,6 +10,8 @@ var ahabka_buttonov = load("res://Расходники/ahabka_buttonov.tscn")
 var button = load("res://Models/button/source/poly.glb")
 var pachka_snackov = load("res://Расходники/pachka_snackov.tscn")
 var snack = load("res://Расходники/snack.tscn")
+var zp = false
+var points: Array 
 
 #var obj: RigidBody3D
 var obj: Node3D
@@ -20,9 +22,6 @@ func _ready():
 	pass # Replace with function body.
 
 func _input(event):
-	if Input.is_action_just_pressed("ui_paste"):
-		var points: Array = $"../../../LineRenderer3D".points
-		points.append(global_position)
 	if Input.is_action_just_pressed("ui_open"):
 		print("click")
 		if !get_parent().get_parent().in_door and obj:
@@ -43,6 +42,7 @@ func _input(event):
 				print("coll")
 				var col: Node3D = $RayCast3D.get_collider()
 				if col.is_class("Area3D"):
+					fnc_zp()
 					print(col.name)
 					var kasa = col.get_parent()
 					if col.name == "Stakan":
@@ -107,6 +107,22 @@ func add_to_hand(name: String):
 	pass
 
 func _process(delta):
-	var points: Array = $"../../../LineRenderer3D".points
-	points.set(1, global_position)
+	if zp:
+		points.set(1, global_position)
+	pass
+
+func fnc_zp():
+	if $RayCast3D.get_collider().name == "ZP1":
+		points = $"../../../LineRenderer3D".points
+	if $RayCast3D.get_collider().name == "ZP2":
+		points = $"../../../LineRenderer3D2".points
+	if $RayCast3D.get_collider().name == "ZP3":
+		points = $"../../../LineRenderer3D3".points
+	if $RayCast3D.get_collider().name == "ZP4":
+		points = $"../../../LineRenderer3D4".points
+	if !zp:
+		zp = true 
+	else:
+		points.set(1, points.get(0))
+		zp = false
 	pass

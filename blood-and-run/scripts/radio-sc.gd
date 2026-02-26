@@ -10,7 +10,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _input(event):
-	if Input.is_action_just_pressed("ui_open"):
+	if Input.is_action_just_pressed("rush_e"):
 		if into:
 			if !$AudioStreamPlayer3D.playing:
 				$AudioStreamPlayer3D.play()

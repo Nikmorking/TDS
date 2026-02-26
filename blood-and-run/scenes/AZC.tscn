@@ -176,7 +176,7 @@ RichTextLabel/styles/normal = null
 viewport_path = NodePath("Заправка/Table/CSGPolygon3D2/SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m2ycm"]
-size = Vector3(3.5133057, 3.5631714, 5.3223267)
+size = Vector3(0.3103943, 0.99772644, 0.4585266)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vynuk"]
 size = Vector3(54.805267, 4.8321533, 4.310974)
@@ -204,6 +204,12 @@ geometry_parsed_geometry_type = 0
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_r1ed2"]
 
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_qyfae"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_emvpd"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_m2ycm"]
+
 [node name="Node3D" type="Node3D" unique_id=2010904094]
 script = ExtResource("1_p6l7r")
 
@@ -228,9 +234,9 @@ offset_bottom = 637.0
 [node name="Label" type="Label" parent="Player/Camera3D/Control" unique_id=229889781]
 layout_mode = 0
 offset_left = 565.0
-offset_top = 251.0
+offset_top = 265.0
 offset_right = 606.0
-offset_bottom = 323.0
+offset_bottom = 337.0
 text = "O"
 label_settings = SubResource("LabelSettings_8oxcy")
 
@@ -738,11 +744,11 @@ transform = Transform3D(-4.3711392e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4
 size = Vector3(2.6132813, 3.990921, 1)
 material = SubResource("StandardMaterial3D_vynuk")
 
-[node name="Area3D" type="Area3D" parent="CSGBox3D25" unique_id=952690655]
+[node name="ZP1" type="Area3D" parent="CSGBox3D25" unique_id=952690655]
 transform = Transform3D(1, 0, 1.4210855e-14, 0, 1, 0, -1.4210855e-14, 0, 1, 2.3841858e-07, -1.1100497, -3.0853431)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D25/Area3D" unique_id=389854252]
-transform = Transform3D(1, 0, 1.3145041e-12, 0, 1, 0, -1.3145041e-12, 0, 1, -0.24513698, 1.3745799, -0.47585464)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D25/ZP1" unique_id=389854252]
+transform = Transform3D(1, 0, 2.3412383e-12, 0, 1, 0, -2.3412383e-12, 0, 1, 0.6964667, 1.3070369, 2.2809532)
 shape = SubResource("BoxShape3D_m2ycm")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D25" unique_id=1341791362]
@@ -754,10 +760,10 @@ transform = Transform3D(-4.3711392e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4
 size = Vector3(2.6132813, 3.990921, 1)
 material = SubResource("StandardMaterial3D_vynuk")
 
-[node name="Area3D" type="Area3D" parent="CSGBox3D26" unique_id=830853061]
-transform = Transform3D(1, 0, 1.4210855e-14, 0, 1, 0, -1.4210855e-14, 0, 1, 2.3841858e-07, -1.1100497, -3.0853431)
+[node name="ZP2" type="Area3D" parent="CSGBox3D26" unique_id=830853061]
+transform = Transform3D(1, 0, 2.842171e-14, 0, 1, 0, -2.842171e-14, 0, 1, 1.0025835, -1.3781745, -0.19582587)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D26/Area3D" unique_id=803775516]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D26/ZP2" unique_id=803775516]
 transform = Transform3D(1, 0, 1.3145041e-12, 0, 1, 0, -1.3145041e-12, 0, 1, -0.24513698, 1.3745799, -0.47585464)
 shape = SubResource("BoxShape3D_m2ycm")
 
@@ -770,10 +776,10 @@ transform = Transform3D(-4.3711392e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4
 size = Vector3(2.6132813, 3.990921, 1)
 material = SubResource("StandardMaterial3D_vynuk")
 
-[node name="Area3D" type="Area3D" parent="CSGBox3D27" unique_id=209511630]
-transform = Transform3D(1, 0, 1.4210855e-14, 0, 1, 0, -1.4210855e-14, 0, 1, 2.3841858e-07, -1.1100497, -3.0853431)
+[node name="ZP3" type="Area3D" parent="CSGBox3D27" unique_id=209511630]
+transform = Transform3D(1, 0, 2.4868996e-14, 0, 1, 0, -2.4868996e-14, 0, 1, 0.95463085, -1.4778925, -0.06352168)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D27/Area3D" unique_id=935925628]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D27/ZP3" unique_id=935925628]
 transform = Transform3D(1, 0, 1.3145041e-12, 0, 1, 0, -1.3145041e-12, 0, 1, -0.24513698, 1.3745799, -0.47585464)
 shape = SubResource("BoxShape3D_m2ycm")
 
@@ -786,10 +792,10 @@ transform = Transform3D(-4.3711392e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4
 size = Vector3(2.6132813, 3.990921, 1)
 material = SubResource("StandardMaterial3D_vynuk")
 
-[node name="Area3D" type="Area3D" parent="CSGBox3D28" unique_id=1739985038]
-transform = Transform3D(1, 0, 1.4210855e-14, 0, 1, 0, -1.4210855e-14, 0, 1, 2.3841858e-07, -1.1100497, -3.0853431)
+[node name="ZP4" type="Area3D" parent="CSGBox3D28" unique_id=1739985038]
+transform = Transform3D(1, 0, 2.4868996e-14, 0, 1, 0, -2.4868996e-14, 0, 1, 0.77422523, -1.4077739, -0.16813448)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D28/Area3D" unique_id=1058855203]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D28/ZP4" unique_id=1058855203]
 transform = Transform3D(1, 0, 1.3145041e-12, 0, 1, 0, -1.3145041e-12, 0, 1, -0.24513698, 1.3745799, -0.47585464)
 shape = SubResource("BoxShape3D_m2ycm")
 
@@ -1002,9 +1008,33 @@ use_3d_avoidance = true
 [node name="LineRenderer3D" type="MeshInstance3D" parent="." unique_id=157698636]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -2.7813015)
 mesh = SubResource("ImmediateMesh_r1ed2")
-skeleton = NodePath("../CSGBox3D25/Area3D")
+skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
-points = Array[Vector3]([Vector3(-0.4, 2, -2.7)])
+points = Array[Vector3]([Vector3(-0.4, 2, -2.7), Vector3(-0.4, 2, -2.7)])
+metadata/_custom_type_script = "uid://hajl3xibw433"
+
+[node name="LineRenderer3D2" type="MeshInstance3D" parent="." unique_id=2062067384]
+transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -7.1046586)
+mesh = SubResource("ImmediateMesh_qyfae")
+skeleton = NodePath("../CSGBox3D25/ZP1")
+script = ExtResource("17_r1ed2")
+points = Array[Vector3]([Vector3(-0.3, 1.9, -7.1), Vector3(-0.3, 1.9, -7.1)])
+metadata/_custom_type_script = "uid://hajl3xibw433"
+
+[node name="LineRenderer3D3" type="MeshInstance3D" parent="." unique_id=139751098]
+transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -11.084127)
+mesh = SubResource("ImmediateMesh_emvpd")
+skeleton = NodePath("../CSGBox3D25/ZP1")
+script = ExtResource("17_r1ed2")
+points = Array[Vector3]([Vector3(-0.3, 1.9, -11), Vector3(-0.3, 1.9, -11)])
+metadata/_custom_type_script = "uid://hajl3xibw433"
+
+[node name="LineRenderer3D4" type="MeshInstance3D" parent="." unique_id=1666510536]
+transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -16.122509)
+mesh = SubResource("ImmediateMesh_m2ycm")
+skeleton = NodePath("../CSGBox3D25/ZP1")
+script = ExtResource("17_r1ed2")
+points = Array[Vector3]([Vector3(-0.3, 1.9, -16), Vector3(-0.3, 1.9, -16)])
 metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [connection signal="_player_in" from="Заправка/Door" to="Player" method="player_in"]
