@@ -30,6 +30,8 @@ font_size = 42
 [sub_resource type="SphereShape3D" id="SphereShape3D_88m6n"]
 margin = 3.05
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r1ed2"]
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y5rpb"]
 
 [sub_resource type="Sky" id="Sky_ui2ee"]
@@ -175,8 +177,11 @@ RichTextLabel/styles/normal = null
 [sub_resource type="ViewportTexture" id="ViewportTexture_8oxcy"]
 viewport_path = NodePath("Заправка/Table/CSGPolygon3D2/SubViewport")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_m2ycm"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_oou1n"]
 size = Vector3(0.3103943, 0.99772644, 0.4585266)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m2ycm"]
+size = Vector3(2.5858974, 0.99772644, 4.8421707)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vynuk"]
 size = Vector3(54.805267, 4.8321533, 4.310974)
@@ -202,13 +207,13 @@ vertices = PackedVector3Array(-14.624069, 0.026682496, -4.764866, -12.874069, 0.
 polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 2), PackedInt32Array(0, 6, 5), PackedInt32Array(2, 0, 4), PackedInt32Array(4, 0, 7), PackedInt32Array(7, 0, 5), PackedInt32Array(10, 9, 8), PackedInt32Array(10, 8, 11), PackedInt32Array(3, 4, 11), PackedInt32Array(11, 4, 10), PackedInt32Array(9, 10, 12), PackedInt32Array(12, 10, 14), PackedInt32Array(12, 14, 13), PackedInt32Array(18, 17, 15), PackedInt32Array(15, 17, 16), PackedInt32Array(18, 12, 19), PackedInt32Array(19, 12, 20), PackedInt32Array(20, 12, 13), PackedInt32Array(20, 13, 21), PackedInt32Array(19, 17, 18), PackedInt32Array(21, 22, 20), PackedInt32Array(25, 24, 23), PackedInt32Array(5, 6, 26), PackedInt32Array(25, 23, 26), PackedInt32Array(26, 23, 5), PackedInt32Array(27, 22, 28), PackedInt32Array(28, 22, 21), PackedInt32Array(28, 21, 29), PackedInt32Array(24, 27, 23), PackedInt32Array(23, 27, 30), PackedInt32Array(30, 27, 28)]
 geometry_parsed_geometry_type = 0
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_r1ed2"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_f5ce8"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_qyfae"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_1q5xi"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_emvpd"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_e63ir"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_m2ycm"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_fse4r"]
 
 [node name="Node3D" type="Node3D" unique_id=2010904094]
 script = ExtResource("1_p6l7r")
@@ -267,6 +272,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0656533, 0)
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Player" unique_id=1245125432]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2020961, 0)
 stream = ExtResource("5_88m6n")
+
+[node name="Area3D" type="Area3D" parent="Player" unique_id=67127291]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Area3D" unique_id=1791083722]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.198811, 0)
+shape = SubResource("CapsuleShape3D_r1ed2")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=919561544]
 environment = SubResource("Environment_0u5sq")
@@ -749,6 +762,15 @@ transform = Transform3D(1, 0, 1.4210855e-14, 0, 1, 0, -1.4210855e-14, 0, 1, 2.38
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D25/ZP1" unique_id=389854252]
 transform = Transform3D(1, 0, 2.3412383e-12, 0, 1, 0, -2.3412383e-12, 0, 1, 0.6964667, 1.3070369, 2.2809532)
+shape = SubResource("BoxShape3D_oou1n")
+
+[node name="ZPin1" type="Area3D" parent="CSGBox3D25" unique_id=1863002217]
+transform = Transform3D(1, 0, 3.1974423e-14, 0, 1, 0, -3.1974423e-14, 0, 1, -0.645749, -1.8942081, -5.8113956)
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D25/ZPin1" unique_id=284760733]
+transform = Transform3D(1, 0, 2.3412383e-12, 0, 1, 0, -2.3412383e-12, 0, 1, 0.6964667, 1.3070369, 2.2809532)
 shape = SubResource("BoxShape3D_m2ycm")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D25" unique_id=1341791362]
@@ -765,11 +787,20 @@ transform = Transform3D(1, 0, 2.842171e-14, 0, 1, 0, -2.842171e-14, 0, 1, 1.0025
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D26/ZP2" unique_id=803775516]
 transform = Transform3D(1, 0, 1.3145041e-12, 0, 1, 0, -1.3145041e-12, 0, 1, -0.24513698, 1.3745799, -0.47585464)
-shape = SubResource("BoxShape3D_m2ycm")
+shape = SubResource("BoxShape3D_oou1n")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D26" unique_id=2013717197]
 transform = Transform3D(1, 0, 1.005418e-12, 0, 1, 0, -1.005418e-12, 0, 1, 0.6989374, -0.056485057, -0.5822646)
 size = Vector3(0.23693848, 0.63967896, 0.19476318)
+
+[node name="ZPin1" type="Area3D" parent="CSGBox3D26" unique_id=1586008389]
+transform = Transform3D(1, 0, 3.1974423e-14, 0, 1, 0, -3.1974423e-14, 0, 1, -0.645749, -1.8942081, -5.8113956)
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D26/ZPin1" unique_id=416765425]
+transform = Transform3D(1, 0, 2.3412383e-12, 0, 1, 0, -2.3412383e-12, 0, 1, 0.6964667, 1.3070369, 2.2809532)
+shape = SubResource("BoxShape3D_m2ycm")
 
 [node name="CSGBox3D27" type="CSGBox3D" parent="." unique_id=182278684]
 transform = Transform3D(-4.3711392e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711392e-08, 0.24350154, 1.4954605, -10.396199)
@@ -781,11 +812,20 @@ transform = Transform3D(1, 0, 2.4868996e-14, 0, 1, 0, -2.4868996e-14, 0, 1, 0.95
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D27/ZP3" unique_id=935925628]
 transform = Transform3D(1, 0, 1.3145041e-12, 0, 1, 0, -1.3145041e-12, 0, 1, -0.24513698, 1.3745799, -0.47585464)
-shape = SubResource("BoxShape3D_m2ycm")
+shape = SubResource("BoxShape3D_oou1n")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D27" unique_id=1751172304]
 transform = Transform3D(1, 0, 1.005418e-12, 0, 1, 0, -1.005418e-12, 0, 1, 0.6989374, -0.056485057, -0.5822646)
 size = Vector3(0.23693848, 0.63967896, 0.19476318)
+
+[node name="ZPin1" type="Area3D" parent="CSGBox3D27" unique_id=404636824]
+transform = Transform3D(1, 0, 3.1974423e-14, 0, 1, 0, -3.1974423e-14, 0, 1, -0.645749, -1.8942081, -5.8113956)
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D27/ZPin1" unique_id=21225890]
+transform = Transform3D(1, 0, 2.3412383e-12, 0, 1, 0, -2.3412383e-12, 0, 1, 0.6964667, 1.3070369, 2.2809532)
+shape = SubResource("BoxShape3D_m2ycm")
 
 [node name="CSGBox3D28" type="CSGBox3D" parent="." unique_id=277126286]
 transform = Transform3D(-4.3711392e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711392e-08, 0.24350154, 1.4954605, -15.398497)
@@ -797,11 +837,20 @@ transform = Transform3D(1, 0, 2.4868996e-14, 0, 1, 0, -2.4868996e-14, 0, 1, 0.77
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D28/ZP4" unique_id=1058855203]
 transform = Transform3D(1, 0, 1.3145041e-12, 0, 1, 0, -1.3145041e-12, 0, 1, -0.24513698, 1.3745799, -0.47585464)
-shape = SubResource("BoxShape3D_m2ycm")
+shape = SubResource("BoxShape3D_oou1n")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D28" unique_id=1490766751]
 transform = Transform3D(1, 0, 1.005418e-12, 0, 1, 0, -1.005418e-12, 0, 1, 0.6989374, -0.056485057, -0.5822646)
 size = Vector3(0.23693848, 0.63967896, 0.19476318)
+
+[node name="ZPin1" type="Area3D" parent="CSGBox3D28" unique_id=877812027]
+transform = Transform3D(1, 0, 3.1974423e-14, 0, 1, 0, -3.1974423e-14, 0, 1, -0.645749, -1.8942081, -5.8113956)
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D28/ZPin1" unique_id=603417294]
+transform = Transform3D(1, 0, 2.3412383e-12, 0, 1, 0, -2.3412383e-12, 0, 1, 0.6964667, 1.3070369, 2.2809532)
+shape = SubResource("BoxShape3D_m2ycm")
 
 [node name="Тум-тум-туманище" type="StaticBody3D" parent="." unique_id=1175494086]
 
@@ -1007,7 +1056,7 @@ use_3d_avoidance = true
 
 [node name="LineRenderer3D" type="MeshInstance3D" parent="." unique_id=157698636]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -2.7813015)
-mesh = SubResource("ImmediateMesh_r1ed2")
+mesh = SubResource("ImmediateMesh_f5ce8")
 skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.4, 2, -2.7), Vector3(-0.4, 2, -2.7)])
@@ -1015,7 +1064,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D2" type="MeshInstance3D" parent="." unique_id=2062067384]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -7.1046586)
-mesh = SubResource("ImmediateMesh_qyfae")
+mesh = SubResource("ImmediateMesh_1q5xi")
 skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -7.1), Vector3(-0.3, 1.9, -7.1)])
@@ -1023,7 +1072,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D3" type="MeshInstance3D" parent="." unique_id=139751098]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -11.084127)
-mesh = SubResource("ImmediateMesh_emvpd")
+mesh = SubResource("ImmediateMesh_e63ir")
 skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -11), Vector3(-0.3, 1.9, -11)])
@@ -1031,12 +1080,14 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D4" type="MeshInstance3D" parent="." unique_id=1666510536]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -16.122509)
-mesh = SubResource("ImmediateMesh_m2ycm")
+mesh = SubResource("ImmediateMesh_fse4r")
 skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -16), Vector3(-0.3, 1.9, -16)])
 metadata/_custom_type_script = "uid://hajl3xibw433"
 
+[connection signal="area_entered" from="Player/Area3D" to="Player/Camera3D/руки" method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Player/Area3D" to="Player/Camera3D/руки" method="_on_area_3d_area_exited"]
 [connection signal="_player_in" from="Заправка/Door" to="Player" method="player_in"]
 [connection signal="_player_out" from="Заправка/Door" to="Player" method="player_out"]
 [connection signal="_player_in" from="Заправка/Door2" to="Player" method="player_in"]

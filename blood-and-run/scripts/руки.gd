@@ -11,6 +11,7 @@ var button = load("res://Models/button/source/poly.glb")
 var pachka_snackov = load("res://Расходники/pachka_snackov.tscn")
 var snack = load("res://Расходники/snack.tscn")
 var zp = false
+var zp_in = false
 var points: Array 
 
 #var obj: RigidBody3D
@@ -112,17 +113,31 @@ func _process(delta):
 	pass
 
 func fnc_zp():
-	if $RayCast3D.get_collider().name == "ZP1":
-		points = $"../../../LineRenderer3D".points
-	if $RayCast3D.get_collider().name == "ZP2":
-		points = $"../../../LineRenderer3D2".points
-	if $RayCast3D.get_collider().name == "ZP3":
-		points = $"../../../LineRenderer3D3".points
-	if $RayCast3D.get_collider().name == "ZP4":
-		points = $"../../../LineRenderer3D4".points
-	if !zp:
-		zp = true 
-	else:
-		points.set(1, points.get(0))
-		zp = false
+	if zp_in:
+		if $RayCast3D.get_collider().name == "ZP1":
+			points = $"../../../LineRenderer3D".points
+		if $RayCast3D.get_collider().name == "ZP2":
+			points = $"../../../LineRenderer3D2".points
+		if $RayCast3D.get_collider().name == "ZP3":
+			points = $"../../../LineRenderer3D3".points
+		if $RayCast3D.get_collider().name == "ZP4":
+			points = $"../../../LineRenderer3D4".points
+		if !zp:
+			zp = true 
+		else:
+			points.set(1, points.get(0))
+			zp = false
 	pass
+
+
+func _on_area_3d_area_entered(area: Area3D) -> void:
+	print("dadf")
+	zp_in = true
+	pass # Replace with function body.
+
+
+func _on_area_3d_area_exited(area: Area3D) -> void:
+	points.set(1, points.get(0))
+	zp = false
+	zp_in = false
+	pass # Replace with function body.
