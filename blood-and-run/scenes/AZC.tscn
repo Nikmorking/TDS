@@ -40,14 +40,19 @@ sky_material = SubResource("ProceduralSkyMaterial_y5rpb")
 [sub_resource type="Environment" id="Environment_0u5sq"]
 background_mode = 2
 sky = SubResource("Sky_ui2ee")
-ambient_light_source = 2
-ambient_light_color = Color(0.2065543, 0.2065543, 0.20655426, 1)
-ambient_light_energy = 0.67
+ambient_light_source = 3
+ambient_light_color = Color(0.07683582, 0.07683582, 0.07683582, 1)
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 6.55
 glow_enabled = true
 glow_bloom = 0.1
 glow_map = ExtResource("3_ui2ee")
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.11996875, 0.13441467, 0.15689275, 1)
+fog_light_energy = 3.53
 volumetric_fog_enabled = true
-volumetric_fog_emission = Color(0.31102076, 0.10981911, 0.36823004, 1)
+volumetric_fog_emission = Color(0.30980393, 0.10980392, 0.36862746, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vynuk"]
 albedo_color = Color(0, 0.38073853, 0.42591783, 1)
@@ -207,13 +212,13 @@ vertices = PackedVector3Array(-14.624069, 0.026682496, -4.764866, -12.874069, 0.
 polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 2), PackedInt32Array(0, 6, 5), PackedInt32Array(2, 0, 4), PackedInt32Array(4, 0, 7), PackedInt32Array(7, 0, 5), PackedInt32Array(10, 9, 8), PackedInt32Array(10, 8, 11), PackedInt32Array(3, 4, 11), PackedInt32Array(11, 4, 10), PackedInt32Array(9, 10, 12), PackedInt32Array(12, 10, 14), PackedInt32Array(12, 14, 13), PackedInt32Array(18, 17, 15), PackedInt32Array(15, 17, 16), PackedInt32Array(18, 12, 19), PackedInt32Array(19, 12, 20), PackedInt32Array(20, 12, 13), PackedInt32Array(20, 13, 21), PackedInt32Array(19, 17, 18), PackedInt32Array(21, 22, 20), PackedInt32Array(25, 24, 23), PackedInt32Array(5, 6, 26), PackedInt32Array(25, 23, 26), PackedInt32Array(26, 23, 5), PackedInt32Array(27, 22, 28), PackedInt32Array(28, 22, 21), PackedInt32Array(28, 21, 29), PackedInt32Array(24, 27, 23), PackedInt32Array(23, 27, 30), PackedInt32Array(30, 27, 28)]
 geometry_parsed_geometry_type = 0
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_f5ce8"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_r1ed2"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_1q5xi"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_qyfae"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_e63ir"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_emvpd"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_fse4r"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_m2ycm"]
 
 [node name="Node3D" type="Node3D" unique_id=2010904094]
 script = ExtResource("1_p6l7r")
@@ -1056,7 +1061,7 @@ use_3d_avoidance = true
 
 [node name="LineRenderer3D" type="MeshInstance3D" parent="." unique_id=157698636]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -2.7813015)
-mesh = SubResource("ImmediateMesh_f5ce8")
+mesh = SubResource("ImmediateMesh_r1ed2")
 skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.4, 2, -2.7), Vector3(-0.4, 2, -2.7)])
@@ -1064,7 +1069,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D2" type="MeshInstance3D" parent="." unique_id=2062067384]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -7.1046586)
-mesh = SubResource("ImmediateMesh_1q5xi")
+mesh = SubResource("ImmediateMesh_qyfae")
 skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -7.1), Vector3(-0.3, 1.9, -7.1)])
@@ -1072,7 +1077,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D3" type="MeshInstance3D" parent="." unique_id=139751098]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -11.084127)
-mesh = SubResource("ImmediateMesh_e63ir")
+mesh = SubResource("ImmediateMesh_emvpd")
 skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -11), Vector3(-0.3, 1.9, -11)])
@@ -1080,7 +1085,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D4" type="MeshInstance3D" parent="." unique_id=1666510536]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -16.122509)
-mesh = SubResource("ImmediateMesh_fse4r")
+mesh = SubResource("ImmediateMesh_m2ycm")
 skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -16), Vector3(-0.3, 1.9, -16)])
