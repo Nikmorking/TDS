@@ -1,39 +1,8 @@
 [gd_scene format=3 uid="uid://durjvg6h6emyd"]
 
-[ext_resource type="Shader" uid="uid://dq81n42ia7ync" path="res://Models/Glass.gdshader" id="1_6p4mw"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bbuju"]
-render_priority = 0
-shader = ExtResource("1_6p4mw")
-shader_parameter/albedo = Color(6, 1, 1, 0)
-shader_parameter/roughness = 0.5
-shader_parameter/normal_strength = 8.0
-shader_parameter/edge_color = Color(1, 1, 1, 1)
+[ext_resource type="PackedScene" uid="uid://dqubyb8be2uce" path="res://demo/car.fbx" id="1_6p4mw"]
 
 [node name="driving in my car" type="Node3D" unique_id=1589055185]
 
-[node name="CSGTorus3D" type="CSGTorus3D" parent="." unique_id=2061975510]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -1.4163325, 0, 0)
-inner_radius = 0.4
-
-[node name="CSGTorus3D2" type="CSGTorus3D" parent="." unique_id=335031500]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 1.5226891, 0, 0)
-inner_radius = 0.4
-
-[node name="CSGTorus3D3" type="CSGTorus3D" parent="." unique_id=581695475]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -1.4163325, 0, 4.6106277)
-inner_radius = 0.4
-
-[node name="CSGTorus3D4" type="CSGTorus3D" parent="." unique_id=1259617911]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 1.5226891, 0, 4.6106277)
-inner_radius = 0.4
-
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=987422201]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08190918, 0.9502282, 2.3309746)
-size = Vector3(3.5090332, 1, 6.35791)
-
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="." unique_id=456839382]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.8369162, 1.4503987, 5.493043)
-polygon = PackedVector2Array(0, 0, 0.5868077, 1.1475453, 1.4008389, 1.4571183, 0.7179756, 1.013747)
-depth = 3.5
-material = SubResource("ShaderMaterial_bbuju")
+[node name="car" parent="." unique_id=1000964647 instance=ExtResource("1_6p4mw")]
+transform = Transform3D(2, 0, 0, 0, 1.5, 0, 0, 0, 2, 0, 1.1580315, 0)

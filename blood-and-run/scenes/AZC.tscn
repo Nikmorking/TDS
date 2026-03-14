@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://b3mb2sb58j25f" path="res://scripts/kassa_sc.gd" id="11_b3ns2"]
 [ext_resource type="Texture2D" uid="uid://b0qqtrbqwbcya" path="res://Texture/Shelf_Store_09.jpg" id="15_r1ed2"]
 [ext_resource type="Script" uid="uid://hajl3xibw433" path="res://addons/LineRenderer/line_renderer.gd" id="17_r1ed2"]
+[ext_resource type="PackedScene" uid="uid://durjvg6h6emyd" path="res://scenes/driving in my car.tscn" id="19_qyfae"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0u5sq"]
 radius = 0.382215
@@ -40,10 +41,9 @@ sky_material = SubResource("ProceduralSkyMaterial_y5rpb")
 [sub_resource type="Environment" id="Environment_0u5sq"]
 background_mode = 2
 sky = SubResource("Sky_ui2ee")
-ambient_light_source = 3
-ambient_light_color = Color(0.07683582, 0.07683582, 0.07683582, 1)
-ambient_light_sky_contribution = 0.0
-ambient_light_energy = 6.55
+ambient_light_source = 2
+ambient_light_color = Color(0.2065543, 0.2065543, 0.20655426, 1)
+ambient_light_energy = 0.67
 glow_enabled = true
 glow_bloom = 0.1
 glow_map = ExtResource("3_ui2ee")
@@ -52,7 +52,7 @@ fog_mode = 1
 fog_light_color = Color(0.11996875, 0.13441467, 0.15689275, 1)
 fog_light_energy = 3.53
 volumetric_fog_enabled = true
-volumetric_fog_emission = Color(0.30980393, 0.10980392, 0.36862746, 1)
+volumetric_fog_emission = Color(0.31102076, 0.10981911, 0.36823004, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vynuk"]
 albedo_color = Color(0, 0.38073853, 0.42591783, 1)
@@ -1031,8 +1031,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.687785, -4.7683716e-07, -9
 navigation_mesh = SubResource("NavigationMesh_r1ed2")
 
 [node name="Пол" type="CSGBox3D" parent="NavigationRegion3D" unique_id=857516586]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2469282, -0.42009485, 4.036351)
-size = Vector3(50.25428, 0.10644531, 46.102432)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7865658, -0.42009485, -2.303111)
+size = Vector3(83.69003, 0.10644531, 88.74533)
 material = SubResource("StandardMaterial3D_esnxl")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Пол" unique_id=1945745178]
@@ -1090,6 +1090,9 @@ skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -16), Vector3(-0.3, 1.9, -16)])
 metadata/_custom_type_script = "uid://hajl3xibw433"
+
+[node name="driving in my car" parent="." unique_id=1589055185 instance=ExtResource("19_qyfae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 30)
 
 [connection signal="area_entered" from="Player/Area3D" to="Player/Camera3D/руки" method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Player/Area3D" to="Player/Camera3D/руки" method="_on_area_3d_area_exited"]
