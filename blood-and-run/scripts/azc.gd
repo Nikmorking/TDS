@@ -20,12 +20,16 @@ func _input(event):
 		var c:Environment = $WorldEnvironment.environment
 		if c.volumetric_fog_emission == Color("4f1c5e"):
 			c.volumetric_fog_emission = Color(0.295, 0.0, 0.0, 1.0)
+			$emeny.start = true
+			$emeny.actor_setup()
+			$emeny.get_node("Timer").start()
+			$emeny.position = Vector3(-34.256, 0,0)
 		else:
 			c.volumetric_fog_emission = Color("4f1c5e")
-# Called every frame. 'delta' is the e		if Check_boxes[]lapsed time since the previous frame.
-func _process(delta):
-	pass
-
+			$emeny.start = false
+			$emeny.get_node("Timer").stop()
+			$emeny.position = Vector3(10000, 100000,100000) 
+			$emeny.movement_target_position = $emeny.position
 
 func next():
 	if $No_human.movement_target_position == $Markers/Marker3D2.position:
@@ -86,4 +90,10 @@ func _on_timer_timeout() -> void:
 		zakaz = zakaz_list[randi_range(0, 2)]
 		_pridi()
 	else: $Timer.start()
+	pass # Replace with function body.
+
+
+func _on_emeny_body_entered(node):
+	if node.name == "Player":
+		get_tree().quit()
 	pass # Replace with function body.

@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 signal body_entered(Node)
-var movement_speed: float = 2.0
+@export var movement_speed: float = 2.0
 var movement_target_position: Vector3
 var mtp_list:Array
 
@@ -34,15 +34,16 @@ func _physics_process(delta):
 			$"../Timer".start()
 			queue_free()
 		return
-
-	var current_agent_position: Vector3 = global_position
-	var next_path_position: Vector3 = navigation_agent.get_next_path_position()
-
-	velocity = current_agent_position.direction_to(next_path_position) * movement_speed
 	move_and_slide()
 
 
 func _on_area_3d_body_entered(body):
-	print(body.named)
+	#print(body.named)
 	body_entered.emit(body)
 	pass # Replace with function body.
+
+func go():
+	var current_agent_position: Vector3 = global_position
+	var next_path_position: Vector3 = navigation_agent.get_next_path_position()
+
+	velocity = current_agent_position.direction_to(next_path_position) * movement_speed
