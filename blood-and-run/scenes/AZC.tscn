@@ -248,11 +248,11 @@ script = ExtResource("4_m2ycm")
 
 [node name="Label" type="Label" parent="Player/Camera3D/Control" unique_id=229889781]
 layout_mode = 0
-offset_left = 565.0
+offset_left = 390.0
 offset_top = 265.0
-offset_right = 606.0
+offset_right = 643.0
 offset_bottom = 337.0
-text = "O"
+text = "               O"
 label_settings = SubResource("LabelSettings_8oxcy")
 
 [node name="Timer" type="Timer" parent="Player/Camera3D/Control" unique_id=966339670]

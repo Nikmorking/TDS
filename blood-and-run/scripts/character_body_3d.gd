@@ -90,6 +90,6 @@ func player_out():
 	pass # Replace with function body.
 
 func _print_in_ui(text:String):
-	$Camera3D/Control/Label.text = "O \n \n ты утилизируй шнягу"
+	$Camera3D/Control/Label.text = text
 	$Camera3D/Control/Timer.start()
 	

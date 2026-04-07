@@ -12,5 +12,5 @@ func _process(delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
-	$Label.text = "O"
+	$Label.text = "               O"
 	pass # Replace with function body.
