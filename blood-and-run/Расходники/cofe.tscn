@@ -22,10 +22,10 @@ script = ExtResource("1_lcvcs")
 named = "Cofe"
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="." unique_id=2100944473]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2229532, -0.07778102, 0.49073207)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2229532, -0.5179265, 0.49073207)
 polygon = PackedVector2Array(0, 0, 0.039744735, 1.1727519, 0.4526273, 0.2395832, 0.45884544, 0.041137695)
 material = SubResource("StandardMaterial3D_lcvcs")
 
 [node name="Coll" type="CollisionShape3D" parent="." unique_id=1056798293]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.0044873357, 0.496814, -8.0794096e-05)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.0044873357, 0.05666852, -8.0794096e-05)
 shape = SubResource("BoxShape3D_lcvcs")

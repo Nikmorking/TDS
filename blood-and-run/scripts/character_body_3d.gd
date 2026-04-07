@@ -88,3 +88,8 @@ func player_in():
 func player_out():
 	in_door = false
 	pass # Replace with function body.
+
+func _print_in_ui(text:String):
+	$Camera3D/Control/Label.text = "O \n \n ты утилизируй шнягу"
+	$Camera3D/Control/Timer.start()
+	

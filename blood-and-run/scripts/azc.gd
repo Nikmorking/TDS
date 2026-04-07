@@ -4,6 +4,7 @@ var zakaz:Array
 var zakaz_list = [["Cofe", "Cofe"], ["ahabka_buttonov", "Cofe"], ["Stakan_cofe", "snack"], ["snack"]]
 var nd = false
 var y_kassu = false
+var norm = true
 
 var Check_boxes:Array
 # Called when the node enters the scene tree for the first time.
@@ -18,18 +19,20 @@ func _input(event):
 		_pridi()
 	if Input.is_action_just_pressed("ui_cut"):
 		var c:Environment = $WorldEnvironment.environment
-		if c.volumetric_fog_emission == Color("4f1c5e"):
+		if norm:
 			c.volumetric_fog_emission = Color(0.295, 0.0, 0.0, 1.0)
 			$emeny.start = true
 			$emeny.actor_setup()
 			$emeny.get_node("Timer").start()
 			$emeny.position = Vector3(-34.256, 0,0)
+			norm = false
 		else:
 			c.volumetric_fog_emission = Color("4f1c5e")
 			$emeny.start = false
 			$emeny.get_node("Timer").stop()
 			$emeny.position = Vector3(10000, 100000,100000) 
 			$emeny.movement_target_position = $emeny.position
+			norm = true
 
 func next():
 	if $No_human.movement_target_position == $Markers/Marker3D2.position:

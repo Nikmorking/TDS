@@ -1,7 +1,6 @@
-[gd_scene format=3 uid="uid://c3dx2242gqhlh"]
+[gd_scene format=3 uid="uid://bre26ws07w06b"]
 
 [ext_resource type="Texture2D" uid="uid://cv26yr05sejrc" path="res://Models/smoke_02.png" id="1_0t8sk"]
-[ext_resource type="Script" uid="uid://dkvexistur10e" path="res://scripts/lampa.gd" id="1_q6xv8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7huvx"]
 albedo_color = Color(0.223103, 0.223103, 0.223103, 1)
@@ -31,7 +30,6 @@ height = 0.006
 
 [node name="LAmpa" type="Node3D" unique_id=2044625972]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
-script = ExtResource("1_q6xv8")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=348361088]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3125, 0)

@@ -26,53 +26,17 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_open"):
 		print("click")
 		if !get_parent().get_parent().in_door and obj:
-			var rashodnik: Node3D = instance_na(obj.named)
-			rashodnik.position = obj.global_position 
-			if rashodnik.named == "snack":
-				rashodnik.scale = Vector3(0.5, 0.7,0.5)
-			rashodnik.freeze = false
-			rashodnik.gravity_scale = 1.4
-			for i in hand_marker.get_children():
-				if i.is_class("RigidBody3D"):
-					i.queue_free()
-			var coll: CollisionShape3D = rashodnik.get_node("Coll")
-			coll.disabled = false
-			get_tree().root.get_node("Node3D").get_node("Расходники").add_child(rashodnik)
-		if !obj and !get_parent().get_parent().in_door:
+			_stavit_rashodnic()
+		if !obj and !get_parent().get_parent().in_door: 
 			if $RayCast3D.is_colliding():
-				print("coll")
-				var col: Node3D = $RayCast3D.get_collider()
-				if col.is_class("Area3D"):
-					fnc_zp()
-					print(col.name)
-					var kasa = col.get_parent()
-					if col.name == "Stakan":
-						if kasa.kol_stakan > 0:
-							add_to_hand("Stakan")
-							kasa.kol_stakan -= 1
-					elif col.name == "Cofe_machine":
-						if kasa.cofe > 0:
-							if kasa.stakan:
-								kasa.sel("Варка")
-							else:
-								kasa.sel("нет стакана")
-						else:
-							kasa.sel("Нет кофе")
-						if kasa.cofe_gotova:
-							kasa.cofe_gotova = false
-							add_to_hand("Stakan_cofe")
-							kasa.sel(str(kasa.cofe)+"/10")
-					elif col.name == "Снеки":
-						if kasa.snacks > 0:
-							add_to_hand("snack")
-							kasa.snacks -= 1
-							kasa.set_snack()
-				elif col.is_class("RigidBody3D"):
-					add_to_hand(col.named)
-					if col.get_parent().name == "Расходники":
-						col.queue_free()
-				else:
-					add_to_hand(col.name)
+				_colling()
+	if Input.is_action_just_pressed("+"):
+		if $SpringArm3D.spring_length < 2.5:
+			$SpringArm3D.spring_length += 0.1
+	if Input.is_action_just_pressed("-"):
+		if $SpringArm3D.spring_length > 1:
+			$SpringArm3D.spring_length -= 0.1
+			
 	
 
 func instance_na(name: String) -> Object:
@@ -112,6 +76,20 @@ func _process(delta):
 		points.set(1, global_position)
 	pass
 
+func _stavit_rashodnic():
+			var rashodnik: Node3D = instance_na(obj.named)
+			rashodnik.position = obj.global_position 
+			if rashodnik.named == "snack":
+				rashodnik.scale = Vector3(0.5, 0.7,0.5)
+			rashodnik.freeze = false
+			rashodnik.gravity_scale = 1.4
+			for i in hand_marker.get_children():
+				if i.is_class("RigidBody3D"):
+					i.queue_free()
+			var coll: CollisionShape3D = rashodnik.get_node("Coll")
+			coll.disabled = false
+			get_tree().root.get_node("Node3D").get_node("Расходники").add_child(rashodnik)
+
 func fnc_zp():
 	if zp_in:
 		if $RayCast3D.get_collider().name == "ZP1":
@@ -141,3 +119,40 @@ func _on_area_3d_area_exited(area: Area3D) -> void:
 	zp = false
 	zp_in = false
 	pass # Replace with function body.
+
+func _colling():
+				print("coll")
+				var col: Node3D = $RayCast3D.get_collider()
+				if col.is_class("Area3D"):
+					fnc_zp()
+					print(col.name)
+					var kasa = col.get_parent()
+					if col.name == "Stakan":
+						if kasa.kol_stakan > 0:
+							add_to_hand("Stakan")
+							kasa.kol_stakan -= 1
+					elif col.name == "Cofe_machine":
+						if kasa.cofe > 0:
+							if kasa.stakan:
+								kasa.sel("Варка")
+							else:
+								kasa.sel("нет стакана")
+						else:
+							kasa.sel("Нет кофе")
+						if kasa.cofe_gotova:
+							kasa.cofe_gotova = false
+							add_to_hand("Stakan_cofe")
+							kasa.sel(str(kasa.cofe)+"/10")
+					elif col.name == "Снеки":
+						if kasa.snacks > 0:
+							add_to_hand("snack")
+							kasa.snacks -= 1
+							kasa.set_snack()
+				elif col.is_class("RigidBody3D"):
+					add_to_hand(col.named)
+					if col.get_parent().name == "Расходники":
+						col.queue_free()
+				elif $"../../../Расходники".get_children().size() < 10:
+					add_to_hand(col.name)
+				else:
+					print("Продай что нибудь ненужное! Но чтобы продать что то ненужное,сначало нужно купить что-то ненужное, а у нас денег нет.")
