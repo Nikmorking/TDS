@@ -13,6 +13,7 @@ var snack = load("res://Расходники/snack.tscn")
 var zp = false
 var zp_in = false
 var points: Array 
+var col_rashod = 15
 
 #var obj: RigidBody3D
 var obj: Node3D
@@ -152,7 +153,7 @@ func _colling():
 					add_to_hand(col.named)
 					if col.get_parent().name == "Расходники":
 						col.queue_free()
-				elif $"../../../Расходники".get_children().size() < 10:
+				elif $"../../../Расходники".get_children().size() < col_rashod:
 					add_to_hand(col.name)
 				else:
 					$"../.."._print_in_ui("               O \n \n ты утилизируй шнягу")
