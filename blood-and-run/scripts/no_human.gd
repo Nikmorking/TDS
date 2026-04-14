@@ -32,8 +32,10 @@ func _physics_process(delta):
 		if movement_target_position != $"../Markers/Marker3D".position: get_parent().next()
 		else: 
 			$"../Timer".start()
+			get_parent()._pripersa()
 			queue_free()
 		return
+	go()
 	move_and_slide()
 
 

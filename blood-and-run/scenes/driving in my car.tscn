@@ -1,8 +1,24 @@
 [gd_scene format=3 uid="uid://durjvg6h6emyd"]
 
 [ext_resource type="PackedScene" uid="uid://dqubyb8be2uce" path="res://demo/car.fbx" id="1_6p4mw"]
+[ext_resource type="Script" uid="uid://d10p6q7yqf0fs" path="res://scripts/driving_in_my_car.gd" id="1_bbuju"]
 
-[node name="driving in my car" type="Node3D" unique_id=1589055185]
+[sub_resource type="BoxShape3D" id="BoxShape3D_bbuju"]
+size = Vector3(1, 1.9920654, 3.546875)
+
+[node name="driving in my car" type="CharacterBody3D" unique_id=1740333887]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_bbuju")
+movement_speed = 10.0
 
 [node name="car" parent="." unique_id=1000964647 instance=ExtResource("1_6p4mw")]
 transform = Transform3D(2, 0, 0, 0, 1.5, 0, 0, 0, 2, 0, 1.1580315, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=576597461]
+debug_enabled = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=648133470]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83085334, -0.095703125)
+shape = SubResource("BoxShape3D_bbuju")

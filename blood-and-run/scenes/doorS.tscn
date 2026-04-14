@@ -187,5 +187,10 @@ transform = Transform3D(1.1485101, 0, -5.684342e-14, 0, 1.1484735, 0, 5.684342e-
 size = Vector3(1.2174072, 2.3009644, 0.13378906)
 material = SubResource("ShaderMaterial_jwqke")
 
+[node name="Timer2" type="Timer" parent="." unique_id=951120748]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="body_entered" from="Area3D" to="." method="Next_to_door"]
 [connection signal="body_exited" from="Area3D" to="." method="come_back"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

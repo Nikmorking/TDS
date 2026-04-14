@@ -2,6 +2,7 @@ extends StaticBody3D
 
 signal _player_in
 signal _player_out
+signal _open
 
 @export var rot = 0
 @export var door_open = true
@@ -25,9 +26,11 @@ func _input(_event: InputEvent) -> void:
 				$Open.play()
 				$Timer.start()
 			else:
+				print("open")
 				$AnimationPlayer.play("close_door")
 				$Key.play()
 				$Timer.start()
+				$Timer2.start()
 			door_open = !door_open
 	pass
 
@@ -50,4 +53,10 @@ func come_back(body: Node3D) -> void:
 	if body.name == "Player":
 		need_door = false
 		_player_out.emit()
+	pass # Replace with function body.
+
+
+func _on_timer_2_timeout():
+	print("open3")
+	_open.emit()
 	pass # Replace with function body.

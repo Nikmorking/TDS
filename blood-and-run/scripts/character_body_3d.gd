@@ -69,14 +69,22 @@ func _input(event):
 		if $Camera3D.rotation.x - deg_to_rad(event.relative.y) < deg_to_rad(90) and $Camera3D.rotation.x - deg_to_rad(event.relative.y) > deg_to_rad(-70):
 			$Camera3D.rotation += Vector3(deg_to_rad(-event.relative.y * mouse_sens), 0, 0)
 		rotation += Vector3(0 ,deg_to_rad(-event.relative.x * mouse_sens), 0)
+	var input:Vector2 = Input.get_vector("con_left", "con_right", "con_up", "con_down")
+	if input != Vector2(0,0):
+		if $Camera3D.rotation.x - deg_to_rad(input.y) < deg_to_rad(90) and $Camera3D.rotation.x - deg_to_rad(input.y) > deg_to_rad(-70):
+			$Camera3D.rotation += Vector3(deg_to_rad(-input.y * mouse_sens), 0, 0)
+		rotation += Vector3(0 ,deg_to_rad(-input.x * mouse_sens), 0)
+		
 	if Input.is_action_just_pressed("Escape"):
 		if !isOnMenu:
 			isOnMenu = true
 			#$CharacterBody3D.velocity = Vector3(0, 0, 0)
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			get_tree().paused = true
 		else:
 			isOnMenu = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			get_tree().paused = false
 	
 
 

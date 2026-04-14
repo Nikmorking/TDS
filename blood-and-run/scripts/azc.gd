@@ -1,10 +1,23 @@
 extends Node3D
 
+var start_day = true
 var zakaz:Array
-var zakaz_list = [["Cofe", "Cofe"], ["ahabka_buttonov", "Cofe"], ["Stakan_cofe", "snack"], ["snack"]]
+var zakaz_list = [
+  ["ahabka_buttonov", "Stakan_cofe"],
+  ["Zapravka", "Cofe", "snack"],
+  ["Stakan_cofe", "snack"],
+  ["ahabka_buttonov", "snack"],
+  ["Zapravka", "Stakan_cofe"],
+  ["Cofe", "snack"],
+  ["Zapravka", "ahabka_buttonov"],
+  ["ahabka_buttonov", "Stakan_cofe", "snack"],
+  ["Cofe", "Stakan_cofe"],
+  ["Zapravka", "ahabka_buttonov", "Stakan_cofe", "snack"]
+]
 var nd = false
 var y_kassu = false
 var norm = true
+var no_hum: CharacterBody3D
 
 var Check_boxes:Array
 # Called when the node enters the scene tree for the first time.
@@ -18,21 +31,9 @@ func _input(event):
 		zakaz = zakaz_list[randi_range(0, 3)]
 		_pridi()
 	if Input.is_action_just_pressed("ui_cut"):
-		var c:Environment = $WorldEnvironment.environment
-		if norm:
-			c.volumetric_fog_emission = Color(0.295, 0.0, 0.0, 1.0)
-			$emeny.start = true
-			$emeny.actor_setup()
-			$emeny.get_node("Timer").start()
-			$emeny.position = Vector3(-34.256, 0,0)
-			norm = false
-		else:
-			c.volumetric_fog_emission = Color("4f1c5e")
-			$emeny.start = false
-			$emeny.get_node("Timer").stop()
-			$emeny.position = Vector3(10000, 100000,100000) 
-			$emeny.movement_target_position = $emeny.position
-			norm = true
+		#_start_sream()
+		$"driving in my car"._start()
+		
 
 func next():
 	if $No_human.movement_target_position == $Markers/Marker3D2.position:
@@ -49,8 +50,25 @@ func back():
 	$No_human.actor_setup()
 	print("back")
 
+func _start_sream():
+		var c:Environment = $WorldEnvironment.environment
+		if norm:
+			c.volumetric_fog_emission = Color(0.295, 0.0, 0.0, 1.0)
+			$emeny.start = true
+			$emeny.actor_setup()
+			$emeny.get_node("Timer").start()
+			$emeny.position = Vector3(-34.256, 0,0)
+			norm = false
+		else:
+			c.volumetric_fog_emission = Color("4f1c5e")
+			$emeny.start = false
+			$emeny.get_node("Timer").stop()
+			$emeny.position = Vector3(10000, 100000,100000) 
+			$emeny.movement_target_position = $emeny.position
+			norm = true
 
 func _pridi():
+	zakaz = zakaz_list[randi_range(0, 9)]
 	for i in Check_boxes:
 		i.button_pressed = false
 	for i in zakaz.size():
@@ -89,10 +107,13 @@ func _on_no_human_body_entered(body: Node):
 
 
 func _on_timer_timeout() -> void:
-	if randi_range(0, 100) < 30:
-		zakaz = zakaz_list[randi_range(0, 2)]
-		_pridi()
-	else: $Timer.start()
+	var b = randi_range(0, 100)
+	print(b)
+	if b < 70:
+		$"driving in my car"._start()
+	else: 
+		_start_sream()
+		$Timer2.start()
 	pass # Replace with function body.
 
 
@@ -100,3 +121,27 @@ func _on_emeny_body_entered(node):
 	if node.name == "Player":
 		get_tree().quit()
 	pass # Replace with function body.
+
+
+func _on_door_2__open():
+	if start_day:
+		$Timer.start()
+		start_day = false
+	pass # Replace with function body.
+
+
+func _stop_run():
+	_start_sream()
+	$Timer.start()
+	pass # Replace with function body.
+
+
+func _on_driving_in_my_car_end_put():
+	_pridi()
+	pass # Replace with function body.
+
+func _pripersa():
+	$"driving in my car".n = 5
+	$"driving in my car".i -= 1
+	$"driving in my car".rotate_y(1.57)
+	$"driving in my car".start = true
