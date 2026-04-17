@@ -941,6 +941,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38605118, 1.3496776, -0.38
 size = Vector3(49.644115, 6.367918, 3.38476)
 material = SubResource("FogMaterial_aeg34")
 
+[node name="FogVolume2" type="FogVolume" parent="Тум-тум-туманище" unique_id=1936920164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.473083, 1.3496776, 37.748253)
+size = Vector3(22.237316, 6.367918, 10.477536)
+material = SubResource("FogMaterial_aeg34")
+
 [node name="Фонари" type="Node" parent="." unique_id=427375748]
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Фонари" unique_id=74947927]
@@ -1056,6 +1061,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.68, -0.356, -12.746122)
 
 [node name="Marker3D4" type="Marker3D" parent="Markers" unique_id=1502567203]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.739775, -0.356, 8.023422)
+
+[node name="Marker3D5" type="Marker3D" parent="Markers" unique_id=786726921]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.53336, -0.356, 40.174328)
 
 [node name="Дорога" type="Node" parent="." unique_id=764037660]
 
@@ -1283,7 +1291,7 @@ points = Array[Vector3]([Vector3(-0.3, 1.9, -16), Vector3(-0.3, 1.9, -16)])
 metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="driving in my car" parent="." unique_id=1589055185 instance=ExtResource("19_qyfae")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.529108, 0.07518196, 29.676037)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.72218, 0.07518196, 40.256218)
 
 [node name="emeny" parent="." unique_id=266263789 instance=ExtResource("20_emvpd")]
 transform = Transform3D(-2.6226834e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.6226834e-08, -79.22988, 9.076546, -14.9948)

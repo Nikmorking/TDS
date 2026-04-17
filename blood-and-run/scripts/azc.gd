@@ -4,15 +4,15 @@ var start_day = true
 var zakaz:Array
 var zakaz_list = [
   ["ahabka_buttonov", "Stakan_cofe"],
-  ["Zapravka", "Cofe", "snack"],
+  [ "Cofe", "snack"],
   ["Stakan_cofe", "snack"],
   ["ahabka_buttonov", "snack"],
-  ["Zapravka", "Stakan_cofe"],
+  ["Stakan_cofe"],
   ["Cofe", "snack"],
-  ["Zapravka", "ahabka_buttonov"],
+  [ "ahabka_buttonov"],
   ["ahabka_buttonov", "Stakan_cofe", "snack"],
   ["Cofe", "Stakan_cofe"],
-  ["Zapravka", "ahabka_buttonov", "Stakan_cofe", "snack"]
+  [ "ahabka_buttonov", "Stakan_cofe", "snack"]
 ]
 var nd = false
 var y_kassu = false
@@ -137,7 +137,12 @@ func _stop_run():
 
 
 func _on_driving_in_my_car_end_put():
-	_pridi()
+	if $"driving in my car".n != 5:
+		_pridi()
+	else:
+		$"driving in my car".position = $Markers/Marker3D5.position
+		$"driving in my car".i = 0
+		$"driving in my car".n = 2
 	pass # Replace with function body.
 
 func _pripersa():
