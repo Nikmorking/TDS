@@ -20,7 +20,7 @@ func _ready():
 func _physics_process(delta):
 	print(i,n, mtp_list)
 	if navigation_agent.is_navigation_finished() and start:
-		print("dsfg")
+		print("dsfg"+str(i))
 		i += 1
 		if i >n: 
 			start =false

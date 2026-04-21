@@ -28,8 +28,8 @@ func _ready():
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_copy"):
-		zakaz = zakaz_list[randi_range(0, 3)]
-		_pridi()
+		_start_sream()
+		$Timer2.start()
 	if Input.is_action_just_pressed("ui_cut"):
 		#_start_sream()
 		$"driving in my car"._start()
@@ -57,7 +57,7 @@ func _start_sream():
 			$emeny.start = true
 			$emeny.actor_setup()
 			$emeny.get_node("Timer").start()
-			$emeny.position = Vector3(-34.256, 0,0)
+			$emeny.position = $Marker3D.position
 			norm = false
 		else:
 			c.volumetric_fog_emission = Color("4f1c5e")
@@ -119,7 +119,7 @@ func _on_timer_timeout() -> void:
 
 func _on_emeny_body_entered(node):
 	if node.name == "Player":
-		get_tree().quit()
+		print("Здох")
 	pass # Replace with function body.
 
 
@@ -136,13 +136,16 @@ func _stop_run():
 	pass # Replace with function body.
 
 
-func _on_driving_in_my_car_end_put():
+func _on_driving_in_my_car_end_put():	
+	print(str($"driving in my car".n) + "hjhj")
 	if $"driving in my car".n != 5:
 		_pridi()
 	else:
+		print("llllaaaa")
 		$"driving in my car".position = $Markers/Marker3D5.position
 		$"driving in my car".i = 0
 		$"driving in my car".n = 2
+		$Timer.start()
 	pass # Replace with function body.
 
 func _pripersa():

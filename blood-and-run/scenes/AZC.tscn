@@ -317,8 +317,8 @@ start_rot = Vector3(0, 180, 0)
 
 [node name="Door2" parent="Заправка" unique_id=1663869990 instance=ExtResource("5_vynuk")]
 transform = Transform3D(-0.99999964, 0, -8.742275e-08, 0, 1, 0, 8.742275e-08, 0, -0.99999964, -9.367741, -0.20644337, -10.988842)
-collision_layer = 5
-collision_mask = 5
+collision_layer = 7
+collision_mask = 7
 start_rot = Vector3(0, -90, 0)
 
 [node name="Полки" type="Node" parent="Заправка" unique_id=2140927642]
@@ -1299,6 +1299,9 @@ transform = Transform3D(-2.6226834e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.6226834e-
 [node name="Timer2" type="Timer" parent="." unique_id=2145315828]
 wait_time = 23.0
 one_shot = true
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=1001167204]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.628813, 0, 28.150846)
 
 [connection signal="timeout" from="Player/Camera3D/Control/Timer" to="Player/Camera3D/Control" method="_on_timer_timeout"]
 [connection signal="area_entered" from="Player/Area3D" to="Player/Camera3D/руки" method="_on_area_3d_area_entered"]

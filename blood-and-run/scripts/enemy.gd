@@ -13,6 +13,8 @@ func _ready():
 func _physics_process(delta):
 	if start:
 		go()
+		look_at(movement_target_position)
+		$Running/AnimationPlayer.play("mixamo_com")
 		move_and_slide()
 
 

@@ -1,48 +1,25 @@
 [gd_scene format=3 uid="uid://d1k48syuq2cyf"]
 
 [ext_resource type="Script" uid="uid://k1wiroq3tl5l" path="res://scripts/enemy.gd" id="1_7p1mj"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_062ft"]
-height = 3.4802246
+[ext_resource type="PackedScene" uid="uid://cqb1eyg10nhcr" path="res://Models/Running.fbx" id="2_md0e3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wlgop"]
 radius = 0.7011719
 height = 3.4472656
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_md0e3"]
+radius = 0.66015625
+height = 3.5039063
+
 [node name="emeny" type="CharacterBody3D" unique_id=266263789]
 transform = Transform3D(-2.6226834e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.6226834e-08, 0, 0, 0)
+collision_layer = 2
+collision_mask = 2
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 script = ExtResource("1_7p1mj")
 movement_speed = 5.0
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=158501101]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34129834, 0.73057866, 0)
-radius = 0.115234375
-height = 1.2700195
-
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." unique_id=1228298741]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20982778, 0.73057866, 0)
-radius = 0.115234375
-height = 1.2700195
-
-[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="." unique_id=789396571]
-transform = Transform3D(0.985491, -0.16972792, 0, 0.16540775, 0.9604067, 0.22418572, -0.038050577, -0.220933, 0.97454643, 0.38039315, 1.9289095, 0)
-radius = 0.115234375
-height = 1.2700195
-
-[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="." unique_id=1296196773]
-transform = Transform3D(0.9808593, 0.17811528, 0.078676395, -0.1909638, 0.9588866, 0.2099268, -0.038050584, -0.22093304, 0.97454655, -0.536676, 1.9289095, 0)
-radius = 0.115234375
-height = 1.2700195
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=1531734527]
-transform = Transform3D(1, 0, 0, 0, 1.9728434, 0, 0, 0, 1, -0.06629312, 1.8534132, -0.08713323)
-
-[node name="CSGSphere3D2" type="CSGSphere3D" parent="." unique_id=973891548]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027885318, 2.9725194, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=49138580]
-transform = Transform3D(0.99999976, 0, 4.3698378e-13, 0, 0.99999976, 0, -4.3698378e-13, 0, 0.99999976, 0, 1.8072509, 0)
-shape = SubResource("CapsuleShape3D_062ft")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=2028813483]
 avoidance_enabled = true
@@ -64,6 +41,13 @@ wait_time = 0.8
 transform = Transform3D(1.6666665, 0, 0, 0, 1.6666665, 0, 0, 0, 1.6666665, -0.2432807, 3.6976933, 0.311323)
 light_color = Color(0.86290884, 0.29543713, 0.26479155, 1)
 omni_range = 2.0
+
+[node name="Running" parent="." unique_id=1633639507 instance=ExtResource("2_md0e3")]
+transform = Transform3D(-149.99995, 0, -1.3113413e-05, 0, 149.99995, 0, 1.3113413e-05, 0, -149.99995, -0.007018531, 1.3689936, 0.047516733)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1892024624]
+transform = Transform3D(0.99999976, 0, 3.5882408e-13, 0, 0.99999976, 0, -3.5882408e-13, 0, 0.99999976, 0, 1.7188387, 0)
+shape = SubResource("CapsuleShape3D_md0e3")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
