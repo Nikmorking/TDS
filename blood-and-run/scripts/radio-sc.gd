@@ -1,7 +1,7 @@
 extends CSGBox3D
 
 var into = false
-
+var frame = 0
 var kol_stakan = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -13,8 +13,9 @@ func _input(event):
 	if Input.is_action_just_pressed("rush_e"):
 		if into:
 			if !$AudioStreamPlayer3D.playing:
-				$AudioStreamPlayer3D.play()
+				$AudioStreamPlayer3D.play(frame)
 			else:
+				frame = $AudioStreamPlayer3D.get_playback_position()
 				$AudioStreamPlayer3D.stop()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

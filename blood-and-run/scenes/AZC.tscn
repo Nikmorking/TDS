@@ -11,9 +11,12 @@
 [ext_resource type="Script" uid="uid://bhsi6d5auuidh" path="res://scripts/ui.gd" id="4_m2ycm"]
 [ext_resource type="Shader" uid="uid://dq81n42ia7ync" path="res://Models/Glass.gdshader" id="4_ui2ee"]
 [ext_resource type="AudioStream" uid="uid://cl56ohqqg3goi" path="res://sounds/shagi.mp3" id="5_88m6n"]
+[ext_resource type="Texture2D" uid="uid://bvmyaqt4cgpaj" path="res://scenes/318748684_bc04d5c7d7c38229a9a8e5933851aab1.png" id="5_f5ce8"]
 [ext_resource type="PackedScene" uid="uid://dism06b1iip8u" path="res://scenes/doorS.tscn" id="5_vynuk"]
 [ext_resource type="AudioStream" uid="uid://chnxkeejyec1k" path="res://sounds/ghjk.mp3" id="6_aeg34"]
+[ext_resource type="Script" uid="uid://drjt1yu0s6a0o" path="res://scripts/menu.gd" id="7_1q5xi"]
 [ext_resource type="Script" uid="uid://cvkighcpdolaw" path="res://scripts/radio-sc.gd" id="8_42sn8"]
+[ext_resource type="Texture2D" uid="uid://be2meyinowmx1" path="res://Texture/menu.png" id="8_e63ir"]
 [ext_resource type="PackedScene" uid="uid://ki8fgnhihyot" path="res://scenes/lampa_mini.tscn" id="8_ro5by"]
 [ext_resource type="Texture2D" uid="uid://cjmevthgqo8bv" path="res://318748684_bc04d5c7d7c38229a9a8e5933851aab1.png" id="10_42sn8"]
 [ext_resource type="Script" uid="uid://b3mb2sb58j25f" path="res://scripts/kassa_sc.gd" id="11_b3ns2"]
@@ -225,13 +228,13 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Arr
 geometry_parsed_geometry_type = 0
 agent_radius = 1.3
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_oou1n"]
-
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_f5ce8"]
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_1q5xi"]
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_e63ir"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_fse4r"]
 
 [node name="Node3D" type="Node3D" unique_id=2010904094]
 script = ExtResource("1_p6l7r")
@@ -268,6 +271,12 @@ label_settings = SubResource("LabelSettings_8oxcy")
 [node name="Timer" type="Timer" parent="Player/Camera3D/Control" unique_id=966339670]
 one_shot = true
 
+[node name="Sprite2D" type="Sprite2D" parent="Player/Camera3D/Control" unique_id=1564788564]
+visible = false
+position = Vector2(576.5, 324.25)
+scale = Vector2(5.5048075, 2.6316872)
+texture = ExtResource("5_f5ce8")
+
 [node name="руки" type="Node3D" parent="Player/Camera3D" unique_id=460850154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1837149)
 script = ExtResource("3_cfvsp")
@@ -288,6 +297,53 @@ margin = 0.1
 
 [node name="Hand" type="Node3D" parent="Player/Camera3D/руки/SpringArm3D" unique_id=1685671662]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.48008382, 2.2554448)
+
+[node name="Menu" type="Control" parent="Player/Camera3D" unique_id=1296592595]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1150.0
+offset_bottom = 647.0
+script = ExtResource("7_1q5xi")
+
+[node name="continue" type="Button" parent="Player/Camera3D/Menu" unique_id=2120027559]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 77.0
+offset_right = 328.0
+offset_bottom = 148.0
+theme_override_font_sizes/font_size = 32
+text = "Сontinue"
+flat = true
+alignment = 0
+
+[node name="Settings" type="Button" parent="Player/Camera3D/Menu" unique_id=1172611775]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 191.0
+offset_right = 328.0
+offset_bottom = 262.0
+theme_override_font_sizes/font_size = 32
+text = "Settings"
+flat = true
+alignment = 0
+
+[node name="Quit" type="Button" parent="Player/Camera3D/Menu" unique_id=1686252191]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 310.0
+offset_right = 328.0
+offset_bottom = 381.0
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+flat = true
+alignment = 0
+
+[node name="Menu" type="Sprite2D" parent="Player/Camera3D/Menu" unique_id=182313870]
+z_index = -1
+position = Vector2(575, 325)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("8_e63ir")
 
 [node name="Marker3D" type="Marker3D" parent="Player" unique_id=1519376558]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0656533, 0)
@@ -571,23 +627,23 @@ shape = SubResource("BoxShape3D_88m6n")
 
 [node name="Table" type="Node" parent="Заправка" unique_id=467835246]
 
-[node name="CSGBox3D12" type="CSGBox3D" parent="Заправка/Table" unique_id=92263054]
+[node name="Radio" type="CSGBox3D" parent="Заправка/Table" unique_id=92263054]
 transform = Transform3D(-4.371118e-08, 0, 0.9999965, 0, 1, 0, -0.9999965, 0, -4.371118e-08, -22.61944, -0.1759361, -14.8214855)
 size = Vector3(3.0139294, 0.7618184, 0.66064453)
 script = ExtResource("8_42sn8")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Заправка/Table/CSGBox3D12" unique_id=868973482]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Заправка/Table/Radio" unique_id=868973482]
 transform = Transform3D(-4.3711488e-08, 0, -1.0000035, 0, 1, 0, 1.0000035, 0, -4.3711488e-08, 0.5326834, 0.7191434, 0.8239441)
 stream = ExtResource("6_aeg34")
 unit_size = 3.0
 
-[node name="Radio" type="Area3D" parent="Заправка/Table/CSGBox3D12" unique_id=989827045]
+[node name="Radio" type="Area3D" parent="Заправка/Table/Radio" unique_id=989827045]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Заправка/Table/CSGBox3D12/Radio" unique_id=1810327434]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Заправка/Table/Radio/Radio" unique_id=1810327434]
 transform = Transform3D(0.9999853, 0, -6.430412e-13, 0, 1, 0, 6.430412e-13, 0, 0.9999853, 1.2091932, 0.53359205, -0.00016784668)
 shape = SubResource("BoxShape3D_cfvsp")
 
-[node name="Sprite3D" type="Sprite3D" parent="Заправка/Table/CSGBox3D12" unique_id=1445084859]
+[node name="Sprite3D" type="Sprite3D" parent="Заправка/Table/Radio" unique_id=1445084859]
 transform = Transform3D(0.5, 0, -8.881785e-15, 0, 0.5, 0, 8.881785e-15, 0, 0.5, 0.688674, 0.990533, 0.23306465)
 visible = false
 texture = ExtResource("10_42sn8")
@@ -1260,7 +1316,7 @@ affect_navigation_mesh = true
 
 [node name="LineRenderer3D" type="MeshInstance3D" parent="." unique_id=157698636]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -2.7813015)
-mesh = SubResource("ImmediateMesh_oou1n")
+mesh = SubResource("ImmediateMesh_f5ce8")
 skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.4, 2, -2.7), Vector3(-0.4, 2, -2.7)])
@@ -1268,7 +1324,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D2" type="MeshInstance3D" parent="." unique_id=2062067384]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -7.1046586)
-mesh = SubResource("ImmediateMesh_f5ce8")
+mesh = SubResource("ImmediateMesh_1q5xi")
 skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -7.1), Vector3(-0.3, 1.9, -7.1)])
@@ -1276,7 +1332,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D3" type="MeshInstance3D" parent="." unique_id=139751098]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -11.084127)
-mesh = SubResource("ImmediateMesh_1q5xi")
+mesh = SubResource("ImmediateMesh_e63ir")
 skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -11), Vector3(-0.3, 1.9, -11)])
@@ -1284,7 +1340,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D4" type="MeshInstance3D" parent="." unique_id=1666510536]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -16.122509)
-mesh = SubResource("ImmediateMesh_e63ir")
+mesh = SubResource("ImmediateMesh_fse4r")
 skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -16), Vector3(-0.3, 1.9, -16)])
@@ -1304,6 +1360,8 @@ one_shot = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.628813, 0, 28.150846)
 
 [connection signal="timeout" from="Player/Camera3D/Control/Timer" to="Player/Camera3D/Control" method="_on_timer_timeout"]
+[connection signal="button_down" from="Player/Camera3D/Menu/continue" to="Player/Camera3D/Menu" method="_on_continue_button_down"]
+[connection signal="button_down" from="Player/Camera3D/Menu/Quit" to="Player/Camera3D/Menu" method="_on_quit_button_down"]
 [connection signal="area_entered" from="Player/Area3D" to="Player/Camera3D/руки" method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Player/Area3D" to="Player/Camera3D/руки" method="_on_area_3d_area_exited"]
 [connection signal="_player_in" from="Заправка/Door" to="Player" method="player_in"]
@@ -1311,8 +1369,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.628813, 0, 28.150846)
 [connection signal="_open" from="Заправка/Door2" to="." method="_on_door_2__open"]
 [connection signal="_player_in" from="Заправка/Door2" to="Player" method="player_in"]
 [connection signal="_player_out" from="Заправка/Door2" to="Player" method="player_out"]
-[connection signal="body_entered" from="Заправка/Table/CSGBox3D12/Radio" to="Заправка/Table/CSGBox3D12" method="_on_radio_body_entered"]
-[connection signal="body_exited" from="Заправка/Table/CSGBox3D12/Radio" to="Заправка/Table/CSGBox3D12" method="_on_radio_body_exited"]
+[connection signal="body_entered" from="Заправка/Table/Radio/Radio" to="Заправка/Table/Radio" method="_on_radio_body_entered"]
+[connection signal="body_exited" from="Заправка/Table/Radio/Radio" to="Заправка/Table/Radio" method="_on_radio_body_exited"]
 [connection signal="body_entered" from="Заправка/Table/Касса/Stakan" to="Заправка/Table/Касса" method="statan_voshol"]
 [connection signal="body_entered" from="Заправка/Table/Касса/Cofe_machine" to="Заправка/Table/Касса" method="on_cofe_machine"]
 [connection signal="timeout" from="Заправка/Table/Касса/Cofe_machine/Timer" to="Заправка/Table/Касса" method="cofe_gotovo"]

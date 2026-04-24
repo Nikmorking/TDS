@@ -120,6 +120,7 @@ func _on_timer_timeout() -> void:
 func _on_emeny_body_entered(node):
 	if node.name == "Player":
 		print("Здох")
+		$Player/Camera3D/Control/Sprite2D.show()
 	pass # Replace with function body.
 
 
