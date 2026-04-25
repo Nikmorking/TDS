@@ -35,6 +35,8 @@ func _physics_process(delta):
 		move_and_slide()
 
 func _start():
+	#if randi_range(0, 10) > 9:
+	$AudioStreamPlayer3D.play()
 	movement_target_position = mtp_list[i].position
 	actor_setup()
 	start = true

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://br4i15gyr5rrg"
+path="res://.godot/imported/Driving in my car.mp3-1c4708d3a28f84a9cfc42cc1570c0b01.mp3str"
+
+[deps]
+
+source_file="res://sounds/Driving in my car.mp3"
+dest_files=["res://.godot/imported/Driving in my car.mp3-1c4708d3a28f84a9cfc42cc1570c0b01.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

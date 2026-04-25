@@ -13,16 +13,21 @@
 [ext_resource type="AudioStream" uid="uid://cl56ohqqg3goi" path="res://sounds/shagi.mp3" id="5_88m6n"]
 [ext_resource type="Texture2D" uid="uid://bvmyaqt4cgpaj" path="res://scenes/318748684_bc04d5c7d7c38229a9a8e5933851aab1.png" id="5_f5ce8"]
 [ext_resource type="PackedScene" uid="uid://dism06b1iip8u" path="res://scenes/doorS.tscn" id="5_vynuk"]
-[ext_resource type="AudioStream" uid="uid://chnxkeejyec1k" path="res://sounds/ghjk.mp3" id="6_aeg34"]
+[ext_resource type="AudioStream" path="res://sounds/ghjk.mp3" id="6_aeg34"]
 [ext_resource type="Script" uid="uid://drjt1yu0s6a0o" path="res://scripts/menu.gd" id="7_1q5xi"]
 [ext_resource type="Script" uid="uid://cvkighcpdolaw" path="res://scripts/radio-sc.gd" id="8_42sn8"]
 [ext_resource type="Texture2D" uid="uid://be2meyinowmx1" path="res://Texture/menu.png" id="8_e63ir"]
 [ext_resource type="PackedScene" uid="uid://ki8fgnhihyot" path="res://scenes/lampa_mini.tscn" id="8_ro5by"]
+[ext_resource type="AudioStream" uid="uid://dkmxx220ci41x" path="res://sounds/close.wav" id="9_1huwv"]
 [ext_resource type="Texture2D" uid="uid://cjmevthgqo8bv" path="res://318748684_bc04d5c7d7c38229a9a8e5933851aab1.png" id="10_42sn8"]
+[ext_resource type="AudioStream" uid="uid://b6abahg8uksh6" path="res://sounds/open.wav" id="10_vqwn8"]
 [ext_resource type="Script" uid="uid://b3mb2sb58j25f" path="res://scripts/kassa_sc.gd" id="11_b3ns2"]
+[ext_resource type="AudioStream" uid="uid://tomgjbqso8ed" path="res://sounds/Navodka.mp3" id="11_vqwn8"]
 [ext_resource type="Texture2D" uid="uid://b0qqtrbqwbcya" path="res://Texture/Shelf_Store_09.jpg" id="15_r1ed2"]
 [ext_resource type="Script" uid="uid://hajl3xibw433" path="res://addons/LineRenderer/line_renderer.gd" id="17_r1ed2"]
+[ext_resource type="Texture2D" uid="uid://dyhf2tkhl60o4" path="res://Texture/Alan.jpg" id="18_415sf"]
 [ext_resource type="Script" uid="uid://b2pyl8kn0wkns" path="res://scripts/мусорка.gd" id="18_oou1n"]
+[ext_resource type="Texture2D" uid="uid://bafg5x2p8c6f2" path="res://Texture/Freind.png" id="19_myhle"]
 [ext_resource type="PackedScene" uid="uid://durjvg6h6emyd" path="res://scenes/driving in my car.tscn" id="19_qyfae"]
 [ext_resource type="PackedScene" uid="uid://d1k48syuq2cyf" path="res://scenes/enemy.tscn" id="20_emvpd"]
 
@@ -32,10 +37,95 @@ height = 1.829824
 
 [sub_resource type="LabelSettings" id="LabelSettings_8oxcy"]
 line_spacing = 7.0
-font_size = 42
+font_size = 20
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_88m6n"]
 margin = 3.05
+
+[sub_resource type="Animation" id="Animation_415sf"]
+resource_name = "Open"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Quit:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-296, 408), Vector2(-296, 408), Vector2(53, 408)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Settings:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.53333336, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-296, 289), Vector2(-296, 289), Vector2(53, 289)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("continue:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-296, 175), Vector2(53, 175)]
+}
+
+[sub_resource type="Animation" id="Animation_myhle"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Quit:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(53, 408)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Settings:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(53, 289)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("continue:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(53, 175)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1huwv"]
+_data = {
+&"Open": SubResource("Animation_415sf"),
+&"RESET": SubResource("Animation_myhle")
+}
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r1ed2"]
 
@@ -228,17 +318,19 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Arr
 geometry_parsed_geometry_type = 0
 agent_radius = 1.3
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_f5ce8"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_1huwv"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_1q5xi"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_vqwn8"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_e63ir"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_yyosc"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_fse4r"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_82sth"]
 
 [node name="Node3D" type="Node3D" unique_id=2010904094]
 script = ExtResource("1_p6l7r")
 metadata/_edit_group_ = true
+metadata/_edit_horizontal_guides_ = [324.0]
+metadata/_edit_vertical_guides_ = [576.0]
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=1428253305]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.563871, 0, 0.7369449)
@@ -261,10 +353,10 @@ script = ExtResource("4_m2ycm")
 
 [node name="Label" type="Label" parent="Player/Camera3D/Control" unique_id=229889781]
 layout_mode = 0
-offset_left = 390.0
-offset_top = 265.0
-offset_right = 643.0
-offset_bottom = 337.0
+offset_left = 490.0
+offset_top = 309.0
+offset_right = 743.0
+offset_bottom = 381.0
 text = "               O"
 label_settings = SubResource("LabelSettings_8oxcy")
 
@@ -299,6 +391,7 @@ margin = 0.1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.48008382, 2.2554448)
 
 [node name="Menu" type="Control" parent="Player/Camera3D" unique_id=1296592595]
+process_mode = 3
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -307,43 +400,71 @@ offset_bottom = 647.0
 script = ExtResource("7_1q5xi")
 
 [node name="continue" type="Button" parent="Player/Camera3D/Menu" unique_id=2120027559]
+process_mode = 3
 layout_mode = 0
 offset_left = 53.0
-offset_top = 77.0
+offset_top = 175.0
 offset_right = 328.0
-offset_bottom = 148.0
+offset_bottom = 246.0
+focus_neighbor_bottom = NodePath("../Settings")
 theme_override_font_sizes/font_size = 32
 text = "Сontinue"
 flat = true
 alignment = 0
 
 [node name="Settings" type="Button" parent="Player/Camera3D/Menu" unique_id=1172611775]
+process_mode = 3
 layout_mode = 0
 offset_left = 53.0
-offset_top = 191.0
+offset_top = 289.0
 offset_right = 328.0
-offset_bottom = 262.0
+offset_bottom = 360.0
+focus_neighbor_top = NodePath("../continue")
+focus_neighbor_bottom = NodePath("../Quit")
 theme_override_font_sizes/font_size = 32
 text = "Settings"
 flat = true
 alignment = 0
 
 [node name="Quit" type="Button" parent="Player/Camera3D/Menu" unique_id=1686252191]
+process_mode = 3
 layout_mode = 0
 offset_left = 53.0
-offset_top = 310.0
+offset_top = 408.0
 offset_right = 328.0
-offset_bottom = 381.0
+offset_bottom = 479.0
 theme_override_font_sizes/font_size = 32
 text = "Quit"
 flat = true
 alignment = 0
 
 [node name="Menu" type="Sprite2D" parent="Player/Camera3D/Menu" unique_id=182313870]
+process_mode = 3
+modulate = Color(1, 1, 1, 0.40392157)
 z_index = -1
 position = Vector2(575, 325)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("8_e63ir")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Camera3D/Menu" unique_id=88133812]
+process_mode = 3
+libraries/ = SubResource("AnimationLibrary_1huwv")
+speed_scale = 1.67
+
+[node name="Close" type="AudioStreamPlayer2D" parent="Player/Camera3D/Menu" unique_id=1398169582]
+process_mode = 3
+stream = ExtResource("9_1huwv")
+volume_db = 10.0
+
+[node name="Open" type="AudioStreamPlayer2D" parent="Player/Camera3D/Menu" unique_id=493072317]
+process_mode = 3
+stream = ExtResource("10_vqwn8")
+volume_db = 10.0
+
+[node name="Nakodka" type="AudioStreamPlayer2D" parent="Player/Camera3D/Menu" unique_id=1354070365]
+process_mode = 3
+stream = ExtResource("11_vqwn8")
+volume_db = -20.0
 
 [node name="Marker3D" type="Marker3D" parent="Player" unique_id=1519376558]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0656533, 0)
@@ -636,6 +757,7 @@ script = ExtResource("8_42sn8")
 transform = Transform3D(-4.3711488e-08, 0, -1.0000035, 0, 1, 0, 1.0000035, 0, -4.3711488e-08, 0.5326834, 0.7191434, 0.8239441)
 stream = ExtResource("6_aeg34")
 unit_size = 3.0
+max_distance = 18.0
 
 [node name="Radio" type="Area3D" parent="Заправка/Table/Radio" unique_id=989827045]
 
@@ -643,10 +765,20 @@ unit_size = 3.0
 transform = Transform3D(0.9999853, 0, -6.430412e-13, 0, 1, 0, 6.430412e-13, 0, 0.9999853, 1.2091932, 0.53359205, -0.00016784668)
 shape = SubResource("BoxShape3D_cfvsp")
 
-[node name="Sprite3D" type="Sprite3D" parent="Заправка/Table/Radio" unique_id=1445084859]
-transform = Transform3D(0.5, 0, -8.881785e-15, 0, 0.5, 0, 8.881785e-15, 0, 0.5, 0.688674, 0.990533, 0.23306465)
+[node name="E" type="Sprite3D" parent="Заправка/Table/Radio" unique_id=1445084859]
+transform = Transform3D(0.35, 0, -8.881785e-15, 0, 0.5, 0, 6.2172494e-15, 0, 0.5, 0.688674, 0.990533, 0.23306465)
 visible = false
 texture = ExtResource("10_42sn8")
+
+[node name="Alan" type="Sprite3D" parent="Заправка/Table/Radio" unique_id=1102321290]
+transform = Transform3D(0.1, 0, -1.776357e-15, 0, 0.1, 0, 1.776357e-15, 0, 0.1, 0.688674, 0.990533, 0.23306465)
+visible = false
+texture = ExtResource("18_415sf")
+
+[node name="Friend" type="Sprite3D" parent="Заправка/Table/Radio" unique_id=2136596451]
+transform = Transform3D(0.1, 0, -1.776357e-15, 0, 0.1, 0, 1.776357e-15, 0, 0.1, 0.688674, 0.990533, 0.23306465)
+visible = false
+texture = ExtResource("19_myhle")
 
 [node name="Касса" type="CSGBox3D" parent="Заправка/Table" unique_id=1456230582]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -18.435246, 0.12178171, -13.877081)
@@ -1316,7 +1448,7 @@ affect_navigation_mesh = true
 
 [node name="LineRenderer3D" type="MeshInstance3D" parent="." unique_id=157698636]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -2.7813015)
-mesh = SubResource("ImmediateMesh_f5ce8")
+mesh = SubResource("ImmediateMesh_1huwv")
 skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.4, 2, -2.7), Vector3(-0.4, 2, -2.7)])
@@ -1324,7 +1456,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D2" type="MeshInstance3D" parent="." unique_id=2062067384]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -7.1046586)
-mesh = SubResource("ImmediateMesh_1q5xi")
+mesh = SubResource("ImmediateMesh_vqwn8")
 skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -7.1), Vector3(-0.3, 1.9, -7.1)])
@@ -1332,7 +1464,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D3" type="MeshInstance3D" parent="." unique_id=139751098]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -11.084127)
-mesh = SubResource("ImmediateMesh_e63ir")
+mesh = SubResource("ImmediateMesh_yyosc")
 skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -11), Vector3(-0.3, 1.9, -11)])
@@ -1340,7 +1472,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D4" type="MeshInstance3D" parent="." unique_id=1666510536]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -16.122509)
-mesh = SubResource("ImmediateMesh_fse4r")
+mesh = SubResource("ImmediateMesh_82sth")
 skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -16), Vector3(-0.3, 1.9, -16)])
@@ -1361,7 +1493,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.628813, 0, 28.150846)
 
 [connection signal="timeout" from="Player/Camera3D/Control/Timer" to="Player/Camera3D/Control" method="_on_timer_timeout"]
 [connection signal="button_down" from="Player/Camera3D/Menu/continue" to="Player/Camera3D/Menu" method="_on_continue_button_down"]
+[connection signal="focus_entered" from="Player/Camera3D/Menu/continue" to="Player/Camera3D/Menu" method="focus_entered"]
+[connection signal="focus_entered" from="Player/Camera3D/Menu/Settings" to="Player/Camera3D/Menu" method="focus_entered"]
 [connection signal="button_down" from="Player/Camera3D/Menu/Quit" to="Player/Camera3D/Menu" method="_on_quit_button_down"]
+[connection signal="focus_entered" from="Player/Camera3D/Menu/Quit" to="Player/Camera3D/Menu" method="focus_entered"]
+[connection signal="animation_finished" from="Player/Camera3D/Menu/AnimationPlayer" to="Player/Camera3D/Menu" method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="Player/Area3D" to="Player/Camera3D/руки" method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Player/Area3D" to="Player/Camera3D/руки" method="_on_area_3d_area_exited"]
 [connection signal="_player_in" from="Заправка/Door" to="Player" method="player_in"]

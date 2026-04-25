@@ -150,16 +150,10 @@ shape = SubResource("BoxShape3D_b0ws2")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1373957410]
 libraries/ = SubResource("AnimationLibrary_6867o")
 
-[node name="Open" type="AudioStreamPlayer" parent="." unique_id=554820941]
-stream = ExtResource("3_vdjkt")
-
 [node name="model_0" type="MeshInstance3D" parent="." unique_id=1494514916]
 transform = Transform3D(-90, 1.35896e-05, 5.94021e-13, 0, -3.93402e-06, 90, 1.35896e-05, 90, 3.93402e-06, 0.389161, 1.89052, -1.66185)
 mesh = SubResource("ArrayMesh_7i7am")
 skeleton = NodePath("")
-
-[node name="Key" type="AudioStreamPlayer" parent="." unique_id=13068273]
-stream = ExtResource("3_vdjkt")
 
 [node name="Timer" type="Timer" parent="." unique_id=996576025]
 
@@ -171,6 +165,18 @@ transform = Transform3D(-0.870721, 0, -7.61208e-08, 0, 0.870721, 0, 7.61208e-08,
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2" unique_id=878836794]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.142665, -0.185814, -0.717203)
 shape = SubResource("BoxShape3D_b0ws2")
+
+[node name="Open" type="AudioStreamPlayer3D" parent="." unique_id=1630317992]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7179682, 1.1917982, 6.276677e-08)
+stream = ExtResource("3_vdjkt")
+volume_db = -15.0
+max_distance = 5.0
+
+[node name="Key" type="AudioStreamPlayer3D" parent="." unique_id=414461557]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5401342, 0.35818744, 4.722003e-08)
+stream = ExtResource("3_vdjkt")
+volume_db = -15.0
+max_distance = 5.0
 
 [connection signal="body_entered" from="Area3D" to="." method="Next_to_door"]
 [connection signal="body_exited" from="Area3D" to="." method="come_back"]
