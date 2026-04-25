@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dqubyb8be2uce" path="res://demo/car.fbx" id="1_6p4mw"]
 [ext_resource type="Script" uid="uid://d10p6q7yqf0fs" path="res://scripts/driving_in_my_car.gd" id="1_bbuju"]
 [ext_resource type="AudioStream" uid="uid://br4i15gyr5rrg" path="res://sounds/Driving in my car.mp3" id="3_1uvec"]
+[ext_resource type="AudioStream" uid="uid://bkng24ncgxqlt" path="res://sounds/car-parking-into-garage_myamkhvo.mp3" id="4_veqsq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bbuju"]
 size = Vector3(1, 1.9920654, 3.546875)
@@ -24,7 +25,12 @@ debug_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83085334, -0.095703125)
 shape = SubResource("BoxShape3D_bbuju")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=917379312]
+[node name="Driving" type="AudioStreamPlayer3D" parent="." unique_id=917379312]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0614537, 0)
 stream = ExtResource("3_1uvec")
+max_distance = 100.0
+
+[node name="Parking" type="AudioStreamPlayer3D" parent="." unique_id=1930585766]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0614537, 0)
+stream = ExtResource("4_veqsq")
 max_distance = 100.0

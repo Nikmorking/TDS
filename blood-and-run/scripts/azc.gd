@@ -121,7 +121,7 @@ func _on_emeny_body_entered(node):
 	if node.name == "Player":
 		print("Здох")
 		$Player/Camera3D/Control/Sprite2D.show()
-		$emeny/AudioStreamPlayer3D.play()
+		$Be.play()
 		get_tree().paused = true
 	pass # Replace with function body.
 

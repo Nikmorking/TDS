@@ -155,6 +155,9 @@ func _colling():
 						col.queue_free()
 				elif $"../../../Расходники".get_children().size() < col_rashod:
 					add_to_hand(col.name)
+					print(col.get_parent())
+					if Global.get_papa(2, col).name == "Ящики":
+						col.get_parent().get_node("AudioStreamPlayer3D").play()
 				else:
 					$"../.."._print_in_ui("               O \n \n ты утилизируй шнягу")
 					print("Продай что нибудь ненужное! Но чтобы продать что то ненужное,сначало нужно купить что-то ненужное, а у нас денег нет.")

@@ -11,7 +11,10 @@ func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	pass # Replace with function body.
 
-
+func get_papa(col: float, sel: Node) -> Node:
+	for i in col:
+		sel = sel.get_parent()
+	return sel
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

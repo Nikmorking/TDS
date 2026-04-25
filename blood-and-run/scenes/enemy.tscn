@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://k1wiroq3tl5l" path="res://scripts/enemy.gd" id="1_7p1mj"]
 [ext_resource type="PackedScene" uid="uid://cqb1eyg10nhcr" path="res://Models/Running.fbx" id="2_md0e3"]
-[ext_resource type="AudioStream" uid="uid://b07qixpxd5cqt" path="res://sounds/sound-brue-brue.wav" id="3_4ra3w"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wlgop"]
 radius = 0.7011719
@@ -49,9 +48,6 @@ transform = Transform3D(-149.99995, 0, -1.3113413e-05, 0, 149.99995, 0, 1.311341
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1892024624]
 transform = Transform3D(0.99999976, 0, 3.5882408e-13, 0, 0.99999976, 0, -3.5882408e-13, 0, 0.99999976, 0, 1.7188387, 0)
 shape = SubResource("CapsuleShape3D_md0e3")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1858855515]
-stream = ExtResource("3_4ra3w")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

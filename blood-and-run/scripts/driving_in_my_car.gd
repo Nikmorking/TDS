@@ -3,6 +3,7 @@ extends "res://scripts/no_human.gd"
 var start = false
 var i = 0
 var n = 2
+var frame = 0
 
 signal end_put
 func _ready():
@@ -18,13 +19,15 @@ func _ready():
 	movement_target_position = mtp_list[0].position
 
 func _physics_process(delta):
-	print(i,n, mtp_list)
 	if navigation_agent.is_navigation_finished() and start:
 		print("dsfg"+str(i))
 		i += 1
 		if i >n: 
 			start =false
 			end_put.emit()
+			frame = $Driving.get_playback_position()
+			$Parking.play()
+			$Driving.stop()
 			pass
 		else:
 			movement_target_position = mtp_list[i].position
@@ -34,9 +37,17 @@ func _physics_process(delta):
 		go()
 		move_and_slide()
 
+func conti():
+	$Parking.stop()
+	$Driving.play(frame)
+
+
 func _start():
-	#if randi_range(0, 10) > 9:
-	$AudioStreamPlayer3D.play()
+	if randi_range(0, 10) > 9:
+		$Driving.stream = load("res://sounds/Driving in my car.mp3")
+	else:
+		$Driving.stream = load("res://sounds/inside-car-wet-driving_fydabreu.mp3")
+	$Driving.play()
 	movement_target_position = mtp_list[i].position
 	actor_setup()
 	start = true
