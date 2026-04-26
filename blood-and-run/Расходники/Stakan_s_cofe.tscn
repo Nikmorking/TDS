@@ -1,43 +1,60 @@
 [gd_scene format=3 uid="uid://cymwf4jdrq86o"]
 
 [ext_resource type="Script" uid="uid://6mu3mfjfp1wg" path="res://Models/1.gd" id="1_hkkfr"]
-[ext_resource type="Texture2D" uid="uid://dic2nk8otrrsi" path="res://Texture/Door_03.jpg" id="2_3g81v"]
+[ext_resource type="Shader" uid="uid://dq81n42ia7ync" path="res://Models/Glass.gdshader" id="2_mj22q"]
+[ext_resource type="AudioStream" uid="uid://b60fuoqyiai43" path="res://sounds/Steklo.wav" id="3_4t0qe"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3ngne"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3g81v"]
 rough = true
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_m3jal"]
-size = Vector3(1.6064453, 0.4043274, 0.55773926)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1wodg"]
+render_priority = 0
+shader = ExtResource("2_mj22q")
+shader_parameter/albedo = Color(6, 1, 1, 0)
+shader_parameter/roughness = 0.5
+shader_parameter/normal_strength = 8.0
+shader_parameter/edge_color = Color(0, 0, 0, 0)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y5b11"]
-albedo_color = Color(0.6452097, 0.6452098, 0.64520955, 1)
-albedo_texture = ExtResource("2_3g81v")
-albedo_texture_force_srgb = true
-roughness = 0.6
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_d5ioe"]
+height = 0.5612793
+radius = 0.23095703
 
-[node name="snack" type="RigidBody3D" unique_id=1350055056]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hkkfr"]
+albedo_color = Color(0.36074692, 0.21508199, 0, 0.69100004)
+
+[node name="Stakan_s_cofe" type="RigidBody3D" unique_id=1350055056]
 collision_layer = 2
 collision_mask = 2
 mass = 1000.0
-physics_material_override = SubResource("PhysicsMaterial_3ngne")
+physics_material_override = SubResource("PhysicsMaterial_3g81v")
 gravity_scale = 0.0
 script = ExtResource("1_hkkfr")
-named = "snack"
+named = "Stakan_cofe"
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=544691532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10996246, 0)
+radius = 0.21972656
+height = 0.54512024
+material = SubResource("ShaderMaterial_1wodg")
 
 [node name="Coll" type="CollisionShape3D" parent="." unique_id=2122706237]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14406824, 0.051892288, -0.078308105)
-shape = SubResource("BoxShape3D_m3jal")
-disabled = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.101620674, 0)
+shape = SubResource("CylinderShape3D_d5ioe")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1009616703]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16149902, 0.052001957, -0.07785034)
-size = Vector3(1.6374512, 0.39160156, 0.5664673)
-material = SubResource("StandardMaterial3D_y5b11")
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." unique_id=242591208]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.172741, 0)
+radius = 0.17
+height = 0.42407227
+material = SubResource("StandardMaterial3D_hkkfr")
 
-[node name="RayCast3D" type="RayCast3D" parent="." unique_id=263184028]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16157484, 0)
-target_position = Vector3(0, -0.1, 0)
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1250520358]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30749547, 0.31023705, 0.24130803)
+target_position = Vector3(-0.5, -0.6, -0.4)
 
-[node name="Bonk" type="AudioStreamPlayer3D" parent="." unique_id=743727208]
+[node name="Bonk" type="AudioStreamPlayer3D" parent="." unique_id=831334684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004357636, 0.10528526, 0)
+stream = ExtResource("3_4t0qe")
+volume_db = 2.0
+max_db = 0.0
+max_distance = 10.0
 bus = &"Effect"
