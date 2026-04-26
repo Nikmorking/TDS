@@ -57,3 +57,4 @@ stream = ExtResource("3_4t0qe")
 volume_db = 2.0
 max_db = 0.0
 max_distance = 10.0
+bus = &"Effect"

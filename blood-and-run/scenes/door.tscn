@@ -173,12 +173,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7179682, 1.1917982, 6.27667
 stream = ExtResource("3_vdjkt")
 volume_db = -15.0
 max_distance = 5.0
+bus = &"Effect"
 
 [node name="Key" type="AudioStreamPlayer3D" parent="." unique_id=414461557]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5401342, 0.35818744, 4.722003e-08)
 stream = ExtResource("3_vdjkt")
 volume_db = -15.0
 max_distance = 5.0
+bus = &"Effect"
 
 [connection signal="body_entered" from="Area3D" to="." method="Next_to_door"]
 [connection signal="body_exited" from="Area3D" to="." method="come_back"]

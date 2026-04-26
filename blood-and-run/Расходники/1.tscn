@@ -48,3 +48,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.34914535, 0)
 stream = ExtResource("3_dmywo")
 max_db = 0.0
 max_distance = 8.0
+bus = &"Effect"
