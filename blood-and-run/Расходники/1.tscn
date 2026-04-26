@@ -24,8 +24,8 @@ radius = 0.25927734
 height = 1.4789727
 
 [node name="Стаканчики" type="RigidBody3D" unique_id=1350055056]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 6
+collision_mask = 6
 mass = 1000.0
 physics_material_override = SubResource("PhysicsMaterial_qrpuc")
 gravity_scale = 0.0

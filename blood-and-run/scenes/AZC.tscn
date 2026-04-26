@@ -731,7 +731,7 @@ shape = SubResource("BoxShape3D_88m6n")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Заправка/Ящики/Со стаканами" unique_id=1195301895]
 stream = ExtResource("18_82sth")
-volume_db = 20.0
+volume_db = 25.0
 
 [node name="С кофе" type="CSGBox3D" parent="Заправка/Ящики" unique_id=1888951877]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.174961, 1.1547642, 5.9884896)
@@ -746,7 +746,7 @@ shape = SubResource("BoxShape3D_88m6n")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Заправка/Ящики/С кофе" unique_id=1931413059]
 stream = ExtResource("18_82sth")
-volume_db = 20.0
+volume_db = 25.0
 
 [node name="c батонами" type="CSGBox3D" parent="Заправка/Ящики" unique_id=1306427694]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.174961, 1.1547642, 5.9884896)
@@ -761,7 +761,7 @@ shape = SubResource("BoxShape3D_88m6n")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Заправка/Ящики/c батонами" unique_id=634021175]
 stream = ExtResource("18_82sth")
-volume_db = 20.0
+volume_db = 25.0
 
 [node name="с снеками" type="CSGBox3D" parent="Заправка/Ящики" unique_id=442880669]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.174961, 1.1547642, -1.7486758)
@@ -776,7 +776,7 @@ shape = SubResource("BoxShape3D_88m6n")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Заправка/Ящики/с снеками" unique_id=431411444]
 stream = ExtResource("18_82sth")
-volume_db = 20.0
+volume_db = 25.0
 
 [node name="Table" type="Node" parent="Заправка" unique_id=467835246]
 

@@ -17,8 +17,8 @@ size = Vector3(0.5085144, 1.0125885, 1.0997925)
 
 [node name="Cofe" type="RigidBody3D" unique_id=1350055056]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
-collision_layer = 2
-collision_mask = 2
+collision_layer = 6
+collision_mask = 6
 mass = 1000.0
 physics_material_override = SubResource("PhysicsMaterial_3drk6")
 gravity_scale = 0.0
