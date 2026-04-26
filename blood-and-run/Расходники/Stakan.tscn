@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://6mu3mfjfp1wg" path="res://Models/1.gd" id="1_d5ioe"]
 [ext_resource type="Shader" uid="uid://dq81n42ia7ync" path="res://Models/Glass.gdshader" id="2_1y1h2"]
+[ext_resource type="AudioStream" uid="uid://b60fuoqyiai43" path="res://sounds/Steklo.wav" id="3_qasdk"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t61dd"]
 rough = true
@@ -46,3 +47,11 @@ material = SubResource("ShaderMaterial_qvdv1")
 [node name="Coll2" type="CollisionShape3D" parent="." unique_id=548571603]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.036551297, 0)
 shape = SubResource("CylinderShape3D_d5ioe")
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1092228939]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30749547, 0.35833055, 0.19180685)
+target_position = Vector3(-0.5, -0.7, -0.4)
+
+[node name="Bonk" type="AudioStreamPlayer3D" parent="." unique_id=568647178]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07277012, 0)
+stream = ExtResource("3_qasdk")

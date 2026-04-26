@@ -30,3 +30,10 @@ disabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16149902, -0.044677734, -0.016418457)
 material_override = SubResource("StandardMaterial3D_1bhac")
 size = Vector3(1.6374512, 0.91064453, 0.68933105)
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=434534155]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5237291, 0)
+target_position = Vector3(0, -0.1, 0)
+
+[node name="Bonk" type="AudioStreamPlayer3D" parent="." unique_id=1074524738]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36215428, 0)

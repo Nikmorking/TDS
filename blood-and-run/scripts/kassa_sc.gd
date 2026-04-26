@@ -46,6 +46,7 @@ func sel(str: String):
 
 
 func cofe_gotovo():
+	$Cofe_machine/AudioStreamPlayer3D.stop()
 	$Cofe_machine/SubViewport/Control/Label.text = "Кофе готово"
 	cofe -= 1
 	cofe_gotova = true

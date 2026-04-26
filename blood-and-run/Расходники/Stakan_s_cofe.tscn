@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://6mu3mfjfp1wg" path="res://Models/1.gd" id="1_hkkfr"]
 [ext_resource type="Shader" uid="uid://dq81n42ia7ync" path="res://Models/Glass.gdshader" id="2_mj22q"]
+[ext_resource type="AudioStream" uid="uid://b60fuoqyiai43" path="res://sounds/Steklo.wav" id="3_4t0qe"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3g81v"]
 rough = true
@@ -45,3 +46,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.172741, 0)
 radius = 0.17
 height = 0.42407227
 material = SubResource("StandardMaterial3D_hkkfr")
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1250520358]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30749547, 0.31023705, 0.24130803)
+target_position = Vector3(-0.5, -0.6, -0.4)
+
+[node name="Bonk" type="AudioStreamPlayer3D" parent="." unique_id=831334684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004357636, 0.10528526, 0)
+stream = ExtResource("3_4t0qe")
+volume_db = 2.0
+max_db = 0.0
+max_distance = 10.0

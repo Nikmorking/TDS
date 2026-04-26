@@ -61,3 +61,10 @@ disabled = true
 [node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=1668595733]
 transform = Transform3D(0.31219006, 0, 0, 0, 0.80072516, 0, 0, 0, 2.1415493, -0.5670735, 0, -0.01700288)
 material = SubResource("ShaderMaterial_rqutn")
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=185065799]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5661643, 0)
+target_position = Vector3(0, -0.1, 0)
+
+[node name="Bonk" type="AudioStreamPlayer3D" parent="." unique_id=917744248]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.40458947, 0)

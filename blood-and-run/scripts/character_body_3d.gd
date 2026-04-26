@@ -5,7 +5,7 @@ var SPEED = 5.0
 var JUMP_VELOCITY = 4.5
 var in_door = false
 
-var mouse_sens = 0.3
+@export var mouse_sens = 0.3
 var camera_anglev=0
 var JumpVel: Vector3
 var walk = false
@@ -60,6 +60,11 @@ func _physics_process(_delta: float) -> void:
 		#if camera_anglev +changev>-50 and camera_anglev + changev < 50:
 			#camera_anglev+=changev
 			#$Camera3D.rotate_x(deg_to_rad(changev))
+	if velocity.x > 1 or velocity.z >1:
+		if !$AudioStreamPlayer3D.playing:
+			$AudioStreamPlayer3D.play()
+	else:
+		$AudioStreamPlayer3D.stop()
 
 
 
@@ -91,3 +96,8 @@ func _print_in_ui(text:String):
 	$Camera3D/Control/Label.text = text
 	$Camera3D/Control/Timer.start()
 	
+
+
+func _on_h_slider_value_changed(value):
+	mouse_sens = value
+	pass # Replace with function body.

@@ -34,3 +34,9 @@ disabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16149902, 0.052001957, -0.07785034)
 size = Vector3(1.6374512, 0.39160156, 0.5664673)
 material = SubResource("StandardMaterial3D_y5b11")
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=263184028]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16157484, 0)
+target_position = Vector3(0, -0.1, 0)
+
+[node name="Bonk" type="AudioStreamPlayer3D" parent="." unique_id=743727208]

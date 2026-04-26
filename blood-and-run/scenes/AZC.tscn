@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://bafg5x2p8c6f2" path="res://Texture/Freind.png" id="19_myhle"]
 [ext_resource type="PackedScene" uid="uid://durjvg6h6emyd" path="res://scenes/driving in my car.tscn" id="19_qyfae"]
 [ext_resource type="PackedScene" uid="uid://d1k48syuq2cyf" path="res://scenes/enemy.tscn" id="20_emvpd"]
+[ext_resource type="AudioStream" uid="uid://dhg1s4pmdoph0" path="res://sounds/coffeegrinder1.mp3" id="25_w5m4x"]
 [ext_resource type="AudioStream" uid="uid://b07qixpxd5cqt" path="res://sounds/sound-brue-brue.wav" id="31_yyosc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0u5sq"]
@@ -320,13 +321,13 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Arr
 geometry_parsed_geometry_type = 0
 agent_radius = 1.3
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_82sth"]
-
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_w5m4x"]
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_s6jno"]
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_173o4"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_tsu7c"]
 
 [node name="Node3D" type="Node3D" unique_id=2010904094]
 script = ExtResource("1_p6l7r")
@@ -394,7 +395,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.48008382, 2.2554448)
 
 [node name="Menu" type="Control" parent="Player/Camera3D" unique_id=1296592595]
 process_mode = 3
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1150.0
@@ -468,12 +468,24 @@ process_mode = 3
 stream = ExtResource("11_vqwn8")
 volume_db = -20.0
 
+[node name="HSlider" type="HSlider" parent="Player/Camera3D/Menu" unique_id=1665420710]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 547.0
+offset_right = 832.0
+offset_bottom = 602.0
+min_value = 0.1
+max_value = 1.0
+step = 0.05
+value = 0.30000000000000004
+
 [node name="Marker3D" type="Marker3D" parent="Player" unique_id=1519376558]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0656533, 0)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Player" unique_id=1245125432]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2020961, 0)
 stream = ExtResource("5_88m6n")
+max_db = 0.0
 
 [node name="Area3D" type="Area3D" parent="Player" unique_id=67127291]
 collision_layer = 128
@@ -490,14 +502,14 @@ environment = SubResource("Environment_0u5sq")
 
 [node name="Door" parent="Заправка" unique_id=582810663 instance=ExtResource("1_0u5sq")]
 transform = Transform3D(-2.0000002, 0, -1.7484557e-07, 0, 1.3631004, 0, 1.7484557e-07, 0, -2.0000002, -28.869555, -0.63350385, -2.679078)
-collision_layer = 5
-collision_mask = 5
+collision_layer = 15
+collision_mask = 15
 start_rot = Vector3(0, 180, 0)
 
 [node name="Door2" parent="Заправка" unique_id=1663869990 instance=ExtResource("5_vynuk")]
 transform = Transform3D(-0.99999964, 0, -8.742275e-08, 0, 1, 0, 8.742275e-08, 0, -0.99999964, -9.367741, -0.20644337, -10.988842)
-collision_layer = 7
-collision_mask = 7
+collision_layer = 15
+collision_mask = 15
 start_rot = Vector3(0, -90, 0)
 
 [node name="Полки" type="Node" parent="Заправка" unique_id=2140927642]
@@ -868,6 +880,12 @@ text = "Нет стакана"
 [node name="Sprite3D" type="Sprite3D" parent="Заправка/Table/Касса/Cofe_machine" unique_id=559035695]
 transform = Transform3D(-4.3711342e-08, 0, 0.99999946, 0, 0.9999999, 0, -0.99999887, 0, -4.371136e-08, 0.55988693, 0.56683123, 0.32469082)
 texture = SubResource("ViewportTexture_b3ns2")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Заправка/Table/Касса/Cofe_machine" unique_id=1088704400]
+stream = ExtResource("25_w5m4x")
+volume_db = -5.0
+max_db = 0.0
+max_distance = 5.0
 
 [node name="Снеки" type="Area3D" parent="Заправка/Table/Касса" unique_id=886910663]
 transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 0.99999976, -3.0468407, 1.1163089, 0.19849682)
@@ -1467,7 +1485,7 @@ affect_navigation_mesh = true
 
 [node name="LineRenderer3D" type="MeshInstance3D" parent="." unique_id=157698636]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -2.7813015)
-mesh = SubResource("ImmediateMesh_82sth")
+mesh = SubResource("ImmediateMesh_w5m4x")
 skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.4, 2, -2.7), Vector3(-0.4, 2, -2.7)])
@@ -1475,7 +1493,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D2" type="MeshInstance3D" parent="." unique_id=2062067384]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -7.1046586)
-mesh = SubResource("ImmediateMesh_w5m4x")
+mesh = SubResource("ImmediateMesh_s6jno")
 skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -7.1), Vector3(-0.3, 1.9, -7.1)])
@@ -1483,7 +1501,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D3" type="MeshInstance3D" parent="." unique_id=139751098]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -11.084127)
-mesh = SubResource("ImmediateMesh_s6jno")
+mesh = SubResource("ImmediateMesh_173o4")
 skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -11), Vector3(-0.3, 1.9, -11)])
@@ -1491,7 +1509,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D4" type="MeshInstance3D" parent="." unique_id=1666510536]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -16.122509)
-mesh = SubResource("ImmediateMesh_173o4")
+mesh = SubResource("ImmediateMesh_tsu7c")
 skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -16), Vector3(-0.3, 1.9, -16)])
@@ -1513,6 +1531,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.628813, 0, 28.150846)
 [node name="Be" type="AudioStreamPlayer" parent="." unique_id=1417312252]
 stream = ExtResource("31_yyosc")
 
+[node name="Tick" type="Timer" parent="." unique_id=454430915]
+wait_time = 0.05
+autostart = true
+
 [connection signal="timeout" from="Player/Camera3D/Control/Timer" to="Player/Camera3D/Control" method="_on_timer_timeout"]
 [connection signal="button_down" from="Player/Camera3D/Menu/continue" to="Player/Camera3D/Menu" method="_on_continue_button_down"]
 [connection signal="focus_entered" from="Player/Camera3D/Menu/continue" to="Player/Camera3D/Menu" method="focus_entered"]
@@ -1520,6 +1542,7 @@ stream = ExtResource("31_yyosc")
 [connection signal="button_down" from="Player/Camera3D/Menu/Quit" to="Player/Camera3D/Menu" method="_on_quit_button_down"]
 [connection signal="focus_entered" from="Player/Camera3D/Menu/Quit" to="Player/Camera3D/Menu" method="focus_entered"]
 [connection signal="animation_finished" from="Player/Camera3D/Menu/AnimationPlayer" to="Player/Camera3D/Menu" method="_on_animation_player_animation_finished"]
+[connection signal="value_changed" from="Player/Camera3D/Menu/HSlider" to="Player" method="_on_h_slider_value_changed"]
 [connection signal="area_entered" from="Player/Area3D" to="Player/Camera3D/руки" method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Player/Area3D" to="Player/Camera3D/руки" method="_on_area_3d_area_exited"]
 [connection signal="_player_in" from="Заправка/Door" to="Player" method="player_in"]
@@ -1538,3 +1561,4 @@ stream = ExtResource("31_yyosc")
 [connection signal="end_put" from="driving in my car" to="." method="_on_driving_in_my_car_end_put"]
 [connection signal="body_entered" from="emeny" to="." method="_on_emeny_body_entered"]
 [connection signal="timeout" from="Timer2" to="." method="_stop_run"]
+[connection signal="timeout" from="Tick" to="Player/Camera3D/руки" method="_on_tik_timeout"]

@@ -14,6 +14,8 @@ var zp = false
 var zp_in = false
 var points: Array 
 var col_rashod = 15
+var posled_naklon
+var papa: Node3D
 
 #var obj: RigidBody3D
 var obj: Node3D
@@ -21,14 +23,16 @@ var kol = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	papa = get_parent()
+	posled_naklon = papa.rotation_degrees.x
 	pass # Replace with function body.
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_open"):
 		print("click")
-		if !get_parent().get_parent().in_door and obj:
+		if obj:
 			_stavit_rashodnic()
-		if !obj and !get_parent().get_parent().in_door: 
+		else: 
 			if $RayCast3D.is_colliding():
 				_colling()
 	if Input.is_action_just_pressed("+"):
@@ -136,6 +140,7 @@ func _colling():
 						if kasa.cofe > 0:
 							if kasa.stakan:
 								kasa.sel("Варка")
+								kasa.get_node("Cofe_machine/AudioStreamPlayer3D").play()
 							else:
 								kasa.sel("нет стакана")
 						else:
@@ -161,3 +166,17 @@ func _colling():
 				else:
 					$"../.."._print_in_ui("               O \n \n ты утилизируй шнягу")
 					print("Продай что нибудь ненужное! Но чтобы продать что то ненужное,сначало нужно купить что-то ненужное, а у нас денег нет.")
+
+
+func _on_tik_timeout():
+	print(obj)
+	var tek_nakl = papa.rotation_degrees.x
+	if obj:
+		if obj.named == "Cofe":
+			print(absf(tek_nakl - posled_naklon))
+			if absf(papa.rotation_degrees.x - posled_naklon) > 16:
+				obj.get_node("Hik").play()
+			elif absf(tek_nakl - posled_naklon) < 7:
+				obj.get_node("Hik").stop()
+	posled_naklon = tek_nakl
+	pass # Replace with function body.
