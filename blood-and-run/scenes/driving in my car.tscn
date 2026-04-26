@@ -1,37 +1,43 @@
 [gd_scene format=3 uid="uid://durjvg6h6emyd"]
 
-[ext_resource type="PackedScene" uid="uid://dqubyb8be2uce" path="res://demo/car.fbx" id="1_6p4mw"]
-[ext_resource type="Script" uid="uid://d10p6q7yqf0fs" path="res://scripts/driving_in_my_car.gd" id="1_bbuju"]
-[ext_resource type="AudioStream" uid="uid://br4i15gyr5rrg" path="res://sounds/Driving in my car.mp3" id="3_1uvec"]
-[ext_resource type="AudioStream" uid="uid://bkng24ncgxqlt" path="res://sounds/car-parking-into-garage_myamkhvo.mp3" id="4_veqsq"]
+[ext_resource type="Script" uid="uid://6mu3mfjfp1wg" path="res://Models/1.gd" id="1_bbuju"]
+[ext_resource type="Texture2D" uid="uid://dic2nk8otrrsi" path="res://Texture/Door_03.jpg" id="2_1uvec"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_bbuju"]
-size = Vector3(1, 1.9920654, 3.546875)
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3ngne"]
+rough = true
 
-[node name="driving in my car" type="CharacterBody3D" unique_id=1740333887]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
-collision_layer = 4
-collision_mask = 4
+[sub_resource type="BoxShape3D" id="BoxShape3D_m3jal"]
+size = Vector3(1.6064453, 0.4043274, 0.55773926)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y5b11"]
+albedo_color = Color(0.6452097, 0.6452098, 0.64520955, 1)
+albedo_texture = ExtResource("2_1uvec")
+albedo_texture_force_srgb = true
+roughness = 0.6
+
+[node name="snack" type="RigidBody3D" unique_id=1350055056]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+collision_layer = 2
+collision_mask = 2
+mass = 1000.0
+physics_material_override = SubResource("PhysicsMaterial_3ngne")
+gravity_scale = 0.0
 script = ExtResource("1_bbuju")
-movement_speed = 10.0
+named = "snack"
 
-[node name="car" parent="." unique_id=1000964647 instance=ExtResource("1_6p4mw")]
-transform = Transform3D(2, 0, 0, 0, 1.5, 0, 0, 0, 2, 0, 1.1580315, 0)
+[node name="Coll" type="CollisionShape3D" parent="." unique_id=2122706237]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14406824, 0.051892288, -0.078308105)
+shape = SubResource("BoxShape3D_m3jal")
+disabled = true
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=576597461]
-debug_enabled = true
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1009616703]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16149902, 0.052001957, -0.07785034)
+size = Vector3(1.6374512, 0.39160156, 0.5664673)
+material = SubResource("StandardMaterial3D_y5b11")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=648133470]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83085334, -0.095703125)
-shape = SubResource("BoxShape3D_bbuju")
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=263184028]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16157484, 0)
+target_position = Vector3(0, -0.1, 0)
 
-[node name="Driving" type="AudioStreamPlayer3D" parent="." unique_id=917379312]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0614537, 0)
-stream = ExtResource("3_1uvec")
-max_distance = 100.0
-bus = &"Music"
-
-[node name="Parking" type="AudioStreamPlayer3D" parent="." unique_id=1930585766]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0614537, 0)
-stream = ExtResource("4_veqsq")
-max_distance = 100.0
+[node name="Bonk" type="AudioStreamPlayer3D" parent="." unique_id=743727208]
+bus = &"Effect"

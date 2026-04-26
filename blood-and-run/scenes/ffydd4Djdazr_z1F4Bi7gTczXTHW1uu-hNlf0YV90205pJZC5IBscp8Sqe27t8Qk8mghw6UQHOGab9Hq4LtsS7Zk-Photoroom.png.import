@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dnpn88q0asid1"
-path.etc2="res://.godot/imported/ffydd4Djdazr_z1F4Bi7gTczXTHW1uu-hNlf0YV90205pJZC5IBscp8Sqe27t8Qk8mghw6UQHOGab9Hq4LtsS7Zk-Photoroom.png-8eedd028c0eb23d88422f1d2e7cadc9a.etc2.ctex"
+path.s3tc="res://.godot/imported/ffydd4Djdazr_z1F4Bi7gTczXTHW1uu-hNlf0YV90205pJZC5IBscp8Sqe27t8Qk8mghw6UQHOGab9Hq4LtsS7Zk-Photoroom.png-8eedd028c0eb23d88422f1d2e7cadc9a.s3tc.ctex"
 metadata={
-"imported_formats": ["etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://scenes/ffydd4Djdazr_z1F4Bi7gTczXTHW1uu-hNlf0YV90205pJZC5IBscp8Sqe27t8Qk8mghw6UQHOGab9Hq4LtsS7Zk-Photoroom.png"
-dest_files=["res://.godot/imported/ffydd4Djdazr_z1F4Bi7gTczXTHW1uu-hNlf0YV90205pJZC5IBscp8Sqe27t8Qk8mghw6UQHOGab9Hq4LtsS7Zk-Photoroom.png-8eedd028c0eb23d88422f1d2e7cadc9a.etc2.ctex"]
+dest_files=["res://.godot/imported/ffydd4Djdazr_z1F4Bi7gTczXTHW1uu-hNlf0YV90205pJZC5IBscp8Sqe27t8Qk8mghw6UQHOGab9Hq4LtsS7Zk-Photoroom.png-8eedd028c0eb23d88422f1d2e7cadc9a.s3tc.ctex"]
 
 [params]
 
