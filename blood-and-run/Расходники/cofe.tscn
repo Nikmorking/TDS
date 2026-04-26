@@ -12,6 +12,9 @@ albedo_color = Color(0.51134354, 0.31556293, 2.8878452e-07, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_lcvcs"]
 size = Vector3(1, 1.1016235, 0.4501953)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5mnjj"]
+size = Vector3(0.5085144, 1.0125885, 1.0997925)
+
 [node name="Cofe" type="RigidBody3D" unique_id=1350055056]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 collision_layer = 2
@@ -48,4 +51,15 @@ stream = ExtResource("2_5mnjj")
 wait_time = 0.4
 one_shot = true
 
+[node name="Area3D" type="Area3D" parent="." unique_id=387235776]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2791126, 0, 1.22004e-08)
+collision_layer = 4
+collision_mask = 4
+
+[node name="Coll" type="CollisionShape3D" parent="Area3D" unique_id=453359931]
+transform = Transform3D(1, 0, 0, 0, 0.0016755613, 0.99999857, 0, -0.99999857, 0.0016755613, 0.2825225, 0.11604956, 0.035983074)
+shape = SubResource("BoxShape3D_5mnjj")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

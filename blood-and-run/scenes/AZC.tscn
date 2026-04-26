@@ -485,7 +485,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0656533, 0)
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Player" unique_id=1245125432]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2020961, 0)
 stream = ExtResource("5_88m6n")
-max_db = 0.0
+volume_db = -10.0
+max_db = -10.0
+bus = &"Effect"
 
 [node name="Area3D" type="Area3D" parent="Player" unique_id=67127291]
 collision_layer = 128
@@ -789,6 +791,7 @@ stream = ExtResource("6_aeg34")
 unit_size = 3.0
 max_db = 0.0
 max_distance = 19.0
+bus = &"Music"
 
 [node name="Radio" type="Area3D" parent="Заправка/Table/Radio" unique_id=989827045]
 
@@ -825,8 +828,8 @@ radius = 0.2397461
 height = 1.6525879
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Заправка/Table/Касса" unique_id=1416952522]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Заправка/Table/Касса/StaticBody3D" unique_id=81443600]
 transform = Transform3D(0.9999727, 0, 0, 0, 1, 0, 0, 0, 0.9999727, -0.078897476, 0, 0.0723238)
@@ -886,6 +889,7 @@ stream = ExtResource("25_w5m4x")
 volume_db = -5.0
 max_db = 0.0
 max_distance = 5.0
+bus = &"Effect"
 
 [node name="Снеки" type="Area3D" parent="Заправка/Table/Касса" unique_id=886910663]
 transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 0.99999976, -3.0468407, 1.1163089, 0.19849682)

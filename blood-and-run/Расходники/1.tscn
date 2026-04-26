@@ -15,9 +15,13 @@ shader_parameter/roughness = 0.5
 shader_parameter/normal_strength = 8.0
 shader_parameter/edge_color = Color(2, 2, 2, 1)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dmywo"]
+height = 1.31427
+radius = 0.23339844
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_813lh"]
-radius = 0.22558594
-height = 1.3520393
+radius = 0.25927734
+height = 1.4789727
 
 [node name="Стаканчики" type="RigidBody3D" unique_id=1350055056]
 collision_layer = 2
@@ -35,13 +39,8 @@ height = 1.3181763
 material = SubResource("ShaderMaterial_5bt6k")
 
 [node name="Coll" type="CollisionShape3D" parent="." unique_id=2122706237]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14130211, 0)
-shape = SubResource("CapsuleShape3D_813lh")
-disabled = true
-
-[node name="RayCast3D" type="RayCast3D" parent="." unique_id=191920932]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96188676, 0.4519897)
-target_position = Vector3(0, -1.6, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1718502, 0)
+shape = SubResource("CylinderShape3D_dmywo")
 
 [node name="Bonk" type="AudioStreamPlayer3D" parent="." unique_id=193144984]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.34914535, 0)
@@ -49,3 +48,14 @@ stream = ExtResource("3_dmywo")
 max_db = 0.0
 max_distance = 8.0
 bus = &"Effect"
+
+[node name="Area3D" type="Area3D" parent="." unique_id=945547381]
+collision_layer = 0
+collision_mask = 4
+
+[node name="Coll" type="CollisionShape3D" parent="Area3D" unique_id=1979937752]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16884315, 0)
+shape = SubResource("CapsuleShape3D_813lh")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

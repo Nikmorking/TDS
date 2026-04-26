@@ -15,6 +15,9 @@ albedo_texture = ExtResource("2_3ngne")
 albedo_texture_force_srgb = true
 roughness = 0.6
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ngne"]
+size = Vector3(1.7126465, 0.8997345, 0.4354515)
+
 [node name="snack" type="RigidBody3D" unique_id=1350055056]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 collision_layer = 2
@@ -41,3 +44,12 @@ target_position = Vector3(0, -0.1, 0)
 
 [node name="Bonk" type="AudioStreamPlayer3D" parent="." unique_id=743727208]
 bus = &"Effect"
+
+[node name="Area3D" type="Area3D" parent="." unique_id=239797049]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3757767, 0, 0)
+collision_layer = 4
+collision_mask = 4
+
+[node name="Coll" type="CollisionShape3D" parent="Area3D" unique_id=1458708107]
+transform = Transform3D(1, 0, 0, 0, 0.0016755613, 0.99999857, 0, -0.99999857, 0.0016755613, 0.26135856, 0.08519106, -0.075900465)
+shape = SubResource("BoxShape3D_3ngne")

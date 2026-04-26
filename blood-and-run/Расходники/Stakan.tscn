@@ -19,6 +19,10 @@ shader_parameter/edge_color = Color(0, 0.8, 0, 1)
 height = 0.5612793
 radius = 0.23095703
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qasdk"]
+radius = 0.25927734
+height = 0.6845625
+
 [node name="Stakan" type="RigidBody3D" unique_id=1350055056]
 collision_layer = 2
 collision_mask = 2
@@ -56,3 +60,14 @@ target_position = Vector3(-0.5, -0.7, -0.4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07277012, 0)
 stream = ExtResource("3_qasdk")
 bus = &"Effect"
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1789499469]
+collision_layer = 4
+collision_mask = 4
+
+[node name="Coll" type="CollisionShape3D" parent="Area3D" unique_id=407079662]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.051407605, 0)
+shape = SubResource("CapsuleShape3D_qasdk")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

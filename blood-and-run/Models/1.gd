@@ -8,16 +8,22 @@ var play = true
 func _ready():
 	pass # Replace with function body.
 
-func _physics_process(delta):
-	if $RayCast3D.is_colliding():
-		if play:
-			$Bonk.play()
-			play = false
-			if $Timer:
-				$Timer.start()
-	else: play = true
 
 
 func _on_timer_timeout():
 	$Bonk.stop()
+	pass # Replace with function body.
+
+
+func _on_area_3d_body_entered(body):
+	if play:
+		$Bonk.play()
+		play = false
+		if $Timer:
+			$Timer.start()
+	pass # Replace with function body.
+
+
+func _on_area_3d_body_exited(body):
+	play = true
 	pass # Replace with function body.
