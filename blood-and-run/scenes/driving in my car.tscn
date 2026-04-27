@@ -6,11 +6,14 @@
 [ext_resource type="AudioStream" uid="uid://bkng24ncgxqlt" path="res://sounds/car-parking-into-garage_myamkhvo.mp3" id="4_veqsq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bbuju"]
-size = Vector3(1, 1.9920654, 3.546875)
+size = Vector3(2.1921387, 1.9920654, 3.4936523)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_veqsq"]
+size = Vector3(2.6975098, 2.7963867, 4.4662476)
 
 [node name="driving in my car" type="CharacterBody3D" unique_id=1740333887]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
-collision_layer = 4
+collision_layer = 5
 collision_mask = 4
 script = ExtResource("1_bbuju")
 movement_speed = 10.0
@@ -22,7 +25,7 @@ transform = Transform3D(2, 0, 0, 0, 1.5, 0, 0, 0, 2, 0, 1.1580315, 0)
 debug_enabled = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=648133470]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83085334, -0.095703125)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.030151362, 0.83085334, -0.0690918)
 shape = SubResource("BoxShape3D_bbuju")
 
 [node name="Driving" type="AudioStreamPlayer3D" parent="." unique_id=917379312]
@@ -34,4 +37,12 @@ bus = &"Music"
 [node name="Parking" type="AudioStreamPlayer3D" parent="." unique_id=1930585766]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0614537, 0)
 stream = ExtResource("4_veqsq")
-max_distance = 100.0
+max_distance = 5.0
+
+[node name="Area3D" type="Area3D" parent="." unique_id=387007340]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=362092557]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026977533, 0.89819336, -0.14730835)
+shape = SubResource("BoxShape3D_veqsq")
+
+[connection signal="body_entered" from="Area3D" to="." method="davi"]

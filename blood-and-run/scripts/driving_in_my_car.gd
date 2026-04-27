@@ -6,6 +6,8 @@ var n = 2
 var frame = 0
 
 signal end_put
+signal davka(prichina:String)
+
 func _ready():
 	mtp_list = get_parent().get_node("Дорога/Markers").get_children()
 	# These values need to be adjusted for the actor's speed
@@ -52,3 +54,9 @@ func _start():
 	actor_setup()
 	start = true
 	pass # Replace with function body.
+
+
+func davi(body):
+	if body.name == "Player" and start:
+		davka.emit("Задавлен")
+	pass # Replace with function body

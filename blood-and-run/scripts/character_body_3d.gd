@@ -1,6 +1,8 @@
 extends CharacterBody3D
 class_name Player
 
+
+
 var SPEED = 5.0
 var JUMP_VELOCITY = 4.5
 var in_door = false
@@ -29,10 +31,14 @@ func _physics_process(_delta: float) -> void:
 		JumpVel = velocity
 	
 	if Input.is_action_just_pressed("Run"):
-		if !run and !Global.isOnMenu and JumpVel == Vector3(0,0,0):
+		if !run and !Global.isOnMenu and is_on_floor():
 			run = true
 			SPEED += 3
+			$AudioStreamPlayer3D.pitch_scale = 2
+			$AudioStreamPlayer3D.volume_db += 10
 	if Input.is_action_just_released("Run"):
+		$AudioStreamPlayer3D.pitch_scale =  1
+		$AudioStreamPlayer3D.volume_db -= 10
 		if run and !Global.isOnMenu :
 			run = false
 			SPEED -= 3
@@ -60,11 +66,6 @@ func _physics_process(_delta: float) -> void:
 		#if camera_anglev +changev>-50 and camera_anglev + changev < 50:
 			#camera_anglev+=changev
 			#$Camera3D.rotate_x(deg_to_rad(changev))
-	if velocity.x > 1 or velocity.z >1:
-		if !$AudioStreamPlayer3D.playing:
-			$AudioStreamPlayer3D.play()
-	else:
-		$AudioStreamPlayer3D.stop()
 
 
 
@@ -100,4 +101,14 @@ func _print_in_ui(text:String):
 
 func _on_h_slider_value_changed(value):
 	mouse_sens = value
+	pass # Replace with function body.
+
+
+func _on_tick_timeout():
+	if randi_range(0,4)>1:
+		if (absf(velocity.x) > 0.7 or absf(velocity.z) >0.7) and is_on_floor():
+			if !$AudioStreamPlayer3D.playing:
+				$AudioStreamPlayer3D.play()
+		else:
+			$AudioStreamPlayer3D.stop()
 	pass # Replace with function body.

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dism06b1iip8u"]
 
 [ext_resource type="Script" uid="uid://cm2ts4rcn04mw" path="res://scripts/Open_door.gd" id="1_hxdes"]
-[ext_resource type="AudioStream" uid="uid://bnakg681bn2le" path="res://sounds/store-entrance-bell_m1bp86nu.mp3" id="2_jwqke"]
+[ext_resource type="AudioStream" uid="uid://bg6v2w13354hk" path="res://sounds/Звонок при входе на бензоколонку.mp3" id="3_b20sx"]
 [ext_resource type="Shader" uid="uid://dq81n42ia7ync" path="res://Models/Glass.gdshader" id="3_jwqke"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b0ws2"]
@@ -195,8 +195,8 @@ bus = &"Effect"
 
 [node name="Key" type="AudioStreamPlayer3D" parent="." unique_id=218753602]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7866521, 0)
-stream = ExtResource("2_jwqke")
-volume_db = -20.0
+stream = ExtResource("3_b20sx")
+volume_db = -10.0
 max_distance = 10.0
 bus = &"Effect"
 

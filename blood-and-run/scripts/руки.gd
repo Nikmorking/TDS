@@ -97,14 +97,19 @@ func _stavit_rashodnic():
 
 func fnc_zp():
 	if zp_in:
+
 		if $RayCast3D.get_collider().name == "ZP1":
 			points = $"../../../LineRenderer3D".points
+			$RayCast3D.get_collider().get_parent().get_node("AudioStreamPlayer3D").play()
 		if $RayCast3D.get_collider().name == "ZP2":
 			points = $"../../../LineRenderer3D2".points
+			$RayCast3D.get_collider().get_parent().get_node("AudioStreamPlayer3D").play()
 		if $RayCast3D.get_collider().name == "ZP3":
 			points = $"../../../LineRenderer3D3".points
+			$RayCast3D.get_collider().get_parent().get_node("AudioStreamPlayer3D").play()
 		if $RayCast3D.get_collider().name == "ZP4":
 			points = $"../../../LineRenderer3D4".points
+			$RayCast3D.get_collider().get_parent().get_node("AudioStreamPlayer3D").play()
 		if !zp:
 			zp = true 
 		else:

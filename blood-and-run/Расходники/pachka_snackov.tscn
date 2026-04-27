@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://6mu3mfjfp1wg" path="res://Models/1.gd" id="1_kuua7"]
 [ext_resource type="Texture2D" uid="uid://fx0j60fr2p68" path="res://Texture/Boxs_12.jpg" id="2_kuua7"]
-[ext_resource type="AudioStream" uid="uid://b7djpdlxind5d" path="res://sounds/box-cardboard-close-lid_zkrf-v4o.mp3" id="3_m3jal"]
+[ext_resource type="AudioStream" uid="uid://bo12pg3dvv5te" path="res://sounds/cardboard-box-drop_gjj0vceo.mp3" id="3_m3jal"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kuua7"]
 rough = true
@@ -42,7 +42,7 @@ target_position = Vector3(0, -0.1, 0)
 [node name="Bonk" type="AudioStreamPlayer3D" parent="." unique_id=1074524738]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36215428, 0)
 stream = ExtResource("3_m3jal")
-volume_db = -30.0
+volume_db = -15.0
 max_db = -10.0
 
 [node name="Area3D" type="Area3D" parent="." unique_id=770044784]

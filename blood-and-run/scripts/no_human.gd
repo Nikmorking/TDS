@@ -31,7 +31,6 @@ func _physics_process(delta):
 	if navigation_agent.is_navigation_finished():
 		if movement_target_position != $"../Markers/Marker3D".position: get_parent().next()
 		else: 
-			$"../Timer".start()
 			get_parent()._pripersa()
 			queue_free()
 		return

@@ -1,5 +1,6 @@
 extends Node3D
 
+var rand = true
 var start_day = true
 var zakaz:Array
 var zakaz_list = [
@@ -119,23 +120,20 @@ func _on_timer_timeout() -> void:
 
 func _on_emeny_body_entered(node):
 	if node.name == "Player":
-		print("Здох")
-		$Player/Camera3D/Control/Sprite2D.show()
-		$Be.play()
-		get_tree().paused = true
+		die("Съели")
 	pass # Replace with function body.
 
 
 func _on_door_2__open():
 	if start_day:
-		$Timer.start()
+		rand = false
 		start_day = false
 	pass # Replace with function body.
 
 
 func _stop_run():
 	_start_sream()
-	$Timer.start()
+	rand = false
 	pass # Replace with function body.
 
 
@@ -148,7 +146,7 @@ func _on_driving_in_my_car_end_put():
 		$"driving in my car".position = $Markers/Marker3D5.position
 		$"driving in my car".i = 0
 		$"driving in my car".n = 2
-		$Timer.start()
+		rand = false
 	pass # Replace with function body.
 
 func _pripersa():
@@ -156,3 +154,27 @@ func _pripersa():
 	$"driving in my car".i -= 1
 	$"driving in my car".rotate_y(1.57)
 	$"driving in my car".start = true
+
+
+func _on_tick_timeout():
+	if !rand:
+		var b = randi_range(0, 2000)
+		print(b)
+		if b > 1994:
+			$"driving in my car"._start()
+			rand = true
+		elif b >1996: 
+			_start_sream()
+			$Timer2.start()
+			rand = true
+	pass # Replace with function body.
+
+func die(prichina: String):
+	print(prichina)
+	$Player/Camera3D/Control/Sprite2D.show()
+	$Be.play()
+
+
+func _on_be_finished():
+	get_tree().paused = true
+	pass # Replace with function body.
