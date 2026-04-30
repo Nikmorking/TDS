@@ -4,21 +4,22 @@ var rand = true
 var start_day = true
 var zakaz:Array
 var zakaz_list = [
-  ["ahabka_buttonov", "Stakan_cofe"],
-  [ "Cofe", "snack"],
-  ["Stakan_cofe", "snack"],
-  ["ahabka_buttonov", "snack"],
-  ["Stakan_cofe"],
-  ["Cofe", "snack"],
-  [ "ahabka_buttonov"],
-  ["ahabka_buttonov", "Stakan_cofe", "snack"],
-  ["Cofe", "Stakan_cofe"],
-  [ "ahabka_buttonov", "Stakan_cofe", "snack"]
+  ["ahabka_buttonov", "Stakan_cofe","Zapravka"],
+  [ "Cofe", "snack", "Zapravka"],
+  ["Stakan_cofe", "snack","Zapravka"],
+  ["ahabka_buttonov", "snack","Zapravka"],
+  ["Stakan_cofe", "Zapravka"],
+  ["Cofe", "snack", "Zapravka"],
+  [ "ahabka_buttonov", "Zapravka"],
+  ["ahabka_buttonov", "Stakan_cofe", "snack","Zapravka"],
+  ["Cofe", "Stakan_cofe", "Zapravka"],
+  [ "ahabka_buttonov", "Stakan_cofe", "snack", "Zapravka"]
 ]
 var nd = false
 var y_kassu = false
 var norm = true
 var no_hum: CharacterBody3D
+var time_left = false
 
 var Check_boxes:Array
 # Called when the node enters the scene tree for the first time.
@@ -68,7 +69,12 @@ func _start_sream():
 			$emeny.movement_target_position = $emeny.position
 			norm = true
 
+func start_Ждать():
+	$"Ожидание".wait_time = randi_range(15,20)
+	$"Ожидание".start()
+
 func _pridi():
+	start_Ждать()
 	zakaz = zakaz_list[randi_range(0, 9)]
 	for i in Check_boxes:
 		i.button_pressed = false
@@ -95,16 +101,28 @@ func _on_no_human_body_entered(body: Node):
 	if y_kassu:
 		for i in zakaz:
 			if i == body.named:
-				var chexk:CheckBox = Check_boxes[zakaz.find(i)]
-				chexk.button_pressed = true
-				zakaz.remove_at(zakaz.find(i))
+				vupoln(i)
 				body.queue_free()
-		if 0 == zakaz.size(): 
+		if 0 == zakaz.size():
+			prov_list()
+	pass # Replace with function body.
+
+func vupoln(i:String):
+	var chexk: CheckBox = Check_boxes[zakaz.find(i)]
+	chexk.button_pressed = true
+	zakaz.remove_at(zakaz.find(i))
+
+func zaprav():
+	if zakaz.find("Zapravka"):
+		vupoln("Zapravka")
+		if 0 == zakaz.size():
+			prov_list()
+
+func prov_list():
 			$"Заправка/Table/CSGPolygon3D2/SubViewport/Control/RichTextLabel".text = ""
 			for i in Check_boxes:
 				i.hide()
 			back()
-	pass # Replace with function body.
 
 
 func _on_timer_timeout() -> void:
@@ -157,6 +175,10 @@ func _pripersa():
 
 
 func _on_tick_timeout():
+	if time_left:
+		var b = randi_range(0, 2000)
+		if b > 1990:
+			prov_list()
 	if !rand:
 		var b = randi_range(0, 2000)
 		print(b)
@@ -177,4 +199,9 @@ func die(prichina: String):
 
 func _on_be_finished():
 	get_tree().paused = true
+	pass # Replace with function body.
+
+
+func _on_ожидание_timeout():
+	time_left = true
 	pass # Replace with function body.

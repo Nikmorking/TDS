@@ -97,7 +97,6 @@ func _stavit_rashodnic():
 
 func fnc_zp():
 	if zp_in:
-
 		if $RayCast3D.get_collider().name == "ZP1":
 			points = $"../../../LineRenderer3D".points
 			$RayCast3D.get_collider().get_parent().get_node("AudioStreamPlayer3D").play()
@@ -111,7 +110,7 @@ func fnc_zp():
 			points = $"../../../LineRenderer3D4".points
 			$RayCast3D.get_collider().get_parent().get_node("AudioStreamPlayer3D").play()
 		if !zp:
-			zp = true 
+			zp = true
 		else:
 			points.set(1, points.get(0))
 			zp = false
@@ -131,16 +130,18 @@ func _on_area_3d_area_exited(area: Area3D) -> void:
 	pass # Replace with function body.
 
 func _colling():
-				print("coll")
 				var col: Node3D = $RayCast3D.get_collider()
+				print("coll", col.name)
 				if col.is_class("Area3D"):
-					fnc_zp()
 					print(col.name)
 					var kasa = col.get_parent()
 					if col.name == "Stakan":
 						if kasa.kol_stakan > 0:
 							add_to_hand("Stakan")
 							kasa.kol_stakan -= 1
+					elif col.name == "Бак" and zp:
+						col.get_node("Au").play()
+						Global.get_papa(3, self).zaprav()
 					elif col.name == "Cofe_machine":
 						if kasa.cofe > 0:
 							if kasa.stakan:
@@ -171,6 +172,7 @@ func _colling():
 				else:
 					$"../.."._print_in_ui("               O \n \n ты утилизируй шнягу")
 					print("Продай что нибудь ненужное! Но чтобы продать что то ненужное,сначало нужно купить что-то ненужное, а у нас денег нет.")
+				fnc_zp()
 
 
 func _on_tik_timeout():
