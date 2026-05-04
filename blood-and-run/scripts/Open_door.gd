@@ -9,7 +9,7 @@ signal _open
 @export var start_rot = Vector3()
 
 var need_door = false
-
+var k_otk = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,6 +21,9 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("rush_e"):
 		if need_door and !Global.player.get_node("Camera3D/руки").obj:
 			print("door")
+			k_otk += 1
+			if k_otk ==69:
+				Global.player.get_parent().achivka("Достижэение: \n Открыть 69 раз")
 			if door_open:
 				$AnimationPlayer.play("close door")
 				$Open.play()

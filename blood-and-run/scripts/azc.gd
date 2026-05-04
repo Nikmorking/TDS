@@ -19,7 +19,7 @@ var nd = false
 var y_kassu = false
 var norm = true
 var no_hum: CharacterBody3D
-var time_left = false
+var fara_days = 1
 
 var Check_boxes:Array
 # Called when the node enters the scene tree for the first time.
@@ -37,6 +37,10 @@ func _input(event):
 		$"driving in my car"._start()
 		
 
+func achivka(pr:String):
+	$Player/Camera3D/Control/Label2.text = pr
+	$Player/Camera3D/Control/AnimationPlayer.play("Achivka")
+
 func next():
 	if $No_human.movement_target_position == $Markers/Marker3D2.position:
 		y_kassu = true
@@ -47,9 +51,10 @@ func next():
 
 func back():
 	y_kassu = false
-	$No_human.movement_target_position = $Markers/Marker3D.position
-	$No_human.rotation_degrees = Vector3(0,90,0)
-	$No_human.actor_setup()
+	if $No_human:
+		$No_human.movement_target_position = $Markers/Marker3D.position
+		$No_human.rotation_degrees = Vector3(0,90,0)
+		$No_human.actor_setup()
 	print("back")
 
 func _start_sream():
@@ -69,17 +74,17 @@ func _start_sream():
 			$emeny.movement_target_position = $emeny.position
 			norm = true
 
-func start_Ждать():
-	$"Ожидание".wait_time = randi_range(15,20)
+func start_wait():
+	$"Ожидание".wait_time = zakaz.size() *10 + 80 +randi_range(10,20)
 	$"Ожидание".start()
 
 func _pridi():
-	start_Ждать()
 	zakaz = zakaz_list[randi_range(0, 9)]
 	for i in Check_boxes:
 		i.button_pressed = false
 	for i in zakaz.size():
 		Check_boxes[i].show()
+	start_wait()
 	add_child(load("res://scenes/no_human.tscn").instantiate())
 	$No_human.connect("body_entered", _on_no_human_body_entered)
 	$No_human.mtp_list = $Markers.get_children()
@@ -113,6 +118,7 @@ func vupoln(i:String):
 	zakaz.remove_at(zakaz.find(i))
 
 func zaprav():
+	print(zakaz)
 	if zakaz.find("Zapravka"):
 		vupoln("Zapravka")
 		if 0 == zakaz.size():
@@ -174,20 +180,41 @@ func _pripersa():
 	$"driving in my car".start = true
 
 
+
+var time_left = false
+var energy = 0
+@export var min_a = -5
+@export var max_a = 5
+var k_event = 0
+var proshlo = 0
+@export var end_day = 6000 # 5 minuts
+
 func _on_tick_timeout():
 	if time_left:
 		var b = randi_range(0, 2000)
 		if b > 1990:
 			prov_list()
 	if !rand:
-		var b = randi_range(0, 2000)
-		print(b)
-		if b > 1994:
-			$"driving in my car"._start()
-			rand = true
-		elif b >1996: 
-			_start_sream()
-			$Timer2.start()
+		proshlo +=1
+		print(energy)
+		print(proshlo)
+		if proshlo == end_day:
+			rand = false
+			die("Время вышло")
+			fara_days += 1
+			pass
+		energy += 1
+		energy += randi_range(min_a,max_a)
+		if energy > 1000:
+			k_event +=1
+			energy = 0
+			var b = randi_range(-6,1)
+			if b != 0:
+				$"driving in my car"._start()
+			else:
+				_start_sream()
+				$Timer2.wait_time = randi_range(15,20)
+				$Timer2.start()
 			rand = true
 	pass # Replace with function body.
 

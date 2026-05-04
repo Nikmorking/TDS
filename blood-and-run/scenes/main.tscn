@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://bthsh26dmspk2"]
 
-[ext_resource type="PackedScene" uid="uid://c3dx2242gqhlh" path="res://scenes/lampa.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://bre26ws07w06b" path="res://scenes/lampa.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://dm85tsj7yy8ua" path="res://scripts/main.gd" id="1_o6xl0"]
 [ext_resource type="Script" uid="uid://ciw0wsurkg36p" path="res://scripts/character_body_3d.gd" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://cv26yr05sejrc" path="res://Models/smoke_02.png" id="4_tbgi4"]

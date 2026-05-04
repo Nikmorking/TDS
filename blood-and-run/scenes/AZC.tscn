@@ -12,6 +12,7 @@
 [ext_resource type="Shader" uid="uid://dq81n42ia7ync" path="res://Models/Glass.gdshader" id="4_ui2ee"]
 [ext_resource type="Texture2D" uid="uid://bvmyaqt4cgpaj" path="res://scenes/318748684_bc04d5c7d7c38229a9a8e5933851aab1.png" id="5_f5ce8"]
 [ext_resource type="PackedScene" uid="uid://dism06b1iip8u" path="res://scenes/doorS.tscn" id="5_vynuk"]
+[ext_resource type="FontFile" uid="uid://5dau83l3l8w3" path="res://demo/AlwaysAngryBB[RUSbyPenka220]-Regular.otf" id="6_173o4"]
 [ext_resource type="AudioStream" uid="uid://cosm6owijoqhb" path="res://sounds/alan.mp3" id="6_aeg34"]
 [ext_resource type="Script" uid="uid://drjt1yu0s6a0o" path="res://scripts/menu.gd" id="7_1q5xi"]
 [ext_resource type="Script" uid="uid://cvkighcpdolaw" path="res://scripts/radio-sc.gd" id="8_42sn8"]
@@ -42,6 +43,47 @@ height = 1.829824
 [sub_resource type="LabelSettings" id="LabelSettings_8oxcy"]
 line_spacing = 7.0
 font_size = 20
+
+[sub_resource type="Animation" id="Animation_173o4"]
+resource_name = "Achivka"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.3333334, 2.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1205, 44), Vector2(607, 44), Vector2(607, 44), Vector2(1205, 44)]
+}
+
+[sub_resource type="Animation" id="Animation_tsu7c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1205, 44)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rcbt2"]
+_data = {
+&"Achivka": SubResource("Animation_173o4"),
+&"RESET": SubResource("Animation_tsu7c")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_tsu7c"]
+font = ExtResource("6_173o4")
+font_size = 70
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_88m6n"]
 margin = 3.05
@@ -322,16 +364,19 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Arr
 geometry_parsed_geometry_type = 0
 agent_radius = 1.3
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_s6jno"]
-
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_173o4"]
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_tsu7c"]
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_rcbt2"]
 
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_xtx8p"]
+
 [node name="Node3D" type="Node3D" unique_id=2010904094]
 script = ExtResource("1_p6l7r")
+min_a = -13
+max_a = 23
+end_day = 200
 metadata/_edit_horizontal_guides_ = [324.0]
 metadata/_edit_vertical_guides_ = [576.0]
 metadata/_edit_group_ = true
@@ -374,6 +419,18 @@ visible = false
 position = Vector2(576.5, 324.25)
 scale = Vector2(5.5048075, 2.6316872)
 texture = ExtResource("5_f5ce8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Camera3D/Control" unique_id=910930609]
+libraries/ = SubResource("AnimationLibrary_rcbt2")
+
+[node name="Label2" type="Label" parent="Player/Camera3D/Control" unique_id=252011262]
+layout_mode = 0
+offset_left = 1205.0
+offset_top = 44.0
+offset_right = 1718.0012
+offset_bottom = 140.0
+text = "ДОСТИЖЕНИЕ!"
+label_settings = SubResource("LabelSettings_tsu7c")
 
 [node name="руки" type="Node3D" parent="Player/Camera3D" unique_id=460850154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1837149)
@@ -1516,7 +1573,7 @@ affect_navigation_mesh = true
 
 [node name="LineRenderer3D" type="MeshInstance3D" parent="." unique_id=157698636]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, 7.7, 2, -5.5)
-mesh = SubResource("ImmediateMesh_s6jno")
+mesh = SubResource("ImmediateMesh_173o4")
 skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(7.7, 2, -5.5), Vector3(7.7, 2, -5.5)])
@@ -1524,7 +1581,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D2" type="MeshInstance3D" parent="." unique_id=2062067384]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -7.1046586)
-mesh = SubResource("ImmediateMesh_173o4")
+mesh = SubResource("ImmediateMesh_tsu7c")
 skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -7.1), Vector3(-0.3, 1.9, -7.1)])
@@ -1532,7 +1589,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D3" type="MeshInstance3D" parent="." unique_id=139751098]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -11.084127)
-mesh = SubResource("ImmediateMesh_tsu7c")
+mesh = SubResource("ImmediateMesh_rcbt2")
 skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -11), Vector3(-0.3, 1.9, -11)])
@@ -1540,7 +1597,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D4" type="MeshInstance3D" parent="." unique_id=1666510536]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, 8, 2, -10.5)
-mesh = SubResource("ImmediateMesh_rcbt2")
+mesh = SubResource("ImmediateMesh_xtx8p")
 skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(8, 2, -10.5), Vector3(8, 2, -10.5)])

@@ -142,6 +142,7 @@ func _colling():
 					elif col.name == "Бак" and zp:
 						col.get_node("Au").play()
 						Global.get_papa(3, self).zaprav()
+						print(Global.get_papa(3, self), "zzz")
 					elif col.name == "Cofe_machine":
 						if kasa.cofe > 0:
 							if kasa.stakan:
@@ -176,7 +177,6 @@ func _colling():
 
 
 func _on_tik_timeout():
-	print(obj)
 	var tek_nakl = papa.rotation_degrees.x
 	if obj:
 		if obj.named == "Cofe":

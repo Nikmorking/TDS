@@ -45,6 +45,7 @@ func conti():
 
 
 func _start():
+	rotation_degrees = Vector3(0, 0, 0)
 	if randi_range(0, 10) > 9:
 		$Driving.stream = load("res://sounds/Driving in my car.mp3")
 	else:
