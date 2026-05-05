@@ -203,9 +203,9 @@ func _on_tick_timeout():
 			die("Время вышло")
 			fara_days += 1
 			pass
-		energy += 1
+		energy += 6
 		energy += randi_range(min_a,max_a)
-		if energy > 1000:
+		if energy > 2000:
 			k_event +=1
 			energy = 0
 			var b = randi_range(-6,1)
