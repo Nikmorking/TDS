@@ -2,6 +2,7 @@ extends Control
 
 var player: Node3D
 var isOnMenu = false
+var fara_days = 1
 
 func get_player():
 	player = get_parent().get_node("Node3D/Player")

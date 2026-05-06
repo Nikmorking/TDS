@@ -129,6 +129,8 @@ func _on_area_3d_area_exited(area: Area3D) -> void:
 	zp_in = false
 	pass # Replace with function body.
 
+var kalendar = 0
+
 func _colling():
 				var col: Node3D = $RayCast3D.get_collider()
 				print("coll", col.name)
@@ -139,6 +141,13 @@ func _colling():
 						if kasa.kol_stakan > 0:
 							add_to_hand("Stakan")
 							kasa.kol_stakan -= 1
+					elif col.name == "Календарь":
+						kalendar += 1
+						if kalendar == 6:
+							if Global.fara_days == 3:
+								Global.get_papa(3, self).achivka("Достижение: \n С 3 сентября!")
+							col.get_node("Aud").play()
+							kalendar = 0
 					elif col.name == "Бак" and zp:
 						col.get_node("Au").play()
 						Global.get_papa(3, self).zaprav()

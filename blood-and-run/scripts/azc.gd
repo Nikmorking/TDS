@@ -19,7 +19,6 @@ var nd = false
 var y_kassu = false
 var norm = true
 var no_hum: CharacterBody3D
-var fara_days = 1
 
 var Check_boxes:Array
 # Called when the node enters the scene tree for the first time.
@@ -200,12 +199,11 @@ func _on_tick_timeout():
 		print(proshlo)
 		if proshlo == end_day:
 			rand = false
-			die("Время вышло")
-			fara_days += 1
-			pass
-		energy += 6
+			_end_day()
+			return
+		energy += 3
 		energy += randi_range(min_a,max_a)
-		if energy > 2000:
+		if energy > 1500:
 			k_event +=1
 			energy = 0
 			var b = randi_range(-6,1)
@@ -228,6 +226,15 @@ func _on_be_finished():
 	get_tree().paused = true
 	pass # Replace with function body.
 
+func _end_day():
+	Global.fara_days += 1
+	$Player/Camera3D/Control2/Label1.text = str(Global.fara_days)
+	$Player/Camera3D/AnimationPlayer.play("End_day")
+	start_day = true
+	rand = true
+	proshlo = 0
+	energy = 0
+	get_tree().paused = true
 
 func _on_ожидание_timeout():
 	time_left = true

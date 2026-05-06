@@ -19,7 +19,7 @@ func _on_area_3d_body_entered(body):
 	if play:
 		$Bonk.play()
 		play = false
-		if $Timer:
+		if get_node("Timer"):
 			$Timer.start()
 	pass # Replace with function body.
 

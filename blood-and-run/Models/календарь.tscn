@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://csk2re235lvol"]
+
+[ext_resource type="AudioStream" uid="uid://bb41hh5yh554l" path="res://sounds/Я календарь.wav" id="2_7ll7v"]
+
+[sub_resource type="GDScript" id="GDScript_7ll7v"]
+resource_name = "Kalendar"
+script/source = "extends Node3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$SubViewport/Label.text = str(Global.fara_days)
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ll7v"]
+albedo_color = Color(0.12152437, 0, 0.0031841109, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6vik4"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="LabelSettings" id="LabelSettings_bh7vn"]
+font_size = 90
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7bm3k"]
+size = Vector3(0.93200684, 0.95092773, 0.52246094)
+
+[node name="Календарь" type="Node3D" unique_id=524604911]
+script = SubResource("GDScript_7ll7v")
+metadata/_edit_horizontal_guides_ = [331.0]
+metadata/_edit_vertical_guides_ = [576.0]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1110696973]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.040527344, -0.0041503906, 0.34268394)
+size = Vector3(1.0810547, 1.1235352, 0.33447266)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1002763769]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.044799656, 0.034003586, 0.23124051)
+size = Vector3(0.8826904, 0.8339844, 0.33447266)
+material = SubResource("StandardMaterial3D_7ll7v")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=353088122]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.3373766, -1.8754547, 0)
+texture = SubResource("ViewportTexture_6vik4")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=186321418]
+transparent_bg = true
+
+[node name="Label" type="Label" parent="SubViewport" unique_id=162951044]
+offset_right = 25.0
+offset_bottom = 91.0
+text = "1"
+label_settings = SubResource("LabelSettings_bh7vn")
+
+[node name="Календарь" type="Area3D" parent="." unique_id=1430523515]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Календарь" unique_id=1087768879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.035827637, 0.024536133, 0.1888246)
+shape = SubResource("BoxShape3D_7bm3k")
+
+[node name="Aud" type="AudioStreamPlayer3D" parent="Календарь" unique_id=306523496]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.16498709)
+stream = ExtResource("2_7ll7v")
+volume_db = 2.0
+max_db = 2.0
+max_distance = 6.0

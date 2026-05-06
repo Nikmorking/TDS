@@ -35,6 +35,7 @@
 [ext_resource type="AudioStream" uid="uid://dhg1s4pmdoph0" path="res://sounds/coffeegrinder1.mp3" id="25_w5m4x"]
 [ext_resource type="AudioStream" uid="uid://hevtbmp4oykq" path="res://sounds/Достать.wav" id="29_s6jno"]
 [ext_resource type="AudioStream" uid="uid://b07qixpxd5cqt" path="res://sounds/sound-brue-brue.wav" id="31_yyosc"]
+[ext_resource type="PackedScene" uid="uid://csk2re235lvol" path="res://Models/календарь.tscn" id="36_tsu7c"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0u5sq"]
 radius = 0.382215
@@ -172,6 +173,67 @@ _data = {
 &"Open": SubResource("Animation_415sf"),
 &"RESET": SubResource("Animation_myhle")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_173o4"]
+font_size = 126
+
+[sub_resource type="Animation" id="Animation_rcbt2"]
+resource_name = "End_day"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5333333, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xtx8p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4nc4p"]
+_data = {
+&"End_day": SubResource("Animation_rcbt2"),
+&"RESET": SubResource("Animation_xtx8p")
+}
+
+[sub_resource type="GDScript" id="GDScript_tsu7c"]
+resource_name = "Rel"
+script/source = "extends AnimationPlayer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_day_finished(anim_name):
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+	pass # Replace with function body.
+"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r1ed2"]
 
@@ -364,19 +426,19 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Arr
 geometry_parsed_geometry_type = 0
 agent_radius = 1.3
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_173o4"]
-
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_tsu7c"]
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_rcbt2"]
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_xtx8p"]
 
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_4nc4p"]
+
 [node name="Node3D" type="Node3D" unique_id=2010904094]
 script = ExtResource("1_p6l7r")
 min_a = -67
 max_a = 67
-end_day = 2000
+end_day = 3600
 metadata/_edit_horizontal_guides_ = [324.0]
 metadata/_edit_vertical_guides_ = [576.0]
 metadata/_edit_group_ = true
@@ -539,6 +601,44 @@ min_value = 0.1
 max_value = 1.0
 step = 0.05
 value = 0.30000000000000004
+
+[node name="Control2" type="Control" parent="Player/Camera3D" unique_id=160645237]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1154.0
+offset_bottom = 648.0
+
+[node name="ColorRect" type="ColorRect" parent="Player/Camera3D/Control2" unique_id=141338091]
+layout_mode = 0
+offset_left = -54.0
+offset_top = -45.0
+offset_right = 1211.0
+offset_bottom = 709.0
+color = Color(0.11119685, 0.11119684, 0.11119684, 1)
+
+[node name="Label2" type="Label" parent="Player/Camera3D/Control2" unique_id=313181851]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 252.0
+offset_right = 993.0
+offset_bottom = 379.0
+text = "Ночь"
+label_settings = SubResource("LabelSettings_173o4")
+
+[node name="Label1" type="Label" parent="Player/Camera3D/Control2" unique_id=400802101]
+layout_mode = 0
+offset_left = 605.0
+offset_top = 248.0
+offset_right = 1348.0
+offset_bottom = 420.0
+text = "1"
+label_settings = SubResource("LabelSettings_173o4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Camera3D" unique_id=955935706]
+process_mode = 3
+libraries/ = SubResource("AnimationLibrary_4nc4p")
+script = SubResource("GDScript_tsu7c")
 
 [node name="Marker3D" type="Marker3D" parent="Player" unique_id=1519376558]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0656533, 0)
@@ -1573,7 +1673,7 @@ affect_navigation_mesh = true
 
 [node name="LineRenderer3D" type="MeshInstance3D" parent="." unique_id=157698636]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, 7.7, 2, -5.5)
-mesh = SubResource("ImmediateMesh_173o4")
+mesh = SubResource("ImmediateMesh_tsu7c")
 skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(7.7, 2, -5.5), Vector3(7.7, 2, -5.5)])
@@ -1581,7 +1681,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D2" type="MeshInstance3D" parent="." unique_id=2062067384]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -7.1046586)
-mesh = SubResource("ImmediateMesh_tsu7c")
+mesh = SubResource("ImmediateMesh_rcbt2")
 skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -7.1), Vector3(-0.3, 1.9, -7.1)])
@@ -1589,7 +1689,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D3" type="MeshInstance3D" parent="." unique_id=139751098]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -11.084127)
-mesh = SubResource("ImmediateMesh_rcbt2")
+mesh = SubResource("ImmediateMesh_xtx8p")
 skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -11), Vector3(-0.3, 1.9, -11)])
@@ -1597,7 +1697,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D4" type="MeshInstance3D" parent="." unique_id=1666510536]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, 8, 2, -10.5)
-mesh = SubResource("ImmediateMesh_xtx8p")
+mesh = SubResource("ImmediateMesh_4nc4p")
 skeleton = NodePath("../CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(8, 2, -10.5), Vector3(8, 2, -10.5)])
@@ -1628,6 +1728,9 @@ autostart = true
 wait_time = 15.0
 one_shot = true
 
+[node name="Календарь" parent="." unique_id=524604911 instance=ExtResource("36_tsu7c")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -15.897136, 2.2455337, -16.929031)
+
 [connection signal="timeout" from="Player/Camera3D/Control/Timer" to="Player/Camera3D/Control" method="_on_timer_timeout"]
 [connection signal="button_down" from="Player/Camera3D/Menu/continue" to="Player/Camera3D/Menu" method="_on_continue_button_down"]
 [connection signal="focus_entered" from="Player/Camera3D/Menu/continue" to="Player/Camera3D/Menu" method="focus_entered"]
@@ -1636,6 +1739,7 @@ one_shot = true
 [connection signal="focus_entered" from="Player/Camera3D/Menu/Quit" to="Player/Camera3D/Menu" method="focus_entered"]
 [connection signal="animation_finished" from="Player/Camera3D/Menu/AnimationPlayer" to="Player/Camera3D/Menu" method="_on_animation_player_animation_finished"]
 [connection signal="value_changed" from="Player/Camera3D/Menu/HSlider" to="Player" method="_on_h_slider_value_changed"]
+[connection signal="animation_finished" from="Player/Camera3D/AnimationPlayer" to="Player/Camera3D/AnimationPlayer" method="_on_day_finished"]
 [connection signal="area_entered" from="Player/Area3D" to="Player/Camera3D/руки" method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Player/Area3D" to="Player/Camera3D/руки" method="_on_area_3d_area_exited"]
 [connection signal="_player_in" from="Заправка/Door" to="Player" method="player_in"]
