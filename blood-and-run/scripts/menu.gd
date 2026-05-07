@@ -54,3 +54,12 @@ func focus_entered():
 func _on_animation_player_animation_finished(anim_name):
 	$continue.grab_focus.call_deferred()
 	pass # Replace with function body.
+
+var settin = 0
+
+func _on_settings_button_down():
+	settin += 1
+	if settin == 6:
+		Global.achivka("Достижение: \nМастер по настройке")
+		printerr("Буква: P")
+	pass # Replace with function body.

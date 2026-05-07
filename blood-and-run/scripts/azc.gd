@@ -7,11 +7,11 @@ var zakaz_list = [
   ["ahabka_buttonov", "Stakan_cofe","Zapravka"],
   [ "Cofe", "snack", "Zapravka"],
   ["Stakan_cofe", "snack","Zapravka"],
-  ["ahabka_buttonov", "snack","Zapravka"],
+  ["ahabka_buttonov", "snack"],
   ["Stakan_cofe", "Zapravka"],
   ["Cofe", "snack", "Zapravka"],
   [ "ahabka_buttonov", "Zapravka"],
-  ["ahabka_buttonov", "Stakan_cofe", "snack","Zapravka"],
+  ["ahabka_buttonov", "Stakan_cofe", "snack"],
   ["Cofe", "Stakan_cofe", "Zapravka"],
   [ "ahabka_buttonov", "Stakan_cofe", "snack", "Zapravka"]
 ]
@@ -28,17 +28,15 @@ func _ready():
 	pass # Replace with function body.
 
 func _input(event):
-	if Input.is_action_just_pressed("ui_copy"):
-		_start_sream()
-		$Timer2.start()
-	if Input.is_action_just_pressed("ui_cut"):
+	#if Input.is_action_just_pressed("ui_copy"):
 		#_start_sream()
-		$"driving in my car"._start()
-		
+		#$Timer2.start()
+	#if Input.is_action_just_pressed("ui_cut"):
+		#_start_sream()
+		#$"driving in my car"._start()
+	pass
 
-func achivka(pr:String):
-	$Player/Camera3D/Control/Label2.text = pr
-	$Player/Camera3D/Control/AnimationPlayer.play("Achivka")
+
 
 func next():
 	if $No_human.movement_target_position == $Markers/Marker3D2.position:
@@ -74,7 +72,7 @@ func _start_sream():
 			norm = true
 
 func start_wait():
-	$"Ожидание".wait_time = zakaz.size() *10 + 80 +randi_range(10,20)
+	$"Ожидание".wait_time = zakaz.size() *35 + +randi_range(10,20)
 	$"Ожидание".start()
 
 func _pridi():
@@ -108,7 +106,7 @@ func _on_no_human_body_entered(body: Node):
 				vupoln(i)
 				body.queue_free()
 		if 0 == zakaz.size():
-			prov_list()
+			prov_list("+1р к ЗП")
 	pass # Replace with function body.
 
 func vupoln(i:String):
@@ -121,10 +119,10 @@ func zaprav():
 	if zakaz.find("Zapravka"):
 		vupoln("Zapravka")
 		if 0 == zakaz.size():
-			prov_list()
+			prov_list("+1р к ЗП")
 
-func prov_list():
-			$"Заправка/Table/CSGPolygon3D2/SubViewport/Control/RichTextLabel".text = ""
+func prov_list(str:String):
+			$"Заправка/Table/CSGPolygon3D2/SubViewport/Control/RichTextLabel".text = str
 			for i in Check_boxes:
 				i.hide()
 			back()
@@ -143,6 +141,8 @@ func _on_timer_timeout() -> void:
 
 func _on_emeny_body_entered(node):
 	if node.name == "Player":
+		_start_sream()
+		printerr("Буква: O")
 		die("Съели")
 	pass # Replace with function body.
 
@@ -190,13 +190,13 @@ var proshlo = 0
 
 func _on_tick_timeout():
 	if time_left:
-		var b = randi_range(0, 2000)
-		if b > 1990:
-			prov_list()
+			prov_list("-1р к ЗП")
 	if !rand:
 		proshlo +=1
 		print(energy)
 		print(proshlo)
+		if proshlo > 400:
+			energy+= 100
 		if proshlo == end_day:
 			rand = false
 			_end_day()
@@ -218,12 +218,16 @@ func _on_tick_timeout():
 
 func die(prichina: String):
 	print(prichina)
+	if prichina == "Задавлен":
+		$Player/Camera3D/Control3/AnimationPlayer.speed_scale = 4
+		Global.achivka("                      Задавлен")
+		printerr("Буква: Z")
 	$Player/Camera3D/Control/Sprite2D.show()
 	$Be.play()
 
 
 func _on_be_finished():
-	get_tree().paused = true
+	get_tree().reload_current_scene()
 	pass # Replace with function body.
 
 func _end_day():
@@ -239,3 +243,6 @@ func _end_day():
 func _on_ожидание_timeout():
 	time_left = true
 	pass # Replace with function body.
+
+func _67():
+	pass

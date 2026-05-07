@@ -37,10 +37,15 @@ func on_cofe_machine(body: Node3D):
 		stakan = true
 	pass # Replace with function body.
 
+var vari = 0
 
 func sel(str: String):
 	$Cofe_machine/SubViewport/Control/Label.text = str
 	if str == "Варка":
+		vari += 1
+		if vari == 13:
+			Global.achivka("Достижение: \n Кофеман \n свари 13 чашки кофе")
+			printerr("L")
 		$Cofe_machine/Timer.start()
 	pass
 

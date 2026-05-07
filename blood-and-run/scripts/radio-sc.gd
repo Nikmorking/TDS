@@ -30,7 +30,12 @@ func _input(event):
 			_start()
 		
 
+var uche = true
 func _start():
+			if uche:
+				uche = false
+				Global.achivka("Достижение: \nМиломан")
+				printerr("Буква: X")
 			$E.hide()
 			$Alan.hide()
 			$Friend.hide()

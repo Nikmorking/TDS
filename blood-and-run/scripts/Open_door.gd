@@ -22,8 +22,10 @@ func _input(_event: InputEvent) -> void:
 		if need_door and !Global.player.get_node("Camera3D/руки").obj:
 			print("door")
 			k_otk += 1
-			if k_otk ==69:
-				Global.player.get_parent().achivka("Достижэение: \n Открыть 69 раз")
+			if k_otk ==62:
+				Global.achivka("Достижение: \n Открыть 62 раза \n (нет 67 в этой игре)")
+				Global.papa._67()
+				printerr("Буква: B")
 			if door_open:
 				$AnimationPlayer.play("close door")
 				$Open.play()
