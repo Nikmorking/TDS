@@ -189,7 +189,10 @@ func _process(delta):
 
 func _on_day_finished(anim_name):
 	get_tree().paused = false
-	get_tree().reload_current_scene()
+	if Global.fara_days == 5:
+		Global.achivka(\"Ты заработал \"+str(Global.zp)+\"р\")
+	else:
+		get_tree().reload_current_scene()
 	pass # Replace with function body.
 "
 
@@ -437,7 +440,7 @@ agent_radius = 1.3
 script = ExtResource("1_p6l7r")
 min_a = -67
 max_a = 67
-end_day = 3600
+end_day = 500
 metadata/_edit_horizontal_guides_ = [324.0]
 metadata/_edit_vertical_guides_ = [576.0]
 metadata/_edit_group_ = true
@@ -1064,8 +1067,8 @@ bus = &"Effect"
 
 [node name="Снеки" type="Area3D" parent="Заправка/Table/Касса" unique_id=886910663]
 transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 0.99999976, -3.0468407, 1.1163089, 0.19849682)
-collision_layer = 2
-collision_mask = 2
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Заправка/Table/Касса/Снеки" unique_id=1086143905]
 transform = Transform3D(0.99999714, 0, 0, 0, 1, 0, 0, 0, 0.99999714, -0.22583008, 0, 0)

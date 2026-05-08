@@ -4,6 +4,7 @@ var player: Node3D
 var isOnMenu = false
 var fara_days = 1
 @onready var papa = get_tree().root.get_node("Node3D")
+var zp = 0
 
 func get_player():
 	player = get_parent().get_node("Node3D/Player")

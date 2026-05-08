@@ -29,6 +29,7 @@ func _ready():
 
 func _input(event):
 	#if Input.is_action_just_pressed("ui_copy"):
+		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		#_start_sream()
 		#$Timer2.start()
 	#if Input.is_action_just_pressed("ui_cut"):
@@ -48,7 +49,7 @@ func next():
 
 func back():
 	y_kassu = false
-	if $No_human:
+	if get_node("No_human"):
 		$No_human.movement_target_position = $Markers/Marker3D.position
 		$No_human.rotation_degrees = Vector3(0,90,0)
 		$No_human.actor_setup()
@@ -72,7 +73,7 @@ func _start_sream():
 			norm = true
 
 func start_wait():
-	$"Ожидание".wait_time = zakaz.size() *35 + +randi_range(10,20)
+	$"Ожидание".wait_time = zakaz.size() *(35-k_event*4) + +randi_range(10,20)
 	$"Ожидание".start()
 
 func _pridi():
@@ -83,6 +84,7 @@ func _pridi():
 		Check_boxes[i].show()
 	start_wait()
 	add_child(load("res://scenes/no_human.tscn").instantiate())
+	$"Заправка/Table/CSGPolygon3D2/SubViewport/Control/RichTextLabel".text = ""
 	$No_human.connect("body_entered", _on_no_human_body_entered)
 	$No_human.mtp_list = $Markers.get_children()
 	$No_human.position = $"Markers/Marker3D".position 
@@ -106,23 +108,30 @@ func _on_no_human_body_entered(body: Node):
 				vupoln(i)
 				body.queue_free()
 		if 0 == zakaz.size():
+			Global.zp += 1
 			prov_list("+1р к ЗП")
 	pass # Replace with function body.
 
 func vupoln(i:String):
+	get_node("No_human/Good").play()
 	var chexk: CheckBox = Check_boxes[zakaz.find(i)]
 	chexk.button_pressed = true
 	zakaz.remove_at(zakaz.find(i))
 
 func zaprav():
 	print(zakaz)
-	if zakaz.find("Zapravka"):
+	print(zakaz.find("Zapravka") != -1)
+	if zakaz.find("Zapravka") != -1:
 		vupoln("Zapravka")
+		print(zakaz)
 		if 0 == zakaz.size():
+			Global.zp += 1
 			prov_list("+1р к ЗП")
 
 func prov_list(str:String):
-			$"Заправка/Table/CSGPolygon3D2/SubViewport/Control/RichTextLabel".text = str
+			if Global.zp == 10:
+				Global.achivka("Достижение: \nПочти Миллионник")
+			$"Заправка/Table/CSGPolygon3D2/SubViewport/Control/RichTextLabel".text = str + "\nСейчас ЗП "+str(Global.zp) + "р"
 			for i in Check_boxes:
 				i.hide()
 			back()
@@ -190,20 +199,23 @@ var proshlo = 0
 
 func _on_tick_timeout():
 	if time_left:
+			Global.zp -= 1
 			prov_list("-1р к ЗП")
+			if Global.zp == -10:
+				Global.achivka("Достижение: \nБомж")
 	if !rand:
 		proshlo +=1
-		print(energy)
 		print(proshlo)
-		if proshlo > 400:
-			energy+= 100
+		print(energy)
+		if proshlo == 400:
+			energy += 100 # *Zp
 		if proshlo == end_day:
 			rand = false
 			_end_day()
 			return
-		energy += 3
+		energy += 13
 		energy += randi_range(min_a,max_a)
-		if energy > 1500:
+		if energy > 1700:
 			k_event +=1
 			energy = 0
 			var b = randi_range(-6,1)
@@ -214,6 +226,8 @@ func _on_tick_timeout():
 				$Timer2.wait_time = randi_range(15,20)
 				$Timer2.start()
 			rand = true
+	else:
+		print(zakaz.find("Zapravka"))
 	pass # Replace with function body.
 
 func die(prichina: String):
