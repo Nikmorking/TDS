@@ -1,0 +1,323 @@
+[gd_scene format=3 uid="uid://cjt85p4cqs12q"]
+
+[ext_resource type="Script" uid="uid://cvkighcpdolaw" path="res://scripts/radio-sc.gd" id="1_kae8l"]
+[ext_resource type="AudioStream" uid="uid://cosm6owijoqhb" path="res://sounds/alan.mp3" id="2_4p7hl"]
+[ext_resource type="Texture2D" uid="uid://cjmevthgqo8bv" path="res://318748684_bc04d5c7d7c38229a9a8e5933851aab1.png" id="3_rk3qh"]
+[ext_resource type="Texture2D" uid="uid://dyhf2tkhl60o4" path="res://Texture/Alan.jpg" id="4_myvrn"]
+[ext_resource type="Texture2D" uid="uid://bafg5x2p8c6f2" path="res://Texture/Freind.png" id="5_jrmna"]
+[ext_resource type="Script" uid="uid://b3mb2sb58j25f" path="res://scripts/kassa_sc.gd" id="6_dlnaw"]
+[ext_resource type="AudioStream" uid="uid://dhg1s4pmdoph0" path="res://sounds/coffeegrinder1.mp3" id="7_3dp1s"]
+[ext_resource type="Texture2D" uid="uid://b0qqtrbqwbcya" path="res://Texture/Shelf_Store_09.jpg" id="8_78bpj"]
+[ext_resource type="Texture2D" uid="uid://cvln6ln4vfdee" path="res://scenes/dZI264Kn3kWyvT7qRo4e0IbZ28qqWdrjzGNY3s8TwDM4NAnM3GUbRA9qD2pBfGS4uzLPxZV_cYc2BcLVqwNmC-Ld.jpg" id="9_bawi3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cfvsp"]
+size = Vector3(2.2872314, 1.0596924, 2.8095398)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5dt2e"]
+albedo_color = Color(0.27314225, 0.27314225, 0.27314222, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b3ns2"]
+albedo_color = Color(1, 1, 1, 0.37100002)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q1pnm"]
+size = Vector3(8.900618, 1, 1.2550049)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r1ed2"]
+size = Vector3(0.73535156, 0.76452637, 0.5235596)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_b3ns2"]
+height = 1.0158691
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_b3ns2"]
+viewport_path = NodePath("Касса/Cofe_machine/SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qyfae"]
+size = Vector3(1.4516602, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_88m6n"]
+font_size = 32
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_kae8l"]
+viewport_path = NodePath("Касса/Снеки/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8oxcy"]
+albedo_texture = ExtResource("8_78bpj")
+metallic = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g0orn"]
+albedo_texture = ExtResource("9_bawi3")
+metallic = 1.0
+disable_receive_shadows = true
+
+[sub_resource type="Theme" id="Theme_8oxcy"]
+default_font_size = 27
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_selected_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/selection_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/table_border = Color(0, 0, 0, 1)
+RichTextLabel/colors/table_even_row_bg = Color(0, 0, 0, 1)
+RichTextLabel/colors/table_odd_row_bg = Color(0, 0, 0, 1)
+RichTextLabel/constants/line_separation = 0
+RichTextLabel/constants/outline_size = 0
+RichTextLabel/constants/paragraph_separation = 0
+RichTextLabel/constants/shadow_offset_x = 0
+RichTextLabel/constants/shadow_offset_y = 0
+RichTextLabel/constants/shadow_outline_size = 0
+RichTextLabel/constants/strikethrough_alpha = 0
+RichTextLabel/constants/table_h_separation = 0
+RichTextLabel/constants/table_v_separation = 0
+RichTextLabel/constants/text_highlight_h_padding = 0
+RichTextLabel/constants/text_highlight_v_padding = 0
+RichTextLabel/constants/underline_alpha = 0
+RichTextLabel/font_sizes/bold_font_size = 27
+RichTextLabel/font_sizes/bold_italics_font_size = 27
+RichTextLabel/font_sizes/italics_font_size = 27
+RichTextLabel/font_sizes/mono_font_size = 27
+RichTextLabel/font_sizes/normal_font_size = 27
+RichTextLabel/fonts/bold_font = null
+RichTextLabel/fonts/bold_italics_font = null
+RichTextLabel/fonts/italics_font = null
+RichTextLabel/fonts/mono_font = null
+RichTextLabel/fonts/normal_font = null
+RichTextLabel/icons/horizontal_rule = null
+RichTextLabel/styles/focus = null
+RichTextLabel/styles/normal = null
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4p7hl"]
+viewport_path = NodePath("CSGPolygon3D2/SubViewport")
+
+[node name="Table" type="Node3D" unique_id=1041556568]
+
+[node name="Radio" type="CSGBox3D" parent="." unique_id=725884377]
+transform = Transform3D(-4.371118e-08, 0, 0.9999965, 0, 1, 0, -0.9999965, 0, -4.371118e-08, -22.61944, -0.1759361, -14.8214855)
+size = Vector3(3.0139294, 0.7618184, 0.66064453)
+script = ExtResource("1_kae8l")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Radio" unique_id=1873829786]
+transform = Transform3D(-4.3711488e-08, 0, -1.0000035, 0, 1, 0, 1.0000035, 0, -4.3711488e-08, 0.5326834, 0.7191434, 0.8239441)
+stream = ExtResource("2_4p7hl")
+unit_size = 3.0
+max_db = 0.0
+max_distance = 19.0
+bus = &"Music"
+
+[node name="Radio" type="Area3D" parent="Radio" unique_id=1849385463]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Radio/Radio" unique_id=1368608731]
+transform = Transform3D(0.9999853, 0, -6.430412e-13, 0, 1, 0, 6.430412e-13, 0, 0.9999853, 1.2091932, 0.53359205, -0.00016784668)
+shape = SubResource("BoxShape3D_cfvsp")
+
+[node name="E" type="Sprite3D" parent="Radio" unique_id=758809380]
+transform = Transform3D(0.35, 0, -8.881785e-15, 0, 0.5, 0, 6.2172494e-15, 0, 0.5, 0.688674, 0.990533, 0.23306465)
+visible = false
+texture = ExtResource("3_rk3qh")
+
+[node name="Alan" type="Sprite3D" parent="Radio" unique_id=480513659]
+transform = Transform3D(0.1, 0, -1.776357e-15, 0, 0.1, 0, 1.776357e-15, 0, 0.1, 0.688674, 0.990533, 0.23306465)
+visible = false
+texture = ExtResource("4_myvrn")
+
+[node name="Friend" type="Sprite3D" parent="Radio" unique_id=1333035930]
+transform = Transform3D(0.1, 0, -1.776357e-15, 0, 0.1, 0, 1.776357e-15, 0, 0.1, 0.688674, 0.990533, 0.23306465)
+visible = false
+texture = ExtResource("5_jrmna")
+
+[node name="Касса" type="CSGBox3D" parent="." unique_id=806910599]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -18.435246, 0.12178171, -13.877081)
+material_override = SubResource("StandardMaterial3D_5dt2e")
+size = Vector3(8.938673, 1.1860514, 1.543396)
+script = ExtResource("6_dlnaw")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Касса" unique_id=443167728]
+transform = Transform3D(0.99999994, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 0.99999994, 3.7637749, 1.4114057, 0.17885971)
+visible = false
+material_override = SubResource("StandardMaterial3D_b3ns2")
+radius = 0.2397461
+height = 1.6525879
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Касса" unique_id=1676361758]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Касса/StaticBody3D" unique_id=1151495822]
+transform = Transform3D(0.9999727, 0, 0, 0, 1, 0, 0, 0, 0.9999727, -0.078897476, 0, 0.0723238)
+shape = SubResource("BoxShape3D_q1pnm")
+
+[node name="Stakan" type="Area3D" parent="Касса" unique_id=707644604]
+transform = Transform3D(0.99999994, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 0.99999994, 3.553173, 0.91666114, 0.17885971)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Касса/Stakan" unique_id=758624432]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24295807, 0.10905111, -0.23822021)
+shape = SubResource("BoxShape3D_r1ed2")
+
+[node name="Cofe_machine" type="Area3D" parent="Касса" unique_id=780539148]
+transform = Transform3D(-4.3711157e-08, 0, 0.99999624, 0, 1, 0, -0.99999624, 0, -4.3711157e-08, 2.712305, 0.7354058, 0.4671793)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Касса/Cofe_machine" unique_id=579930548]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.50054836, 0.4168315, -0.05992222)
+shape = SubResource("CylinderShape3D_b3ns2")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Касса/Cofe_machine" unique_id=1369628321]
+transform = Transform3D(-4.3711317e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711317e-08, 0.4671812, 0.38183415, -0.069545746)
+height = 1.0844727
+
+[node name="Timer" type="Timer" parent="Касса/Cofe_machine" unique_id=1486333377]
+wait_time = 5.0
+one_shot = true
+
+[node name="SubViewport" type="SubViewport" parent="Касса/Cofe_machine" unique_id=1388184954]
+transparent_bg = true
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="Касса/Cofe_machine/SubViewport" unique_id=209083291]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 118.0
+offset_top = 42.0
+offset_right = 425.0
+offset_bottom = 340.0
+
+[node name="Label" type="Label" parent="Касса/Cofe_machine/SubViewport/Control" unique_id=407994986]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Нет стакана"
+
+[node name="Sprite3D" type="Sprite3D" parent="Касса/Cofe_machine" unique_id=1361381740]
+transform = Transform3D(-4.3711342e-08, 0, 0.99999946, 0, 0.9999999, 0, -0.99999887, 0, -4.371136e-08, 0.55988693, 0.53744423, 0.3601799)
+texture = SubResource("ViewportTexture_b3ns2")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Касса/Cofe_machine" unique_id=1271011093]
+stream = ExtResource("7_3dp1s")
+volume_db = -5.0
+max_db = 0.0
+max_distance = 5.0
+bus = &"Effect"
+
+[node name="Снеки" type="Area3D" parent="Касса" unique_id=1560413509]
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 0.99999976, -3.0468407, 1.1163089, 0.19849682)
+collision_layer = 5
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Касса/Снеки" unique_id=868887135]
+transform = Transform3D(0.99999714, 0, 0, 0, 1, 0, 0, 0, 0.99999714, -0.22583008, 0, 0)
+shape = SubResource("BoxShape3D_qyfae")
+
+[node name="SubViewport" type="SubViewport" parent="Касса/Снеки" unique_id=1199372559]
+transparent_bg = true
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="Касса/Снеки/SubViewport" unique_id=1677194515]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 118.0
+offset_top = 42.0
+offset_right = 425.0
+offset_bottom = 340.0
+
+[node name="Label" type="Label" parent="Касса/Снеки/SubViewport/Control" unique_id=144261757]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "0/10"
+label_settings = SubResource("LabelSettings_88m6n")
+
+[node name="Sprite3D" type="Sprite3D" parent="Касса/Снеки" unique_id=353422132]
+transform = Transform3D(0.9999984, 0, 0, 0, 0.9999999, 0, 0, 0, 0.999999, -0.5735893, -0.11235607, 0.32469082)
+texture = SubResource("ViewportTexture_kae8l")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="." unique_id=1680699084]
+transform = Transform3D(-4.3711346e-08, 0, 0.99999917, 0, 1, 0, -0.99999917, 0, -4.3711346e-08, -20.938711, 0.7081344, -13.160933)
+polygon = PackedVector2Array(0, 0, 0.023889542, 0.3864416, 1, 1, 1, 0)
+depth = 1.5
+material = SubResource("StandardMaterial3D_8oxcy")
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="." unique_id=2106210827]
+transform = Transform3D(0.7009826, 0, -0.71317554, 0, 1, 0, 0.71317554, 0, 0.7009826, -18.518547, 0.7081344, -13.179781)
+polygon = PackedVector2Array(0, 0, 0.01517868, 0.009165406, 0.9687004, 1.4401264, 1, 0)
+depth = 2.0
+material = SubResource("StandardMaterial3D_g0orn")
+
+[node name="SubViewport" type="SubViewport" parent="CSGPolygon3D2" unique_id=768617814]
+transparent_bg = true
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="CSGPolygon3D2/SubViewport" unique_id=1330116561]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 118.0
+offset_top = 42.0
+offset_right = 425.0
+offset_bottom = 340.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CSGPolygon3D2/SubViewport/Control" unique_id=481161717]
+layout_mode = 0
+offset_left = -111.0
+offset_top = 21.0
+offset_right = 85.50003
+offset_bottom = 275.00003
+theme = SubResource("Theme_8oxcy")
+bbcode_enabled = true
+tab_size = 0
+
+[node name="Control" type="Control" parent="CSGPolygon3D2/SubViewport/Control" unique_id=1904294015]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CheckBox1" type="CheckBox" parent="CSGPolygon3D2/SubViewport/Control/Control" unique_id=2112553547]
+visible = false
+layout_mode = 0
+offset_left = 43.0
+offset_top = 24.0
+offset_right = 67.0
+offset_bottom = 48.0
+scale = Vector2(1.7, 1.7)
+
+[node name="CheckBox2" type="CheckBox" parent="CSGPolygon3D2/SubViewport/Control/Control" unique_id=1813691608]
+visible = false
+layout_mode = 0
+offset_left = 43.0
+offset_top = 59.0
+offset_right = 67.0
+offset_bottom = 83.0
+scale = Vector2(1.7, 1.7)
+
+[node name="CheckBox3" type="CheckBox" parent="CSGPolygon3D2/SubViewport/Control/Control" unique_id=1435809963]
+visible = false
+layout_mode = 0
+offset_left = 43.0
+offset_top = 96.0
+offset_right = 67.0
+offset_bottom = 120.0
+scale = Vector2(1.7, 1.7)
+
+[node name="CheckBox4" type="CheckBox" parent="CSGPolygon3D2/SubViewport/Control/Control" unique_id=981422632]
+visible = false
+layout_mode = 0
+offset_left = 43.0
+offset_top = 133.0
+offset_right = 67.0
+offset_bottom = 157.0
+scale = Vector2(1.7, 1.7)
+
+[node name="Sprite3D" type="Sprite3D" parent="CSGPolygon3D2" unique_id=840912229]
+transform = Transform3D(0.02189833, 0.5697504, -0.8215254, 0.016285006, 0.82141066, 0.5701046, 0.9996266, -0.025862843, 0.0087091625, 0.55988693, 0.8742696, -0.7425623)
+texture = SubResource("ViewportTexture_4p7hl")
+
+[connection signal="body_entered" from="Radio/Radio" to="Radio" method="_on_radio_body_entered"]
+[connection signal="body_exited" from="Radio/Radio" to="Radio" method="_on_radio_body_exited"]
+[connection signal="body_entered" from="Касса/Stakan" to="Касса" method="statan_voshol"]
+[connection signal="body_entered" from="Касса/Cofe_machine" to="Касса" method="on_cofe_machine"]
+[connection signal="timeout" from="Касса/Cofe_machine/Timer" to="Касса" method="cofe_gotovo"]
+[connection signal="body_entered" from="Касса/Снеки" to="Касса" method="on_snaks"]

@@ -1,4 +1,5 @@
 extends Node3D
+class_name Zaz
 
 var rand = true
 var start_day = true
@@ -201,6 +202,7 @@ func _on_tick_timeout():
 	if time_left:
 			Global.zp -= 1
 			prov_list("-1р к ЗП")
+			time_left = false
 			if Global.zp == -10:
 				Global.achivka("Достижение: \nБомж")
 	if !rand:
