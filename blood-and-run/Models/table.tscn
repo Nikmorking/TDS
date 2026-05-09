@@ -41,6 +41,9 @@ font_size = 32
 [sub_resource type="ViewportTexture" id="ViewportTexture_kae8l"]
 viewport_path = NodePath("Касса/Снеки/SubViewport")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kae8l"]
+albedo_color = Color(0.4552064, 6.2425584e-05, 0.4071659, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8oxcy"]
 albedo_texture = ExtResource("8_78bpj")
 metallic = 1.0
@@ -132,7 +135,7 @@ size = Vector3(8.938673, 1.1860514, 1.543396)
 script = ExtResource("6_dlnaw")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Касса" unique_id=443167728]
-transform = Transform3D(0.99999994, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 0.99999994, 3.7637749, 1.4114057, 0.17885971)
+transform = Transform3D(0.9999999, 0, -3.5527135e-15, 0, 1, 0, 3.5527135e-15, 0, 0.9999999, 3.7637749, 1.4114057, 0.015841484)
 visible = false
 material_override = SubResource("StandardMaterial3D_b3ns2")
 radius = 0.2397461
@@ -234,6 +237,13 @@ label_settings = SubResource("LabelSettings_88m6n")
 [node name="Sprite3D" type="Sprite3D" parent="Касса/Снеки" unique_id=353422132]
 transform = Transform3D(0.9999984, 0, 0, 0, 0.9999999, 0, 0, 0, 0.999999, -0.5735893, -0.11235607, 0.32469082)
 texture = SubResource("ViewportTexture_kae8l")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Касса/Снеки" unique_id=1554740788]
+transform = Transform3D(0.99999624, 0, 0, 0, 1, 0, 0, 0, 0.99999624, 6.825698, -0.4772184, -0.19849682)
+radius = 0.36816406
+height = 0.12817383
+sides = 19
+material = SubResource("StandardMaterial3D_kae8l")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="." unique_id=1680699084]
 transform = Transform3D(-4.3711346e-08, 0, 0.99999917, 0, 1, 0, -0.99999917, 0, -4.3711346e-08, -20.938711, 0.7081344, -13.160933)
