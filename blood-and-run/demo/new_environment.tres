@@ -1,0 +1,25 @@
+[gd_resource type="Environment" format=3 uid="uid://cc7unamcaasd2"]
+
+[ext_resource type="Texture2D" uid="uid://cv26yr05sejrc" path="res://Models/smoke_02.png" id="1_osp4c"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y5rpb"]
+
+[sub_resource type="Sky" id="Sky_ui2ee"]
+sky_material = SubResource("ProceduralSkyMaterial_y5rpb")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_ui2ee")
+ambient_light_source = 2
+ambient_light_color = Color(0.2065543, 0.2065543, 0.20655426, 1)
+ambient_light_energy = 0.67
+glow_enabled = true
+glow_bloom = 0.1
+glow_map = ExtResource("1_osp4c")
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.11996875, 0.13441467, 0.15689275, 1)
+fog_light_energy = 3.53
+fog_density = 1.0
+volumetric_fog_enabled = true
+volumetric_fog_emission = Color(0.31102076, 0.10981911, 0.36823004, 1)

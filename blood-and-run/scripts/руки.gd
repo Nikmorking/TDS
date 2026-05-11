@@ -27,6 +27,8 @@ func _ready():
 	posled_naklon = papa.rotation_degrees.x
 	pass # Replace with function body.
 
+
+var aim = false
 func _input(event):
 	if Input.is_action_just_pressed("ui_open"):
 		print("click")
@@ -41,8 +43,18 @@ func _input(event):
 	if Input.is_action_just_pressed("-"):
 		if $SpringArm3D.spring_length > 1:
 			$SpringArm3D.spring_length -= 0.1
+	if Input.is_action_just_pressed("eat"):
+		eat()
 			
-	
+
+func eat():
+		var chi = get_node("SpringArm3D/Hand").get_child(0)
+		print(chi)
+		if !aim and chi != null:
+			print(chi.named)
+			if chi.named == "Stakan_cofe" or chi.named == "snack":
+				aim = true
+				$SpringArm3D/AnimationPlayer.play("В ротик")
 
 func instance_na(name: String) -> Object:
 	var ret_obj
@@ -82,6 +94,8 @@ func _process(delta):
 	pass
 
 func _stavit_rashodnic():
+			if aim:
+				$SpringArm3D/AnimationPlayer.play("RESET")
 			var rashodnik: Node3D = instance_na(obj.named)
 			rashodnik.position = obj.global_position 
 			if rashodnik.named == "snack":
@@ -139,7 +153,7 @@ func _colling():
 					if col.name == "Stakan":
 						if kasa.kol_stakan > 0:
 							add_to_hand("Stakan")
-							kasa.kol_stakan -= 1
+							kasa.vzat_stakan()
 					elif col.name == "Календарь":
 						kalendar += 1
 						if kalendar == 6:
@@ -195,4 +209,9 @@ func _on_tik_timeout():
 			elif absf(tek_nakl - posled_naklon) < 7:
 				obj.get_node("Hik").stop()
 	posled_naklon = tek_nakl
+	pass # Replace with function body.
+
+
+func _on_animation_player_animation_finished(anim_name):
+	aim = false
 	pass # Replace with function body.

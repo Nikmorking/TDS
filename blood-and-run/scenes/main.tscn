@@ -47,6 +47,67 @@ font_size = 20
 [sub_resource type="SphereShape3D" id="SphereShape3D_2f3dj"]
 margin = 3.05
 
+[sub_resource type="Animation" id="Animation_vxglm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.48008382, 2.2554448)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2f3dj"]
+resource_name = "В ротик"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.98, 1.5333333, 2.0333333, 2.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 2.255), Vector3(0, -0.48008382, 0.44457173), Vector3(0, -0.34442472, 0.4713993), Vector3(0, -0.48008382, 0.44457173), Vector3(0, 0, 2.255)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.54, 2.0333333, 2.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.16528268, 1.2078667e-09, -1.4582504e-08), Vector3(-0.60219103, 1.86604e-08, -6.009074e-08), Vector3(-0.16528268, 1.2078667e-09, -1.4582504e-08), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fv21b"]
+_data = {
+&"RESET": SubResource("Animation_vxglm"),
+&"В ротик": SubResource("Animation_2f3dj")
+}
+
 [sub_resource type="Animation" id="Animation_415sf"]
 resource_name = "Open"
 length = 2.0
@@ -86,6 +147,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(-296, 175), Vector2(53, 175)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Restart:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-434, 98), Vector2(51, 79)]
+}
 
 [sub_resource type="Animation" id="Animation_myhle"]
 length = 0.001
@@ -124,6 +197,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(53, 175)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Restart:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(53, 416)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yq6so"]
@@ -319,6 +404,7 @@ albedo_color = Color(0.2819191, 0.28191918, 0.281919, 1)
 size = Vector3(0.67614746, 0.321167, 0.6940918)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_og1vs"]
+size = Vector3(1.4667969, 1, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_o6xl0"]
 radius = 0.03
@@ -350,6 +436,9 @@ font_size = 40
 [sub_resource type="ViewportTexture" id="ViewportTexture_jscy8"]
 viewport_path = NodePath("Sprite3D5/SubViewport")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_tel4y"]
+viewport_path = NodePath("Sprite3D8/SubViewport")
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_vxglm"]
 viewport_path = NodePath("Sprite3D6/SubViewport")
 
@@ -358,6 +447,9 @@ viewport_path = NodePath("Sprite3D3/SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_2wyq8"]
 viewport_path = NodePath("Sprite3D4/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fv21b"]
+viewport_path = NodePath("Sprite3D7/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ld40"]
 albedo_color = Color(0.9176606, 0.59637296, 3.85046e-07, 1)
@@ -376,6 +468,9 @@ viewport_path = NodePath("Ящики/c батонами/Sprite3D/SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_og1vs"]
 viewport_path = NodePath("Ящики/с снеками/Sprite3D/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_yq6so"]
+viewport_path = NodePath("Ящики/с снеками/Sprite3D3/SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_2f3dj"]
 viewport_path = NodePath("Ящики/с снеками/Sprite3D2/SubViewport")
@@ -407,7 +502,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0400076, -0.120033)
 script = ExtResource("1_o6xl0")
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=1805449800]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.586344, 0, 4.995628)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.299939, 0, 4.995628)
 script = ExtResource("2_0xm2m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=563192533]
@@ -463,14 +558,17 @@ collide_with_areas = true
 debug_shape_custom_color = Color(1, 0, 1, 1)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="Player/Camera3D/руки" unique_id=987517300]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.0016896725, 0.46273375)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.121459365, 0.7655535)
 collision_mask = 8
 shape = SubResource("SphereShape3D_2f3dj")
 spring_length = 2.0
-margin = 0.1
+margin = 0.07
 
 [node name="Hand" type="Node3D" parent="Player/Camera3D/руки/SpringArm3D" unique_id=2075541232]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.48008382, 2.2554448)
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -0.48008382, 2.2554448)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Camera3D/руки/SpringArm3D" unique_id=2091651982]
+libraries/ = SubResource("AnimationLibrary_fv21b")
 
 [node name="Menu" type="Control" parent="Player/Camera3D" unique_id=207552319]
 process_mode = 3
@@ -517,6 +615,18 @@ offset_right = 328.0
 offset_bottom = 479.0
 theme_override_font_sizes/font_size = 32
 text = "Quit"
+flat = true
+alignment = 0
+
+[node name="Restart" type="Button" parent="Player/Camera3D/Menu" unique_id=511148745]
+process_mode = 3
+layout_mode = 0
+offset_left = 53.0
+offset_top = 416.0
+offset_right = 465.0
+offset_bottom = 487.0
+theme_override_font_sizes/font_size = 32
+text = "Начать обучение заново"
 flat = true
 alignment = 0
 
@@ -778,6 +888,7 @@ transform = Transform3D(-0.8, 0, -6.9938224e-08, 0, 0.8, 0, 6.9938224e-08, 0, -0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.71878, 1.2839239, 17.343288)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Area3D" unique_id=642594307]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0054712296, 0, -0.35920143)
 shape = SubResource("BoxShape3D_og1vs")
 
 [node name="Node3D2" type="Node3D" parent="." unique_id=1074995887]
@@ -839,10 +950,10 @@ size = Vector3(4.63287, 3.28955, 3.90869)
 material = SubResource("FogMaterial_og1vs")
 
 [node name="Table" parent="." unique_id=1041556568 instance=ExtResource("17_muem4")]
-transform = Transform3D(-2.6226834e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.6226834e-08, -13.961578, 0.56499296, 17.728394)
+transform = Transform3D(-2.6226834e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.6226834e-08, 6.074242, 0.56499296, -5.1224747)
 
 [node name="Sprite3D2" type="Sprite3D" parent="." unique_id=1441392934]
-transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, -5.7167807, 1.3241296, 9.927391)
+transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, -1.932589, 1.107144, 2.5874193)
 double_sided = false
 texture = SubResource("ViewportTexture_0ld40")
 
@@ -864,7 +975,7 @@ scale = Vector2(2.5603333, -7.3522773)
 texture = ExtResource("18_0ld40")
 
 [node name="Sprite3D5" type="Sprite3D" parent="." unique_id=1711017533]
-transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, -14.644413, 0.9273052, 13.736219)
+transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, -14.644413, 0.82943606, 13.2548275)
 double_sided = false
 texture = SubResource("ViewportTexture_jscy8")
 
@@ -879,6 +990,25 @@ text = "Чтобы начать день,
 эти двери
 Если ты всё понял, 
 прохрди в коридор"
+label_settings = SubResource("LabelSettings_jscy8")
+
+[node name="Sprite3D8" type="Sprite3D" parent="." unique_id=736448053]
+transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, -14.644413, 0.8990177, 8.029234)
+double_sided = false
+texture = SubResource("ViewportTexture_tel4y")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D8" unique_id=1987742998]
+transparent_bg = true
+
+[node name="Label" type="Label" parent="Sprite3D8/SubViewport" unique_id=1384780457]
+offset_right = 403.0
+offset_bottom = 113.0
+text = "ты можешь взять 
+только определённое
+количество расходников,
+по этому убирай 
+излишек в корзину
+(если не считать дюп)"
 label_settings = SubResource("LabelSettings_jscy8")
 
 [node name="Sprite3D6" type="Sprite3D" parent="." unique_id=2112436110]
@@ -907,7 +1037,7 @@ texture = ExtResource("18_0ld40")
 flip_h = true
 
 [node name="Sprite3D3" type="Sprite3D" parent="." unique_id=515657922]
-transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, -5.7167807, 1.90519, 6.9988537)
+transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, -1.932589, 2.0023236, 5.5653515)
 double_sided = false
 texture = SubResource("ViewportTexture_gqmmt")
 
@@ -931,7 +1061,7 @@ scale = Vector2(2.5603333, -7.3522773)
 texture = ExtResource("18_0ld40")
 
 [node name="Sprite3D4" type="Sprite3D" parent="." unique_id=1995016144]
-transform = Transform3D(0.4418338, 0, 0.23405749, 0, 0.5, 0, -0.23405749, 0, 0.4418338, -4.954244, 1.7685013, 3.60875)
+transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, -2.402102, 1.996326, 8.991109)
 double_sided = false
 texture = SubResource("ViewportTexture_2wyq8")
 
@@ -948,6 +1078,30 @@ text = "
 label_settings = SubResource("LabelSettings_jscy8")
 
 [node name="Arch" type="Sprite2D" parent="Sprite3D4/SubViewport" unique_id=519035161]
+texture_filter = 1
+position = Vector2(1.0000153, 327)
+rotation = 0.46419448
+scale = Vector2(2.5603333, -7.3522773)
+texture = ExtResource("18_0ld40")
+
+[node name="Sprite3D7" type="Sprite3D" parent="." unique_id=861081510]
+transform = Transform3D(-0.39477244, 0, -0.3068464, 0, 0.5, 0, 0.3068464, 0, -0.39477244, -4.45568, 1.2869862, 9.220704)
+double_sided = false
+texture = SubResource("ViewportTexture_fv21b")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D7" unique_id=1182631295]
+transparent_bg = true
+
+[node name="Label" type="Label" parent="Sprite3D7/SubViewport" unique_id=969772495]
+offset_right = 444.0
+offset_bottom = 229.0
+text = "
+
+     Здесь можно
+     включить музыку"
+label_settings = SubResource("LabelSettings_jscy8")
+
+[node name="Arch" type="Sprite2D" parent="Sprite3D7/SubViewport" unique_id=1072966486]
 texture_filter = 1
 position = Vector2(1.0000153, 327)
 rotation = 0.46419448
@@ -1068,6 +1222,21 @@ transparent_bg = true
 offset_right = 40.0
 offset_bottom = 23.0
 text = "со снеками"
+label_settings = SubResource("LabelSettings_jscy8")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Ящики/с снеками" unique_id=2093424929]
+transform = Transform3D(-0.49706042, 0, 0.05413847, 0, 0.5, 0, -0.05413847, 0, -0.49706042, 1.5266352, -0.5136181, -15.352047)
+flip_h = true
+texture = SubResource("ViewportTexture_yq6so")
+
+[node name="SubViewport" type="SubViewport" parent="Ящики/с снеками/Sprite3D3" unique_id=1953394409]
+transparent_bg = true
+
+[node name="Label" type="Label" parent="Ящики/с снеками/Sprite3D3/SubViewport" unique_id=1919918805]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Нажмите пкм,
+чтобы попробовать вкус"
 label_settings = SubResource("LabelSettings_jscy8")
 
 [node name="Sprite3D2" type="Sprite3D" parent="Ящики/с снеками" unique_id=1833385791]
@@ -1216,7 +1385,7 @@ size = Vector3(2.29503, 0.297974, 1.7718)
 material = SubResource("StandardMaterial3D_2f3dj")
 
 [node name="Timer" type="Timer" parent="Chubaka" unique_id=1991383497]
-wait_time = 4.0
+wait_time = 2.0
 one_shot = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Chubaka" unique_id=145142146]
@@ -1225,12 +1394,15 @@ stream = ExtResource("21_vxglm")
 volume_db = 10.0
 
 [connection signal="timeout" from="Player/Camera3D/Control/Timer" to="Player/Camera3D/Control" method="_on_timer_timeout"]
+[connection signal="animation_finished" from="Player/Camera3D/руки/SpringArm3D/AnimationPlayer" to="Player/Camera3D/руки" method="_on_animation_player_animation_finished"]
 [connection signal="button_down" from="Player/Camera3D/Menu/continue" to="Player/Camera3D/Menu" method="_on_continue_button_down"]
 [connection signal="focus_entered" from="Player/Camera3D/Menu/continue" to="Player/Camera3D/Menu" method="focus_entered"]
 [connection signal="button_down" from="Player/Camera3D/Menu/Settings" to="Player/Camera3D/Menu" method="_on_settings_button_down"]
 [connection signal="focus_entered" from="Player/Camera3D/Menu/Settings" to="Player/Camera3D/Menu" method="focus_entered"]
-[connection signal="button_down" from="Player/Camera3D/Menu/Quit" to="Player/Camera3D/Menu" method="_on_quit_button_down"]
+[connection signal="button_down" from="Player/Camera3D/Menu/Quit" to="Player/Camera3D/Menu" method="_on__quit_button_down"]
 [connection signal="focus_entered" from="Player/Camera3D/Menu/Quit" to="Player/Camera3D/Menu" method="focus_entered"]
+[connection signal="button_down" from="Player/Camera3D/Menu/Restart" to="Player/Camera3D/Menu" method="_on_restart_button_down"]
+[connection signal="focus_entered" from="Player/Camera3D/Menu/Restart" to="Player/Camera3D/Menu" method="focus_entered"]
 [connection signal="animation_finished" from="Player/Camera3D/Menu/AnimationPlayer" to="Player/Camera3D/Menu" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Player/Camera3D/AnimationPlayer" to="Player/Camera3D/AnimationPlayer" method="_on_day_finished"]
 [connection signal="body_entered" from="Node3D/мусорка" to="Node3D/мусорка" method="_on_body_entered"]

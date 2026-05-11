@@ -26,6 +26,11 @@ var Check_boxes:Array
 func _ready():
 	Check_boxes = $"Заправка/Table/CSGPolygon3D2/SubViewport/Control/Control".get_children()
 	print(Check_boxes)
+	Global.get_player()
+	print(Global.is_load)
+	if Global.is_load:
+		Global.load_game()
+	$Player/Camera3D/Menu.hide()
 	pass # Replace with function body.
 
 func _input(event):
@@ -74,7 +79,7 @@ func _start_sream():
 			norm = true
 
 func start_wait():
-	$"Ожидание".wait_time = zakaz.size() *(35-k_event*4) + +randi_range(10,20)
+	$"Ожидание".wait_time = zakaz.size() *(35-k_event*5) + +randi_range(10,20)
 	$"Ожидание".start()
 
 func _pridi():
@@ -228,8 +233,6 @@ func _on_tick_timeout():
 				$Timer2.wait_time = randi_range(15,20)
 				$Timer2.start()
 			rand = true
-	else:
-		print(zakaz.find("Zapravka"))
 	pass # Replace with function body.
 
 func die(prichina: String):

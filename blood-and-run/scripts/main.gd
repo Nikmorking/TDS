@@ -27,5 +27,6 @@ func _on_area_entered(body):
 		$Chubaka/AudioStreamPlayer3D.play()
 		get_node("Chubaka/Timer").start()
 		$Node3D/Door/AnimationPlayer.play("close door")
+		$Node3D/Door.need_door = false
 		zaper = true
 	pass # Replace with function body.

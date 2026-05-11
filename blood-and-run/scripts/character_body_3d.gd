@@ -59,7 +59,7 @@ func _physics_process(_delta: float) -> void:
 		#if !is_on_floor():
 			#velocity.x = move_toward(velocity.x * 2, velocity.x + JumpVel.x * 0.9, SPEED)
 			#velocity.z = move_toward(velocity.z * 2, velocity.z + JumpVel.z  * 0.9, SPEED)
-
+	
 	move_and_slide()
 	#$Camera3D.rotate_y(deg_to_rad(-event.relative.x * mouse_sens))
 		#var changev= -event.relative.y * mouse_sens

@@ -10,8 +10,8 @@ var snacks = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	cofe = 10
-	stakan = true
+	#cofe = 10
+	#stakan = true
 	Global.get_player()
 	pass # Replace with function body.
 
@@ -24,7 +24,7 @@ func statan_voshol(body: Node3D):
 	if body.named == "Stakanchiki" and !$CSGCylinder3D.visible:
 		body.queue_free()
 		$CSGCylinder3D.show()
-		kol_stakan = 10
+		kol_stakan = 6
 	pass # Replace with function body.
 
 
@@ -43,9 +43,7 @@ func sel(str: String):
 	$Cofe_machine/SubViewport/Control/Label.text = str
 	if str == "Варка":
 		vari += 1
-		if vari == 13:
-			Global.achivka("Достижение: \n Кофеман \n свари 13 чашки кофе")
-			printerr("L")
+			#printerr("L")
 		$Cofe_machine/Timer.start()
 	pass
 
@@ -70,3 +68,26 @@ func on_snaks(body):
 		body.queue_free()
 		set_snack()
 	pass # Replace with function body.
+
+
+func get_var():
+	var data = [kol_stakan,cofe,stakan,cofe_gotova,snacks]
+	return data
+
+func load_var(data):
+	kol_stakan = int(data.get(0))
+	cofe = int(data.get(1))
+	stakan = data.get(2)
+	cofe_gotova = data.get(3)
+	snacks = int(data.get(4))
+	
+	sel(str(cofe)+"/10")
+	if kol_stakan >0:
+		$CSGCylinder3D.show()
+	set_snack()
+	
+
+func vzat_stakan():
+	kol_stakan -= 1
+	$CSGCylinder3D.height -= 0.2
+	$CSGCylinder3D.position.y -= 0.3

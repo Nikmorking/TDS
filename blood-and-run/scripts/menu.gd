@@ -1,5 +1,5 @@
 extends Control
-
+class_name Menu
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,14 +32,14 @@ func _input(event: InputEvent) -> void:
 		$AnimationPlayer.play("RESET")
 
 func cont():
-			Global.isOnMenu = false
+			Global.esc()
 			$Close.play()
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			get_tree().paused = false
 			get_parent().get_node("Control").show()
 			hide()
 
 func _on_quit_button_down() -> void:
+	Global.save()
 	get_tree().quit()
 	pass # Replace with function body.
 
@@ -62,4 +62,20 @@ func _on_settings_button_down():
 	if settin == 6:
 		Global.achivka("Достижение: \nМастер по настройке")
 		printerr("Буква: P")
+	pass # Replace with function body.
+
+
+func _on_restart_button_down():
+	Global.esc()
+	get_tree().reload_current_scene()
+	pass # Replace with function body.
+
+
+func _on__quit_button_down():
+	get_tree().quit()
+	pass # Replace with function body.
+
+
+func _on_save_button_down():
+	Global.save()
 	pass # Replace with function body.
