@@ -21,7 +21,7 @@ func _input(event):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func statan_voshol(body: Node3D):
-	if body.named == "Stakanchiki" and !$CSGCylinder3D.visible:
+	if body.named == "Stakanchiki" and kol_stakan == 0:
 		body.queue_free()
 		$CSGCylinder3D.show()
 		kol_stakan = 6
@@ -91,3 +91,4 @@ func vzat_stakan():
 	kol_stakan -= 1
 	$CSGCylinder3D.height -= 0.2
 	$CSGCylinder3D.position.y -= 0.3
+	$Stakan/CollisionShape3D.position.y -= 0.1

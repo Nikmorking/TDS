@@ -76,7 +76,7 @@ func load_game():
 			continue
 		var node_data = json.data
 		print(node_data)
-		fara_days = node_data.get(0)
+		fara_days = int(node_data.get(0))
 		player.position = str_to_var(node_data.get(1))
 		player.rotation_degrees = str_to_var(node_data.get(2))
 		zp = node_data.get(3)

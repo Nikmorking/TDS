@@ -619,7 +619,7 @@ script = ExtResource("3_cfvsp")
 [node name="RayCast3D" type="RayCast3D" parent="Player/Camera3D/руки" unique_id=698698215]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8498604)
 target_position = Vector3(0, 0, -3)
-collision_mask = 3
+collision_mask = 8195
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0, 1, 1)
 
