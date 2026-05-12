@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c5xr2onlt6lgs"
-path.s3tc="res://.godot/imported/Shelf_Store_07.jpg-490a43d18b6634788d1dcda2d5a1af18.s3tc.ctex"
+path.etc2="res://.godot/imported/Shelf_Store_07.jpg-490a43d18b6634788d1dcda2d5a1af18.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Texture/Shelf_Store_07.jpg"
-dest_files=["res://.godot/imported/Shelf_Store_07.jpg-490a43d18b6634788d1dcda2d5a1af18.s3tc.ctex"]
+dest_files=["res://.godot/imported/Shelf_Store_07.jpg-490a43d18b6634788d1dcda2d5a1af18.etc2.ctex"]
 
 [params]
 

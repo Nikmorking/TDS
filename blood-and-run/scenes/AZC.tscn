@@ -796,6 +796,29 @@ offset_bottom = 140.0
 text = "ДОСТИЖЕНИЕ!"
 label_settings = SubResource("LabelSettings_24d4k")
 
+[node name="VirtualJoystick" type="VirtualJoystick" parent="Player/Camera3D/Control3" unique_id=499441161]
+layout_mode = 0
+offset_left = 798.0
+offset_top = 344.0
+offset_right = 1133.0
+offset_bottom = 624.0
+action_left = &"A"
+action_right = &"D"
+action_up = &"W"
+action_down = &"S"
+
+[node name="VirtualJoystick2" type="VirtualJoystick" parent="Player/Camera3D/Control3" unique_id=1807082869]
+layout_mode = 0
+offset_left = -37.0
+offset_top = 267.0
+offset_right = 409.0
+offset_bottom = 717.0
+joystick_mode = 2
+action_left = &"con_left"
+action_right = &"con_right"
+action_up = &"con_up"
+action_down = &"con_down"
+
 [node name="Marker3D" type="Marker3D" parent="Player" unique_id=452555931]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0656533, 0)
 

@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b3ucpfrosaro"
-path.s3tc="res://.godot/imported/TV_03.jpg-ec4852915cc82e4c396106f5f0efd10e.s3tc.ctex"
+path.etc2="res://.godot/imported/TV_03.jpg-ec4852915cc82e4c396106f5f0efd10e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Texture/TV_03.jpg"
-dest_files=["res://.godot/imported/TV_03.jpg-ec4852915cc82e4c396106f5f0efd10e.s3tc.ctex"]
+dest_files=["res://.godot/imported/TV_03.jpg-ec4852915cc82e4c396106f5f0efd10e.etc2.ctex"]
 
 [params]
 

@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bafg5x2p8c6f2"
-path.s3tc="res://.godot/imported/Freind.png-439128364dbd642b4eed16a0609f8231.s3tc.ctex"
+path.etc2="res://.godot/imported/Freind.png-439128364dbd642b4eed16a0609f8231.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Texture/Freind.png"
-dest_files=["res://.godot/imported/Freind.png-439128364dbd642b4eed16a0609f8231.s3tc.ctex"]
+dest_files=["res://.godot/imported/Freind.png-439128364dbd642b4eed16a0609f8231.etc2.ctex"]
 
 [params]
 
