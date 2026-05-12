@@ -16,6 +16,33 @@ shader_parameter/roughness = 0.5
 shader_parameter/normal_strength = 8.0
 shader_parameter/edge_color = Color(1, 1, 1, 1)
 
+[sub_resource type="Shader" id="Shader_2af0q"]
+code = "shader_type spatial;
+render_mode cull_front, unshaded; // cull_front рисует только заднюю сторону (обводку)
+
+uniform vec4 outline_color : source_color = vec4(1.0, 1.0, 0.0, 1.0); // Цвет (желтый)
+uniform float outline_width : hint_range(0.0, 10.0, 0.1) = 1.0;
+
+void vertex() {
+	// Увеличиваем вершины вдоль нормалей
+	vec4 clip_position = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0);
+	vec3 clip_normal = mat3(PROJECTION_MATRIX * MODELVIEW_MATRIX) * NORMAL;
+	
+	// Используем нормализацию для одинаковой толщины
+	clip_position.xy += normalize(clip_normal.xy) * outline_width * 0.01 * clip_position.w;
+	POSITION = clip_position;
+}
+
+void fragment() {
+	ALBEDO = outline_color.rgb;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lmqq2"]
+render_priority = 0
+shader = SubResource("Shader_2af0q")
+shader_parameter/outline_color = Color(1.7310808, 1.7310808, 0, 1)
+shader_parameter/outline_width = 1.0
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_16v82"]
 radius = 0.27441406
 height = 1.7573242
@@ -56,6 +83,15 @@ outer_radius = 0.1
 sides = 20
 ring_sides = 10
 material = SubResource("ShaderMaterial_2af0q")
+
+[node name="CSGTorus3D2" type="CSGTorus3D" parent="." unique_id=1485170066]
+transform = Transform3D(-2.2781141e-07, -234.73552, 0, 5.211718, -1.02606145e-05, 0, 0, 0, 12.916824, 0.24392194, 0, -0.033189654)
+visible = false
+inner_radius = 0.10760922
+outer_radius = 0.11632365
+sides = 20
+ring_sides = 10
+material = SubResource("ShaderMaterial_lmqq2")
 
 [node name="Coll" type="CollisionShape3D" parent="." unique_id=435933655]
 transform = Transform3D(-1.2923567e-07, -0.99999994, 0, -1.2923567e-07, 1.9106853e-15, -0.99999994, 2.9565675, -4.3711385e-08, -4.3711385e-08, 0.28024608, -0.017982244, 0.10519683)

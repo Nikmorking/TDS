@@ -84,6 +84,9 @@ func load_var(data):
 	sel(str(cofe)+"/10")
 	if kol_stakan >0:
 		$CSGCylinder3D.show()
+		$CSGCylinder3D.height -= 0.2
+		$CSGCylinder3D.position.y -= 0.3
+		$Stakan/CollisionShape3D.position.y -= 0.3
 	set_snack()
 	
 
@@ -91,4 +94,4 @@ func vzat_stakan():
 	kol_stakan -= 1
 	$CSGCylinder3D.height -= 0.2
 	$CSGCylinder3D.position.y -= 0.3
-	$Stakan/CollisionShape3D.position.y -= 0.1
+	$Stakan/CollisionShape3D.position.y -= 0.3

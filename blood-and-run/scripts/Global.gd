@@ -7,6 +7,8 @@ var fara_days = 1
 var zp = 0
 var is_load = false
 
+signal load
+
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_copy"):
@@ -82,5 +84,6 @@ func load_game():
 		zp = node_data.get(3)
 		kasa = papa.get_node("Заправка/Table/Касса")
 		kasa.load_var(node_data.get(4))
+		load.emit()
 	pass
 	

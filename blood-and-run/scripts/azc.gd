@@ -31,6 +31,7 @@ func _ready():
 	if Global.is_load:
 		Global.load_game()
 	$Player/Camera3D/Menu.hide()
+	Global.is_load = false
 	pass # Replace with function body.
 
 func _input(event):
@@ -251,6 +252,7 @@ func _on_be_finished():
 
 func _end_day():
 	Global.fara_days += 1
+	Global.save()
 	$Player/Camera3D/Control2/Label1.text = str(Global.fara_days)
 	$Player/Camera3D/AnimationPlayer.play("End_day")
 	start_day = true
