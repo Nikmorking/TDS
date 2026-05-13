@@ -20,6 +20,9 @@ disable_receive_shadows = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b3ns2"]
 albedo_color = Color(1, 1, 1, 0.37100002)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4p7hl"]
+albedo_color = Color(0.16062862, 0.16062862, 0.16062862, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_q1pnm"]
 size = Vector3(8.900618, 1, 1.2550049)
 
@@ -140,6 +143,36 @@ visible = false
 material_override = SubResource("StandardMaterial3D_b3ns2")
 radius = 0.2397461
 height = 2.5
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Касса/CSGCylinder3D" unique_id=1717277630]
+transform = Transform3D(0.9999663, 0, -7.105189e-15, 0, 1, 0, 7.105189e-15, 0, 0.9999663, 0, 0.8367928, 0)
+material_override = SubResource("StandardMaterial3D_4p7hl")
+radius = 0.26757813
+height = 0.20202637
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Касса/CSGCylinder3D" unique_id=1375204418]
+transform = Transform3D(0.9999663, 0, -7.105189e-15, 0, 1, 0, 7.105189e-15, 0, 0.9999663, 0, 0.33784926, 0)
+material_override = SubResource("StandardMaterial3D_4p7hl")
+radius = 0.26757813
+height = 0.20202637
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Касса/CSGCylinder3D" unique_id=1670830213]
+transform = Transform3D(0.9999663, 0, -7.105189e-15, 0, 1, 0, 7.105189e-15, 0, 0.9999663, 0, -0.26401973, 0)
+material_override = SubResource("StandardMaterial3D_4p7hl")
+radius = 0.26757813
+height = 0.20202637
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Касса/CSGCylinder3D" unique_id=415702448]
+transform = Transform3D(0.9999663, 0, -7.105189e-15, 0, 1, 0, 7.105189e-15, 0, 0.9999663, 0, -0.731503, 0)
+material_override = SubResource("StandardMaterial3D_4p7hl")
+radius = 0.26757813
+height = 0.20202637
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Касса/CSGCylinder3D" unique_id=745083557]
+transform = Transform3D(0.9999663, 0, -7.105189e-15, 0, 1, 0, 7.105189e-15, 0, 0.9999663, 0, -1.0766762, 0)
+material_override = SubResource("StandardMaterial3D_4p7hl")
+radius = 0.26757813
+height = 0.20202637
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Касса" unique_id=1676361758]
 collision_layer = 7

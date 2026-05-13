@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://coh874xmmimuf"]
+
+[sub_resource type="GDScript" id="GDScript_uchyk"]
+script/source = "extends Control
+
+var zaka = 0
+var k_event = 0
+
+var pr = 0
+
+func _on_code_edit_text_changed():
+	zaka = int($CodeEdit.text)
+	$Label.text = str(zaka)
+	pass # Replace with function body.
+
+
+func _on_button_button_down():
+		$\"Timer2\".wait_time = 0.1 *(
+			zaka * 
+			(
+				40-(k_event *5)
+			)
+		 	+randi_range(20,40)*(5-Global.fara_days)
+		)
+		$Timer2.start()
+		$Timer.start()
+		pass # Replace with function body.
+
+
+func _on_timer_timeout():
+	pr += 1
+	$Label.text = str(pr)
+	pass # Replace with function body.
+
+
+func _on_timer_2_timeout():
+	$Timer.stop()
+	k_event += 1
+	pr = 0
+	if k_event == 5:
+		Global.fara_days += 1
+		$Label2.text = str(Global.fara_days)
+		k_event = 0
+	else:
+		$Label2.text = str(k_event)
+	pass # Replace with function body.
+"
+
+[node name="Control" type="Control" unique_id=1676328336]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_uchyk")
+
+[node name="Timer" type="Timer" parent="." unique_id=585804682]
+wait_time = 0.1
+
+[node name="Label" type="Label" parent="." unique_id=465174939]
+layout_mode = 0
+offset_left = 571.0
+offset_top = 51.0
+offset_right = 995.0
+offset_bottom = 215.0
+
+[node name="Timer2" type="Timer" parent="." unique_id=1598512390]
+one_shot = true
+
+[node name="CodeEdit" type="TextEdit" parent="." unique_id=77384954]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 353.0
+offset_right = 484.0
+offset_bottom = 501.0
+
+[node name="Button" type="Button" parent="." unique_id=1483563253]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Start"
+
+[node name="Label2" type="Label" parent="." unique_id=1651927794]
+layout_mode = 0
+offset_left = 860.0
+offset_top = 357.0
+offset_right = 999.0
+offset_bottom = 428.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="text_changed" from="CodeEdit" to="." method="_on_code_edit_text_changed"]
+[connection signal="text_set" from="CodeEdit" to="." method="_on_code_edit_text_changed"]
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

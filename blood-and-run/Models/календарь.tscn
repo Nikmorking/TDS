@@ -72,3 +72,4 @@ stream = ExtResource("2_7ll7v")
 volume_db = 2.0
 max_db = 2.0
 max_distance = 6.0
+bus = &"Music"

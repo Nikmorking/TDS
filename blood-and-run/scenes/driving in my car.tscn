@@ -46,6 +46,7 @@ bus = &"Music"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0614537, 0)
 stream = ExtResource("4_veqsq")
 max_distance = 5.0
+bus = &"Effect"
 
 [node name="Area3D" type="Area3D" parent="." unique_id=387007340]
 collision_layer = 4096

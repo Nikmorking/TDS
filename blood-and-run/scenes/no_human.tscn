@@ -61,5 +61,6 @@ shape = SubResource("CapsuleShape3D_wlgop")
 stream = ExtResource("2_fhsek")
 volume_db = 9.0
 max_distance = 10.0
+bus = &"Effect"
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

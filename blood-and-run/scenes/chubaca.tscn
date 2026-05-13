@@ -42,6 +42,7 @@ autostart = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5287381, 0.40579498)
 stream = ExtResource("3_lli5l")
 autoplay = true
+bus = &"Effect"
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

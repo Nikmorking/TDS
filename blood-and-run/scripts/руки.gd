@@ -46,7 +46,7 @@ func _input(event):
 	if Input.is_action_just_pressed("eat"):
 		eat()
 			
-
+var tea = 0
 func eat():
 		var chi = get_node("SpringArm3D/Hand").get_child(0)
 		print(chi)
@@ -55,6 +55,10 @@ func eat():
 			if chi.named == "Stakan_cofe" or chi.named == "snack":
 				aim = true
 				$SpringArm3D/AnimationPlayer.play("В ротик")
+				if chi.named == "Stakan_cofe":
+					tea += 1
+					if tea == 5:
+						Global.achivka("Достижение:\nКофеман\nВыпить 15 чашек кофе")
 
 func instance_na(name: String) -> Object:
 	var ret_obj
@@ -92,11 +96,11 @@ func _process(delta):
 	if zp:
 		points.set(1, global_position)
 	pass
-
+var rashodnik: Node3D
 func _stavit_rashodnic():
 			if aim:
 				$SpringArm3D/AnimationPlayer.play("RESET")
-			var rashodnik: Node3D = instance_na(obj.named)
+			rashodnik = instance_na(obj.named)
 			rashodnik.position = obj.global_position 
 			if rashodnik.named == "snack":
 				rashodnik.scale = Vector3(0.5, 0.7,0.5)
@@ -107,7 +111,7 @@ func _stavit_rashodnic():
 					i.queue_free()
 			var coll: CollisionShape3D = rashodnik.get_node("Coll")
 			coll.disabled = false
-			get_tree().root.get_node("Node3D").get_node("Расходники").add_child(rashodnik)
+			$Timer.start()
 
 func fnc_zp():
 	if zp_in:
@@ -214,4 +218,9 @@ func _on_tik_timeout():
 
 func _on_animation_player_animation_finished(anim_name):
 	aim = false
+	pass # Replace with function body.
+
+
+func _on_timer_timeout():
+	Global.papa.get_node("Расходники").add_child(rashodnik)
 	pass # Replace with function body.

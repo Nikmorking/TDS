@@ -49,7 +49,8 @@ func save():
 		fara_days,"Vector3"+str(player.position),
 		"Vector3"+str(player.rotation_degrees),
 		zp, 
-		kasa.get_var()
+		kasa.get_var(),
+		papa.k_event
 		]
 		# JSON provides a static method to serialized JSON string.
 	var json_string = JSON.stringify(node_data)
@@ -84,6 +85,7 @@ func load_game():
 		zp = node_data.get(3)
 		kasa = papa.get_node("Заправка/Table/Касса")
 		kasa.load_var(node_data.get(4))
+		papa.k_event = node_data.get(5)
 		load.emit()
 	pass
 	

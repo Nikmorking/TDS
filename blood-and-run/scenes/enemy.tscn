@@ -22,6 +22,7 @@ script = ExtResource("1_7p1mj")
 movement_speed = 5.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=2028813483]
+navigation_layers = 2
 avoidance_enabled = true
 debug_enabled = true
 debug_path_custom_color = Color(1, 0, 0, 1)

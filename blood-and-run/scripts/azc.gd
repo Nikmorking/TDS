@@ -39,9 +39,10 @@ func _input(event):
 		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		#_start_sream()
 		#$Timer2.start()
-	#if Input.is_action_just_pressed("ui_cut"):
-		#_start_sream()
+	if Input.is_action_just_pressed("ui_home"):
+		_start_sream()
 		#$"driving in my car"._start()
+		
 	pass
 
 
@@ -71,6 +72,8 @@ func _start_sream():
 			$emeny.get_node("Timer").start()
 			$emeny.position = $Marker3D.position
 			norm = false
+			$Timer2.wait_time = randi_range(15,20)
+			$Timer2.start()
 		else:
 			c.volumetric_fog_emission = Color("4f1c5e")
 			$emeny.start = false
@@ -80,7 +83,11 @@ func _start_sream():
 			norm = true
 
 func start_wait():
-	$"Ожидание".wait_time = zakaz.size() *(35-k_event*5) + +randi_range(10,20)
+	$"Ожидание".wait_time =(zakaz.size() *(
+				40-(k_event *5)
+			)
+		 	+randi_range(10,30)*(5-Global.fara_days)
+		)/2
 	$"Ожидание".start()
 
 func _pridi():
@@ -200,8 +207,8 @@ var time_left = false
 var energy = 0
 @export var min_a = -5
 @export var max_a = 5
-var k_event = 0
-var proshlo = 0
+var k_event = 1
+var proshlo = 100
 @export var end_day = 6000 # 5 minuts
 
 func _on_tick_timeout():
@@ -223,16 +230,17 @@ func _on_tick_timeout():
 			return
 		energy += 13
 		energy += randi_range(min_a,max_a)
-		if energy > 1700:
+		if energy > 2000:
 			k_event +=1
 			energy = 0
 			var b = randi_range(-6,1)
-			if b != 0:
+			if b < -1:
 				$"driving in my car"._start()
 			else:
-				_start_sream()
-				$Timer2.wait_time = randi_range(15,20)
-				$Timer2.start()
+				if b> -1:
+					_start_sream()
+				else:
+					$"Лёлик тормоз".tormoz()
 			rand = true
 	pass # Replace with function body.
 
@@ -248,6 +256,7 @@ func die(prichina: String):
 
 func _on_be_finished():
 	get_tree().reload_current_scene()
+	Global.is_load = true
 	pass # Replace with function body.
 
 func _end_day():
