@@ -1308,7 +1308,8 @@ collision_layer = 15
 collision_mask = 15
 start_rot = Vector3(0, -90, 0)
 
-[node name="Полки" type="Node" parent="Заправка" unique_id=2140927642]
+[node name="Полки" type="Node3D" parent="Заправка" unique_id=1911514701]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36524224, 0)
 
 [node name="warehouse_shelf2" type="Node3D" parent="Заправка/Полки" unique_id=1922642289]
 transform = Transform3D(-8.195885e-08, 0, 1.25, 0, 1, 0, -1.875, 0, -5.4639237e-08, -14.469994, -0.08912885, -7.906889)
@@ -1597,7 +1598,7 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -18.383547, 4.1033936, 
 [node name="LAmpa6" parent="Заправка/Лампы" unique_id=823233646 instance=ExtResource("1_hnl5y")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -13.332328, 4.1033936, -6.766962)
 
-[node name="Ящики" type="Node" parent="Заправка" unique_id=1511721321]
+[node name="Ящики" type="Node3D" parent="Заправка" unique_id=516686290]
 
 [node name="Со стаканами" type="CSGBox3D" parent="Заправка/Ящики" unique_id=1182617510]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.438679, 1.1547642, 5.9884896)
