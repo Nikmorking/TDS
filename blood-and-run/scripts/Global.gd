@@ -6,6 +6,7 @@ var fara_days = 1
 @onready var papa = get_tree().root.get_node("Node3D")
 var zp = 0
 var is_load = false
+var lela =	 true
 
 signal load
 
@@ -21,10 +22,12 @@ func get_player():
 	papa = get_tree().root.get_node("Node3D")
 	player = papa.get_node("Player")
 	pass
-# Called when the node enters the scene tree for the first time.
+
+
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	pass # Replace with function body.
+
 
 func get_papa(col: float, sel: Node) -> Node:
 	for i in col:

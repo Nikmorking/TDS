@@ -30,6 +30,8 @@ func _ready():
 	print(Global.is_load)
 	if Global.is_load:
 		Global.load_game()
+	else:
+		$Prolog.start()
 	$Player/Camera3D/Menu.hide()
 	Global.is_load = false
 	pass # Replace with function body.
@@ -207,7 +209,7 @@ var time_left = false
 var energy = 0
 @export var min_a = -5
 @export var max_a = 5
-var k_event = 1
+var k_event = 0
 var proshlo = 100
 @export var end_day = 6000 # 5 minuts
 
@@ -261,6 +263,7 @@ func _on_be_finished():
 
 func _end_day():
 	Global.fara_days += 1
+	Global.lela = true
 	Global.save()
 	$Player/Camera3D/Control2/Label1.text = str(Global.fara_days)
 	$Player/Camera3D/AnimationPlayer.play("End_day")
