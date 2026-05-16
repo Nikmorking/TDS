@@ -210,8 +210,10 @@ var energy = 0
 @export var min_a = -5
 @export var max_a = 5
 var k_event = 0
-var proshlo = 100
-@export var end_day = 6000 # 5 minuts
+var proshlo = 0
+@export var end_day = 15 # 5 minuts
+var min = 0
+var chas = 10
 
 func _on_tick_timeout():
 	if time_left:
@@ -222,14 +224,23 @@ func _on_tick_timeout():
 				Global.achivka("Достижение: \nБомж")
 	if !rand:
 		proshlo +=1
+		if proshlo %30 == 0:
+			min +=1
+			$Player/Camera3D/Control/time/Label4.text = str(min) + "0"
+			if min %6 == 0:
+				chas +=1
+				$Player/Camera3D/Control/time/Label2.text = str(chas)
+				$Player/Camera3D/Control/time/Label4.text = "00"
+				min = 0
+				if chas == end_day:
+					rand = false
+					_end_day()
+					return
 		print(proshlo)
-		print(energy)
+		#print(energy)
 		if proshlo == 400:
 			energy += 100 # *Zp
-		if proshlo == end_day:
-			rand = false
-			_end_day()
-			return
+			
 		energy += 13
 		energy += randi_range(min_a,max_a)
 		if energy > 2000:

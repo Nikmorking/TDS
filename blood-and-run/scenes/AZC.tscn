@@ -1094,6 +1094,29 @@ position = Vector2(576.5, 324.25)
 scale = Vector2(5.5048075, 2.6316872)
 texture = ExtResource("5_f5ce8")
 
+[node name="time" type="Node" parent="Player/Camera3D/Control" unique_id=1633330142]
+
+[node name="Label2" type="Label" parent="Player/Camera3D/Control/time" unique_id=1445564055]
+offset_left = 932.0
+offset_top = 518.0
+offset_right = 974.0
+offset_bottom = 541.0
+text = "10"
+
+[node name="Label4" type="Label" parent="Player/Camera3D/Control/time" unique_id=8955126]
+offset_left = 958.0
+offset_top = 518.0
+offset_right = 1000.0
+offset_bottom = 541.0
+text = "00"
+
+[node name="Label3" type="Label" parent="Player/Camera3D/Control/time" unique_id=1211369038]
+offset_left = 953.0
+offset_top = 517.0
+offset_right = 995.0
+offset_bottom = 540.0
+text = ":"
+
 [node name="руки" type="Node3D" parent="Player/Camera3D" unique_id=744049415]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1837149)
 script = ExtResource("3_cfvsp")
