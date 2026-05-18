@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://dkmxx220ci41x" path="res://sounds/close.wav" id="9_1huwv"]
 [ext_resource type="AudioStream" uid="uid://b6abahg8uksh6" path="res://sounds/open.wav" id="10_vqwn8"]
 [ext_resource type="AudioStream" uid="uid://tomgjbqso8ed" path="res://sounds/Navodka.mp3" id="11_vqwn8"]
+[ext_resource type="Texture2D" uid="uid://w4mwc33hgg84" path="res://Texture/brick.jpg" id="12_1huwv"]
 [ext_resource type="AudioStream" uid="uid://b7djpdlxind5d" path="res://sounds/шаги.mp3" id="12_w5m4x"]
 [ext_resource type="Environment" uid="uid://cc7unamcaasd2" path="res://demo/new_environment.tres" id="13_myhle"]
 [ext_resource type="Texture2D" uid="uid://b3ucpfrosaro" path="res://Texture/TV_03.jpg" id="16_myhle"]
@@ -798,10 +799,10 @@ label_settings = SubResource("LabelSettings_24d4k")
 
 [node name="VirtualJoystick" type="VirtualJoystick" parent="Player/Camera3D/Control3" unique_id=499441161]
 layout_mode = 0
-offset_left = 798.0
-offset_top = 344.0
-offset_right = 1133.0
-offset_bottom = 624.0
+offset_left = 6.0
+offset_top = 342.0
+offset_right = 341.0
+offset_bottom = 622.0
 action_left = &"A"
 action_right = &"D"
 action_up = &"W"
@@ -809,15 +810,77 @@ action_down = &"S"
 
 [node name="VirtualJoystick2" type="VirtualJoystick" parent="Player/Camera3D/Control3" unique_id=1807082869]
 layout_mode = 0
-offset_left = -37.0
-offset_top = 267.0
-offset_right = 409.0
-offset_bottom = 717.0
+offset_left = 704.0
+offset_top = 284.0
+offset_right = 1150.0
+offset_bottom = 734.0
 joystick_mode = 2
 action_left = &"con_left"
 action_right = &"con_right"
 action_up = &"con_up"
 action_down = &"con_down"
+
+[node name="Button" type="Button" parent="Player/Camera3D/Control3" unique_id=209125817]
+layout_mode = 0
+offset_left = 469.0
+offset_top = 406.0
+offset_right = 727.0
+offset_bottom = 664.0
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("12_1huwv")
+
+[node name="Control4" type="Control" parent="Player/Camera3D" unique_id=707824595]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Camera3D/Control4" unique_id=1600155911]
+process_mode = 3
+libraries/ = SubResource("AnimationLibrary_js04u")
+
+[node name="Label2" type="Label" parent="Player/Camera3D/Control4" unique_id=576228722]
+process_mode = 3
+layout_mode = 0
+offset_left = 1205.0
+offset_top = 44.0
+offset_right = 1718.0005
+offset_bottom = 140.0
+text = "ДОСТИЖЕНИЕ!"
+label_settings = SubResource("LabelSettings_24d4k")
+
+[node name="VirtualJoystick" type="VirtualJoystick" parent="Player/Camera3D/Control4" unique_id=1513805067]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 342.0
+offset_right = 341.0
+offset_bottom = 622.0
+action_left = &"A"
+action_right = &"D"
+action_up = &"W"
+action_down = &"S"
+
+[node name="VirtualJoystick2" type="VirtualJoystick" parent="Player/Camera3D/Control4" unique_id=152522960]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 284.0
+offset_right = 1150.0
+offset_bottom = 734.0
+joystick_mode = 2
+action_left = &"con_left"
+action_right = &"con_right"
+action_up = &"con_up"
+action_down = &"con_down"
+
+[node name="Button" type="Button" parent="Player/Camera3D/Control4" unique_id=678922986]
+layout_mode = 0
+offset_left = 469.0
+offset_top = 406.0
+offset_right = 727.0
+offset_bottom = 664.0
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("12_1huwv")
 
 [node name="Marker3D" type="Marker3D" parent="Player" unique_id=452555931]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0656533, 0)
@@ -1801,6 +1864,10 @@ libraries/ = SubResource("AnimationLibrary_vqwn8")
 [connection signal="focus_entered" from="Player/Camera3D/Menu/Save" to="Player/Camera3D/Menu" method="focus_entered"]
 [connection signal="animation_finished" from="Player/Camera3D/Menu/AnimationPlayer" to="Player/Camera3D/Menu" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Player/Camera3D/AnimationPlayer" to="Player/Camera3D/AnimationPlayer" method="_on_day_finished"]
+[connection signal="button_down" from="Player/Camera3D/Control3/Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Player/Camera3D/Control3/Button" to="." method="_on_button_button_up"]
+[connection signal="button_down" from="Player/Camera3D/Control4/Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Player/Camera3D/Control4/Button" to="." method="_on_button_button_up"]
 [connection signal="_open" from="Заправка/Door2" to="." method="_on_door_2__open"]
 [connection signal="body_entered" from="Заправка/мусорка" to="Заправка/мусорка" method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

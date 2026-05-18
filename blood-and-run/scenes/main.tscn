@@ -36,10 +36,6 @@ density = 0.7
 albedo = Color(0.423651, 0.423651, 0.423651, 1)
 emission = Color(0.140447, 0.140447, 0.140447, 1)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2wyq8"]
-radius = 0.382215
-height = 1.829824
-
 [sub_resource type="LabelSettings" id="LabelSettings_vxglm"]
 line_spacing = 7.0
 font_size = 20
@@ -500,6 +496,8 @@ metallic = 0.3
 [node name="Node3D" type="Node3D" unique_id=501175308]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0400076, -0.120033)
 script = ExtResource("1_o6xl0")
+metadata/_edit_vertical_guides_ = [-121.0]
+metadata/_edit_horizontal_guides_ = [65.0]
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=1805449800]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.299939, 0, 4.995628)
@@ -513,10 +511,6 @@ shape = SubResource("CapsuleShape3D_0xm2m")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4446, 1.37464, -10.8548)
 size = Vector3(14.2228, 2.58569, 3.38476)
 material = SubResource("FogMaterial_0wfyh")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Player" unique_id=864118069]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1818719, 0)
-shape = SubResource("CapsuleShape3D_2wyq8")
 
 [node name="Camera3D" type="Camera3D" parent="Player" unique_id=1932573547]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6756717, -0.034546614)

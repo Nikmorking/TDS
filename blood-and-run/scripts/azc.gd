@@ -265,3 +265,17 @@ func _on_ожидание_timeout():
 
 func _67():
 	pass
+
+
+func _on_button_button_up() -> void:
+	
+			
+				# Сразу отпускаем действие, чтобы сработал одиноодиночныйnput.action_release("ui_custom_action")
+			# Сразу отпускаем действие, чтобы сработал одиночный кликл
+			
+	Input.action_release("rush_e")
+	pass # Replace with function body.
+
+func _on_button_button_down() -> void:
+	Input.action_press("rush_e")
+	pass # Replace with function body.

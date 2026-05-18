@@ -19,7 +19,6 @@ func _ready() -> void:
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("rush_e"):
-		if need_door and !Global.player.get_node("Camera3D/руки").obj:
 			print("door")
 			k_otk += 1
 			if k_otk ==62:
@@ -64,4 +63,8 @@ func come_back(body: Node3D) -> void:
 func _on_timer_2_timeout():
 	print("open3")
 	_open.emit()
+	pass # Replace with function body.
+
+
+func _on_button_button_down() -> void:
 	pass # Replace with function body.

@@ -30,7 +30,7 @@ func _ready():
 
 var aim = false
 func _input(event):
-	if Input.is_action_just_pressed("ui_open"):
+	if Input.is_action_just_released("rush_e"):
 		print("click")
 		if obj:
 			_stavit_rashodnic()
