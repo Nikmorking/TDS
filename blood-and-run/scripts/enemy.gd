@@ -19,6 +19,6 @@ func _physics_process(delta):
 
 
 func _on_timer_timeout():
-	movement_target_position = get_parent().get_node("Player").position
+	movement_target_position = Global.player.position
 	actor_setup()
 	pass # Replace with function body.

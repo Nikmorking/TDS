@@ -95,3 +95,5 @@ func vzat_stakan():
 	$CSGCylinder3D.height -= 0.2
 	$CSGCylinder3D.position.y -= 0.3
 	$Stakan/CollisionShape3D.position.y -= 0.3
+	if kol_stakan-1 != -1:
+		$CSGCylinder3D.get_children().get(kol_stakan-1).hide()

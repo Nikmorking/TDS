@@ -4,6 +4,7 @@ signal body_entered(Node)
 @export var movement_speed: float = 2.0
 var movement_target_position: Vector3
 var mtp_list:Array
+@export var vkl = true
 
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 
@@ -28,7 +29,7 @@ func set_movement_target(movement_target: Vector3):
 	navigation_agent.set_target_position(movement_target)
 
 func _physics_process(delta):
-	if navigation_agent.is_navigation_finished():
+	if navigation_agent.is_navigation_finished() and vkl:
 		if movement_target_position != $"../Markers/Marker3D".position: get_parent().next()
 		else: 
 			get_parent()._pripersa()

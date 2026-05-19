@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://cqb1eyg10nhcr" path="res://Models/Running.fbx" id="2_md0e3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wlgop"]
-radius = 0.7011719
-height = 3.4472656
+radius = 5.330078
+height = 10.660156
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_md0e3"]
 radius = 0.66015625
@@ -22,31 +22,33 @@ script = ExtResource("1_7p1mj")
 movement_speed = 5.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=2028813483]
+navigation_layers = 2
 avoidance_enabled = true
 debug_enabled = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1813067330]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, 0, -1.7351183, 0)
 collision_layer = 2
 collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1901331121]
-transform = Transform3D(0.99999976, 0, 4.7961635e-13, 0, 0.99999976, 0, -4.7961635e-13, 0, 0.99999976, 0, 1.7455314, 0)
+transform = Transform3D(0.99999976, 0, 2.7604585e-12, 0, 0.99999976, 0, -2.7604585e-12, 0, 0.99999976, 0.10668666, 1.7455312, -4.6634216e-09)
 shape = SubResource("CapsuleShape3D_wlgop")
 
 [node name="Timer" type="Timer" parent="." unique_id=806771934]
 wait_time = 0.8
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=664915708]
-transform = Transform3D(1.6666665, 0, 0, 0, 1.6666665, 0, 0, 0, 1.6666665, -0.2432807, 3.6976933, 0.311323)
+transform = Transform3D(1.6666665, 0, 0, 0, 1.6666665, 0, 0, 0, 1.6666665, -0.2432807, 1.9625745, 0.311323)
 light_color = Color(0.86290884, 0.29543713, 0.26479155, 1)
 omni_range = 2.0
 
 [node name="Running" parent="." unique_id=1633639507 instance=ExtResource("2_md0e3")]
-transform = Transform3D(-149.99995, 0, -1.3113413e-05, 0, 149.99995, 0, 1.3113413e-05, 0, -149.99995, -0.007018531, 1.3689936, 0.047516733)
+transform = Transform3D(-149.99995, 0, -1.3113412e-05, 0, 149.99995, 0, 1.3113412e-05, 0, -149.99995, -0.007018531, -0.3661248, 0.04751673)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1892024624]
-transform = Transform3D(0.99999976, 0, 3.5882408e-13, 0, 0.99999976, 0, -3.5882408e-13, 0, 0.99999976, 0, 1.7188387, 0)
+transform = Transform3D(0.99999976, 0, 3.659295e-13, 0, 0.99999976, 0, -3.659295e-13, 0, 0.99999976, 0, -0.016279815, 0)
 shape = SubResource("CapsuleShape3D_md0e3")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -6,6 +6,7 @@ var fara_days = 1
 @onready var papa = get_tree().root.get_node("Node3D")
 var zp = 0
 var is_load = false
+var lela =	 true
 
 signal load
 
@@ -21,10 +22,12 @@ func get_player():
 	papa = get_tree().root.get_node("Node3D")
 	player = papa.get_node("Player")
 	pass
-# Called when the node enters the scene tree for the first time.
+
+
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	pass # Replace with function body.
+
 
 func get_papa(col: float, sel: Node) -> Node:
 	for i in col:
@@ -49,7 +52,9 @@ func save():
 		fara_days,"Vector3"+str(player.position),
 		"Vector3"+str(player.rotation_degrees),
 		zp, 
-		kasa.get_var()
+		kasa.get_var(),
+		papa.k_event,
+		papa.proshlo
 		]
 		# JSON provides a static method to serialized JSON string.
 	var json_string = JSON.stringify(node_data)
@@ -84,6 +89,8 @@ func load_game():
 		zp = node_data.get(3)
 		kasa = papa.get_node("Заправка/Table/Касса")
 		kasa.load_var(node_data.get(4))
+		papa.k_event = int(node_data.get(5))
+		papa.proshlo = int(node_data.get(6))
 		load.emit()
 	pass
 	

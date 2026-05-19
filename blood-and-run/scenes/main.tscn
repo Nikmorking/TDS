@@ -472,6 +472,9 @@ viewport_path = NodePath("Ящики/с снеками/Sprite3D/SubViewport")
 [sub_resource type="ViewportTexture" id="ViewportTexture_yq6so"]
 viewport_path = NodePath("Ящики/с снеками/Sprite3D3/SubViewport")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_qkpxi"]
+viewport_path = NodePath("Ящики/с снеками/Sprite3D4/SubViewport")
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_2f3dj"]
 viewport_path = NodePath("Ящики/с снеками/Sprite3D2/SubViewport")
 
@@ -553,7 +556,7 @@ script = ExtResource("6_dp3eg")
 [node name="RayCast3D" type="RayCast3D" parent="Player/Camera3D/руки" unique_id=2087847364]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8498604)
 target_position = Vector3(0, 0, -3)
-collision_mask = 3
+collision_mask = 8195
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0, 1, 1)
 
@@ -1237,6 +1240,23 @@ offset_right = 40.0
 offset_bottom = 23.0
 text = "Нажмите пкм,
 чтобы попробовать вкус"
+label_settings = SubResource("LabelSettings_jscy8")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Ящики/с снеками" unique_id=1490789335]
+transform = Transform3D(-0.49706048, 0, 0.054138478, 0, 0.5, 0, -0.054138478, 0, -0.49706048, 4.9503903, -0.5136181, -14.850039)
+flip_h = true
+texture = SubResource("ViewportTexture_qkpxi")
+
+[node name="SubViewport" type="SubViewport" parent="Ящики/с снеками/Sprite3D4" unique_id=552710008]
+transparent_bg = true
+
+[node name="Label" type="Label" parent="Ящики/с снеками/Sprite3D4/SubViewport" unique_id=1163214136]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "С помощью колёсика
+мыши можно менять 
+дальность объекта,
+который у тебя в руках"
 label_settings = SubResource("LabelSettings_jscy8")
 
 [node name="Sprite3D2" type="Sprite3D" parent="Ящики/с снеками" unique_id=1833385791]

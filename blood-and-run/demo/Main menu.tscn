@@ -166,6 +166,7 @@ script = SubResource("GDScript_2c4u5")
 
 [node name="Cont" type="Button" parent="." unique_id=362784527]
 process_mode = 3
+visible = false
 layout_mode = 0
 offset_left = 116.0
 offset_top = 55.0
