@@ -1,6 +1,7 @@
 extends Control
 class_name Menu
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -14,7 +15,7 @@ func _on_continue_button_down() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_released("Escape"):
+	if Input.is_action_just_released("Escape") and Global.igra:
 		if !Global.isOnMenu:
 			Global.isOnMenu = true
 			$Open.play()

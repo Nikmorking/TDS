@@ -7,6 +7,7 @@ var fara_days = 1
 var zp = 0
 var is_load = false
 var lela =	 true
+var igra = false
 
 signal load
 

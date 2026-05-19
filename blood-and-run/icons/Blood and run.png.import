@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb06wy38j0k4t"
-path="res://.godot/imported/B&R.png-236874a9d33c5f0b54befb9a3eb2555d.ctex"
+uid="uid://7uy5ypxfav6c"
+path="res://.godot/imported/Blood and run.png-763d9545ed1bb2b01a228bed08117b13.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://B&R.png"
-dest_files=["res://.godot/imported/B&R.png-236874a9d33c5f0b54befb9a3eb2555d.ctex"]
+source_file="res://icons/Blood and run.png"
+dest_files=["res://.godot/imported/Blood and run.png-763d9545ed1bb2b01a228bed08117b13.ctex"]
 
 [params]
 

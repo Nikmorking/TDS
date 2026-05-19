@@ -17,8 +17,9 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="Blood and run"
 run/main_scene="uid://b6oxi3aewo15f"
 config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/image="uid://bhsvj0rjrixrw"
 config/icon="uid://bb06wy38j0k4t"
-config/windows_native_icon="res://B&R.ico"
+config/windows_native_icon="res://icons/B&R.ico"
 
 [autoload]
 
