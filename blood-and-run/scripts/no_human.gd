@@ -26,7 +26,7 @@ func actor_setup():
 	set_movement_target(movement_target_position)
 
 func set_movement_target(movement_target: Vector3):
-	navigation_agent.set_target_position(movement_target)
+	navigation_agent.target_position = movement_target
 
 func _physics_process(delta):
 	if navigation_agent.is_navigation_finished() and vkl:
@@ -35,8 +35,9 @@ func _physics_process(delta):
 			get_parent()._pripersa()
 			queue_free()
 		return
-	go()
-	move_and_slide()
+	if vkl:
+		go()
+		move_and_slide()
 
 
 func _on_area_3d_body_entered(body):
@@ -45,7 +46,7 @@ func _on_area_3d_body_entered(body):
 	pass # Replace with function body.
 
 func go():
+	#`actor_setup()
 	var current_agent_position: Vector3 = global_position
 	var next_path_position: Vector3 = navigation_agent.get_next_path_position()
-
 	velocity = current_agent_position.direction_to(next_path_position) * movement_speed

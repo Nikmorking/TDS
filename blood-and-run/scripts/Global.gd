@@ -54,7 +54,9 @@ func save():
 		zp, 
 		kasa.get_var(),
 		papa.k_event,
-		papa.proshlo
+		papa.proshlo,
+		papa.chas,
+		papa.min
 		]
 		# JSON provides a static method to serialized JSON string.
 	var json_string = JSON.stringify(node_data)
@@ -91,6 +93,8 @@ func load_game():
 		kasa.load_var(node_data.get(4))
 		papa.k_event = int(node_data.get(5))
 		papa.proshlo = int(node_data.get(6))
+		papa.chas = int(node_data.get(7))
+		papa.min = int(node_data.get(8))
 		load.emit()
 	pass
 	

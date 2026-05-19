@@ -13,8 +13,8 @@ height = 3.5039063
 
 [node name="emeny" type="CharacterBody3D" unique_id=266263789]
 transform = Transform3D(-2.6226834e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.6226834e-08, 0, 0, 0)
-collision_layer = 2
-collision_mask = 2
+collision_layer = 0
+collision_mask = 0
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true

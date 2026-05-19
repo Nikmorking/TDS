@@ -41,8 +41,8 @@ func _input(event):
 		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		#_start_sream()
 		#$Timer2.start()
-	if Input.is_action_just_pressed("ui_home"):
-		_start_sream()
+	#if Input.is_action_just_pressed("ui_home"):
+		#_start_sream()
 		#$"driving in my car"._start()
 		
 	pass
@@ -65,16 +65,19 @@ func back():
 		$No_human.actor_setup()
 	print("back")
 
+func _run_pl():
+			$emeny.movement_target_position = $Player.global_position
+			$emeny.actor_setup()
+			$emeny.start = true
+			$emeny/Timer.start()
 func _start_sream():
 		var c:Environment = $WorldEnvironment.environment
 		if norm:
 			c.volumetric_fog_emission = Color(0.295, 0.0, 0.0, 1.0)
-			$emeny.start = true
-			$emeny.actor_setup()
-			$emeny.get_node("Timer").start()
 			$emeny.position = $Marker3D.position
+			_run_pl()
 			norm = false
-			$Timer2.wait_time = randi_range(15,20)
+			$Timer2.wait_time = randi_range(20,26)
 			$Timer2.start()
 		else:
 			c.volumetric_fog_emission = Color("4f1c5e")
@@ -223,20 +226,6 @@ func _on_tick_timeout():
 			if Global.zp == -10:
 				Global.achivka("Достижение: \nБомж")
 	if !rand:
-		proshlo +=1
-		if proshlo %30 == 0:
-			min +=1
-			$Player/Camera3D/Control/time/Label4.text = str(min) + "0"
-			if min %6 == 0:
-				chas +=1
-				$Player/Camera3D/Control/time/Label2.text = str(chas)
-				$Player/Camera3D/Control/time/Label4.text = "00"
-				min = 0
-				if chas == end_day:
-					rand = false
-					_end_day()
-					return
-		print(proshlo)
 		#print(energy)
 		if proshlo == 400:
 			energy += 100 # *Zp
@@ -290,3 +279,21 @@ func _on_ожидание_timeout():
 
 func _67():
 	pass
+
+
+func _on_proshlo_timeout():
+	proshlo +=1
+	print(proshlo)
+	if proshlo %15 == 0 and !start_day:
+			min +=5
+			$Player/Camera3D/Control/time/Label4.text = str(min)
+			if min %6 == 0:
+				chas +=1
+				$Player/Camera3D/Control/time/Label2.text = str(chas)
+				$Player/Camera3D/Control/time/Label4.text = "00"
+				min = 0
+				if chas > end_day and !rand:
+					rand = false
+					_end_day()
+					return
+	pass # Replace with function body.
