@@ -148,7 +148,9 @@ func _on_area_3d_area_exited(area: Area3D) -> void:
 	pass # Replace with function body.
 
 var kalendar = 0
+var is_rem = false
 func _colling():
+				is_rem = false
 				var col: Node3D = $RayCast3D.get_collider()
 				print("coll", col.name)
 				if col.is_class("Area3D"):
@@ -188,6 +190,8 @@ func _colling():
 							add_to_hand("snack")
 							kasa.snacks -= 1
 							kasa.set_snack()
+					elif col.name == "schitok":
+						is_rem = true
 				elif col.is_class("RigidBody3D"):
 					add_to_hand(col.named)
 					if col.get_parent().name == "Расходники":
