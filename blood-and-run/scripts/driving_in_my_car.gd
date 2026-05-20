@@ -33,7 +33,10 @@ func _physics_process(delta):
 			pass
 		else:
 			movement_target_position = mtp_list[i].position
-			rotate_y(1.57)
+			if i == 2:
+				rotate_y(-1.57)
+			else:
+				rotate_y(1.57)
 			actor_setup()
 	if start:
 		go()

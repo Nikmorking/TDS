@@ -6,11 +6,17 @@ var fara_days = 1
 @onready var papa = get_tree().root.get_node("Node3D")
 var zp = 0
 var is_load = false
-var lela =	 true
+var lela = true
 var igra = false
+var light_work = true
 
+signal bad
 signal load
+signal _light_off
 
+func light_off():
+	_light_off.emit()
+	light_work = !light_work
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_copy"):

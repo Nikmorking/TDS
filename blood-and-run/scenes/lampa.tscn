@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://bre26ws07w06b"]
 
 [ext_resource type="Texture2D" uid="uid://cv26yr05sejrc" path="res://Models/smoke_02.png" id="1_0t8sk"]
+[ext_resource type="Script" uid="uid://dkvexistur10e" path="res://scripts/lampa.gd" id="1_q6xv8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7huvx"]
 albedo_color = Color(0.223103, 0.223103, 0.223103, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tcgl4"]
-albedo_color = Color(0.763283, 0.748489, 2.69532e-06, 1)
+albedo_color = Color(0.7647059, 0.7490196, 0, 1)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_roemw"]
 emission_shape = 3
@@ -30,6 +31,7 @@ height = 0.006
 
 [node name="LAmpa" type="Node3D" unique_id=2044625972]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+script = ExtResource("1_q6xv8")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=348361088]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3125, 0)
@@ -45,7 +47,7 @@ material = SubResource("StandardMaterial3D_tcgl4")
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1372773227]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
 light_color = Color(0.69411767, 0.6862745, 0, 1)
-light_energy = 0.805
+light_energy = 0.8
 light_volumetric_fog_energy = 0.5
 shadow_enabled = true
 omni_range = 15.0

@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://c1gs7us025vt0"]
+
+[ext_resource type="PackedScene" uid="uid://jconp6prvefj" path="res://Models/car.fbx" id="1_oxexh"]
+[ext_resource type="Texture2D" uid="uid://w4mwc33hgg84" path="res://Texture/brick.jpg" id="2_7bc0e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2gp1n"]
+albedo_color = Color(0.7194535, 2.5509298e-06, 5.7756904e-07, 1)
+metallic = 0.85
+emission_energy_multiplier = 3.29
+grow_amount = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bh4vq"]
+albedo_texture = ExtResource("2_7bc0e")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5w11h"]
+albedo_color = Color(1.92523e-06, 0.49910355, 0.73029804, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bnhh7"]
+albedo_color = Color(0.76398814, 0, 0.22207072, 1)
+backlight_enabled = true
+backlight = Color(1, 0, 0.654902, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ehdk"]
+albedo_color = Color(1, 1, 0, 1)
+backlight_enabled = true
+backlight = Color(1, 0.8039216, 0.4627451, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1rtj2"]
+albedo_color = Color(0.06469653, 0.06469653, 0.06469653, 1)
+
+[node name="car" unique_id=1513582298 instance=ExtResource("1_oxexh")]
+
+[node name="Cube" parent="." index="0" unique_id=1809439528]
+material_override = SubResource("StandardMaterial3D_2gp1n")
+
+[node name="Cube_001" parent="." index="1" unique_id=1279472382]
+material_override = SubResource("StandardMaterial3D_bh4vq")
+
+[node name="Cube_006" parent="." index="2" unique_id=389167057]
+material_override = SubResource("StandardMaterial3D_5w11h")
+
+[node name="Cube_009" parent="." index="3" unique_id=1883026584]
+material_override = SubResource("StandardMaterial3D_bnhh7")
+
+[node name="Cylinder" parent="." index="4" unique_id=1867076287]
+material_override = SubResource("StandardMaterial3D_6ehdk")
+
+[node name="Cylinder_002" parent="." index="5" unique_id=811368807]
+material_override = SubResource("StandardMaterial3D_1rtj2")

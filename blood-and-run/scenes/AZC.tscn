@@ -32,7 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://d1sin47h48beq" path="res://scenes/no_human.tscn" id="31_82sth"]
 [ext_resource type="AudioStream" uid="uid://b07qixpxd5cqt" path="res://sounds/sound-brue-brue.wav" id="31_yyosc"]
 [ext_resource type="AudioStream" uid="uid://cfjcun4pq4b7i" path="res://sounds/liolik-tormoz.mp3" id="32_82sth"]
-[ext_resource type="PackedScene" uid="uid://cpsn5kwh3u0ap" path="res://Models/ficus.fbx" id="34_s6jno"]
+[ext_resource type="PackedScene" uid="uid://xkh4mq02on4p" path="res://Models/ficus.tscn" id="34_s6jno"]
 [ext_resource type="PackedScene" uid="uid://csk2re235lvol" path="res://Models/календарь.tscn" id="36_tsu7c"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yyosc"]
@@ -612,13 +612,13 @@ viewport_path = NodePath("Заправка/Ящики/c батонами/Sprite3
 [sub_resource type="ViewportTexture" id="ViewportTexture_vqwn8"]
 viewport_path = NodePath("Заправка/Ящики/с снеками/Sprite3D/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_w5m4x"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_s6jno"]
 viewport_path = NodePath("Касса/Cofe_machine/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_s6jno"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_173o4"]
 viewport_path = NodePath("Касса/Снеки/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_173o4"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_tsu7c"]
 viewport_path = NodePath("CSGPolygon3D2/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oou1n"]
@@ -648,7 +648,7 @@ density = 3.0
 albedo = Color(0.423651, 0.423651, 0.423651, 1)
 emission = Color(0.140447, 0.140447, 0.140447, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_esnxl"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r7am0"]
 albedo_color = Color(0.24840015, 0.24840018, 0.24840015, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y5rpb"]
@@ -805,7 +805,7 @@ _surfaces = [{
 "aabb": AABB(-61.21327, -0.053222656, -51.189102, 122.42654, 0.10644531, 102.378204),
 "attribute_data": PackedByteArray("AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/"),
 "format": 34359738391,
-"material": SubResource("StandardMaterial3D_esnxl"),
+"material": SubResource("StandardMaterial3D_r7am0"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 36,
@@ -818,13 +818,13 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Arr
 geometry_parsed_geometry_type = 0
 agent_radius = 1.3
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_tsu7c"]
-
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_rcbt2"]
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_xtx8p"]
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_4nc4p"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_aqjcs"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wlgop"]
 radius = 5.330078
@@ -1762,13 +1762,13 @@ label_settings = SubResource("LabelSettings_415sf")
 [node name="Table" parent="Заправка" unique_id=1700736547 instance=ExtResource("19_415sf")]
 
 [node name="Sprite3D" parent="Заправка/Table/Касса/Cofe_machine" parent_id_path=PackedInt32Array(1700736547, 780539148) index="4" unique_id=1361381740]
-texture = SubResource("ViewportTexture_w5m4x")
-
-[node name="Sprite3D" parent="Заправка/Table/Касса/Снеки" parent_id_path=PackedInt32Array(1700736547, 1560413509) index="2" unique_id=353422132]
 texture = SubResource("ViewportTexture_s6jno")
 
-[node name="Sprite3D" parent="Заправка/Table/CSGPolygon3D2" parent_id_path=PackedInt32Array(1700736547, 2106210827) index="1" unique_id=840912229]
+[node name="Sprite3D" parent="Заправка/Table/Касса/Снеки" parent_id_path=PackedInt32Array(1700736547, 1560413509) index="2" unique_id=353422132]
 texture = SubResource("ViewportTexture_173o4")
+
+[node name="Sprite3D" parent="Заправка/Table/CSGPolygon3D2" parent_id_path=PackedInt32Array(1700736547, 2106210827) index="1" unique_id=840912229]
+texture = SubResource("ViewportTexture_tsu7c")
 
 [node name="мусорка" type="Area3D" parent="Заправка" unique_id=289094949]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.182058, 0.12507287, -3.8709977)
@@ -1973,7 +1973,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.53336, -0.356, 40.174328)
 [node name="CSGBox3D6" type="CSGBox3D" parent="Дорога" unique_id=887206691]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.25558, 4.2796855, -9.917601)
 size = Vector3(23.020174, 0.10644531, 16.373386)
-material = SubResource("StandardMaterial3D_esnxl")
+material = SubResource("StandardMaterial3D_r7am0")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Дорога/CSGBox3D6" unique_id=22293861]
 
@@ -1984,7 +1984,7 @@ shape = SubResource("BoxShape3D_y5rpb")
 [node name="CSGBox3D7" type="CSGBox3D" parent="Дорога" unique_id=1049790445]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.25558, 4.2796855, 2.882535)
 size = Vector3(23.020174, 0.10644531, 9.304369)
-material = SubResource("StandardMaterial3D_esnxl")
+material = SubResource("StandardMaterial3D_r7am0")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Дорога/CSGBox3D7" unique_id=987342595]
 
@@ -1995,7 +1995,7 @@ shape = SubResource("BoxShape3D_y5rpb")
 [node name="CSGBox3D9" type="CSGBox3D" parent="Дорога" unique_id=1363539897]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4383507, 4.2796855, -8.100943)
 size = Vector3(21.491005, 0.10644531, 10.814294)
-material = SubResource("StandardMaterial3D_esnxl")
+material = SubResource("StandardMaterial3D_r7am0")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Дорога/CSGBox3D9" unique_id=134204024]
 
@@ -2215,7 +2215,7 @@ affect_navigation_mesh = true
 
 [node name="LineRenderer3D" type="MeshInstance3D" parent="." unique_id=157698636]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, 7.7, 2, -5.5)
-mesh = SubResource("ImmediateMesh_tsu7c")
+mesh = SubResource("ImmediateMesh_rcbt2")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(7.7, 2, -5.5), Vector3(7.7, 2, -5.5)])
@@ -2223,7 +2223,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D2" type="MeshInstance3D" parent="." unique_id=2062067384]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -7.1046586)
-mesh = SubResource("ImmediateMesh_rcbt2")
+mesh = SubResource("ImmediateMesh_xtx8p")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -7.1), Vector3(-0.3, 1.9, -7.1)])
@@ -2231,7 +2231,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D3" type="MeshInstance3D" parent="." unique_id=139751098]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -11.084127)
-mesh = SubResource("ImmediateMesh_xtx8p")
+mesh = SubResource("ImmediateMesh_4nc4p")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -11), Vector3(-0.3, 1.9, -11)])
@@ -2239,7 +2239,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D4" type="MeshInstance3D" parent="." unique_id=1666510536]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, 8, 2, -10.5)
-mesh = SubResource("ImmediateMesh_4nc4p")
+mesh = SubResource("ImmediateMesh_aqjcs")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(8, 2, -10.5), Vector3(8, 2, -10.5)])
@@ -2502,8 +2502,8 @@ shape = SubResource("BoxShape3D_82sth")
 [node name="Proshlo" type="Timer" parent="." unique_id=12250803]
 autostart = true
 
-[node name="ficus" parent="." unique_id=587036894 instance=ExtResource("34_s6jno")]
-transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -20.68, 0.71778715, -14.6346855)
+[node name="ficus" parent="." unique_id=317783780 instance=ExtResource("34_s6jno")]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -20.183187, 0.71778715, -14.532577)
 
 [connection signal="timeout" from="Player/Camera3D/Control/Timer" to="Player/Camera3D/Control" method="_on_timer_timeout"]
 [connection signal="animation_finished" from="Player/Camera3D/руки/SpringArm3D/AnimationPlayer" to="Player/Camera3D/руки" method="_on_animation_player_animation_finished"]

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://xkh4mq02on4p"]
+
+[ext_resource type="PackedScene" uid="uid://cpsn5kwh3u0ap" path="res://Models/ficus.fbx" id="1_8yj5o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvs01"]
+albedo_color = Color(0.44951624, 0.09895741, 7.219613e-08, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vdgi"]
+albedo_color = Color(0, 0.45882353, 0, 1)
+
+[node name="ficus" unique_id=317783780 instance=ExtResource("1_8yj5o")]
+
+[node name="Цилиндр" parent="." index="0" unique_id=178301390]
+material_override = SubResource("StandardMaterial3D_lvs01")
+
+[node name="Цилиндр_001" parent="." index="1" unique_id=2093269693]
+material_override = SubResource("StandardMaterial3D_5vdgi")

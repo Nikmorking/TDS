@@ -20,8 +20,8 @@ var nd = false
 var y_kassu = false
 var norm = true
 var no_hum: CharacterBody3D
-
 var Check_boxes:Array
+@onready var c:Environment = $WorldEnvironment.environment
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Check_boxes = $"Заправка/Table/CSGPolygon3D2/SubViewport/Control/Control".get_children()
@@ -37,12 +37,17 @@ func _ready():
 	pass # Replace with function body.
 
 func _input(event):
-	#if Input.is_action_just_pressed("ui_copy"):
+	if Input.is_action_just_pressed("ui_redo"):
+		Global.light_off()
+		if Global.light_work:
+			c.volumetric_fog_emission = Color("4f1c5e")
+		else:
+			c.volumetric_fog_emission = Color(0.139, 0.0, 0.081, 1.0)
 		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		#_start_sream()
 		#$Timer2.start()
-	#if Input.is_action_just_pressed("ui_home"):
-		#_start_sream()
+	if Input.is_action_just_pressed("ui_home"):
+		_start_sream()
 		#$"driving in my car"._start()
 		
 	pass
@@ -70,10 +75,13 @@ func _run_pl():
 			$emeny.actor_setup()
 			$emeny.start = true
 			$emeny/Timer.start()
+
+
 func _start_sream():
-		var c:Environment = $WorldEnvironment.environment
+		Global.bad.emit()
 		if norm:
-			c.volumetric_fog_emission = Color(0.295, 0.0, 0.0, 1.0)
+			c.volumetric_fog_emission = Color(0.299, 0.301, 0.289, 1.0)
+			c.volumetric_fog_density = 0.03
 			$emeny.position = $Marker3D.position
 			_run_pl()
 			norm = false
@@ -81,6 +89,7 @@ func _start_sream():
 			$Timer2.start()
 		else:
 			c.volumetric_fog_emission = Color("4f1c5e")
+			c.volumetric_fog_density = 0.05
 			$emeny.start = false
 			$emeny.get_node("Timer").stop()
 			$emeny.position = Vector3(10000, 100000,100000) 

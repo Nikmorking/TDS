@@ -1,16 +1,19 @@
 [gd_scene format=3 uid="uid://durjvg6h6emyd"]
 
-[ext_resource type="PackedScene" uid="uid://dqubyb8be2uce" path="res://demo/car.fbx" id="1_6p4mw"]
 [ext_resource type="Script" uid="uid://d10p6q7yqf0fs" path="res://scripts/driving_in_my_car.gd" id="1_bbuju"]
 [ext_resource type="AudioStream" uid="uid://br4i15gyr5rrg" path="res://sounds/Driving in my car.mp3" id="3_1uvec"]
 [ext_resource type="AudioStream" uid="uid://bkng24ncgxqlt" path="res://sounds/car-parking-into-garage_myamkhvo.mp3" id="4_veqsq"]
+[ext_resource type="PackedScene" uid="uid://c1gs7us025vt0" path="res://Models/car.tscn" id="5_tk1oc"]
 [ext_resource type="AudioStream" uid="uid://hevtbmp4oykq" path="res://sounds/Достать.wav" id="5_trg1f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bbuju"]
-size = Vector3(2.1921387, 1.9920654, 3.4936523)
+size = Vector3(2.5508423, 1.9920654, 6.940155)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_trg1f"]
+size = Vector3(2.5508423, 1.1869507, 3.5508347)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_veqsq"]
-size = Vector3(2.6975098, 2.7963867, 4.4662476)
+size = Vector3(2.953476, 1.2392578, 8.049086)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_tk1oc"]
 height = 0.6560898
@@ -26,15 +29,16 @@ collision_mask = 4
 script = ExtResource("1_bbuju")
 movement_speed = 10.0
 
-[node name="car" parent="." unique_id=1000964647 instance=ExtResource("1_6p4mw")]
-transform = Transform3D(2, 0, 0, 0, 1.5, 0, 0, 0, 2, 0, 1.1580315, 0)
-
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=576597461]
 debug_enabled = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=648133470]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.030151362, 0.83085334, -0.0690918)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03768922, 0.83085334, -0.6485138)
 shape = SubResource("BoxShape3D_bbuju")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1453806482]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.037689216, 1.6405973, -0.06694412)
+shape = SubResource("BoxShape3D_trg1f")
 
 [node name="Driving" type="AudioStreamPlayer3D" parent="." unique_id=917379312]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0614537, 0)
@@ -53,11 +57,11 @@ collision_layer = 4096
 collision_mask = 4096
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=362092557]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026977533, 0.89819336, -0.14730835)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029045116, 0.47827148, -0.69299793)
 shape = SubResource("BoxShape3D_veqsq")
 
 [node name="Бак" type="Area3D" parent="." unique_id=1588453349]
-transform = Transform3D(0.6601721, -0.75111437, 1.4854349e-08, 0.75111437, 0.6601721, -3.283225e-08, 1.4854349e-08, 3.283225e-08, 1, -0.96795946, 0.6677126, -1.3683387)
+transform = Transform3D(0.6600017, 0.75126415, 0, -0.75126415, 0.6600017, 0, 0, 0, 1, 1.3386222, 0.76031244, 1.3614151)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Бак" unique_id=857842020]
 transform = Transform3D(1, 0, 1.7763568e-15, 0, 1, -1.7763568e-15, 1.7763568e-15, 2.5224267e-13, 1, 0, 0.033176422, 0)
@@ -72,5 +76,8 @@ radius = 0.15576172
 height = 0.5050049
 sides = 15
 material = SubResource("StandardMaterial3D_jppeo")
+
+[node name="car" parent="." unique_id=1513582298 instance=ExtResource("5_tk1oc")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.5005347, 0.03376925, -0.25613937)
 
 [connection signal="body_entered" from="Area3D" to="." method="davi"]
