@@ -2308,7 +2308,6 @@ bus = &"Effect"
 
 [node name="Tick" type="Timer" parent="." unique_id=454430915]
 wait_time = 0.05
-autostart = true
 
 [node name="Ожидание" type="Timer" parent="." unique_id=1531241621]
 wait_time = 15.0
@@ -2508,7 +2507,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13476563, 1.4595339, -13.4
 shape = SubResource("BoxShape3D_82sth")
 
 [node name="Proshlo" type="Timer" parent="." unique_id=12250803]
-autostart = true
 
 [node name="ficus" parent="." unique_id=317783780 instance=ExtResource("34_s6jno")]
 transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -20.183187, 0.71778715, -14.532577)

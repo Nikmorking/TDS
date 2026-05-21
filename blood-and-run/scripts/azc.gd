@@ -183,7 +183,9 @@ func _on_emeny_body_entered(node):
 
 func _on_door_2__open():
 	if start_day:
+		$Tick.start()
 		rand = false
+		$Proshlo.start()
 		start_day = false
 	pass # Replace with function body.
 
@@ -232,6 +234,10 @@ func _on_tick_timeout():
 			if Global.zp == -10:
 				Global.achivka("Достижение: \nБомж")
 	if !rand:
+		if chas > end_day:
+					rand = true
+					_end_day()
+					return
 		#print(energy)
 		if proshlo == 400:
 			energy += 100 # *Zp
@@ -277,13 +283,15 @@ func _on_be_finished():
 func _end_day():
 	Global.fara_days += 1
 	Global.lela = true
-	Global.save()
 	$Player/Camera3D/Control2/Label1.text = str(Global.fara_days)
 	$Player/Camera3D/AnimationPlayer.play("End_day")
 	start_day = true
 	rand = true
 	proshlo = 0
 	energy = 0
+	chas = 0
+	min = 0
+	Global.save() 
 	get_tree().paused = true
 
 func _on_ожидание_timeout():
@@ -305,8 +313,4 @@ func _on_proshlo_timeout():
 				$Player/Camera3D/Control/time/Label2.text = str(chas)
 				$Player/Camera3D/Control/time/Label4.text = "00"
 				min = 0
-				if chas > end_day and !rand:
-					rand = false
-					_end_day()
-					return
 	pass # Replace with function body.
