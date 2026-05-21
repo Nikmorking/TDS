@@ -7,13 +7,13 @@
 [ext_resource type="AudioStream" uid="uid://hevtbmp4oykq" path="res://sounds/Достать.wav" id="5_trg1f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bbuju"]
-size = Vector3(2.5508423, 1.9920654, 6.940155)
+size = Vector3(2.5508423, 0.89029306, 6.940155)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_trg1f"]
-size = Vector3(2.5508423, 1.1869507, 3.5508347)
+size = Vector3(2.5508423, 1.6362839, 3.5508347)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_veqsq"]
-size = Vector3(2.953476, 1.2392578, 8.049086)
+size = Vector3(2.953476, 0.73788166, 8.049086)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_tk1oc"]
 height = 0.6560898
@@ -32,12 +32,12 @@ movement_speed = 10.0
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=576597461]
 debug_enabled = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=648133470]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03768922, 0.83085334, -0.6485138)
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=393088471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.037689213, 0.2799674, -0.5423341)
 shape = SubResource("BoxShape3D_bbuju")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1453806482]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.037689216, 1.6405973, -0.06694412)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.037689216, 1.4159307, -0.06694412)
 shape = SubResource("BoxShape3D_trg1f")
 
 [node name="Driving" type="AudioStreamPlayer3D" parent="." unique_id=917379312]
@@ -57,7 +57,7 @@ collision_layer = 4096
 collision_mask = 4096
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=362092557]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029045116, 0.47827148, -0.69299793)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029045116, 0.22758341, -0.69299793)
 shape = SubResource("BoxShape3D_veqsq")
 
 [node name="Бак" type="Area3D" parent="." unique_id=1588453349]
@@ -78,6 +78,6 @@ sides = 15
 material = SubResource("StandardMaterial3D_jppeo")
 
 [node name="car" parent="." unique_id=1513582298 instance=ExtResource("5_tk1oc")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.5005347, 0.03376925, -0.25613937)
+transform = Transform3D(0.5, 2.7845376e-10, -1.7745805e-12, -2.7845376e-10, 0.4999594, -0.0063702795, -1.7728041e-12, 0.0063702795, 0.4999594, -0.5005347, 0.03376925, -0.25613937)
 
 [connection signal="body_entered" from="Area3D" to="." method="davi"]

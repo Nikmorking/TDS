@@ -39,15 +39,12 @@ func _ready():
 func _input(event):
 	if Input.is_action_just_pressed("ui_redo"):
 		Global.light_off()
-		if Global.light_work:
-			c.volumetric_fog_emission = Color("4f1c5e")
-		else:
-			c.volumetric_fog_emission = Color(0.139, 0.0, 0.081, 1.0)
 		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		#_start_sream()
 		#$Timer2.start()
 	if Input.is_action_just_pressed("ui_home"):
-		_start_sream()
+		#_start_sream()
+		back()
 		#$"driving in my car"._start()
 		
 	pass
@@ -212,7 +209,6 @@ func _on_driving_in_my_car_end_put():
 func _pripersa():
 	$"driving in my car".n = 5
 	$"driving in my car".i -= 1
-	$"driving in my car".rotate_y(1.57)
 	$"driving in my car".start = true
 
 
@@ -226,6 +222,7 @@ var proshlo = 0
 @export var end_day = 15 # 5 minuts
 var min = 0
 var chas = 10
+var delta_light = 0
 
 func _on_tick_timeout():
 	if time_left:
@@ -244,9 +241,15 @@ func _on_tick_timeout():
 		if energy > 2000:
 			k_event +=1
 			energy = 0
-			var b = randi_range(-6,1)
+			var b = randi_range(-10,1)
 			if b < -1:
-				$"driving in my car"._start()
+				if b>=-8:
+					$"driving in my car"._start()
+				elif proshlo - delta_light >60:
+					Global.light_off()
+					delta_light = proshlo
+				else:
+					end_day -= 10
 			else:
 				if b> -1:
 					_start_sream()
@@ -257,6 +260,7 @@ func _on_tick_timeout():
 
 func die(prichina: String):
 	print(prichina)
+	Global.save()
 	if prichina == "Задавлен":
 		$Player/Camera3D/Control3/AnimationPlayer.speed_scale = 4
 		Global.achivka("                      Задавлен")

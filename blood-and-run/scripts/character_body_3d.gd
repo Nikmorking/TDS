@@ -7,7 +7,7 @@ var SPEED = 5.0
 var JUMP_VELOCITY = 4.5
 var in_door = false
 
-@export var mouse_sens = 0.3
+
 var camera_anglev=0
 var JumpVel: Vector3
 var walk = false
@@ -72,13 +72,13 @@ func _physics_process(_delta: float) -> void:
 func _input(event): 
 	if event is InputEventMouseMotion and !Global.isOnMenu:
 		if $Camera3D.rotation.x - deg_to_rad(event.relative.y) < deg_to_rad(90) and $Camera3D.rotation.x - deg_to_rad(event.relative.y) > deg_to_rad(-70):
-			$Camera3D.rotation += Vector3(deg_to_rad(-event.relative.y * mouse_sens), 0, 0)
-		rotation += Vector3(0 ,deg_to_rad(-event.relative.x * mouse_sens), 0)
+			$Camera3D.rotation += Vector3(deg_to_rad(-event.relative.y * Global.mouse_sens), 0, 0)
+		rotation += Vector3(0 ,deg_to_rad(-event.relative.x * Global.mouse_sens), 0)
 	var input:Vector2 = Input.get_vector("con_left", "con_right", "con_up", "con_down")
 	if input != Vector2(0,0):
 		if $Camera3D.rotation.x - deg_to_rad(input.y) < deg_to_rad(90) and $Camera3D.rotation.x - deg_to_rad(input.y) > deg_to_rad(-70):
-			$Camera3D.rotation += Vector3(deg_to_rad(-input.y * mouse_sens), 0, 0)
-		rotation += Vector3(0 ,deg_to_rad(-input.x * mouse_sens), 0)
+			$Camera3D.rotation += Vector3(deg_to_rad(-input.y * Global.mouse_sens), 0, 0)
+		rotation += Vector3(0 ,deg_to_rad(-input.x * Global.mouse_sens), 0)
 		
 
 	
@@ -100,7 +100,7 @@ func _print_in_ui(text:String):
 
 
 func _on_h_slider_value_changed(value):
-	mouse_sens = value
+	Global.mouse_sens = value
 	pass # Replace with function body.
 
 

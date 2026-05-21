@@ -1,11 +1,9 @@
 [gd_scene format=4 uid="uid://babpj31f8cxy2"]
 
-[ext_resource type="Script" uid="uid://2a77xvtsjape" path="res://scripts/azc.gd" id="1_4ckny"]
 [ext_resource type="Environment" uid="uid://cc7unamcaasd2" path="res://demo/new_environment.tres" id="13_6ju2g"]
 [ext_resource type="PackedScene" uid="uid://dism06b1iip8u" path="res://scenes/doorS.tscn" id="15_d5b6v"]
 [ext_resource type="Shader" uid="uid://dq81n42ia7ync" path="res://Models/Glass.gdshader" id="16_nc5j3"]
 [ext_resource type="PackedScene" uid="uid://bre26ws07w06b" path="res://scenes/lampa.tscn" id="17_r5hc5"]
-[ext_resource type="PackedScene" uid="uid://cjt85p4cqs12q" path="res://Models/table.tscn" id="19_dhn5j"]
 [ext_resource type="Shader" uid="uid://bp2yhafv7q4c6" path="res://demo/1.gdshader" id="22_rse46"]
 [ext_resource type="PackedScene" uid="uid://ki8fgnhihyot" path="res://scenes/lampa_mini.tscn" id="23_7nfcv"]
 [ext_resource type="PackedScene" uid="uid://durjvg6h6emyd" path="res://scenes/driving in my car.tscn" id="25_w2esm"]
@@ -84,15 +82,6 @@ size = Vector3(1.1686367, 4.694702, 13.547365)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8oxcy"]
 size = Vector3(1, 2.2877808, 0.07501984)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_r7am0"]
-viewport_path = NodePath("Касса/Cofe_machine/SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_txm28"]
-viewport_path = NodePath("Касса/Снеки/SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_e4ouq"]
-viewport_path = NodePath("CSGPolygon3D2/SubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_173o4"]
 render_priority = 0
@@ -288,10 +277,6 @@ _surfaces = [{
 }]
 
 [node name="Node3D" type="Node3D" unique_id=2010904094]
-script = ExtResource("1_4ckny")
-min_a = -67
-max_a = 67
-end_day = 13
 metadata/_edit_horizontal_guides_ = [324.0]
 metadata/_edit_vertical_guides_ = [576.0, -291.0]
 metadata/_edit_group_ = true
@@ -305,7 +290,7 @@ environment = ExtResource("13_6ju2g")
 transform = Transform3D(-0.99999964, 0, -8.742275e-08, 0, 1, 0, 8.742275e-08, 0, -0.99999964, -9.367741, -0.20644337, -11.063242)
 collision_layer = 15
 collision_mask = 15
-start_rot = Vector3(0, -90, 0)
+script = null
 
 [node name="Стены" type="StaticBody3D" parent="Заправка" unique_id=1628848288]
 collision_layer = 11
@@ -434,17 +419,6 @@ shape = SubResource("BoxShape3D_8oxcy")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.03447151, 0.080397606, -1.3346491)
 material_override = SubResource("StandardMaterial3D_p6l7r")
 size = Vector3(2.8214235, 2.3539143, 0.9501953)
-
-[node name="Table" parent="Заправка" unique_id=1700736547 instance=ExtResource("19_dhn5j")]
-
-[node name="Sprite3D" parent="Заправка/Table/Касса/Cofe_machine" parent_id_path=PackedInt32Array(1700736547, 780539148) index="4" unique_id=1361381740]
-texture = SubResource("ViewportTexture_r7am0")
-
-[node name="Sprite3D" parent="Заправка/Table/Касса/Снеки" parent_id_path=PackedInt32Array(1700736547, 1560413509) index="2" unique_id=353422132]
-texture = SubResource("ViewportTexture_txm28")
-
-[node name="Sprite3D" parent="Заправка/Table/CSGPolygon3D2" parent_id_path=PackedInt32Array(1700736547, 2106210827) index="1" unique_id=840912229]
-texture = SubResource("ViewportTexture_e4ouq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Заправка" unique_id=1368120920]
 transform = Transform3D(-3.496911e-07, 0, 8, 0, 8, 0, -8, 0, -3.496911e-07, 12.244907, 4.2850184, -8.100035)
@@ -864,7 +838,6 @@ v_offset = 1.32
 transform = Transform3D(1, 0, 0, 0, 12, 0, 0, 0, 1, -13.427899, -1.0263914, 4.5133257)
 mesh = SubResource("ArrayMesh_txm28")
 
-[connection signal="_open" from="Заправка/Door2" to="." method="_on_door_2__open"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="davka" from="driving in my car" to="." method="die"]
 [connection signal="end_put" from="driving in my car" to="." method="_on_driving_in_my_car_end_put"]
@@ -872,5 +845,3 @@ mesh = SubResource("ArrayMesh_txm28")
 [connection signal="timeout" from="Tick" to="." method="_on_tick_timeout"]
 [connection signal="timeout" from="Ожидание" to="." method="_on_ожидание_timeout"]
 [connection signal="timeout" from="Proshlo" to="." method="_on_proshlo_timeout"]
-
-[editable path="Заправка/Table"]

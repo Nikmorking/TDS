@@ -63,6 +63,7 @@ func _on_settings_button_down():
 	if settin == 6:
 		Global.achivka("Достижение: \nМастер по настройке")
 		printerr("Буква: P")
+	get_tree().change_scene_to_file("res://demo/Options.tscn")
 	pass # Replace with function body.
 
 

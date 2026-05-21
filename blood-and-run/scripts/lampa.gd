@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var m:Material = $CSGSphere3D.material
+var m:Material
 
 func change_envir_light()-> void:
 		if $OmniLight3D.light_color == Color("b1af00"):
@@ -26,6 +26,10 @@ func power_off():
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if get_node("CSGSphere3D"):
+		m = get_node("CSGSphere3D").material
+	if get_node("CSGCylinder3D2"):
+		m = get_node("CSGCylinder3D2").material
 	Global.connect("bad", change_envir_light)
 	Global.connect("_light_off", power_off)
 	pass # Replace with function body.

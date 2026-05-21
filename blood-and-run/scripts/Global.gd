@@ -9,6 +9,7 @@ var is_load = false
 var lela = true
 var igra = false
 var light_work = true
+var mouse_sens = 0.3
 
 signal bad
 signal load
@@ -17,6 +18,11 @@ signal _light_off
 func light_off():
 	_light_off.emit()
 	light_work = !light_work
+	if Global.light_work:
+		papa.c.volumetric_fog_emission = Color("4f1c5e")
+		papa.rand = false
+	else:
+		papa.c.volumetric_fog_emission = Color(0.139, 0.0, 0.081, 1.0)
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_copy"):

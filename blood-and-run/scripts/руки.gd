@@ -27,11 +27,29 @@ func _ready():
 	posled_naklon = papa.rotation_degrees.x
 	pass # Replace with function body.
 
-
+var chin = 0
 var aim = false
+var pr = false
+func _on_timer_3_timeout() -> void:
+		if is_rem and pr and !Global.light_work and !obj:
+			$"../Control/TextureProgressBar".show()
+			chin += 2
+			$"../Control/TextureProgressBar".value = chin
+			if chin == 100:
+				chin = 0
+				$"../Control/TextureProgressBar".hide()
+				Global.light_off()
+		else:
+			chin = 0
+			$"../Control/TextureProgressBar".hide()
+		pass # Replace with function body.
+
 func _input(event):
+	if Input.is_action_just_released("ui_open"):
+		pr = false
 	if Input.is_action_just_pressed("ui_open"):
 		print("click")
+		pr = true
 		if obj:
 			_stavit_rashodnic()
 		else: 
@@ -191,6 +209,7 @@ func _colling():
 							kasa.snacks -= 1
 							kasa.set_snack()
 					elif col.name == "schitok":
+						$"../../../Timer3".start()
 						is_rem = true
 				elif col.is_class("RigidBody3D"):
 					add_to_hand(col.named)
