@@ -27,7 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://durjvg6h6emyd" path="res://scenes/driving in my car.tscn" id="19_qyfae"]
 [ext_resource type="Shader" uid="uid://bp2yhafv7q4c6" path="res://demo/1.gdshader" id="23_yyosc"]
 [ext_resource type="Script" uid="uid://k1wiroq3tl5l" path="res://scripts/enemy.gd" id="26_w5m4x"]
-[ext_resource type="PackedScene" uid="uid://cqb1eyg10nhcr" path="res://Models/Running.fbx" id="27_s6jno"]
+[ext_resource type="PackedScene" uid="uid://bwt43wj3moya3" path="res://Models/настоящий_пельмень.tscn" id="27_173o4"]
 [ext_resource type="AudioStream" uid="uid://hevtbmp4oykq" path="res://sounds/Достать.wav" id="29_s6jno"]
 [ext_resource type="PackedScene" uid="uid://dqubyb8be2uce" path="res://demo/car.fbx" id="30_yyosc"]
 [ext_resource type="PackedScene" uid="uid://d1sin47h48beq" path="res://scenes/no_human.tscn" id="31_82sth"]
@@ -653,13 +653,13 @@ viewport_path = NodePath("Заправка/Ящики/c батонами/Sprite3
 [sub_resource type="ViewportTexture" id="ViewportTexture_vqwn8"]
 viewport_path = NodePath("Заправка/Ящики/с снеками/Sprite3D/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_173o4"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_tsu7c"]
 viewport_path = NodePath("Касса/Cofe_machine/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_tsu7c"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_rcbt2"]
 viewport_path = NodePath("Касса/Снеки/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_rcbt2"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_xtx8p"]
 viewport_path = NodePath("CSGPolygon3D2/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oou1n"]
@@ -859,13 +859,13 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Arr
 geometry_parsed_geometry_type = 0
 agent_radius = 1.3
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_xtx8p"]
-
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_4nc4p"]
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_aqjcs"]
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_js04u"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_24d4k"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wlgop"]
 radius = 5.330078
@@ -1819,13 +1819,13 @@ label_settings = SubResource("LabelSettings_415sf")
 [node name="Table" parent="Заправка" unique_id=1700736547 instance=ExtResource("19_415sf")]
 
 [node name="Sprite3D" parent="Заправка/Table/Касса/Cofe_machine" parent_id_path=PackedInt32Array(1700736547, 780539148) index="4" unique_id=1361381740]
-texture = SubResource("ViewportTexture_173o4")
-
-[node name="Sprite3D" parent="Заправка/Table/Касса/Снеки" parent_id_path=PackedInt32Array(1700736547, 1560413509) index="2" unique_id=353422132]
 texture = SubResource("ViewportTexture_tsu7c")
 
-[node name="Sprite3D" parent="Заправка/Table/CSGPolygon3D2" parent_id_path=PackedInt32Array(1700736547, 2106210827) index="1" unique_id=840912229]
+[node name="Sprite3D" parent="Заправка/Table/Касса/Снеки" parent_id_path=PackedInt32Array(1700736547, 1560413509) index="2" unique_id=353422132]
 texture = SubResource("ViewportTexture_rcbt2")
+
+[node name="Sprite3D" parent="Заправка/Table/CSGPolygon3D2" parent_id_path=PackedInt32Array(1700736547, 2106210827) index="1" unique_id=840912229]
+texture = SubResource("ViewportTexture_xtx8p")
 
 [node name="мусорка" type="Area3D" parent="Заправка" unique_id=289094949]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.182058, 0.12507287, -3.8709977)
@@ -2223,7 +2223,7 @@ affect_navigation_mesh = true
 
 [node name="LineRenderer3D" type="MeshInstance3D" parent="." unique_id=157698636]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, 7.7, 2, -5.5)
-mesh = SubResource("ImmediateMesh_xtx8p")
+mesh = SubResource("ImmediateMesh_4nc4p")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(7.7, 2, -5.5), Vector3(7.7, 2, -5.5)])
@@ -2231,7 +2231,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D2" type="MeshInstance3D" parent="." unique_id=2062067384]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -7.1046586)
-mesh = SubResource("ImmediateMesh_4nc4p")
+mesh = SubResource("ImmediateMesh_aqjcs")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -7.1), Vector3(-0.3, 1.9, -7.1)])
@@ -2239,7 +2239,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D3" type="MeshInstance3D" parent="." unique_id=139751098]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -11.084127)
-mesh = SubResource("ImmediateMesh_aqjcs")
+mesh = SubResource("ImmediateMesh_js04u")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -11), Vector3(-0.3, 1.9, -11)])
@@ -2247,7 +2247,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D4" type="MeshInstance3D" parent="." unique_id=1666510536]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, 8, 2, -10.5)
-mesh = SubResource("ImmediateMesh_js04u")
+mesh = SubResource("ImmediateMesh_24d4k")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(8, 2, -10.5), Vector3(8, 2, -10.5)])
@@ -2288,12 +2288,12 @@ transform = Transform3D(1.6666665, 0, 0, 0, 1.6666665, 0, 0, 0, 1.6666665, -0.24
 light_color = Color(0.86290884, 0.29543713, 0.26479155, 1)
 omni_range = 2.0
 
-[node name="Running" parent="emeny" unique_id=1633639507 instance=ExtResource("27_s6jno")]
-transform = Transform3D(-149.99995, 0, -1.3113412e-05, 0, 149.99995, 0, 1.3113412e-05, 0, -149.99995, -0.007018531, -0.3661248, 0.04751673)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="emeny" unique_id=1892024624]
 transform = Transform3D(0.99999976, 0, 3.659295e-13, 0, 0.99999976, 0, -3.659295e-13, 0, 0.99999976, 0, -0.016279815, 0)
 shape = SubResource("CapsuleShape3D_md0e3")
+
+[node name="Настоящий пельмень2" parent="emeny" unique_id=1746730056 instance=ExtResource("27_173o4")]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 0, 0, 0)
 
 [node name="Timer2" type="Timer" parent="." unique_id=2145315828]
 wait_time = 23.0

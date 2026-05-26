@@ -469,14 +469,6 @@ height = 4.874756
 [node name="LAmpa" parent="Фонари/CSGCylinder3D" unique_id=856681316 instance=ExtResource("17_r5hc5")]
 transform = Transform3D(0.1, 0, 0, 0, 0.0766341, 0, 0, 0, 0.1, -0.14111567, 1.9317033, -0.6446879)
 
-[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Фонари" unique_id=319731682]
-transform = Transform3D(0.5680736, 0, -0.8229778, 0, 1, 0, 0.8229778, 0, 0.5680736, 19.845152, 1.863322, -18.05795)
-radius = 0.237
-height = 4.874756
-
-[node name="LAmpa" parent="Фонари/CSGCylinder3D4" unique_id=364062515 instance=ExtResource("17_r5hc5")]
-transform = Transform3D(0.1, 0, 0, 0, 0.0766341, 0, 0, 0, 0.1, -0.14111567, 1.9317033, -0.6446879)
-
 [node name="CSGCylinder3D9" type="CSGCylinder3D" parent="Фонари" unique_id=1282071538]
 transform = Transform3D(-0.050314073, 0, -0.99873346, 0, 1, 0, 0.99873346, 0, -0.050314073, 19.407602, 1.863322, -0.2282238)
 radius = 0.237
@@ -486,35 +478,11 @@ height = 4.874756
 transform = Transform3D(0.1, 0, 0, 0, 0.0766341, 0, 0, 0, 0.1, -0.14111567, 1.9317033, -0.6446879)
 
 [node name="CSGCylinder3D11" type="CSGCylinder3D" parent="Фонари" unique_id=858447201]
-transform = Transform3D(-0.050314073, 0, -0.99873346, 0, 1, 0, 0.99873346, 0, -0.050314073, 19.407602, 1.863322, 17.81932)
+transform = Transform3D(-0.050314073, 0, -0.99873346, 0, 1, 0, 0.99873346, 0, -0.050314073, 19.407602, 1.863322, 13.526894)
 radius = 0.237
 height = 4.874756
 
 [node name="LAmpa" parent="Фонари/CSGCylinder3D11" unique_id=1447827617 instance=ExtResource("17_r5hc5")]
-transform = Transform3D(0.1, 0, 0, 0, 0.0766341, 0, 0, 0, 0.1, -0.14111567, 1.9317033, -0.6446879)
-
-[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Фонари" unique_id=85055496]
-transform = Transform3D(0.05447962, 0, 0.9985149, 0, 1, 0, -0.9985149, 0, 0.05447962, 27.742193, 1.863322, -10.930497)
-radius = 0.237
-height = 4.874756
-
-[node name="LAmpa" parent="Фонари/CSGCylinder3D7" unique_id=1463920544 instance=ExtResource("17_r5hc5")]
-transform = Transform3D(0.1, 0, 0, 0, 0.0766341, 0, 0, 0, 0.1, -0.14111567, 1.9317033, -0.6446879)
-
-[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="Фонари" unique_id=1470441841]
-transform = Transform3D(0.05447962, 0, 0.9985149, 0, 1, 0, -0.9985149, 0, 0.05447962, 27.742193, 1.863322, -30.88253)
-radius = 0.237
-height = 4.874756
-
-[node name="LAmpa" parent="Фонари/CSGCylinder3D10" unique_id=1244167010 instance=ExtResource("17_r5hc5")]
-transform = Transform3D(0.1, 0, 0, 0, 0.0766341, 0, 0, 0, 0.1, -0.14111567, 1.9317033, -0.6446879)
-
-[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Фонари" unique_id=709135714]
-transform = Transform3D(0.05447962, 0, 0.9985149, 0, 1, 0, -0.9985149, 0, 0.05447962, 27.742193, 1.863322, 9.970378)
-radius = 0.237
-height = 4.874756
-
-[node name="LAmpa" parent="Фонари/CSGCylinder3D8" unique_id=1011580477 instance=ExtResource("17_r5hc5")]
 transform = Transform3D(0.1, 0, 0, 0, 0.0766341, 0, 0, 0, 0.1, -0.14111567, 1.9317033, -0.6446879)
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Фонари" unique_id=723058940]
@@ -829,7 +797,7 @@ bus = &"Effect"
 autostart = true
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=725739276]
-transform = Transform3D(-0.69500345, -0.2555091, 0.6720754, 0.0392794, 0.9198396, 0.39032334, -0.7179327, 0.29767478, -0.6292555, 24.303003, 8.029508, -14.035132)
+transform = Transform3D(-0.69500345, -0.2555091, 0.6720754, 0.0392794, 0.9198396, 0.39032334, -0.7179327, 0.29767478, -0.6292555, 26.201054, 8.029508, -14.035132)
 attributes = SubResource("CameraAttributesPhysical_js04u")
 h_offset = 2.315
 v_offset = 1.32
