@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://ciw0wsurkg36p" path="res://scripts/character_body_3d.gd" id="2_y5rpb"]
 [ext_resource type="Script" uid="uid://cnnqcnah1ft1y" path="res://scripts/руки.gd" id="3_cfvsp"]
 [ext_resource type="Script" uid="uid://bhsi6d5auuidh" path="res://scripts/ui.gd" id="4_m2ycm"]
-[ext_resource type="Shader" uid="uid://dq81n42ia7ync" path="res://Models/Glass.gdshader" id="4_ui2ee"]
 [ext_resource type="PackedScene" uid="uid://5fibawxaliiy" path="res://scenes/schitok.tscn" id="5_173o4"]
 [ext_resource type="Texture2D" uid="uid://bvmyaqt4cgpaj" path="res://scenes/318748684_bc04d5c7d7c38229a9a8e5933851aab1.png" id="5_f5ce8"]
 [ext_resource type="PackedScene" uid="uid://dism06b1iip8u" path="res://scenes/doorS.tscn" id="5_vynuk"]
@@ -19,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://tomgjbqso8ed" path="res://sounds/Navodka.mp3" id="11_vqwn8"]
 [ext_resource type="AudioStream" uid="uid://b7djpdlxind5d" path="res://sounds/шаги.mp3" id="12_w5m4x"]
 [ext_resource type="Environment" uid="uid://cc7unamcaasd2" path="res://demo/new_environment.tres" id="13_myhle"]
+[ext_resource type="Material" uid="uid://buc3wjgnofj26" path="res://mater/glass.tres" id="16_173o4"]
 [ext_resource type="Texture2D" uid="uid://b3ucpfrosaro" path="res://Texture/TV_03.jpg" id="16_myhle"]
 [ext_resource type="Script" uid="uid://hajl3xibw433" path="res://addons/LineRenderer/line_renderer.gd" id="17_r1ed2"]
 [ext_resource type="AudioStream" uid="uid://c6a7nunusj1d7" path="res://sounds/Взять из шкафа.mp3" id="18_82sth"]
@@ -43,6 +43,12 @@ height = 1.62492
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w5m4x"]
 radius = 0.382215
 height = 1.9857128
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_173o4"]
+dof_blur_far_distance = 0.7
+dof_blur_near_distance = 8.82
+dof_blur_near_transition = 6130.02
+dof_blur_amount = 0.34
 
 [sub_resource type="LabelSettings" id="LabelSettings_s6jno"]
 line_spacing = 7.0
@@ -603,14 +609,6 @@ disable_receive_shadows = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_ro5by"]
 size = Vector3(1.0648651, 4.694702, 7.7975655)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0u5sq"]
-render_priority = 0
-shader = ExtResource("4_ui2ee")
-shader_parameter/albedo = Color(1, 1, 1, 0)
-shader_parameter/roughness = 0.15
-shader_parameter/normal_strength = 1.0
-shader_parameter/edge_color = Color(0, 0, 0, 1)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_p6l7r"]
 size = Vector3(1.0648651, 4.694702, 25.558844)
 
@@ -653,11 +651,14 @@ viewport_path = NodePath("Заправка/Ящики/c батонами/Sprite3
 [sub_resource type="ViewportTexture" id="ViewportTexture_vqwn8"]
 viewport_path = NodePath("Заправка/Ящики/с снеками/Sprite3D/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_tsu7c"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_173o4"]
 viewport_path = NodePath("Касса/Cofe_machine/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_rcbt2"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_tsu7c"]
 viewport_path = NodePath("Касса/Снеки/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_rcbt2"]
+viewport_path = NodePath("Касса/SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_xtx8p"]
 viewport_path = NodePath("CSGPolygon3D2/SubViewport")
@@ -1101,7 +1102,6 @@ max_a = 67
 end_day = 13
 metadata/_edit_horizontal_guides_ = [324.0, 417.0, 230.0]
 metadata/_edit_vertical_guides_ = [576.0, -291.0]
-metadata/_edit_group_ = true
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=1001959085]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.852661, 0, 3.7401729)
@@ -1119,6 +1119,8 @@ shape = SubResource("CapsuleShape3D_w5m4x")
 
 [node name="Camera3D" type="Camera3D" parent="Player" unique_id=909887528]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0354624, -0.034546614)
+attributes = SubResource("CameraAttributesPractical_173o4")
+far = 40.0
 
 [node name="Control" type="Control" parent="Player/Camera3D" unique_id=1216830132]
 layout_mode = 3
@@ -1595,7 +1597,7 @@ size = Vector3(3.3027344, 2.3110352, 1)
 
 [node name="CSGBox3D17" type="CSGBox3D" parent="Заправка/Стены/CollisionShape3D" unique_id=237950288]
 transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 0.99999976, -0.0606184, -0.22656679, 0.04290867)
-material_override = SubResource("ShaderMaterial_0u5sq")
+material_override = ExtResource("16_173o4")
 size = Vector3(0.089877605, 2.4451509, 3.5301208)
 
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="Заправка/Стены" unique_id=2086728744]
@@ -1629,7 +1631,7 @@ size = Vector3(3.0631104, 2.3110352, 1)
 
 [node name="CSGBox3D16" type="CSGBox3D" parent="Заправка/Стены/CollisionShape3D2" unique_id=585559054]
 transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 0.99999976, -0.07764721, -0.22656679, -0.26785183)
-material_override = SubResource("ShaderMaterial_0u5sq")
+material_override = ExtResource("16_173o4")
 size = Vector3(0.089877605, 2.4451509, 3.1249619)
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Заправка/Стены" unique_id=323095450]
@@ -1650,17 +1652,17 @@ transform = Transform3D(-4.3711392e-08, 0, 1, 0, 1.1705685, 0, -1, 0, -4.3711392
 size = Vector3(1.3595104, 1.9650156, 5.3758545)
 
 [node name="CSGBox3D16" type="CSGBox3D" parent="Заправка/Стены/CollisionShape3D4/CSGBox3D2/CSGCombiner3D" unique_id=1088474757]
-transform = Transform3D(-4.3711392e-08, 0, 1, 0, 1.1705685, 0, -1, 0, -4.3711392e-08, -12.660548, 1.8490852, -17.679367)
+transform = Transform3D(-4.371092e-08, 0, 0.9999921, 0, 1.1705685, 0, -0.9999921, 0, -4.371092e-08, -12.660548, 1.8490852, -17.679365)
 size = Vector3(1.3595104, 1.9650156, 4.5546875)
 
 [node name="CSGBox3D14" type="CSGBox3D" parent="Заправка/Стены/CollisionShape3D4" unique_id=894002098]
 transform = Transform3D(0.9999463, 0, -0.010349564, 0, 1.1705685, 0, 0.010349564, 0, 0.9999463, -0.07474327, 0.0017341375, -6.207144)
-material_override = SubResource("ShaderMaterial_0u5sq")
+material_override = ExtResource("16_173o4")
 size = Vector3(0.089877605, 1.9650156, 5.3758545)
 
 [node name="CSGBox3D15" type="CSGBox3D" parent="Заправка/Стены/CollisionShape3D4" unique_id=1885927425]
 transform = Transform3D(0.9999463, 0, -0.010349564, 0, 1.1705685, 0, 0.010349564, 0, 0.9999463, -0.21917534, 0.0017341375, 7.747382)
-material_override = SubResource("ShaderMaterial_0u5sq")
+material_override = ExtResource("16_173o4")
 size = Vector3(0.089877605, 1.9650156, 4.5995483)
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Заправка/Стены" unique_id=2075759814]
@@ -1816,15 +1818,18 @@ offset_bottom = 23.0
 text = "со снеками"
 label_settings = SubResource("LabelSettings_415sf")
 
-[node name="Table" parent="Заправка" unique_id=1700736547 instance=ExtResource("19_415sf")]
+[node name="Table" parent="Заправка" unique_id=1041556568 instance=ExtResource("19_415sf")]
 
-[node name="Sprite3D" parent="Заправка/Table/Касса/Cofe_machine" parent_id_path=PackedInt32Array(1700736547, 780539148) index="4" unique_id=1361381740]
+[node name="Sprite3D" parent="Заправка/Table/Касса/Cofe_machine" parent_id_path=PackedInt32Array(1041556568, 780539148) index="4" unique_id=1361381740]
+texture = SubResource("ViewportTexture_173o4")
+
+[node name="Sprite3D" parent="Заправка/Table/Касса/Снеки" parent_id_path=PackedInt32Array(1041556568, 1560413509) index="2" unique_id=353422132]
 texture = SubResource("ViewportTexture_tsu7c")
 
-[node name="Sprite3D" parent="Заправка/Table/Касса/Снеки" parent_id_path=PackedInt32Array(1700736547, 1560413509) index="2" unique_id=353422132]
+[node name="Sprite3D" parent="Заправка/Table/Касса" parent_id_path=PackedInt32Array(1041556568, 806910599) index="6" unique_id=25473584]
 texture = SubResource("ViewportTexture_rcbt2")
 
-[node name="Sprite3D" parent="Заправка/Table/CSGPolygon3D2" parent_id_path=PackedInt32Array(1700736547, 2106210827) index="1" unique_id=840912229]
+[node name="Sprite3D" parent="Заправка/Table/CSGPolygon3D2" parent_id_path=PackedInt32Array(1041556568, 2106210827) index="1" unique_id=840912229]
 texture = SubResource("ViewportTexture_xtx8p")
 
 [node name="мусорка" type="Area3D" parent="Заправка" unique_id=289094949]
@@ -2295,6 +2300,16 @@ shape = SubResource("CapsuleShape3D_md0e3")
 [node name="Настоящий пельмень2" parent="emeny" unique_id=1746730056 instance=ExtResource("27_173o4")]
 transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 0, 0, 0)
 
+[node name="Сфера" parent="emeny/Настоящий пельмень2" index="4" unique_id=1398575640]
+transform = Transform3D(92.23393, -1.41119635e-05, 211.53426, -38.638035, -1.090095e-05, 504.95932, -8.804106e-06, -99.99999, -8.4897e-05, -0.029922485, 2.5406032, -1.1295118)
+
+[node name="AnimationPlayer" parent="emeny/Настоящий пельмень2" index="6" unique_id=1846775429]
+process_mode = 3
+speed_scale = 1.3
+
+[node name="Camera3D" parent="emeny/Настоящий пельмень2" index="7" unique_id=1518745682]
+transform = Transform3D(-0.10832911, -0.3625519, 0.9256462, -0.042142097, 0.93196344, 0.36009437, -0.99322146, 2.9802319e-08, -0.116237484, 14.321535, 11.460782, -2.1801574)
+
 [node name="Timer2" type="Timer" parent="." unique_id=2145315828]
 wait_time = 23.0
 one_shot = true
@@ -2539,8 +2554,8 @@ wait_time = 0.1
 [connection signal="body_entered" from="emeny" to="." method="_on_emeny_body_entered"]
 [connection signal="body_entered" from="emeny/Area3D" to="emeny" method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="emeny/Timer" to="emeny" method="_on_timer_timeout"]
+[connection signal="animation_finished" from="emeny/Настоящий пельмень2/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Timer2" to="." method="_stop_run"]
-[connection signal="finished" from="Be" to="." method="_on_be_finished"]
 [connection signal="timeout" from="Tick" to="." method="_on_tick_timeout"]
 [connection signal="timeout" from="Ожидание" to="." method="_on_ожидание_timeout"]
 [connection signal="area_entered" from="Zp/CSGBox3D25/ZPin1" to="Player/Camera3D/руки" method="_on_area_3d_area_entered"]
@@ -2558,3 +2573,4 @@ wait_time = 0.1
 [connection signal="timeout" from="Timer3" to="Player/Camera3D/руки" method="_on_timer_3_timeout"]
 
 [editable path="Заправка/Table"]
+[editable path="emeny/Настоящий пельмень2"]

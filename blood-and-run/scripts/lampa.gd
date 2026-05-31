@@ -33,8 +33,3 @@ func _ready() -> void:
 	Global.connect("bad", change_envir_light)
 	Global.connect("_light_off", power_off)
 	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

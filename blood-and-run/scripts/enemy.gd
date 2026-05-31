@@ -11,10 +11,10 @@ func _ready():
 	#actor_setup.call_deferred()
 	movement_target_position = position
 func _physics_process(delta):
-	#if start:
-	go()
-	look_at(movement_target_position)
-	$Running/AnimationPlayer.play("mixamo_com")
+	if start:
+		go()
+		look_at(movement_target_position)
+		#$Running/AnimationPlayer.play("mixamo_com")
 	move_and_slide()
 
 

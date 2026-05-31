@@ -1,7 +1,12 @@
 [gd_scene format=4 uid="uid://bwt43wj3moya3"]
 
+[ext_resource type="Shader" uid="uid://dq81n42ia7ync" path="res://Models/Glass.gdshader" id="1_urhrp"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fp80v"]
 albedo_color = Color(0.7634832, 0, 0.12743276, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+grow = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gvj5l"]
 
@@ -35,8 +40,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_jgnq7")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_urhrp"]
-albedo_color = Color(0.27393654, 0.27340442, 0.42725673, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nhl7q"]
+render_priority = 0
+shader = ExtResource("1_urhrp")
+shader_parameter/albedo = Color(0.14901961, 0.827451, 1, 0.09803922)
+shader_parameter/roughness = 1.7110000337725
+shader_parameter/normal_strength = 5.4810002603475
+shader_parameter/edge_color = Color(0.23921569, 0.36862746, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_upqta"]
 
@@ -101,9 +111,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_eu6gx")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhl7q"]
-albedo_color = Color(0.26666668, 0.16862746, 0.16862746, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cckxc"]
 
@@ -173,6 +180,169 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_qy1xs")
 
+[sub_resource type="Animation" id="Animation_nhl7q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Икосфера:material_override:grow_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Икосфера:material_override:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.7634832, 0, 0.12743276, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Икосфера:material_override:emission")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Сфера:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.1740923, 1.5707967, -1.5707966)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera3D:current")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera3D:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.36836904, 1.6957169, -0.04518783)]
+}
+
+[sub_resource type="Animation" id="Animation_urhrp"]
+resource_name = "new_animation"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Икосфера:material_override:grow_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Икосфера:material_override:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.5884919, 0.5278625, 1), Color(0.7634832, 0, 0.12743276, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Икосфера:material_override:emission")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.599933, 0.5403929, 1), Color(1, 0, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Сфера:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.29900002, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.3285449, -1.5707964, 1.5707965), Vector3(-1.553343, -1.5707964, 1.5707964), Vector3(-1.553343, 1.5707964, -1.5707964), Vector3(-1.1740923, 1.5707967, -1.5707966)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera3D:current")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera3D:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2647319, 0.5, 0.7455715, 1, 1.2534245, 1.5, 1.7558749, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.36836904, 1.6957169, -0.04518783), Vector3(-0.22489004, 1.2518213, 1.2672346), Vector3(-0.36836904, 1.6957169, -0.04518783), Vector3(-0.11559643, 1.9420719, -0.9924321), Vector3(-0.36836904, 1.6957169, -0.04518783), Vector3(-0.24679261, 1.2682091, 1.1971309), Vector3(-0.36836904, 1.6957169, -0.04518783), Vector3(-0.055154502, 1.9551102, -1.1449703), Vector3(-0.36836904, 1.6957169, -0.04518783)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nhl7q"]
+_data = {
+&"RESET": SubResource("Animation_nhl7q"),
+&"new_animation": SubResource("Animation_urhrp")
+}
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_173o4"]
+dof_blur_far_distance = 0.7
+dof_blur_near_distance = 8.82
+dof_blur_near_transition = 6130.02
+dof_blur_amount = 0.34
+
 [node name="Настоящий пельмень" type="Node3D" unique_id=1746730056]
 
 [node name="Икосфера" type="MeshInstance3D" parent="." unique_id=1729609132]
@@ -189,24 +359,32 @@ skeleton = NodePath("")
 
 [node name="Икосфера_002" type="MeshInstance3D" parent="." unique_id=1617310009]
 transform = Transform3D(-61.11058, -23.494474, -207.27107, 70.94371, -61.73898, -101.20677, -38.11683, -77.2423, 143.93834, 1.3295718, 5.503676, -8.756599)
-material_override = SubResource("StandardMaterial3D_urhrp")
+material_override = SubResource("ShaderMaterial_nhl7q")
 mesh = SubResource("ArrayMesh_y012o")
 skeleton = NodePath("")
 
 [node name="Икосфера_003" type="MeshInstance3D" parent="." unique_id=204109050]
 transform = Transform3D(9.667546, 60.786907, -216.3434, 70.94371, -61.73899, -101.20676, -71.37181, -53.134888, -129.90417, 1.3295718, 5.503676, 6.5888243)
-material_override = SubResource("StandardMaterial3D_urhrp")
+material_override = SubResource("ShaderMaterial_nhl7q")
 mesh = SubResource("ArrayMesh_r7pyd")
 skeleton = NodePath("")
 
 [node name="Сфера" type="MeshInstance3D" parent="." unique_id=1398575640]
-transform = Transform3D(92.233955, -7.4505806e-06, 211.53421, -38.63803, -1.1920929e-05, 504.95938, -1.4901161e-06, -99.99999, -6.526431e-05, -0.029922485, 2.5406032, -1.1295118)
-material_override = SubResource("StandardMaterial3D_nhl7q")
+transform = Transform3D(92.23393, -1.41119635e-05, 211.53426, -38.63804, -1.090095e-05, 504.95932, -8.804106e-06, -99.99999, -8.4897e-05, -0.029922485, 2.5406032, -1.1295118)
+material_override = SubResource("ShaderMaterial_nhl7q")
 mesh = SubResource("ArrayMesh_6ax04")
 skeleton = NodePath("")
 
 [node name="Сфера_001" type="MeshInstance3D" parent="." unique_id=867422490]
 transform = Transform3D(94.53831, 1.4901161e-06, -178.4563, 32.596146, 0, 517.5752, 1.4901161e-06, -100, 0, 1.5658481, -0.0009960532, -1.1295118)
-material_override = SubResource("StandardMaterial3D_nhl7q")
+material_override = SubResource("ShaderMaterial_nhl7q")
 mesh = SubResource("ArrayMesh_1ysro")
 skeleton = NodePath("")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1846775429]
+libraries/ = SubResource("AnimationLibrary_nhl7q")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1518745682]
+transform = Transform3D(-0.10832911, -0.3625519, 0.9256462, -0.042142097, 0.9319635, 0.36009437, -0.99322146, 2.980232e-08, -0.116237484, 14.321535, 11.460782, -2.1801574)
+attributes = SubResource("CameraAttributesPractical_173o4")
+far = 40.0

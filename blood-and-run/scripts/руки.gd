@@ -120,8 +120,6 @@ func _stavit_rashodnic():
 				$SpringArm3D/AnimationPlayer.play("RESET")
 			rashodnik = instance_na(obj.named)
 			rashodnik.position = obj.global_position 
-			if rashodnik.named == "snack":
-				rashodnik.scale = Vector3(0.5, 0.7,0.5)
 			rashodnik.freeze = false
 			rashodnik.gravity_scale = 1.4
 			for i in hand_marker.get_children():
@@ -129,6 +127,7 @@ func _stavit_rashodnic():
 					i.queue_free()
 			var coll: CollisionShape3D = rashodnik.get_node("Coll")
 			coll.disabled = false
+			rashodnik.rotation = get_parent().rotation
 			$Timer.start()
 
 func fnc_zp():
@@ -178,6 +177,7 @@ func _colling():
 						if kasa.kol_stakan > 0:
 							add_to_hand("Stakan")
 							kasa.vzat_stakan()
+							kasa.vis_stakan()
 					elif col.name == "Календарь":
 						kalendar += 1
 						if kalendar == 6:
@@ -246,4 +246,7 @@ func _on_animation_player_animation_finished(anim_name):
 
 func _on_timer_timeout():
 	Global.papa.get_node("Расходники").add_child(rashodnik)
+	rashodnik.look_at(Global.player.position)
+	rashodnik.rotation.x = 0
+	rashodnik.rotation.z = 0
 	pass # Replace with function body.

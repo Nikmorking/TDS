@@ -24,6 +24,7 @@ var Check_boxes:Array
 @onready var c:Environment = $WorldEnvironment.environment
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.connect("load", vis_time)
 	Check_boxes = $"Заправка/Table/CSGPolygon3D2/SubViewport/Control/Control".get_children()
 	print(Check_boxes)
 	Global.get_player()
@@ -36,6 +37,12 @@ func _ready():
 	Global.is_load = false
 	pass # Replace with function body.
 
+func vis_time():
+	print(chas, "  ", min)
+	$Player/Camera3D/Control/time/Label2.text = str(chas)
+	$Player/Camera3D/Control/time/Label4.text = str(min)
+	
+
 func _input(event):
 	if Input.is_action_just_pressed("ui_redo"):
 		Global.light_off()
@@ -43,8 +50,8 @@ func _input(event):
 		#_start_sream()
 		#$Timer2.start()
 	if Input.is_action_just_pressed("ui_home"):
-		#_start_sream()
-		back()
+		_start_sream()
+		#back()
 		#$"driving in my car"._start()
 		
 	pass
@@ -82,7 +89,7 @@ func _start_sream():
 			$emeny.position = $Marker3D.position
 			_run_pl()
 			norm = false
-			$Timer2.wait_time = randi_range(20,26)
+			$Timer2.wait_time = randi_range(42,62)
 			$Timer2.start()
 		else:
 			c.volumetric_fog_emission = Color("4f1c5e")
@@ -175,7 +182,6 @@ func _on_timer_timeout() -> void:
 
 func _on_emeny_body_entered(node):
 	if node.name == "Player":
-		_start_sream()
 		printerr("Буква: O")
 		die("Съели")
 	pass # Replace with function body.
@@ -266,19 +272,16 @@ func _on_tick_timeout():
 
 func die(prichina: String):
 	print(prichina)
-	Global.save()
 	if prichina == "Задавлен":
 		$Player/Camera3D/Control3/AnimationPlayer.speed_scale = 4
 		Global.achivka("                      Задавлен")
 		printerr("Буква: Z")
-	$Player/Camera3D/Control/Sprite2D.show()
 	$Be.play()
+	$"emeny/Настоящий пельмень2/AnimationPlayer".play("new_animation")
+	$emeny.vkl = false
+	$emeny.process_mode = ProcessMode.PROCESS_MODE_DISABLED
+	$emeny.start = false
 
-
-func _on_be_finished():
-	get_tree().reload_current_scene()
-	Global.is_load = true
-	pass # Replace with function body.
 
 func _end_day():
 	Global.fara_days += 1
@@ -313,4 +316,12 @@ func _on_proshlo_timeout():
 				$Player/Camera3D/Control/time/Label2.text = str(chas)
 				$Player/Camera3D/Control/time/Label4.text = "00"
 				min = 0
+	pass # Replace with function body.
+
+
+func _on_animation_player_animation_finished(anim_name):
+	_start_sream()
+	get_tree().reload_current_scene()
+	Global.is_load = true
+	$Player/Camera3D/Control/Sprite2D.show()
 	pass # Replace with function body.

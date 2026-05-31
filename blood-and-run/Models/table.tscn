@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bafg5x2p8c6f2" path="res://Texture/Freind.png" id="5_jrmna"]
 [ext_resource type="Script" uid="uid://b3mb2sb58j25f" path="res://scripts/kassa_sc.gd" id="6_dlnaw"]
 [ext_resource type="AudioStream" uid="uid://dhg1s4pmdoph0" path="res://sounds/coffeegrinder1.mp3" id="7_3dp1s"]
-[ext_resource type="Texture2D" uid="uid://b0qqtrbqwbcya" path="res://Texture/Shelf_Store_09.jpg" id="8_78bpj"]
 [ext_resource type="Texture2D" uid="uid://cvln6ln4vfdee" path="res://scenes/dZI264Kn3kWyvT7qRo4e0IbZ28qqWdrjzGNY3s8TwDM4NAnM3GUbRA9qD2pBfGS4uzLPxZV_cYc2BcLVqwNmC-Ld.jpg" id="9_bawi3"]
+[ext_resource type="PackedScene" uid="uid://cc78h45t6av5c" path="res://Models/snek polka.fbx" id="9_kae8l"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cfvsp"]
 size = Vector3(2.2872314, 1.0596924, 2.8095398)
@@ -36,7 +36,7 @@ height = 1.0158691
 viewport_path = NodePath("Касса/Cofe_machine/SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qyfae"]
-size = Vector3(1.4516602, 1, 1)
+size = Vector3(1.4516602, 1, 1.2197266)
 
 [sub_resource type="LabelSettings" id="LabelSettings_88m6n"]
 font_size = 32
@@ -47,9 +47,8 @@ viewport_path = NodePath("Касса/Снеки/SubViewport")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kae8l"]
 albedo_color = Color(0.4552064, 6.2425584e-05, 0.4071659, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8oxcy"]
-albedo_texture = ExtResource("8_78bpj")
-metallic = 1.0
+[sub_resource type="ViewportTexture" id="ViewportTexture_rk3qh"]
+viewport_path = NodePath("Касса/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g0orn"]
 albedo_texture = ExtResource("9_bawi3")
@@ -244,7 +243,7 @@ collision_layer = 5
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Касса/Снеки" unique_id=868887135]
-transform = Transform3D(0.99999714, 0, 0, 0, 1, 0, 0, 0, 0.99999714, -0.22583008, 0, 0)
+transform = Transform3D(0.99999607, 0, 0, 0, 1, 0, 0, 0, 0.99999607, -0.22583008, 0, -0.10986328)
 shape = SubResource("BoxShape3D_qyfae")
 
 [node name="SubViewport" type="SubViewport" parent="Касса/Снеки" unique_id=1199372559]
@@ -278,11 +277,30 @@ height = 0.12817383
 sides = 19
 material = SubResource("StandardMaterial3D_kae8l")
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="." unique_id=1680699084]
-transform = Transform3D(-4.3711346e-08, 0, 0.99999917, 0, 1, 0, -0.99999917, 0, -4.3711346e-08, -20.938711, 0.7081344, -13.160933)
-polygon = PackedVector2Array(0, 0, 0.023889542, 0.3864416, 1, 1, 1, 0)
-depth = 1.5
-material = SubResource("StandardMaterial3D_8oxcy")
+[node name="SubViewport" type="SubViewport" parent="Касса" unique_id=136805398]
+transparent_bg = true
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="Касса/SubViewport" unique_id=777885308]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 118.0
+offset_top = 42.0
+offset_right = 425.0
+offset_bottom = 340.0
+
+[node name="Label" type="Label" parent="Касса/SubViewport/Control" unique_id=1058267974]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "0/6"
+label_settings = SubResource("LabelSettings_88m6n")
+
+[node name="Sprite3D" type="Sprite3D" parent="Касса" unique_id=25473584]
+transform = Transform3D(0.99996436, 0, -7.1051788e-15, 0, 0.9999999, 0, 7.1051745e-15, 0, 0.99996495, 3.9310484, 2.4895344, 0.059293747)
+flip_h = true
+texture = SubResource("ViewportTexture_rk3qh")
 
 [node name="CSGPolygon3D2" type="CSGPolygon3D" parent="." unique_id=2106210827]
 transform = Transform3D(0.7009826, 0, -0.71317554, 0, 1, 0, 0.71317554, 0, 0.7009826, -18.518547, 0.7081344, -13.179781)
@@ -357,6 +375,9 @@ scale = Vector2(1.7, 1.7)
 [node name="Sprite3D" type="Sprite3D" parent="CSGPolygon3D2" unique_id=840912229]
 transform = Transform3D(0.02189833, 0.5697504, -0.8215254, 0.016285006, 0.82141066, 0.5701046, 0.9996266, -0.025862843, 0.0087091625, 0.55988693, 0.8742696, -0.7425623)
 texture = SubResource("ViewportTexture_4p7hl")
+
+[node name="snek polka" parent="." unique_id=23223497 instance=ExtResource("9_kae8l")]
+transform = Transform3D(-2.8412401e-08, 0, -0.65, 0, 0.65, 0, 0.65, 0, -2.8412401e-08, -21.585209, 0.8313594, -13.792787)
 
 [connection signal="body_entered" from="Radio/Radio" to="Radio" method="_on_radio_body_entered"]
 [connection signal="body_exited" from="Radio/Radio" to="Radio" method="_on_radio_body_exited"]

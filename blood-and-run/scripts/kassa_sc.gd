@@ -13,6 +13,7 @@ func _ready():
 	#cofe = 10
 	#stakan = true
 	Global.get_player()
+	
 	pass # Replace with function body.
 
 func _input(event):
@@ -25,8 +26,17 @@ func statan_voshol(body: Node3D):
 		body.queue_free()
 		$CSGCylinder3D.show()
 		kol_stakan = 6
+		$CSGCylinder3D.show()
+		$CSGCylinder3D.height = 2.5
+		$CSGCylinder3D.position.y = 1.8
+		$Stakan/CollisionShape3D.position.y = 0.869
+		for i in $CSGCylinder3D.get_children():
+			i.show()
+		vis_stakan()
 	pass # Replace with function body.
 
+func vis_stakan():
+	$SubViewport/Control/Label.text = str(kol_stakan) + "/6"
 
 func on_cofe_machine(body: Node3D):
 	body.queue_free()
@@ -80,7 +90,7 @@ func load_var(data):
 	stakan = data.get(2)
 	cofe_gotova = data.get(3)
 	snacks = int(data.get(4))
-	
+	vis_stakan()
 	sel(str(cofe)+"/10")
 	if kol_stakan >0:
 		$CSGCylinder3D.show()

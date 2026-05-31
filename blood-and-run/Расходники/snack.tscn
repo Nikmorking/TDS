@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://caro2nfx5s3ln"]
 
 [ext_resource type="Script" uid="uid://6mu3mfjfp1wg" path="res://Models/1.gd" id="1_3ngne"]
-[ext_resource type="Texture2D" uid="uid://dic2nk8otrrsi" path="res://Texture/Door_03.jpg" id="2_3ngne"]
+[ext_resource type="PackedScene" uid="uid://d4n0hb3fpw6ir" path="res://Models/snek.fbx" id="3_1jebq"]
 [ext_resource type="AudioStream" uid="uid://bo12pg3dvv5te" path="res://sounds/cardboard-box-drop_gjj0vceo.mp3" id="3_y5b11"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3ngne"]
@@ -9,12 +9,6 @@ rough = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m3jal"]
 size = Vector3(1.7797852, 0.4043274, 0.78634644)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y5b11"]
-albedo_color = Color(0.6452097, 0.6452098, 0.64520955, 1)
-albedo_texture = ExtResource("2_3ngne")
-albedo_texture_force_srgb = true
-roughness = 0.6
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ngne"]
 size = Vector3(1.7126465, 0.8997345, 0.4354515)
@@ -32,11 +26,6 @@ named = "snack"
 [node name="Coll" type="CollisionShape3D" parent="." unique_id=2122706237]
 transform = Transform3D(-0.010820943, 0, 0.9999504, 0, 1, 0, -0.9999504, 0, -0.010820943, -0.007458292, 0.05189228, 0.9506148)
 shape = SubResource("BoxShape3D_m3jal")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1009616703]
-transform = Transform3D(-0.010820817, 0, 0.99994147, 0, 1, 0, -0.99994147, 0, -0.010820817, -0.00037038326, 0.052001953, 0.95551765)
-size = Vector3(1.6374512, 0.39160156, 0.5664673)
-material = SubResource("StandardMaterial3D_y5b11")
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=263184028]
 transform = Transform3D(-0.010820817, 0, 0.99994147, 0, 1, 0, -0.99994147, 0, -0.010820817, 0.07572788, -0.16157484, 0.79318565)
@@ -56,3 +45,6 @@ collision_mask = 4
 [node name="Coll" type="CollisionShape3D" parent="Area3D" unique_id=1458708107]
 transform = Transform3D(1, 0, 0, 0, 0.0016755613, 0.99999857, 0, -0.99999857, 0.0016755613, 0.26135856, 0.08519106, -0.075900465)
 shape = SubResource("BoxShape3D_3ngne")
+
+[node name="snek" parent="." unique_id=1649502027 instance=ExtResource("3_1jebq")]
+transform = Transform3D(0.25, 0, 0, 0, 0.3, 0, 0, 0, 0.15, -0.027144313, 0.24678779, 0.5597272)
