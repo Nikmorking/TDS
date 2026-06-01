@@ -3,28 +3,31 @@
 [ext_resource type="Script" uid="uid://6mu3mfjfp1wg" path="res://Models/1.gd" id="1_hkkfr"]
 [ext_resource type="Shader" uid="uid://dq81n42ia7ync" path="res://Models/Glass.gdshader" id="2_mj22q"]
 [ext_resource type="AudioStream" uid="uid://b60fuoqyiai43" path="res://sounds/Steklo.wav" id="3_4t0qe"]
+[ext_resource type="Texture2D" uid="uid://bgo2ui32qmsfc" path="res://Texture/brick_02.jpg" id="4_lj4pd"]
+[ext_resource type="ArrayMesh" uid="uid://bmycu10bsov7h" path="res://Models/stakan.tres" id="5_sfo21"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3g81v"]
 rough = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1wodg"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_d5ioe"]
+height = 0.6639404
+radius = 0.16894531
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4t0qe"]
+radius = 0.17871094
+height = 0.81652737
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ffcuk"]
 render_priority = 0
 shader = ExtResource("2_mj22q")
-shader_parameter/albedo = Color(6, 1, 1, 0)
-shader_parameter/roughness = 0.5
-shader_parameter/normal_strength = 8.0
-shader_parameter/edge_color = Color(0, 0, 0, 0)
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_d5ioe"]
-height = 0.5612793
-radius = 0.23095703
+shader_parameter/albedo = Color(5.999788, 5.999788, 5.999788, 0.019607844)
+shader_parameter/albedo_texture = ExtResource("4_lj4pd")
+shader_parameter/roughness = 1.0
+shader_parameter/normal_strength = 0.0
+shader_parameter/edge_color = Color(2.0002677, 2.0002677, 2.0002677, 0.69803923)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hkkfr"]
 albedo_color = Color(0.36074692, 0.21508199, 0, 0.69100004)
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4t0qe"]
-radius = 0.25927734
-height = 0.7255781
 
 [node name="Stakan_s_cofe" type="RigidBody3D" unique_id=1350055056]
 collision_layer = 6
@@ -35,25 +38,9 @@ gravity_scale = 0.0
 script = ExtResource("1_hkkfr")
 named = "Stakan_cofe"
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=544691532]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10996246, 0)
-radius = 0.21972656
-height = 0.54512024
-material = SubResource("ShaderMaterial_1wodg")
-
 [node name="Coll" type="CollisionShape3D" parent="." unique_id=2122706237]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.101620674, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001619637, 0.0019332618, 0.0064832717)
 shape = SubResource("CylinderShape3D_d5ioe")
-
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." unique_id=242591208]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.172741, 0)
-radius = 0.17
-height = 0.42407227
-material = SubResource("StandardMaterial3D_hkkfr")
-
-[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1250520358]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30749547, 0.31023705, 0.24130803)
-target_position = Vector3(-0.5, -0.6, -0.4)
 
 [node name="Bonk" type="AudioStreamPlayer3D" parent="." unique_id=831334684]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004357636, 0.10528526, 0)
@@ -68,8 +55,18 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="Coll" type="CollisionShape3D" parent="Area3D" unique_id=128179969]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.086563855, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0041330755, 0)
 shape = SubResource("CapsuleShape3D_4t0qe")
+
+[node name="Stakan" type="MeshInstance3D" parent="." unique_id=172659585]
+transform = Transform3D(20, 0, 0, 0, -8.742278e-07, 17.333, 0, -20, -7.576495e-07, 0.0017438531, -0.007732153, -0.00321348)
+material_override = SubResource("ShaderMaterial_ffcuk")
+mesh = ExtResource("5_sfo21")
+
+[node name="Stakan2" type="MeshInstance3D" parent="." unique_id=288690612]
+transform = Transform3D(18, 0, 0, 0, -7.86805e-07, 15.6, 0, -18, -6.818977e-07, 0.0017438531, 0.029639438, -0.00321348)
+material_override = SubResource("StandardMaterial3D_hkkfr")
+mesh = ExtResource("5_sfo21")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

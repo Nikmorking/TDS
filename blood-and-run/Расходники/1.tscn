@@ -1,22 +1,15 @@
 [gd_scene format=3 uid="uid://djscstv0lleby"]
 
 [ext_resource type="Script" uid="uid://6mu3mfjfp1wg" path="res://Models/1.gd" id="1_lww6m"]
-[ext_resource type="Shader" uid="uid://dq81n42ia7ync" path="res://Models/Glass.gdshader" id="2_5bt6k"]
+[ext_resource type="Material" uid="uid://d36i5qet6k47n" path="res://mater/stakan.tres" id="2_5jjlj"]
 [ext_resource type="AudioStream" uid="uid://b60fuoqyiai43" path="res://sounds/Steklo.wav" id="3_dmywo"]
+[ext_resource type="ArrayMesh" uid="uid://bmycu10bsov7h" path="res://Models/stakan.tres" id="4_3oyq3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qrpuc"]
 rough = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5bt6k"]
-render_priority = 0
-shader = ExtResource("2_5bt6k")
-shader_parameter/albedo = Color(6, 1, 1, 0)
-shader_parameter/roughness = 0.5
-shader_parameter/normal_strength = 8.0
-shader_parameter/edge_color = Color(2, 2, 2, 1)
-
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_dmywo"]
-height = 1.31427
+height = 1.5472717
 radius = 0.23339844
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_813lh"]
@@ -32,14 +25,8 @@ gravity_scale = 0.0
 script = ExtResource("1_lww6m")
 named = "Stakanchiki"
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=544691532]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16204453, 0)
-radius = 0.21972656
-height = 1.3128967
-material = SubResource("ShaderMaterial_5bt6k")
-
 [node name="Coll" type="CollisionShape3D" parent="." unique_id=2122706237]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1718502, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28835106, 0)
 shape = SubResource("CylinderShape3D_dmywo")
 
 [node name="Bonk" type="AudioStreamPlayer3D" parent="." unique_id=193144984]
@@ -54,8 +41,33 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="Coll" type="CollisionShape3D" parent="Area3D" unique_id=1979937752]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16884315, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49163556, 0)
 shape = SubResource("CapsuleShape3D_813lh")
+
+[node name="Stakan" type="MeshInstance3D" parent="." unique_id=1545159268]
+transform = Transform3D(18, 0, 0, 0, -7.86805e-07, -13, 0, 18, -5.68248e-07, -0.014599234, -0.29600075, 0.002779305)
+material_override = ExtResource("2_5jjlj")
+mesh = ExtResource("4_3oyq3")
+
+[node name="Stakan2" type="MeshInstance3D" parent="." unique_id=1058337859]
+transform = Transform3D(18, 0, 0, 0, -7.86805e-07, -13, 0, 18, -5.68248e-07, -0.014599234, -0.002395928, 0.002779305)
+material_override = ExtResource("2_5jjlj")
+mesh = ExtResource("4_3oyq3")
+
+[node name="Stakan3" type="MeshInstance3D" parent="." unique_id=318766665]
+transform = Transform3D(18, 0, 0, 0, -7.86805e-07, -13, 0, 18, -5.68248e-07, -0.014599234, 0.29245946, 0.002779305)
+material_override = ExtResource("2_5jjlj")
+mesh = ExtResource("4_3oyq3")
+
+[node name="Stakan4" type="MeshInstance3D" parent="." unique_id=504721955]
+transform = Transform3D(18, 0, 0, 0, -7.86805e-07, -13, 0, 18, -5.68248e-07, -0.014599234, 0.5758281, 0.002779305)
+material_override = ExtResource("2_5jjlj")
+mesh = ExtResource("4_3oyq3")
+
+[node name="Stakan5" type="MeshInstance3D" parent="." unique_id=1423386217]
+transform = Transform3D(18, 0, 0, 0, -7.86805e-07, -13, 0, 18, -5.68248e-07, -0.014599234, 0.83529705, 0.002779305)
+material_override = ExtResource("2_5jjlj")
+mesh = ExtResource("4_3oyq3")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

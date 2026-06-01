@@ -41,8 +41,8 @@ _subresources={
 "materials": {
 "Material": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://mater/grey.tres",
-"use_external/path": "uid://cehxhcf454q5q"
+"use_external/fallback_path": "res://mater/brown.tres",
+"use_external/path": "uid://d1mdfbsfxfvf"
 }
 },
 "nodes": {

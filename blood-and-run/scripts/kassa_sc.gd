@@ -25,18 +25,16 @@ func statan_voshol(body: Node3D):
 	if body.named == "Stakanchiki" and kol_stakan == 0:
 		body.queue_free()
 		$CSGCylinder3D.show()
-		kol_stakan = 6
+		kol_stakan = 5
 		$CSGCylinder3D.show()
-		$CSGCylinder3D.height = 2.5
-		$CSGCylinder3D.position.y = 1.8
-		$Stakan/CollisionShape3D.position.y = 0.869
+		$Stakan.position.y = 1
 		for i in $CSGCylinder3D.get_children():
 			i.show()
 		vis_stakan()
 	pass # Replace with function body.
 
 func vis_stakan():
-	$SubViewport/Control/Label.text = str(kol_stakan) + "/6"
+	$SubViewport/Control/Label.text = str(kol_stakan) + "/5"
 
 func on_cofe_machine(body: Node3D):
 	body.queue_free()
@@ -90,20 +88,21 @@ func load_var(data):
 	stakan = data.get(2)
 	cofe_gotova = data.get(3)
 	snacks = int(data.get(4))
-	vis_stakan()
 	sel(str(cofe)+"/10")
 	if kol_stakan >0:
 		$CSGCylinder3D.show()
-		$CSGCylinder3D.height -= 0.2
-		$CSGCylinder3D.position.y -= 0.3
-		$Stakan/CollisionShape3D.position.y -= 0.3
+		$Stakan.position.y -= 0.3 * kol_stakan
+		var st = $CSGCylinder3D.get_children()
+		for i in kol_stakan:
+			st.get(i).show()
+	else:
+		$CSGCylinder3D.hide()
 	set_snack()
+	vis_stakan()
 	
 
 func vzat_stakan():
 	kol_stakan -= 1
-	$CSGCylinder3D.height -= 0.2
-	$CSGCylinder3D.position.y -= 0.3
-	$Stakan/CollisionShape3D.position.y -= 0.3
-	if kol_stakan-1 != -1:
-		$CSGCylinder3D.get_children().get(kol_stakan-1).hide()
+	$Stakan.position.y -= 0.3
+	$CSGCylinder3D.get_children().get(kol_stakan).hide()
+	vis_stakan()

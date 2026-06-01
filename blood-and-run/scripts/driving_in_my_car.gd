@@ -33,7 +33,7 @@ func _physics_process(delta):
 			pass
 		else:
 			movement_target_position = mtp_list[i].position
-			if i == 2:
+			if i == 2 or i == 4:
 				rotate_y(-1.57)
 			else:
 				rotate_y(1.57)

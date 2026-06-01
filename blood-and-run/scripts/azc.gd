@@ -50,8 +50,8 @@ func _input(event):
 		#_start_sream()
 		#$Timer2.start()
 	if Input.is_action_just_pressed("ui_home"):
-		_start_sream()
-		#back()
+		#_start_sream()
+		back()
 		#$"driving in my car"._start()
 		
 	pass
@@ -217,6 +217,7 @@ func _on_driving_in_my_car_end_put():
 func _pripersa():
 	$"driving in my car".n = 5
 	$"driving in my car".i -= 1
+	$"driving in my car".rotate_y(-1.57)
 	$"driving in my car".start = true
 
 
@@ -292,7 +293,7 @@ func _end_day():
 	rand = true
 	proshlo = 0
 	energy = 0
-	chas = 0
+	chas = 10
 	min = 0
 	Global.save() 
 	get_tree().paused = true

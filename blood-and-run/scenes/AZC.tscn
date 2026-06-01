@@ -682,19 +682,46 @@ uv2_padding = 1.0
 text = "Gas station"
 depth = 0.01
 
+[sub_resource type="GDScript" id="GDScript_173o4"]
+resource_name = "Loop"
+script/source = "extends StaticBody3D
+
+var flag = true
+
+func _on_area_3d_body_entered(body):
+	if body.name == \"Player\":
+		body.position = $Marker3D2.position
+		if flag:
+			Global.achivka(\"Достижение:\\nХа-Ха хорошая попытка!\")
+			flag = false
+	pass # Replace with function body.
+
+
+func _on_area_3d_2_body_entered(body):
+	if body.name == \"Player\":
+		body.position = $Marker3D.position
+		if flag:
+			Global.achivka(\"Достижение:\\nХа-Ха хорошая попытка!\")
+			flag = false
+	pass # Replace with function body.
+"
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_vynuk"]
-size = Vector3(66.521286, 4.8321533, 1.9077606)
+size = Vector3(40.577126, 4.8321533, 1.9077606)
 
 [sub_resource type="FogMaterial" id="FogMaterial_aeg34"]
 density = 3.0
 albedo = Color(0.423651, 0.423651, 0.423651, 1)
 emission = Color(0.140447, 0.140447, 0.140447, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_tsu7c"]
+size = Vector3(6.9828796, 6.5708923, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r7am0"]
 albedo_color = Color(0.24840015, 0.24840018, 0.24840015, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y5rpb"]
-size = Vector3(117.41805, 1.1186523, 67.50079)
+size = Vector3(117.41805, 1.1186523, 89.049225)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y5rpb"]
 albedo_color = Color(0, 0, 0, 1)
@@ -1869,6 +1896,7 @@ material_override = SubResource("ShaderMaterial_173o4")
 mesh = SubResource("TextMesh_tsu7c")
 
 [node name="Тум-тум-туманище" type="StaticBody3D" parent="." unique_id=1175494086]
+script = SubResource("GDScript_173o4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Тум-тум-туманище" unique_id=2108142952]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2770157, 1.9160767, -25.825167)
@@ -1884,18 +1912,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.135025, 1.9160767, 14.533
 shape = SubResource("BoxShape3D_vynuk")
 
 [node name="FogVolume2" type="FogVolume" parent="Тум-тум-туманище/CollisionShape3D2" unique_id=815431802]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.79514503, 1.3496776, 3.1575756)
-size = Vector3(52.006508, 6.367918, 10.477536)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.79514503, 1.3496776, 5.522993)
+size = Vector3(52.006508, 6.367918, 15.208372)
 material = SubResource("FogMaterial_aeg34")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Тум-тум-туманище" unique_id=1925640355]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 18.681328, 1.9160767, -7.8876762)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 27.388588, 1.9160767, -12.707647)
 shape = SubResource("BoxShape3D_vynuk")
 
 [node name="FogVolume2" type="FogVolume" parent="Тум-тум-туманище/CollisionShape3D3" unique_id=1299870961]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.916233, 1.3496776, 12.976139)
-size = Vector3(72.70448, 6.367918, 4.808713)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.916232, 1.6722488, 3.561329)
+size = Vector3(72.70448, 7.0130606, 4.808713)
 material = SubResource("FogMaterial_aeg34")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Тум-тум-туманище" unique_id=364091921]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19.589708, 1.9160767, 32.359734)
+shape = SubResource("BoxShape3D_vynuk")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Тум-тум-туманище" unique_id=616761940]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19.589708, 1.9160767, -44.11201)
+shape = SubResource("BoxShape3D_vynuk")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Тум-тум-туманище" unique_id=357732584]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -36.29819, 1.9160767, -7.8876762)
@@ -1907,9 +1943,34 @@ size = Vector3(49.644115, 6.367918, 3.38476)
 material = SubResource("FogMaterial_aeg34")
 
 [node name="FogVolume2" type="FogVolume" parent="Тум-тум-туманище" unique_id=1936920164]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.473083, 1.3496776, 37.748253)
-size = Vector3(22.237316, 6.367918, 10.477536)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.473083, 2.365364, 32.916054)
+size = Vector3(22.237316, 8.399291, 10.477536)
 material = SubResource("FogMaterial_aeg34")
+
+[node name="FogVolume3" type="FogVolume" parent="Тум-тум-туманище" unique_id=850384375]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.473083, 2.5863113, -38.32434)
+size = Vector3(22.237316, 8.841186, 10.477536)
+material = SubResource("FogMaterial_aeg34")
+
+[node name="Area3D" type="Area3D" parent="Тум-тум-туманище" unique_id=1197460406]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.081425, 0, -36.621017)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Тум-тум-туманище/Area3D" unique_id=1350762720]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.88246155, 3.5084567, -0.5631218)
+shape = SubResource("BoxShape3D_tsu7c")
+
+[node name="Area3D2" type="Area3D" parent="Тум-тум-туманище" unique_id=698826021]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.081425, 0, 30.828028)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Тум-тум-туманище/Area3D2" unique_id=575594389]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.88246155, 3.5084567, -0.5631218)
+shape = SubResource("BoxShape3D_tsu7c")
+
+[node name="Marker3D" type="Marker3D" parent="Тум-тум-туманище" unique_id=1305967950]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.88995, -0.3912351, -35.67252)
+
+[node name="Marker3D2" type="Marker3D" parent="Тум-тум-туманище" unique_id=661158057]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.600191, -0.1871742, 28.258354)
 
 [node name="Фонари" type="Node" parent="." unique_id=427375748]
 
@@ -2207,7 +2268,7 @@ collision_layer = 15
 collision_mask = 15
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/CSGBakedMeshInstance3D/StaticBody3D" unique_id=1356334168]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30022812, -0.49546385, 12.242584)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30022812, -0.49546385, 1.4683685)
 shape = SubResource("BoxShape3D_y5rpb")
 
 [node name="NavigationRegion3D2" type="NavigationRegion3D" parent="." unique_id=1160924384]
@@ -2308,7 +2369,7 @@ process_mode = 3
 speed_scale = 1.3
 
 [node name="Camera3D" parent="emeny/Настоящий пельмень2" index="7" unique_id=1518745682]
-transform = Transform3D(-0.10832911, -0.3625519, 0.9256462, -0.042142097, 0.93196344, 0.36009437, -0.99322146, 2.9802319e-08, -0.116237484, 14.321535, 11.460782, -2.1801574)
+transform = Transform3D(-0.10832911, -0.36255184, 0.9256462, -0.042142097, 0.9319633, 0.36009437, -0.99322146, 2.9802315e-08, -0.116237484, 14.321535, 11.460782, -2.1801574)
 
 [node name="Timer2" type="Timer" parent="." unique_id=2145315828]
 wait_time = 23.0
@@ -2548,6 +2609,8 @@ wait_time = 0.1
 [connection signal="animation_finished" from="Player/Camera3D/AnimationPlayer" to="Player/Camera3D/AnimationPlayer" method="_on_day_finished"]
 [connection signal="_open" from="Заправка/Door2" to="." method="_on_door_2__open"]
 [connection signal="body_entered" from="Заправка/мусорка" to="Заправка/мусорка" method="_on_body_entered"]
+[connection signal="body_entered" from="Тум-тум-туманище/Area3D" to="Тум-тум-туманище" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Тум-тум-туманище/Area3D2" to="Тум-тум-туманище" method="_on_area_3d_2_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="davka" from="driving in my car" to="." method="die"]
 [connection signal="end_put" from="driving in my car" to="." method="_on_driving_in_my_car_end_put"]

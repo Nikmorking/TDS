@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d36i5qet6k47n"]
+
+[ext_resource type="Shader" uid="uid://dq81n42ia7ync" path="res://Models/Glass.gdshader" id="1_udqee"]
+[ext_resource type="Texture2D" uid="uid://bgo2ui32qmsfc" path="res://Texture/brick_02.jpg" id="2_sol4o"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_udqee")
+shader_parameter/albedo = Color(5.999788, 5.999788, 5.999788, 0.019607844)
+shader_parameter/albedo_texture = ExtResource("2_sol4o")
+shader_parameter/roughness = 1.0
+shader_parameter/normal_strength = 0.0
+shader_parameter/edge_color = Color(2, 2, 2, 0.906)
