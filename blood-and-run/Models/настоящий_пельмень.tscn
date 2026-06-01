@@ -325,10 +325,10 @@ tracks/5/path = NodePath("Camera3D:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.2647319, 0.5, 0.7455715, 1, 1.2534245, 1.5, 1.7558749, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.033333335, 0.26666668, 0.43333334, 0.6333333, 0.8333333, 1.2, 2),
+"transitions": PackedFloat32Array(1, 0.34151006, 1, 0.34151006, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.36836904, 1.6957169, -0.04518783), Vector3(-0.22489004, 1.2518213, 1.2672346), Vector3(-0.36836904, 1.6957169, -0.04518783), Vector3(-0.11559643, 1.9420719, -0.9924321), Vector3(-0.36836904, 1.6957169, -0.04518783), Vector3(-0.24679261, 1.2682091, 1.1971309), Vector3(-0.36836904, 1.6957169, -0.04518783), Vector3(-0.055154502, 1.9551102, -1.1449703), Vector3(-0.36836904, 1.6957169, -0.04518783)]
+"values": [Vector3(-0.36836904, 1.6957169, -0.04518783), Vector3(0.35953784, 1.69646, -0.045378562), Vector3(-0.36836904, 1.6957169, -0.04518783), Vector3(0.35953784, 1.69646, -0.045378562), Vector3(-0.36836904, 1.6957169, -0.04518783), Vector3(-0.36836904, 1.6957169, -0.04518783), Vector3(-0.36836904, 1.6957169, -0.04518783)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nhl7q"]
@@ -385,6 +385,6 @@ skeleton = NodePath("")
 libraries/ = SubResource("AnimationLibrary_nhl7q")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1518745682]
-transform = Transform3D(-0.10832911, -0.3625519, 0.9256462, -0.042142097, 0.9319635, 0.36009437, -0.99322146, 2.980232e-08, -0.116237484, 14.321535, 11.460782, -2.1801574)
+transform = Transform3D(-0.1083291, -0.3625519, 0.9256462, -0.042142097, 0.93196344, 0.36009437, -0.99322146, 2.6077029e-08, -0.11623748, 14.321535, 11.460782, -2.1801574)
 attributes = SubResource("CameraAttributesPractical_173o4")
 far = 40.0

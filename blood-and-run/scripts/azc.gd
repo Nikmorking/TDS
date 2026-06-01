@@ -256,9 +256,9 @@ func _on_tick_timeout():
 			energy = 0
 			var b = randi_range(-10,1)
 			if b < -1:
-				if b>=-8:
+				if b>=-8 or Global.fara_days < 3:
 					$"driving in my car"._start()
-				elif proshlo - delta_light >60:
+				elif proshlo - delta_light >60 and Global.fara_days >= 4:
 					Global.light_off()
 					delta_light = proshlo
 				else:
@@ -322,6 +322,7 @@ func _on_proshlo_timeout():
 
 func _on_animation_player_animation_finished(anim_name):
 	_start_sream()
+	$"emeny/Настоящий пельмень2/AnimationPlayer".play("RESET")
 	get_tree().reload_current_scene()
 	Global.is_load = true
 	$Player/Camera3D/Control/Sprite2D.show()
