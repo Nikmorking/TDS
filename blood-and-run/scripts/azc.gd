@@ -68,8 +68,8 @@ func _input(event):
 		#_start_sream()
 		#$Timer2.start()
 	if Input.is_action_just_pressed("ui_home"):
-		#_start_sream()
-		back()
+		_start_sream()
+		#back()
 		#$"driving in my car"._start()
 		
 	pass
@@ -92,8 +92,14 @@ func back():
 		$No_human.actor_setup()
 	print("back")
 
+
 func _run_pl():
-			$emeny.movement_target_position = $Player.global_position
+			if Global.krest:
+				$emeny.navigation_agent.path_desired_distance = 1.5
+				$emeny.navigation_agent.target_desired_distance = 1.5
+				$emeny.movement_target_position = $"Player/Camera3D/руки".obj.get_node("Marker").global_position
+			else:
+				$emeny.movement_target_position = $Player.global_position
 			$emeny.actor_setup()
 			$emeny.start = true
 			$emeny/Timer.start()
@@ -128,9 +134,9 @@ func start_wait():
 
 func _pridi():
 	if Global.fara_days == 1:
-		zakaz = zakaz_list[randi_range(0, 5)]
+		zakaz = zakaz_list[randi_range(0, 4)]
 	else:
-		zakaz = zakaz_list[randi_range(0,21)]
+		zakaz = zakaz_list[randi_range(0,20)]
 	for i in Check_boxes:
 		i.button_pressed = false
 	for i in zakaz.size():

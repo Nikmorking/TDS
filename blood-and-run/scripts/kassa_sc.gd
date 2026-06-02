@@ -74,6 +74,12 @@ func cofe_gotovo():
 
 func set_snack():
 	$"Снеки/SubViewport/Control/Label".text = str(snacks) + "/10"
+	var snaki:Array = $"Снеки/snek polka".get_children()
+	snaki.remove_at(0)
+	for i in snaki:
+		i.hide()
+	for i in range(0, snacks):
+		snaki.get(i).show()
 
 
 func on_snaks(body):

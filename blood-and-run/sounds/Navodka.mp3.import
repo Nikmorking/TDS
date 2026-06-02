@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Navodka.mp3-02a42c48bfa1323d91581b00edaf140c.
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

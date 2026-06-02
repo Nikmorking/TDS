@@ -10,6 +10,7 @@ var lela = true
 var igra = false
 var light_work = true
 var mouse_sens = 0.3
+var krest = false
 
 signal bad
 signal load

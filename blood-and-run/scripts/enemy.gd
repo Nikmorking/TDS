@@ -11,17 +11,17 @@ func _ready():
 	#actor_setup.call_deferred()
 	movement_target_position = position
 func _physics_process(delta):
-	if start:
+	if start and !navigation_agent.is_navigation_finished():
 		go()
-		look_at(movement_target_position)
+		look_at(Global.player.position)
 		#$Running/AnimationPlayer.play("mixamo_com")
-	move_and_slide()
+		move_and_slide()
 
 
 func _on_timer_timeout():
 	Global.get_player()
 	get_parent()._run_pl()
-	#movement_target_position = Global.player.global_position
+	#movement_target_position =Krest Global.player.global_position
 	#if get_parent().get_node("Расходники").get_child(0):
 		#movement_target_position = get_parent().get_node("Расходники").get_child(0).position
 	#print(movement_target_position)

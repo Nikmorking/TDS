@@ -83,30 +83,32 @@ func instance_na(name: String) -> Object:
 	var ret_obj
 	if name == "Со стаканами" or name == "Stakanchiki":
 		ret_obj = stakanchiki.instantiate()
-		return
+		return ret_obj
 	if name == "С кофе" or name == "Cofe":
 		ret_obj = cofe.instantiate()
-		return
+		return ret_obj
 	if name == "Stakan":
 		ret_obj = stakan.instantiate()
-		return
+		return ret_obj
 	if name == "Stakan_cofe":
 		ret_obj = stakan_s_cofe.instantiate()
-		return
+		return ret_obj
 	if name == "batonovo" or name == "ahabka_buttonov":
 		ret_obj = ahabka_buttonov.instantiate()
-		return
+		return ret_obj
 	if name == "button":
 		ret_obj = button.instantiate()
-		return
+		return ret_obj
 	if name == "pachka_snackov" or name == "с снеками":
 		ret_obj = pachka_snackov.instantiate()
-		return
+		return ret_obj
 	if name == "snack":
 		ret_obj = snack.instantiate()
-		return
-	if name == "krest":
+		return ret_obj
+	if name == "Krest":
 		ret_obj = krest.instantiate()
+		ret_obj.get_node("Area3D/Coll").disabled = false
+		Global.krest = true
 	return ret_obj
 
 func add_to_hand(name: String):
@@ -125,11 +127,14 @@ func _process(delta):
 	if zp:
 		points.set(1, global_position)
 	pass
+
+
 var rashodnik: Node3D
 func _stavit_rashodnic():
 			if aim:
 				$SpringArm3D/AnimationPlayer.play("RESET")
 			rashodnik = instance_na(obj.named)
+			Global.krest = false
 			rashodnik.position = obj.global_position 
 			rashodnik.freeze = false
 			rashodnik.gravity_scale = 1.4
@@ -182,7 +187,6 @@ func _colling():
 				var col: Node3D = $RayCast3D.get_collider()
 				print("coll", col.name)
 				if col.is_class("Area3D"):
-					print(col.name)
 					var kasa = col.get_parent()
 					if col.name == "Stakan":
 						if kasa.kol_stakan > 0:
@@ -235,6 +239,7 @@ func _colling():
 					$"../.."._print_in_ui("               O \n \n ты утилизируй шнягу")
 					print("Продай что нибудь ненужное! Но чтобы продать что то ненужное,сначало нужно купить что-то ненужное, а у нас денег нет.")
 				fnc_zp()
+
 
 
 func _on_tik_timeout():
