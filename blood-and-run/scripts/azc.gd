@@ -5,16 +5,11 @@ var rand = true
 var start_day = true
 var zakaz:Array
 var zakaz_list = [
-  ["ahabka_buttonov", "Stakan_cofe","Zapravka"],
-  [ "Cofe", "snack", "Zapravka"],
-  ["Stakan_cofe", "snack","Zapravka"],
-  ["ahabka_buttonov", "snack"],
-  ["Stakan_cofe", "Zapravka"],
-  ["Cofe", "snack", "Zapravka"],
-  [ "ahabka_buttonov", "Zapravka"],
-  ["ahabka_buttonov", "Stakan_cofe", "snack"],
-  ["Cofe", "Stakan_cofe", "Zapravka"],
-  [ "ahabka_buttonov", "Stakan_cofe", "snack", "Zapravka"]
+	[ "Cofe", "snack", "Zapravka"],
+	["snack", "Zapravka"],
+	["Zapravka"],
+	[ "Cofe", "Stakan", "Zapravka"],
+	[ "Cofe", "Stakan"]
 ]
 var nd = false
 var y_kassu = false
@@ -35,6 +30,29 @@ func _ready():
 		$Prolog.start()
 	$Player/Camera3D/Menu.hide()
 	Global.is_load = false
+	if Global.fara_days != 1:
+		zakaz_list.append_array(
+			[["ahabka_buttonov", "Stakan_cofe","Zapravka"],
+			[ "ahabka_buttonov", "Stakan_cofe", "snack", "Zapravka"],
+			["Cofe", "Stakan_cofe", "Zapravka"],
+			["ahabka_buttonov", "Stakan_cofe", "snack"],
+			[ "ahabka_buttonov", "Zapravka"],
+			["Stakan_cofe", "Zapravka"],
+			["Stakan_cofe", "snack","Zapravka"],
+  			["ahabka_buttonov", "snack"]
+			]
+		)
+		zakaz_list.append_array(
+			[["ahabka_buttonov", "Stakan_cofe","Zapravka"],
+			[ "ahabka_buttonov", "Stakan_cofe", "snack", "Zapravka"],
+			["Cofe", "Stakan_cofe", "Zapravka"],
+			["ahabka_buttonov", "Stakan_cofe", "snack"],
+			[ "ahabka_buttonov", "Zapravka"],
+			["Stakan_cofe", "Zapravka"],
+			["Stakan_cofe", "snack","Zapravka"],
+  			["ahabka_buttonov", "snack"]
+			]
+		)
 	pass # Replace with function body.
 
 func vis_time():
@@ -109,7 +127,10 @@ func start_wait():
 	$"Ожидание".start()
 
 func _pridi():
-	zakaz = zakaz_list[randi_range(0, 9)]
+	if Global.fara_days == 1:
+		zakaz = zakaz_list[randi_range(0, 5)]
+	else:
+		zakaz = zakaz_list[randi_range(0,21)]
 	for i in Check_boxes:
 		i.button_pressed = false
 	for i in zakaz.size():

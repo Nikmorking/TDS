@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://ehio2k2chdj4"]
+
+[ext_resource type="Script" uid="uid://6mu3mfjfp1wg" path="res://Models/1.gd" id="1_7tlde"]
+[ext_resource type="AudioStream" uid="uid://c6a7nunusj1d7" path="res://sounds/Взять из шкафа.mp3" id="2_7tyo3"]
+[ext_resource type="PackedScene" uid="uid://b86boqihyxcnu" path="res://Models/Krest.fbx" id="3_7tyo3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3drk6"]
+rough = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lcvcs"]
+size = Vector3(0.8792114, 1.3614044, 0.4501953)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5mnjj"]
+size = Vector3(0.5085144, 1.0125885, 1.3818626)
+
+[node name="Krest" type="RigidBody3D" unique_id=1350055056]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+collision_layer = 6
+collision_mask = 6
+mass = 1000.0
+physics_material_override = SubResource("PhysicsMaterial_3drk6")
+gravity_scale = 0.0
+script = ExtResource("1_7tlde")
+named = "Krest"
+
+[node name="Coll" type="CollisionShape3D" parent="." unique_id=1056798293]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.0044873366, 0.041127443, 0.020762712)
+shape = SubResource("BoxShape3D_lcvcs")
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1340168999]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5089393, 0)
+target_position = Vector3(0, -0.1, 0)
+
+[node name="Bonk" type="AudioStreamPlayer3D" parent="." unique_id=452255393]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3473645, 0)
+stream = ExtResource("2_7tyo3")
+
+[node name="Timer" type="Timer" parent="." unique_id=2042971122]
+wait_time = 0.4
+one_shot = true
+
+[node name="Area3D" type="Area3D" parent="." unique_id=387235776]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2791126, 0, 1.22004e-08)
+collision_layer = 4
+collision_mask = 4
+
+[node name="Coll" type="CollisionShape3D" parent="Area3D" unique_id=453359931]
+transform = Transform3D(1, 0, 0, 0, 0.0016755613, 0.99999857, 0, -0.99999857, 0.0016755613, 0.2825225, 0.038521662, 0.03585317)
+shape = SubResource("BoxShape3D_5mnjj")
+
+[node name="Krest" parent="." unique_id=117511685 instance=ExtResource("3_7tyo3")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.015801758, 0.24859917, 0.013600423)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

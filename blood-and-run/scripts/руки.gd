@@ -10,6 +10,7 @@ var ahabka_buttonov = load("res://Расходники/ahabka_buttonov.tscn")
 var button = load("res://Models/button/source/poly.glb")
 var pachka_snackov = load("res://Расходники/pachka_snackov.tscn")
 var snack = load("res://Расходники/snack.tscn")
+var krest = load("res://Расходники/krest.tscn")
 var zp = false
 var zp_in = false
 var points: Array 
@@ -82,20 +83,30 @@ func instance_na(name: String) -> Object:
 	var ret_obj
 	if name == "Со стаканами" or name == "Stakanchiki":
 		ret_obj = stakanchiki.instantiate()
+		return
 	if name == "С кофе" or name == "Cofe":
 		ret_obj = cofe.instantiate()
+		return
 	if name == "Stakan":
 		ret_obj = stakan.instantiate()
+		return
 	if name == "Stakan_cofe":
 		ret_obj = stakan_s_cofe.instantiate()
+		return
 	if name == "batonovo" or name == "ahabka_buttonov":
 		ret_obj = ahabka_buttonov.instantiate()
+		return
 	if name == "button":
 		ret_obj = button.instantiate()
+		return
 	if name == "pachka_snackov" or name == "с снеками":
 		ret_obj = pachka_snackov.instantiate()
+		return
 	if name == "snack":
 		ret_obj = snack.instantiate()
+		return
+	if name == "krest":
+		ret_obj = krest.instantiate()
 	return ret_obj
 
 func add_to_hand(name: String):

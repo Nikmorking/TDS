@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://6mu3mfjfp1wg" path="res://Models/1.gd" id="1_d5ioe"]
 [ext_resource type="Material" uid="uid://d36i5qet6k47n" path="res://mater/stakan.tres" id="3_5pj2o"]
 [ext_resource type="AudioStream" uid="uid://b60fuoqyiai43" path="res://sounds/Steklo.wav" id="3_qasdk"]
-[ext_resource type="ArrayMesh" uid="uid://bmycu10bsov7h" path="res://Models/stakan.tres" id="4_qg681"]
+[ext_resource type="ArrayMesh" uid="uid://c18ehywaahn5v" path="res://Models/stakan.tres" id="4_qg681"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t61dd"]
 rough = true
