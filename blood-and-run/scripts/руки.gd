@@ -31,18 +31,19 @@ func _ready():
 var chin = 0
 var aim = false
 var pr = false
+
 func _on_timer_3_timeout() -> void:
 		if is_rem and pr and !Global.light_work and !obj:
-			$"../Control/TextureProgressBar".show()
+			$"../game_ui/TextureProgressBar".show()
 			chin += 2
-			$"../Control/TextureProgressBar".value = chin
+			$"../game_ui/TextureProgressBar".value = chin
 			if chin == 100:
 				chin = 0
-				$"../Control/TextureProgressBar".hide()
+				$"../game_ui/TextureProgressBar".hide()
 				Global.light_off()
 		else:
 			chin = 0
-			$"../Control/TextureProgressBar".hide()
+			$"../game_ui/TextureProgressBar".hide()
 		pass # Replace with function body.
 
 func _input(event):

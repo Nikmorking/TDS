@@ -16,6 +16,7 @@ var run = false
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
 
 func _physics_process(_delta: float) -> void:
 	# Add the gravity.
@@ -84,18 +85,10 @@ func _input(event):
 	
 
 
-func player_in():
-	in_door = true
-	pass # Replace with function body.
-
-
-func player_out():
-	in_door = false
-	pass # Replace with function body.
 
 func _print_in_ui(text:String):
-	$Camera3D/Control/Label.text = text
-	$Camera3D/Control/Timer.start()
+	$Camera3D/game_ui/Label.text = text
+	$Camera3D/game_ui/Timer.start()
 	
 
 
@@ -111,4 +104,15 @@ func _on_tick_timeout():
 				$AudioStreamPlayer3D.play()
 		else:
 			$AudioStreamPlayer3D.stop()
+	pass # Replace with function body.
+
+
+
+func _on_door_2__player_in():
+	in_door = true
+	pass # Replace with function body.
+
+
+func _on_door_2__player_out():
+	in_door = false
 	pass # Replace with function body.

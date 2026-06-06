@@ -54,8 +54,8 @@ func esc():
 	isOnMenu = false
 
 func achivka(pr:String):
-	get_parent().get_node("Node3D/Player/Camera3D/Control3/Label2").text = pr
-	get_parent().get_node("Node3D/Player/Camera3D/Control3/AnimationPlayer").play("Achivka")
+	get_parent().get_node("Node3D/Player/Camera3D/Achivka/Label2").text = pr
+	get_parent().get_node("Node3D/Player/Camera3D/Achivka/AnimationPlayer").play("Achivka")
 
 var kasa
 func save():

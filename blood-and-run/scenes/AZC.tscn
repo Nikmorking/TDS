@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://dkmxx220ci41x" path="res://sounds/close.wav" id="9_1huwv"]
 [ext_resource type="AudioStream" uid="uid://b6abahg8uksh6" path="res://sounds/open.wav" id="10_vqwn8"]
 [ext_resource type="AudioStream" uid="uid://tomgjbqso8ed" path="res://sounds/Navodka.mp3" id="11_vqwn8"]
+[ext_resource type="Script" uid="uid://b4o5gu1g5y7xh" path="res://scripts/duhota.gd" id="12_rcbt2"]
 [ext_resource type="AudioStream" uid="uid://b7djpdlxind5d" path="res://sounds/шаги.mp3" id="12_w5m4x"]
 [ext_resource type="Environment" uid="uid://cc7unamcaasd2" path="res://demo/new_environment.tres" id="13_myhle"]
 [ext_resource type="Material" uid="uid://buc3wjgnofj26" path="res://mater/glass.tres" id="16_173o4"]
@@ -260,7 +261,7 @@ length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control2:modulate")
+tracks/0/path = NodePath("end_day:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -275,7 +276,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control2:modulate")
+tracks/0/path = NodePath("end_day:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -356,6 +357,51 @@ _data = {
 [sub_resource type="LabelSettings" id="LabelSettings_24d4k"]
 font = ExtResource("6_173o4")
 font_size = 50
+
+[sub_resource type="Gradient" id="Gradient_tsu7c"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rcbt2"]
+gradient = SubResource("Gradient_tsu7c")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_4nc4p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_aqjcs"]
+resource_name = "exit"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.9666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.5921569), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_24d4k"]
+_data = {
+&"RESET": SubResource("Animation_4nc4p"),
+&"exit": SubResource("Animation_aqjcs")
+}
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r2crg"]
 height = 2.1376953
@@ -686,6 +732,9 @@ uv2_padding = 1.0
 text = "Gas station"
 depth = 0.01
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_rcbt2"]
+size = Vector3(0.14782715, 2.486206, 2.3447876)
+
 [sub_resource type="GDScript" id="GDScript_173o4"]
 resource_name = "Loop"
 script/source = "extends StaticBody3D
@@ -891,13 +940,13 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Arr
 geometry_parsed_geometry_type = 0
 agent_radius = 1.3
 
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_rcbt2"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_xtx8p"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_4nc4p"]
+
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_aqjcs"]
-
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_js04u"]
-
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_24d4k"]
-
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_r2crg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wlgop"]
 radius = 5.330078
@@ -936,7 +985,7 @@ func start():
 			Global.isOnMenu = true
 			$Camera3D.current = true
 			$Camera3D/Control.show()
-			$\"../Player/Camera3D/Control\".hide()
+			$\"../Player/Camera3D/game_ui\".hide()
 			in_cam = true
 			$AnimationPlayer.play(\"Prolog\")
 
@@ -948,7 +997,7 @@ func end():
 			Global.isOnMenu = false
 			$Camera3D.current = false
 			$Camera3D/Control.hide()
-			$\"../Player/Camera3D/Control\".show()
+			$\"../Player/Camera3D/game_ui\".show()
 			in_cam = false
 "
 
@@ -1153,14 +1202,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0354624, -0.034546614)
 attributes = SubResource("CameraAttributesPractical_173o4")
 far = 40.0
 
-[node name="Control" type="Control" parent="Player/Camera3D" unique_id=1216830132]
+[node name="game_ui" type="Control" parent="Player/Camera3D" unique_id=1216830132]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1156.0
 offset_bottom = 637.0
 script = ExtResource("4_m2ycm")
 
-[node name="Label" type="Label" parent="Player/Camera3D/Control" unique_id=495396501]
+[node name="Label" type="Label" parent="Player/Camera3D/game_ui" unique_id=495396501]
 layout_mode = 0
 offset_left = 490.0
 offset_top = 309.0
@@ -1169,18 +1218,24 @@ offset_bottom = 381.0
 text = "               O"
 label_settings = SubResource("LabelSettings_s6jno")
 
-[node name="Timer" type="Timer" parent="Player/Camera3D/Control" unique_id=315172593]
+[node name="Timer" type="Timer" parent="Player/Camera3D/game_ui" unique_id=315172593]
 one_shot = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Player/Camera3D/Control" unique_id=1364612963]
+[node name="Sprite2D" type="Sprite2D" parent="Player/Camera3D/game_ui" unique_id=1364612963]
 visible = false
 position = Vector2(576.5, 324.25)
 scale = Vector2(5.5048075, 2.6316872)
 texture = ExtResource("5_f5ce8")
 
-[node name="time" type="Node" parent="Player/Camera3D/Control" unique_id=1633330142]
+[node name="time" type="Control" parent="Player/Camera3D/game_ui" unique_id=1040417888]
+anchors_preset = 0
+offset_left = 4.0
+offset_top = -37.0
+offset_right = 4.0
+offset_bottom = -37.0
 
-[node name="Label2" type="Label" parent="Player/Camera3D/Control/time" unique_id=1445564055]
+[node name="Label2" type="Label" parent="Player/Camera3D/game_ui/time" unique_id=1445564055]
+layout_mode = 0
 offset_left = 969.0
 offset_top = 569.0
 offset_right = 1042.0
@@ -1189,7 +1244,8 @@ text = "10"
 label_settings = SubResource("LabelSettings_173o4")
 metadata/_edit_use_anchors_ = true
 
-[node name="Label4" type="Label" parent="Player/Camera3D/Control/time" unique_id=8955126]
+[node name="Label4" type="Label" parent="Player/Camera3D/game_ui/time" unique_id=8955126]
+layout_mode = 0
 offset_left = 1037.0
 offset_top = 569.0
 offset_right = 1110.0
@@ -1198,7 +1254,8 @@ text = "00"
 label_settings = SubResource("LabelSettings_173o4")
 metadata/_edit_use_anchors_ = true
 
-[node name="Label3" type="Label" parent="Player/Camera3D/Control/time" unique_id=1211369038]
+[node name="Label3" type="Label" parent="Player/Camera3D/game_ui/time" unique_id=1211369038]
+layout_mode = 0
 offset_left = 1021.0
 offset_top = 568.0
 offset_right = 1063.0
@@ -1207,7 +1264,7 @@ text = ":"
 label_settings = SubResource("LabelSettings_173o4")
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Player/Camera3D/Control" unique_id=1699663777]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Player/Camera3D/game_ui" unique_id=1699663777]
 visible = false
 z_index = 10
 layout_mode = 0
@@ -1349,22 +1406,14 @@ max_value = 1.0
 step = 0.05
 value = 0.30000000000000004
 
-[node name="Control2" type="Control" parent="Player/Camera3D" unique_id=495279189]
+[node name="end_day" type="Control" parent="Player/Camera3D" unique_id=495279189]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1154.0
 offset_bottom = 648.0
 
-[node name="ColorRect" type="ColorRect" parent="Player/Camera3D/Control2" unique_id=26800491]
-layout_mode = 0
-offset_left = -54.0
-offset_top = -45.0
-offset_right = 1211.0
-offset_bottom = 709.0
-color = Color(0.11119685, 0.11119684, 0.11119684, 1)
-
-[node name="Label2" type="Label" parent="Player/Camera3D/Control2" unique_id=1878874330]
+[node name="Label2" type="Label" parent="Player/Camera3D/end_day" unique_id=1878874330]
 layout_mode = 0
 offset_left = 250.0
 offset_top = 252.0
@@ -1373,7 +1422,7 @@ offset_bottom = 379.0
 text = "Ночь"
 label_settings = SubResource("LabelSettings_xtx8p")
 
-[node name="Label1" type="Label" parent="Player/Camera3D/Control2" unique_id=2141845012]
+[node name="Label1" type="Label" parent="Player/Camera3D/end_day" unique_id=2141845012]
 layout_mode = 0
 offset_left = 605.0
 offset_top = 248.0
@@ -1382,23 +1431,24 @@ offset_bottom = 420.0
 text = "1"
 label_settings = SubResource("LabelSettings_xtx8p")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Camera3D" unique_id=1500811464]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Camera3D/end_day" unique_id=1500811464]
 process_mode = 3
+root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_4nc4p")
 script = SubResource("GDScript_aqjcs")
 
-[node name="Control3" type="Control" parent="Player/Camera3D" unique_id=1769005417]
+[node name="Achivka" type="Control" parent="Player/Camera3D" unique_id=1769005417]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Camera3D/Control3" unique_id=207960605]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Camera3D/Achivka" unique_id=207960605]
 process_mode = 3
 libraries/ = SubResource("AnimationLibrary_js04u")
 
-[node name="Label2" type="Label" parent="Player/Camera3D/Control3" unique_id=165137819]
+[node name="Label2" type="Label" parent="Player/Camera3D/Achivka" unique_id=165137819]
 process_mode = 3
 layout_mode = 0
 offset_left = 1205.0
@@ -1407,6 +1457,39 @@ offset_right = 1718.0005
 offset_bottom = 140.0
 text = "ДОСТИЖЕНИЕ!"
 label_settings = SubResource("LabelSettings_24d4k")
+
+[node name="Duhota" type="Control" parent="Player/Camera3D" unique_id=816498100]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("12_rcbt2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/Camera3D/Duhota" unique_id=1859108798]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(578.75006, 327)
+scale = Vector2(18.007813, 10.15625)
+texture = SubResource("GradientTexture2D_rcbt2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Camera3D/Duhota" unique_id=4042519]
+libraries/ = SubResource("AnimationLibrary_24d4k")
+
+[node name="TextureProgressBar2" type="ProgressBar" parent="Player/Camera3D/Duhota" unique_id=480478173]
+layout_mode = 0
+offset_left = 803.0
+offset_top = 603.0
+offset_right = 1129.0
+offset_bottom = 630.0
+max_value = 3000.0
+value = 77.0
+
+[node name="Out" type="Timer" parent="Player/Camera3D/Duhota" unique_id=935101497]
+wait_time = 2.0
+one_shot = true
+
+[node name="In" type="Timer" parent="Player/Camera3D/Duhota" unique_id=54457117]
+wait_time = 2.0
+one_shot = true
 
 [node name="Marker3D" type="Marker3D" parent="Player" unique_id=452555931]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0656533, 0)
@@ -1417,7 +1500,7 @@ stream = ExtResource("12_w5m4x")
 volume_db = -25.0
 unit_size = 14.85
 max_db = -20.0
-max_distance = 10.0
+max_distance = 20.0
 panning_strength = 0.7
 bus = &"Effect"
 
@@ -1905,6 +1988,20 @@ transform = Transform3D(-3.496911e-07, 0, 8, 0, 8, 0, -8, 0, -3.496911e-07, 12.2
 material_override = SubResource("ShaderMaterial_173o4")
 mesh = SubResource("TextMesh_tsu7c")
 
+[node name="in" type="Area3D" parent="Заправка" unique_id=716969083]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.406246, 0, -11.405911)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Заправка/in" unique_id=1993366324]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09844971, 1.0126343, 0.42630005)
+shape = SubResource("BoxShape3D_rcbt2")
+
+[node name="out" type="Area3D" parent="Заправка" unique_id=491151827]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.079987, 0, -11.405911)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Заправка/out" unique_id=1490833951]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09844971, 1.0126343, 0.42630005)
+shape = SubResource("BoxShape3D_rcbt2")
+
 [node name="Тум-тум-туманище" type="StaticBody3D" parent="." unique_id=1175494086]
 script = SubResource("GDScript_173o4")
 
@@ -2302,7 +2399,7 @@ affect_navigation_mesh = true
 
 [node name="LineRenderer3D" type="MeshInstance3D" parent="." unique_id=157698636]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, 7.7, 2, -5.5)
-mesh = SubResource("ImmediateMesh_aqjcs")
+mesh = SubResource("ImmediateMesh_rcbt2")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(7.7, 2, -5.5), Vector3(7.7, 2, -5.5)])
@@ -2310,7 +2407,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D2" type="MeshInstance3D" parent="." unique_id=2062067384]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -7.1046586)
-mesh = SubResource("ImmediateMesh_js04u")
+mesh = SubResource("ImmediateMesh_xtx8p")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -7.1), Vector3(-0.3, 1.9, -7.1)])
@@ -2318,7 +2415,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D3" type="MeshInstance3D" parent="." unique_id=139751098]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -11.084127)
-mesh = SubResource("ImmediateMesh_24d4k")
+mesh = SubResource("ImmediateMesh_4nc4p")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -11), Vector3(-0.3, 1.9, -11)])
@@ -2326,7 +2423,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D4" type="MeshInstance3D" parent="." unique_id=1666510536]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, 8, 2, -10.5)
-mesh = SubResource("ImmediateMesh_r2crg")
+mesh = SubResource("ImmediateMesh_aqjcs")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(8, 2, -10.5), Vector3(8, 2, -10.5)])
@@ -2382,7 +2479,7 @@ process_mode = 3
 speed_scale = 1.3
 
 [node name="Camera3D" parent="emeny/Настоящий пельмень2" index="7" unique_id=1518745682]
-transform = Transform3D(-0.10832911, -0.3625518, 0.9256462, -0.042142097, 0.93196326, 0.36009437, -0.99322146, 2.9802314e-08, -0.116237484, 14.321535, 11.460782, -2.1801574)
+transform = Transform3D(-0.10832911, -0.36255175, 0.9256462, -0.042142097, 0.93196315, 0.36009437, -0.99322146, 2.9802308e-08, -0.116237484, 14.321535, 11.460782, -2.1801574)
 
 [node name="Timer2" type="Timer" parent="." unique_id=2145315828]
 wait_time = 23.0
@@ -2397,6 +2494,7 @@ bus = &"Effect"
 
 [node name="Tick" type="Timer" parent="." unique_id=454430915]
 wait_time = 0.05
+autostart = true
 
 [node name="Ожидание" type="Timer" parent="." unique_id=1531241621]
 wait_time = 15.0
@@ -2606,7 +2704,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.221098, 1.8067225, 7.7200
 [node name="Timer3" type="Timer" parent="." unique_id=1945309561]
 wait_time = 0.1
 
-[connection signal="timeout" from="Player/Camera3D/Control/Timer" to="Player/Camera3D/Control" method="_on_timer_timeout"]
+[node name="Timer4" type="Timer" parent="." unique_id=2053239838]
+
+[connection signal="timeout" from="Player/Camera3D/game_ui/Timer" to="Player/Camera3D/game_ui" method="_on_timer_timeout"]
 [connection signal="animation_finished" from="Player/Camera3D/руки/SpringArm3D/AnimationPlayer" to="Player/Camera3D/руки" method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Player/Camera3D/руки/Timer" to="Player/Camera3D/руки" method="_on_timer_timeout"]
 [connection signal="button_down" from="Player/Camera3D/Menu/continue" to="Player/Camera3D/Menu" method="_on_continue_button_down"]
@@ -2619,9 +2719,15 @@ wait_time = 0.1
 [connection signal="focus_entered" from="Player/Camera3D/Menu/Save" to="Player/Camera3D/Menu" method="focus_entered"]
 [connection signal="animation_finished" from="Player/Camera3D/Menu/AnimationPlayer" to="Player/Camera3D/Menu" method="_on_animation_player_animation_finished"]
 [connection signal="value_changed" from="Player/Camera3D/Menu/HSlider" to="Player" method="_on_h_slider_value_changed"]
-[connection signal="animation_finished" from="Player/Camera3D/AnimationPlayer" to="Player/Camera3D/AnimationPlayer" method="_on_day_finished"]
+[connection signal="animation_finished" from="Player/Camera3D/end_day/AnimationPlayer" to="Player/Camera3D/end_day/AnimationPlayer" method="_on_day_finished"]
+[connection signal="timeout" from="Player/Camera3D/Duhota/Out" to="Player/Camera3D/Duhota" method="_on_out_timeout"]
+[connection signal="timeout" from="Player/Camera3D/Duhota/In" to="Player/Camera3D/Duhota" method="_on_in_timeout"]
 [connection signal="_open" from="Заправка/Door2" to="." method="_on_door_2__open"]
+[connection signal="_player_in" from="Заправка/Door2" to="Player" method="_on_door_2__player_in"]
+[connection signal="_player_out" from="Заправка/Door2" to="Player" method="_on_door_2__player_out"]
 [connection signal="body_entered" from="Заправка/мусорка" to="Заправка/мусорка" method="_on_body_entered"]
+[connection signal="body_exited" from="Заправка/in" to="Player/Camera3D/Duhota" method="_on_in_body_exited"]
+[connection signal="body_exited" from="Заправка/out" to="Player/Camera3D/Duhota" method="_on_out_body_exited"]
 [connection signal="body_entered" from="Тум-тум-туманище/Area3D" to="Тум-тум-туманище" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Тум-тум-туманище/Area3D2" to="Тум-тум-туманище" method="_on_area_3d_2_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
@@ -2633,6 +2739,8 @@ wait_time = 0.1
 [connection signal="animation_finished" from="emeny/Настоящий пельмень2/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Timer2" to="." method="_stop_run"]
 [connection signal="timeout" from="Tick" to="." method="_on_tick_timeout"]
+[connection signal="timeout" from="Tick" to="Player" method="_on_tick_timeout"]
+[connection signal="timeout" from="Tick" to="Player/Camera3D/Duhota" method="_on_tick_timeout"]
 [connection signal="timeout" from="Ожидание" to="." method="_on_ожидание_timeout"]
 [connection signal="area_entered" from="Zp/CSGBox3D25/ZPin1" to="Player/Camera3D/руки" method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Zp/CSGBox3D25/ZPin1" to="Player/Camera3D/руки" method="_on_area_3d_area_exited"]
@@ -2647,6 +2755,7 @@ wait_time = 0.1
 [connection signal="body_entered" from="Лёлик тормоз/Area3D" to="Лёлик тормоз" method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="Proshlo" to="." method="_on_proshlo_timeout"]
 [connection signal="timeout" from="Timer3" to="Player/Camera3D/руки" method="_on_timer_3_timeout"]
+[connection signal="timeout" from="Timer4" to="." method="die_part2"]
 
 [editable path="Заправка/Table"]
 [editable path="emeny/Настоящий пельмень2"]

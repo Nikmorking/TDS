@@ -1,9 +1,9 @@
 extends Node3D
 
 var m:Material
-
+var norm = true
 func change_envir_light()-> void:
-		if $OmniLight3D.light_color == Color("b1af00"):
+		if norm:
 			$OmniLight3D.light_color = Color(0.475, 0.0, 0.0, 1.0)
 			$OmniLight3D.light_energy = 1.3
 			$OmniLight3D.omni_range = 20
@@ -13,6 +13,7 @@ func change_envir_light()-> void:
 			$OmniLight3D.light_energy = 0.8
 			$OmniLight3D.omni_range = 15
 			m.albedo_color = Color("c3bf00")
+		norm = !norm
 		pass
 
 func power_off():
@@ -30,6 +31,7 @@ func _ready() -> void:
 		m = get_node("CSGSphere3D").material
 	if get_node("CSGCylinder3D2"):
 		m = get_node("CSGCylinder3D2").material
+	m.albedo_color = Color("c3bf00")
 	Global.connect("bad", change_envir_light)
 	Global.connect("_light_off", power_off)
 	pass # Replace with function body.

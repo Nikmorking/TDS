@@ -5,7 +5,7 @@
 [ext_resource type="Shader" uid="uid://dq81n42ia7ync" path="res://Models/Glass.gdshader" id="3_jwqke"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b0ws2"]
-size = Vector3(2.7865295, 0.855713, 1.07117)
+size = Vector3(2.7865295, 0.855713, 2.6430068)
 
 [sub_resource type="Animation" id="Animation_vvcv5"]
 length = 0.001
@@ -145,12 +145,8 @@ door_open = false
 [node name="Area3D" type="Area3D" parent="." unique_id=1247519616]
 transform = Transform3D(-0.870721, 0, -7.61208e-08, 0, 0.870721, 0, 7.61208e-08, 0, -0.870721, 0.442379, 0.724123, -0.048361)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1635672074]
-transform = Transform3D(-1, 0, -8.742282e-08, 0, 1, 0, 8.742282e-08, 0, -1, 0.7785231, -0.18581402, 0.62166595)
-shape = SubResource("BoxShape3D_b0ws2")
-
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" unique_id=1154411167]
-transform = Transform3D(-1, 0, -8.742282e-08, 0, 1, 0, 8.742282e-08, 0, -1, 0.77848697, -0.18581402, -0.8504143)
+transform = Transform3D(-1, 0, -8.742282e-08, 0, 1, 0, 8.742282e-08, 0, -1, 0.778487, -0.18581402, -0.06449587)
 shape = SubResource("BoxShape3D_b0ws2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1373957410]

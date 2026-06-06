@@ -20,7 +20,7 @@ func _input(event: InputEvent) -> void:
 			Global.isOnMenu = true
 			$Open.play()
 			#$CharacterBody3D.velocity = Vector3(0, 0, 0)
-			get_parent().get_node("Control").hide()
+			get_parent().get_node("game_ui").hide()
 			show()
 			get_node("AnimationPlayer").play("Open")
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -36,7 +36,7 @@ func cont():
 			Global.esc()
 			$Close.play()
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			get_parent().get_node("Control").show()
+			get_parent().get_node("game_ui").show()
 			hide()
 
 func _on_quit_button_down() -> void:

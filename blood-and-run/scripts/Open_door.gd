@@ -50,6 +50,7 @@ func _process(_delta: float) -> void:
 func Next_to_door(body: Node3D) -> void:
 	if body.name == "Player":
 		_player_in.emit()
+		print()
 		need_door = true
 	pass # Replace with function body.
 
