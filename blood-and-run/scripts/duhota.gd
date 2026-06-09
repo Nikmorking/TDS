@@ -8,13 +8,26 @@ func _ready():
 	$TextureProgressBar2.max_value = need
 	pass
 
+var lev = 0
 func _on_tick_timeout():
 	$TextureProgressBar2.value = duhota
+	if duhota > need*0.3 and lev == 0:
+		$AnimationPlayer.play("0.3")
+		lev += 1
+	if duhota >need/2 and lev == 1:
+		$AnimationPlayer.play("0.5")
+		lev += 1
+	if duhota >need*0.75 and lev == 2:
+		lev += 1
+		$TextureRect.base_alpha = 0.5
+	if duhota >need*0.9:
+		$TextureRect.base_alpha = 0.75
+		$TextureRect.pulse_speed = 7
 	if in_gas == 1:
 		duhota += (Global.fara_days+1)/2*randi_range(0,5)
 		if duhota > need:
 			duhota = 0
-			get_parent().die("задожнулся")
+			Global.papa.die("задожнулся")
 	elif in_gas == -1:
 		duhota -= (Global.fara_days+1)/2*randi_range(0,5)
 		if duhota < 0:
@@ -35,8 +48,8 @@ func _on_out_body_exited(body):
 			in_gas = 0
 		else:
 			$Out.start()
-			if duhota > need/3:
-				$Camera3D/Duhota/AnimationPlayer.play("exit")
+			if duhota > need/3*2:
+				$AnimationPlayer.play("exit")
 	pass # Replace with function body.
 
 

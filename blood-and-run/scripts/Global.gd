@@ -11,6 +11,7 @@ var igra = false
 var light_work = true
 var mouse_sens = 0.3
 var krest = false
+var krest_pos:Vector3
 
 signal bad
 signal load

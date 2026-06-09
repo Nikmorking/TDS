@@ -263,6 +263,8 @@ func _on_animation_player_animation_finished(anim_name):
 
 func _on_timer_timeout():
 	Global.papa.get_node("Расходники").add_child(rashodnik)
+	if rashodnik.named == "Krest":
+				rashodnik.get_node("Time").start()
 	rashodnik.look_at(Global.player.position)
 	rashodnik.rotation.x = 0
 	rashodnik.rotation.z = 0

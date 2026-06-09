@@ -4,11 +4,9 @@ class_name Stakanchiki
 @export var named:String
 var play = true
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
+	if !Global.krest_pos:
+		Global.krest_pos = position
 
 func _on_timer_timeout():
 	$Bonk.stop()
@@ -26,4 +24,10 @@ func _on_area_3d_body_entered(body):
 
 func _on_area_3d_body_exited(body):
 	play = true
+	pass # Replace with function body.
+
+
+func _on_time_timeout():
+	$Area3D/Coll.disabled = true
+	position = Global.krest_pos
 	pass # Replace with function body.

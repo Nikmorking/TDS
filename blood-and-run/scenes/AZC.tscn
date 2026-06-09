@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://b4o5gu1g5y7xh" path="res://scripts/duhota.gd" id="12_rcbt2"]
 [ext_resource type="AudioStream" uid="uid://b7djpdlxind5d" path="res://sounds/шаги.mp3" id="12_w5m4x"]
 [ext_resource type="Environment" uid="uid://cc7unamcaasd2" path="res://demo/new_environment.tres" id="13_myhle"]
+[ext_resource type="Texture2D" uid="uid://2cwvmrn16qci" path="res://Texture/blood.png" id="13_xtx8p"]
 [ext_resource type="Material" uid="uid://buc3wjgnofj26" path="res://mater/glass.tres" id="16_173o4"]
 [ext_resource type="Texture2D" uid="uid://b3ucpfrosaro" path="res://Texture/TV_03.jpg" id="16_myhle"]
 [ext_resource type="Script" uid="uid://hajl3xibw433" path="res://addons/LineRenderer/line_renderer.gd" id="17_r1ed2"]
@@ -366,6 +367,105 @@ gradient = SubResource("Gradient_tsu7c")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="Animation" id="Animation_r2crg"]
+resource_name = "0.1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:base_alpha")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.01]
+}
+
+[sub_resource type="Animation" id="Animation_hx20e"]
+resource_name = "0.2"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:pulse_speed")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 1.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:base_alpha")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.01, 0.02]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:pulse_depth")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.05]
+}
+
+[sub_resource type="Animation" id="Animation_js04u"]
+resource_name = "0.3"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:base_alpha")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.02, 0.05]
+}
+
+[sub_resource type="Animation" id="Animation_24d4k"]
+resource_name = "0.5"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:base_alpha")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.1, 0.25]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:pulse_depth")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.05, 0.25]
+}
+
 [sub_resource type="Animation" id="Animation_4nc4p"]
 length = 0.001
 tracks/0/type = "value"
@@ -379,6 +479,42 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:base_alpha")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:pulse_depth")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect:pulse_speed")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
 }
 
 [sub_resource type="Animation" id="Animation_aqjcs"]
@@ -399,9 +535,59 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_24d4k"]
 _data = {
+&"0.1": SubResource("Animation_r2crg"),
+&"0.2": SubResource("Animation_hx20e"),
+&"0.3": SubResource("Animation_js04u"),
+&"0.5": SubResource("Animation_24d4k"),
 &"RESET": SubResource("Animation_4nc4p"),
 &"exit": SubResource("Animation_aqjcs")
 }
+
+[sub_resource type="GDScript" id="GDScript_4nc4p"]
+resource_name = "Пульс"
+script/source = "@tool
+extends TextureRect
+
+@export_category(\"Параметры пульсации\")
+## Скорость/частота сердцебиения (чем выше, тем быстрее пульс)
+@export var pulse_speed: float = 4.0
+## Глубина/интенсивность пульсации (насколько сильно меняется размер и альфа)
+@export var pulse_depth: float = 0.05
+## Базовая прозрачность (насколько вены видны изначально, от 0.0 до 1.0)
+@export var base_alpha: float = 0.5
+
+var time_passed: float = 0.0
+var original_scale: Vector2
+
+func _ready() -> void:
+	original_scale = scale
+	# Центрируем опорную точку, чтобы пульсировало из центра экрана
+	pivot_offset = size / 2.0
+	item_rect_changed.connect(func(): pivot_offset = size / 2.0)
+
+
+func _process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		queue_redraw()
+		
+	if base_alpha <= 0.0:
+		modulate.a = 0.0
+		scale = original_scale
+		return
+
+	time_passed += delta * pulse_speed
+	
+	# Мягкая синусоида от 0.0 до 1.0
+	var wave = sin(time_passed) * 0.5 + 0.5
+	
+	# ТЕПЕРЬ ВЫЧИТАЕМ: альфа падает ОТ base_alpha вниз и возвращается обратно
+	modulate.a = clamp(base_alpha - (wave * pulse_depth), 0.0, 1.0)
+	
+	# Для размера можно оставить увеличение, либо тоже сделать уменьшение (по вкусу)
+	# Если хотите, чтобы размер тоже уменьшался синхронно с прозрачностью:
+	var scale_factor = -wave * pulse_depth 
+	scale = original_scale + Vector2(scale_factor, scale_factor)
+"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r2crg"]
 height = 2.1376953
@@ -701,16 +887,16 @@ viewport_path = NodePath("Заправка/Ящики/c батонами/Sprite3
 [sub_resource type="ViewportTexture" id="ViewportTexture_vqwn8"]
 viewport_path = NodePath("Заправка/Ящики/с снеками/Sprite3D/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_tsu7c"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_xtx8p"]
 viewport_path = NodePath("Касса/Cofe_machine/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_rcbt2"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_4nc4p"]
 viewport_path = NodePath("Касса/Снеки/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_xtx8p"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_aqjcs"]
 viewport_path = NodePath("Касса/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_4nc4p"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_js04u"]
 viewport_path = NodePath("CSGPolygon3D2/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oou1n"]
@@ -760,7 +946,7 @@ func _on_area_3d_2_body_entered(body):
 "
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vynuk"]
-size = Vector3(40.577126, 4.8321533, 1.9077606)
+size = Vector3(78.553955, 4.8321533, 1.9077606)
 
 [sub_resource type="FogMaterial" id="FogMaterial_aeg34"]
 density = 3.0
@@ -940,13 +1126,13 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Arr
 geometry_parsed_geometry_type = 0
 agent_radius = 1.3
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_rcbt2"]
-
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_xtx8p"]
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_4nc4p"]
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_aqjcs"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_js04u"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wlgop"]
 radius = 5.330078
@@ -1180,8 +1366,8 @@ script = ExtResource("1_p6l7r")
 min_a = -67
 max_a = 67
 end_day = 12
-metadata/_edit_horizontal_guides_ = [324.0, 417.0, 230.0]
-metadata/_edit_vertical_guides_ = [576.0, -291.0]
+metadata/_edit_horizontal_guides_ = [324.0, 417.0, 230.0, 649.0]
+metadata/_edit_vertical_guides_ = [576.0, -291.0, 1156.0]
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=1001959085]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.852661, 0, 3.7401729)
@@ -1307,6 +1493,7 @@ one_shot = true
 
 [node name="Menu" type="Control" parent="Player/Camera3D" unique_id=1544090209]
 process_mode = 3
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1150.0
@@ -1490,6 +1677,22 @@ one_shot = true
 [node name="In" type="Timer" parent="Player/Camera3D/Duhota" unique_id=54457117]
 wait_time = 2.0
 one_shot = true
+
+[node name="TextureRect" type="TextureRect" parent="Player/Camera3D/Duhota" unique_id=473335840]
+modulate = Color(1, 0, 0, 0.010941848)
+z_index = 3
+layout_direction = 1
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 646.0
+scale = Vector2(0.9909418, 0.9909418)
+pivot_offset = Vector2(576, 323)
+texture = ExtResource("13_xtx8p")
+stretch_mode = 6
+script = SubResource("GDScript_4nc4p")
+pulse_speed = 1.0
+pulse_depth = 0.0
+base_alpha = 0.0
 
 [node name="Marker3D" type="Marker3D" parent="Player" unique_id=452555931]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0656533, 0)
@@ -1941,16 +2144,16 @@ label_settings = SubResource("LabelSettings_415sf")
 [node name="Table" parent="Заправка" unique_id=1041556568 instance=ExtResource("19_415sf")]
 
 [node name="Sprite3D" parent="Заправка/Table/Касса/Cofe_machine" parent_id_path=PackedInt32Array(1041556568, 780539148) index="4" unique_id=1361381740]
-texture = SubResource("ViewportTexture_tsu7c")
-
-[node name="Sprite3D" parent="Заправка/Table/Касса/Снеки" parent_id_path=PackedInt32Array(1041556568, 1560413509) index="2" unique_id=353422132]
-texture = SubResource("ViewportTexture_rcbt2")
-
-[node name="Sprite3D" parent="Заправка/Table/Касса" parent_id_path=PackedInt32Array(1041556568, 806910599) index="6" unique_id=25473584]
 texture = SubResource("ViewportTexture_xtx8p")
 
-[node name="Sprite3D" parent="Заправка/Table/CSGPolygon3D2" parent_id_path=PackedInt32Array(1041556568, 2106210827) index="1" unique_id=840912229]
+[node name="Sprite3D" parent="Заправка/Table/Касса/Снеки" parent_id_path=PackedInt32Array(1041556568, 1560413509) index="2" unique_id=353422132]
 texture = SubResource("ViewportTexture_4nc4p")
+
+[node name="Sprite3D" parent="Заправка/Table/Касса" parent_id_path=PackedInt32Array(1041556568, 806910599) index="6" unique_id=25473584]
+texture = SubResource("ViewportTexture_aqjcs")
+
+[node name="Sprite3D" parent="Заправка/Table/CSGPolygon3D2" parent_id_path=PackedInt32Array(1041556568, 2106210827) index="1" unique_id=840912229]
+texture = SubResource("ViewportTexture_js04u")
 
 [node name="мусорка" type="Area3D" parent="Заправка" unique_id=289094949]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.182058, 0.12507287, -3.8709977)
@@ -2024,20 +2227,20 @@ size = Vector3(52.006508, 6.367918, 15.208372)
 material = SubResource("FogMaterial_aeg34")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Тум-тум-туманище" unique_id=1925640355]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 27.388588, 1.9160767, -12.707647)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 27.388588, 1.9160767, -3.1870127)
 shape = SubResource("BoxShape3D_vynuk")
 
 [node name="FogVolume2" type="FogVolume" parent="Тум-тум-туманище/CollisionShape3D3" unique_id=1299870961]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.916232, 1.6722488, 3.561329)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4275867, 1.6722488, 3.561329)
 size = Vector3(72.70448, 7.0130606, 4.808713)
 material = SubResource("FogMaterial_aeg34")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Тум-тум-туманище" unique_id=364091921]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19.589708, 1.9160767, 32.359734)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19.589708, 1.9160767, 51.602764)
 shape = SubResource("BoxShape3D_vynuk")
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="Тум-тум-туманище" unique_id=616761940]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19.589708, 1.9160767, -44.11201)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19.589708, 1.9160767, -63.438103)
 shape = SubResource("BoxShape3D_vynuk")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Тум-тум-туманище" unique_id=357732584]
@@ -2399,7 +2602,7 @@ affect_navigation_mesh = true
 
 [node name="LineRenderer3D" type="MeshInstance3D" parent="." unique_id=157698636]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, 7.7, 2, -5.5)
-mesh = SubResource("ImmediateMesh_rcbt2")
+mesh = SubResource("ImmediateMesh_xtx8p")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(7.7, 2, -5.5), Vector3(7.7, 2, -5.5)])
@@ -2407,7 +2610,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D2" type="MeshInstance3D" parent="." unique_id=2062067384]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -7.1046586)
-mesh = SubResource("ImmediateMesh_xtx8p")
+mesh = SubResource("ImmediateMesh_4nc4p")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -7.1), Vector3(-0.3, 1.9, -7.1)])
@@ -2415,7 +2618,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D3" type="MeshInstance3D" parent="." unique_id=139751098]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -11.084127)
-mesh = SubResource("ImmediateMesh_4nc4p")
+mesh = SubResource("ImmediateMesh_aqjcs")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -11), Vector3(-0.3, 1.9, -11)])
@@ -2423,7 +2626,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D4" type="MeshInstance3D" parent="." unique_id=1666510536]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, 8, 2, -10.5)
-mesh = SubResource("ImmediateMesh_aqjcs")
+mesh = SubResource("ImmediateMesh_js04u")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(8, 2, -10.5), Vector3(8, 2, -10.5)])
