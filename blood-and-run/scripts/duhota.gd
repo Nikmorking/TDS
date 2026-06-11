@@ -29,9 +29,18 @@ func _on_tick_timeout():
 			duhota = 0
 			Global.papa.die("задожнулся")
 	elif in_gas == -1:
-		duhota -= (Global.fara_days+1)/2*randi_range(0,5)
-		if duhota < 0:
+		if duhota <= 0:
 			duhota = 0
+		else:
+			duhota -= (Global.fara_days+1)*randi_range(0,5)
+			if $TextureRect.pulse_speed >0 :
+				$TextureRect.pulse_speed -= 0.01
+			else:
+				$TextureRect.pulse_speed = 0
+			if $TextureRect.base_alpha >0 :
+				$TextureRect.base_alpha -= 0.001
+			else:
+				$TextureRect.base_alpha = 0
 	pass # Replace with function body.
 
 func _on_out_timeout():
@@ -55,13 +64,13 @@ func _on_out_body_exited(body):
 
 func _on_in_body_exited(body):
 	if body.name == "Player":
-		$In.start()
+		if Global.player.in_door:
+			in_gas = 0
+		else:
+			$In.start()
 	pass # Replace with function body.
 
 
 func _on_in_timeout():
-	if Global.player.in_door:
-		in_gas = 0
-	else:
-		in_gas = 1
+	in_gas = 1
 	pass # Replace with function body.

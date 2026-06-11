@@ -87,6 +87,10 @@ func on_snaks(body):
 		snacks = 10
 		body.queue_free()
 		set_snack()
+	if body.named == "snack":
+		snacks += 1
+		body.queue_free()
+		set_snack()
 	pass # Replace with function body.
 
 

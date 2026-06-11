@@ -945,13 +945,19 @@ func _on_area_3d_2_body_entered(body):
 	pass # Replace with function body.
 "
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vynuk"]
-size = Vector3(78.553955, 4.8321533, 1.9077606)
+[sub_resource type="BoxShape3D" id="BoxShape3D_xtx8p"]
+size = Vector3(63.631836, 4.8321533, 1.9077606)
 
 [sub_resource type="FogMaterial" id="FogMaterial_aeg34"]
 density = 3.0
 albedo = Color(0.423651, 0.423651, 0.423651, 1)
 emission = Color(0.140447, 0.140447, 0.140447, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4nc4p"]
+size = Vector3(69.29309, 4.8321533, 1.9077606)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vynuk"]
+size = Vector3(78.553955, 4.8321533, 1.9077606)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tsu7c"]
 size = Vector3(6.9828796, 6.5708923, 1)
@@ -1126,13 +1132,13 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Arr
 geometry_parsed_geometry_type = 0
 agent_radius = 1.3
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_xtx8p"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_24d4k"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_4nc4p"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_r2crg"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_aqjcs"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_hx20e"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_js04u"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_sd30g"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wlgop"]
 radius = 5.330078
@@ -1679,14 +1685,16 @@ wait_time = 2.0
 one_shot = true
 
 [node name="TextureRect" type="TextureRect" parent="Player/Camera3D/Duhota" unique_id=473335840]
-modulate = Color(1, 0, 0, 0.010941848)
+modulate = Color(1, 0, 0, 0.09146944)
 z_index = 3
 layout_direction = 1
 layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 646.0
-scale = Vector2(0.9909418, 0.9909418)
-pivot_offset = Vector2(576, 323)
+offset_left = -289.21753
+offset_top = -147.92578
+offset_right = 1443.1527
+offset_bottom = 795.9479
+scale = Vector2(0.98241127, 0.98241127)
+pivot_offset = Vector2(866.1851, 471.93683)
 texture = ExtResource("13_xtx8p")
 stretch_mode = 6
 script = SubResource("GDScript_4nc4p")
@@ -2209,8 +2217,8 @@ shape = SubResource("BoxShape3D_rcbt2")
 script = SubResource("GDScript_173o4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Тум-тум-туманище" unique_id=2108142952]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2770157, 1.9160767, -25.825167)
-shape = SubResource("BoxShape3D_vynuk")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.738075, 1.9160767, -25.825167)
+shape = SubResource("BoxShape3D_xtx8p")
 
 [node name="FogVolume2" type="FogVolume" parent="Тум-тум-туманище/CollisionShape3D" unique_id=1959127780]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13052273, 1.3496776, -4.7628384)
@@ -2218,11 +2226,11 @@ size = Vector3(50.677265, 6.367918, 12.132811)
 material = SubResource("FogMaterial_aeg34")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Тум-тум-туманище" unique_id=1364471453]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.135025, 1.9160767, 14.533447)
-shape = SubResource("BoxShape3D_vynuk")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.765457, 1.9160767, 14.533447)
+shape = SubResource("BoxShape3D_4nc4p")
 
 [node name="FogVolume2" type="FogVolume" parent="Тум-тум-туманище/CollisionShape3D2" unique_id=815431802]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.79514503, 1.3496776, 5.522993)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.317917, 1.3496776, 5.522993)
 size = Vector3(52.006508, 6.367918, 15.208372)
 material = SubResource("FogMaterial_aeg34")
 
@@ -2602,7 +2610,7 @@ affect_navigation_mesh = true
 
 [node name="LineRenderer3D" type="MeshInstance3D" parent="." unique_id=157698636]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, 7.7, 2, -5.5)
-mesh = SubResource("ImmediateMesh_xtx8p")
+mesh = SubResource("ImmediateMesh_24d4k")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(7.7, 2, -5.5), Vector3(7.7, 2, -5.5)])
@@ -2610,7 +2618,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D2" type="MeshInstance3D" parent="." unique_id=2062067384]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -7.1046586)
-mesh = SubResource("ImmediateMesh_4nc4p")
+mesh = SubResource("ImmediateMesh_r2crg")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -7.1), Vector3(-0.3, 1.9, -7.1)])
@@ -2618,7 +2626,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D3" type="MeshInstance3D" parent="." unique_id=139751098]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -11.084127)
-mesh = SubResource("ImmediateMesh_aqjcs")
+mesh = SubResource("ImmediateMesh_hx20e")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -11), Vector3(-0.3, 1.9, -11)])
@@ -2626,7 +2634,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D4" type="MeshInstance3D" parent="." unique_id=1666510536]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, 8, 2, -10.5)
-mesh = SubResource("ImmediateMesh_js04u")
+mesh = SubResource("ImmediateMesh_sd30g")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(8, 2, -10.5), Vector3(8, 2, -10.5)])
@@ -2682,7 +2690,7 @@ process_mode = 3
 speed_scale = 1.3
 
 [node name="Camera3D" parent="emeny/Настоящий пельмень2" index="7" unique_id=1518745682]
-transform = Transform3D(-0.10832911, -0.36255175, 0.9256462, -0.042142097, 0.93196315, 0.36009437, -0.99322146, 2.9802308e-08, -0.116237484, 14.321535, 11.460782, -2.1801574)
+transform = Transform3D(-0.1083291, -0.36255175, 0.9256462, -0.042142097, 0.93196315, 0.36009437, -0.99322146, 2.607702e-08, -0.11623748, 14.321535, 11.460782, -2.1801574)
 
 [node name="Timer2" type="Timer" parent="." unique_id=2145315828]
 wait_time = 23.0
