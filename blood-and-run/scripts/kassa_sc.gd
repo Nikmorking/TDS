@@ -12,7 +12,6 @@ var snacks = 0
 func _ready():
 	#cofe = 10
 	#stakan = true
-	Global.get_player()
 	if Global.fara_days == 1:
 		$Cofe_machine/CollisionShape3D.disabled = true
 		$Cofe_machine/CSGCylinder3D.hide()

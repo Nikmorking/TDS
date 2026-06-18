@@ -1,31 +1,608 @@
-[gd_scene format=4 uid="uid://bp7rby6muyms1"]
+[gd_scene format=4 uid="uid://cwp6aclfok1by"]
 
-[ext_resource type="PackedScene" uid="uid://bt1ygpf4pknjx" path="res://scenes/door.tscn" id="1_0u5sq"]
-[ext_resource type="PackedScene" uid="uid://bre26ws07w06b" path="res://scenes/lampa.tscn" id="1_hnl5y"]
-[ext_resource type="Script" uid="uid://2a77xvtsjape" path="res://scripts/azc.gd" id="1_p6l7r"]
-[ext_resource type="PackedScene" uid="uid://5fibawxaliiy" path="res://scenes/schitok.tscn" id="5_173o4"]
-[ext_resource type="PackedScene" uid="uid://dism06b1iip8u" path="res://scenes/doorS.tscn" id="5_vynuk"]
-[ext_resource type="Texture2D" uid="uid://be2meyinowmx1" path="res://Texture/menu.png" id="8_e63ir"]
-[ext_resource type="PackedScene" uid="uid://ki8fgnhihyot" path="res://scenes/lampa_mini.tscn" id="8_ro5by"]
-[ext_resource type="Environment" uid="uid://cc7unamcaasd2" path="res://demo/new_environment.tres" id="13_myhle"]
-[ext_resource type="Material" uid="uid://buc3wjgnofj26" path="res://mater/glass.tres" id="16_173o4"]
-[ext_resource type="Texture2D" uid="uid://b3ucpfrosaro" path="res://Texture/TV_03.jpg" id="16_myhle"]
-[ext_resource type="Script" uid="uid://hajl3xibw433" path="res://addons/LineRenderer/line_renderer.gd" id="17_r1ed2"]
-[ext_resource type="AudioStream" uid="uid://c6a7nunusj1d7" path="res://sounds/Взять из шкафа.mp3" id="18_82sth"]
-[ext_resource type="Script" uid="uid://b2pyl8kn0wkns" path="res://scripts/мусорка.gd" id="18_oou1n"]
-[ext_resource type="PackedScene" uid="uid://cjt85p4cqs12q" path="res://Models/table.tscn" id="19_415sf"]
-[ext_resource type="PackedScene" uid="uid://durjvg6h6emyd" path="res://scenes/driving in my car.tscn" id="19_qyfae"]
-[ext_resource type="Shader" uid="uid://bp2yhafv7q4c6" path="res://demo/1.gdshader" id="23_yyosc"]
-[ext_resource type="Script" uid="uid://k1wiroq3tl5l" path="res://scripts/enemy.gd" id="26_w5m4x"]
-[ext_resource type="PackedScene" uid="uid://bwt43wj3moya3" path="res://Models/настоящий_пельмень.tscn" id="27_173o4"]
-[ext_resource type="AudioStream" uid="uid://hevtbmp4oykq" path="res://sounds/Достать.wav" id="29_s6jno"]
-[ext_resource type="PackedScene" uid="uid://dqubyb8be2uce" path="res://demo/car.fbx" id="30_yyosc"]
-[ext_resource type="PackedScene" uid="uid://d1sin47h48beq" path="res://scenes/no_human.tscn" id="31_82sth"]
-[ext_resource type="AudioStream" uid="uid://b07qixpxd5cqt" path="res://sounds/sound-brue-brue.wav" id="31_yyosc"]
-[ext_resource type="AudioStream" uid="uid://cfjcun4pq4b7i" path="res://sounds/liolik-tormoz.mp3" id="32_82sth"]
-[ext_resource type="PackedScene" uid="uid://xkh4mq02on4p" path="res://Models/ficus.tscn" id="34_s6jno"]
-[ext_resource type="PackedScene" uid="uid://ehio2k2chdj4" path="res://Расходники/krest.tscn" id="36_rcbt2"]
-[ext_resource type="PackedScene" uid="uid://csk2re235lvol" path="res://Models/календарь.tscn" id="36_tsu7c"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yyosc"]
+radius = 0.382215
+height = 1.62492
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w5m4x"]
+radius = 0.382215
+height = 1.9857128
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_173o4"]
+dof_blur_far_distance = 0.7
+dof_blur_near_distance = 8.82
+dof_blur_near_transition = 6130.02
+dof_blur_amount = 0.34
+
+[sub_resource type="LabelSettings" id="LabelSettings_s6jno"]
+line_spacing = 7.0
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_173o4"]
+font_size = 43
+
+[sub_resource type="Gradient" id="Gradient_173o4"]
+offsets = PackedFloat32Array(0, 0.37662336, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tsu7c"]
+gradient = SubResource("Gradient_173o4")
+fill = 1
+fill_from = Vector2(0.5045872, 0.5)
+fill_to = Vector2(0.8486239, 0.22477064)
+
+[sub_resource type="Gradient" id="Gradient_rcbt2"]
+offsets = PackedFloat32Array(0, 0.7467533, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.41558444, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xtx8p"]
+gradient = SubResource("Gradient_rcbt2")
+fill = 1
+fill_from = Vector2(0.49541286, 0.5)
+fill_to = Vector2(0.71100914, 0.18348624)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_173o4"]
+margin = 3.05
+
+[sub_resource type="Animation" id="Animation_vxglm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.48008382, 2.2554448)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2f3dj"]
+resource_name = "В ротик"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.98, 1.5333333, 2.0333333, 2.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 2.255), Vector3(0, -0.48008382, 0.44457173), Vector3(0, -0.34442472, 0.4713993), Vector3(0, -0.48008382, 0.44457173), Vector3(0, 0, 2.255)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.54, 2.0333333, 2.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.16528268, 1.2078667e-09, -1.4582504e-08), Vector3(-0.60219103, 1.86604e-08, -6.009074e-08), Vector3(-0.16528268, 1.2078667e-09, -1.4582504e-08), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tsu7c"]
+_data = {
+&"RESET": SubResource("Animation_vxglm"),
+&"В ротик": SubResource("Animation_2f3dj")
+}
+
+[sub_resource type="Animation" id="Animation_415sf"]
+resource_name = "Open"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Quit:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-296, 408), Vector2(-296, 408), Vector2(53, 408)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Settings:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.53333336, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-296, 289), Vector2(-296, 289), Vector2(53, 289)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("continue:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-296, 175), Vector2(53, 175)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Save:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-296, 500), Vector2(-296, 500), Vector2(53, 500)]
+}
+
+[sub_resource type="Animation" id="Animation_myhle"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Quit:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(53, 408)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Settings:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(53, 289)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("continue:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(53, 175)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Save:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(53, 500)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rcbt2"]
+_data = {
+&"Open": SubResource("Animation_415sf"),
+&"RESET": SubResource("Animation_myhle")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_xtx8p"]
+font_size = 126
+
+[sub_resource type="Animation" id="Animation_rcbt2"]
+resource_name = "End_day"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("end_day:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5333333, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xtx8p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("end_day:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4nc4p"]
+_data = {
+&"End_day": SubResource("Animation_rcbt2"),
+&"RESET": SubResource("Animation_xtx8p")
+}
+
+[sub_resource type="GDScript" id="GDScript_aqjcs"]
+resource_name = "Rel"
+script/source = "extends AnimationPlayer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+
+	pass # Replace with function body.
+"
+
+[sub_resource type="Animation" id="Animation_173o4"]
+resource_name = "Achivka"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.3333334, 2.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1205, 44), Vector2(607, 44), Vector2(607, 44), Vector2(1205, 44)]
+}
+
+[sub_resource type="Animation" id="Animation_tsu7c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1205, 44)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_js04u"]
+_data = {
+&"Achivka": SubResource("Animation_173o4"),
+&"RESET": SubResource("Animation_tsu7c")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_24d4k"]
+font_size = 50
+
+[sub_resource type="Gradient" id="Gradient_tsu7c"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rcbt2"]
+gradient = SubResource("Gradient_tsu7c")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_r2crg"]
+resource_name = "0.1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:base_alpha")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.01]
+}
+
+[sub_resource type="Animation" id="Animation_hx20e"]
+resource_name = "0.2"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:pulse_speed")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 1.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:base_alpha")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.01, 0.02]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:pulse_depth")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.05]
+}
+
+[sub_resource type="Animation" id="Animation_js04u"]
+resource_name = "0.3"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:base_alpha")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.02, 0.05]
+}
+
+[sub_resource type="Animation" id="Animation_24d4k"]
+resource_name = "0.5"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:base_alpha")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.1, 0.25]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:pulse_depth")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.05, 0.25]
+}
+
+[sub_resource type="Animation" id="Animation_sd30g"]
+resource_name = "0.75"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:base_alpha")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.25, 0.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:pulse_speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.5, 1.8]
+}
+
+[sub_resource type="Animation" id="Animation_y46m1"]
+resource_name = "0.85"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:base_alpha")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 0.75]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:pulse_speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.8, 2.0]
+}
+
+[sub_resource type="Animation" id="Animation_4nc4p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:base_alpha")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect:pulse_depth")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect:pulse_speed")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_aqjcs"]
+resource_name = "exit"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.9666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.5921569), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_24d4k"]
+_data = {
+&"0.1": SubResource("Animation_r2crg"),
+&"0.2": SubResource("Animation_hx20e"),
+&"0.3": SubResource("Animation_js04u"),
+&"0.5": SubResource("Animation_24d4k"),
+&"0.75": SubResource("Animation_sd30g"),
+&"0.85": SubResource("Animation_y46m1"),
+&"RESET": SubResource("Animation_4nc4p"),
+&"exit": SubResource("Animation_aqjcs")
+}
+
+[sub_resource type="GDScript" id="GDScript_4nc4p"]
+resource_name = "Пульс"
+script/source = "@tool
+extends TextureRect
+
+@export_category(\"Параметры пульсации\")
+## Скорость/частота сердцебиения (чем выше, тем быстрее пульс)
+@export var pulse_speed: float = 4.0
+## Глубина/интенсивность пульсации (насколько сильно меняется размер и альфа)
+@export var pulse_depth: float = 0.05
+## Базовая прозрачность (насколько вены видны изначально, от 0.0 до 1.0)
+@export var base_alpha: float = 0.5
+
+var time_passed: float = 0.0
+var original_scale: Vector2
+
+func _ready() -> void:
+	original_scale = scale
+	# Центрируем опорную точку, чтобы пульсировало из центра экрана
+	pivot_offset = size / 2.0
+	item_rect_changed.connect(func(): pivot_offset = size / 2.0)
+
+
+func _process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		queue_redraw()
+		
+	if base_alpha <= 0.0:
+		modulate.a = 0.0
+		scale = original_scale
+		return
+
+	time_passed += delta * pulse_speed
+	
+	# Мягкая синусоида от 0.0 до 1.0
+	var wave = sin(time_passed) * 0.5 + 0.5
+	
+	# ТЕПЕРЬ ВЫЧИТАЕМ: альфа падает ОТ base_alpha вниз и возвращается обратно
+	modulate.a = clamp(base_alpha - (wave * pulse_depth), 0.0, 1.0)
+	
+	# Для размера можно оставить увеличение, либо тоже сделать уменьшение (по вкусу)
+	# Если хотите, чтобы размер тоже уменьшался синхронно с прозрачностью:
+	var scale_factor = -wave * pulse_depth 
+	scale = original_scale + Vector2(scale_factor, scale_factor)
+"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r2crg"]
+height = 2.1376953
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7bqql"]
 
@@ -322,18 +899,6 @@ viewport_path = NodePath("Заправка/Ящики/c батонами/Sprite3
 [sub_resource type="ViewportTexture" id="ViewportTexture_vqwn8"]
 viewport_path = NodePath("Заправка/Ящики/с снеками/Sprite3D/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_xtx8p"]
-viewport_path = NodePath("Касса/Cofe_machine/SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_4nc4p"]
-viewport_path = NodePath("Касса/Снеки/SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_aqjcs"]
-viewport_path = NodePath("Касса/SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_js04u"]
-viewport_path = NodePath("CSGPolygon3D2/SubViewport")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oou1n"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m2ycm"]
@@ -343,10 +908,6 @@ albedo_color = Color(0.2819191, 0.28191918, 0.281919, 1)
 size = Vector3(0.67614746, 0.321167, 0.6940918)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_173o4"]
-render_priority = 0
-shader = ExtResource("23_yyosc")
-shader_parameter/outline_color = Color(3.2536197, 0, 1.0615981, 1)
-shader_parameter/outline_width = 0.40000000596048
 
 [sub_resource type="TextMesh" id="TextMesh_tsu7c"]
 uv2_padding = 1.0
@@ -359,40 +920,15 @@ size = Vector3(0.14782715, 2.486206, 2.3447876)
 [sub_resource type="GDScript" id="GDScript_173o4"]
 resource_name = "Loop"
 script/source = "extends StaticBody3D
-
-var flag = true
-
-func _on_area_3d_body_entered(body):
-	if body.name == \"Player\":
-		body.position = $Marker3D2.position
-		if flag:
-			Global.achivka(\"Достижение:\\nХа-Ха хорошая попытка!\")
-			flag = false
-	pass # Replace with function body.
-
-
-func _on_area_3d_2_body_entered(body):
-	if body.name == \"Player\":
-		body.position = $Marker3D.position
-		if flag:
-			Global.achivka(\"Достижение:\\nХа-Ха хорошая попытка!\")
-			flag = false
-	pass # Replace with function body.
 "
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xtx8p"]
-size = Vector3(63.631836, 4.8321533, 1.9077606)
+[sub_resource type="BoxShape3D" id="BoxShape3D_vynuk"]
+size = Vector3(78.553955, 4.8321533, 1.9077606)
 
 [sub_resource type="FogMaterial" id="FogMaterial_aeg34"]
 density = 3.0
 albedo = Color(0.423651, 0.423651, 0.423651, 1)
 emission = Color(0.140447, 0.140447, 0.140447, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_4nc4p"]
-size = Vector3(69.29309, 4.8321533, 1.9077606)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_vynuk"]
-size = Vector3(78.553955, 4.8321533, 1.9077606)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tsu7c"]
 size = Vector3(6.9828796, 6.5708923, 1)
@@ -567,14 +1103,13 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Arr
 geometry_parsed_geometry_type = 0
 agent_radius = 1.3
 
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_24d4k"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_fse4r"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_r2crg"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_415sf"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_hx20e"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_myhle"]
-
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_1huwv"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_sd30g"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wlgop"]
 radius = 5.330078
@@ -585,7 +1120,6 @@ radius = 0.66015625
 height = 3.5039063
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vynuk"]
-albedo_texture = ExtResource("16_myhle")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oou1n"]
 size = Vector3(0.3103943, 0.61378, 0.24293518)
@@ -595,42 +1129,6 @@ size = Vector3(2.5858974, 0.99772644, 4.072941)
 
 [sub_resource type="GDScript" id="GDScript_myhle"]
 resource_name = "Prolog"
-script/source = "extends Node
-
-var in_cam = false
-
-func _ready():
-	pass # Replace with function body.
-
-func _input(event):
-	if Input.is_action_just_pressed(\"ui_cut\"):
-		if !in_cam:
-			start()
-		else:
-			end()
-
-func start():
-			Global.isOnMenu = true
-			$Camera3D.current = true
-			$Camera3D/Control.show()
-			Global.player.get_node(\"/Camera3D/game_ui\").hide()
-			in_cam = true
-			$AnimationPlayer.play(\"Prolog\")
-
-func _on_animation_player_animation_finished(anim_name):
-	end()
-	pass # Replace with function body.
-
-func end():
-			Global.isOnMenu = false
-			$Camera3D.current = false
-			$Camera3D/Control.hide()
-			Global.player.get_node(\"/Camera3D/game_ui\").show()
-			in_cam = false
-"
-
-[sub_resource type="LabelSettings" id="LabelSettings_vqwn8"]
-font_size = 32
 
 [sub_resource type="Animation" id="Animation_1huwv"]
 resource_name = "Prolog"
@@ -733,13 +1231,6 @@ func tormoz():
 func _on_animation_player_animation_finished(anim_name):
 	get_parent().rand = false
 	pass # Replace with function body.
-
-
-func _on_area_3d_body_entered(body):
-	if Global.lela:
-		tormoz()
-		Global.lela = false
-	pass # Replace with function body.
 "
 
 [sub_resource type="Animation" id="Animation_w5m4x"]
@@ -807,19 +1298,13 @@ _data = {
 size = Vector3(1.2695313, 4.744629, 33.018967)
 
 [node name="Node3D" type="Node3D" unique_id=2010904094]
-script = ExtResource("1_p6l7r")
-min_a = -67
-max_a = 67
-end_day = 12
 metadata/_edit_horizontal_guides_ = [324.0, 417.0, 230.0, 649.0]
 metadata/_edit_vertical_guides_ = [576.0, -291.0, 1156.0]
 
-<<<<<<< HEAD
 [node name="Player" type="CharacterBody3D" parent="." unique_id=1001959085]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.852661, 0, 3.7401729)
 collision_layer = 4097
 collision_mask = 4097
-script = ExtResource("2_y5rpb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=681135391]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07942, 0)
@@ -839,7 +1324,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1156.0
 offset_bottom = 637.0
-script = ExtResource("4_m2ycm")
 
 [node name="Label" type="Label" parent="Player/Camera3D/game_ui" unique_id=495396501]
 layout_mode = 0
@@ -857,7 +1341,6 @@ one_shot = true
 visible = false
 position = Vector2(576.5, 324.25)
 scale = Vector2(5.5048075, 2.6316872)
-texture = ExtResource("5_f5ce8")
 
 [node name="time" type="Control" parent="Player/Camera3D/game_ui" unique_id=1040417888]
 anchors_preset = 0
@@ -911,7 +1394,6 @@ texture_progress = SubResource("GradientTexture2D_xtx8p")
 
 [node name="руки" type="Node3D" parent="Player/Camera3D" unique_id=744049415]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1837149)
-script = ExtResource("3_cfvsp")
 
 [node name="RayCast3D" type="RayCast3D" parent="Player/Camera3D/руки" unique_id=698698215]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8498604)
@@ -944,7 +1426,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1150.0
 offset_bottom = 647.0
-script = ExtResource("7_1q5xi")
 
 [node name="continue" type="Button" parent="Player/Camera3D/Menu" unique_id=876718918]
 process_mode = 3
@@ -1006,7 +1487,6 @@ modulate = Color(1, 1, 1, 0.40392157)
 z_index = -1
 position = Vector2(575, 325)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("8_e63ir")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Camera3D/Menu" unique_id=1891119721]
 process_mode = 3
@@ -1015,17 +1495,14 @@ speed_scale = 1.67
 
 [node name="Close" type="AudioStreamPlayer2D" parent="Player/Camera3D/Menu" unique_id=456702033]
 process_mode = 3
-stream = ExtResource("9_1huwv")
 volume_db = 10.0
 
 [node name="Open" type="AudioStreamPlayer2D" parent="Player/Camera3D/Menu" unique_id=1874614073]
 process_mode = 3
-stream = ExtResource("10_vqwn8")
 volume_db = 10.0
 
 [node name="Nakodka" type="AudioStreamPlayer2D" parent="Player/Camera3D/Menu" unique_id=198234903]
 process_mode = 3
-stream = ExtResource("11_vqwn8")
 volume_db = -20.0
 
 [node name="HSlider" type="HSlider" parent="Player/Camera3D/Menu" unique_id=1357401500]
@@ -1096,7 +1573,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("12_rcbt2")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player/Camera3D/Duhota" unique_id=1859108798]
 modulate = Color(1, 1, 1, 0)
@@ -1125,17 +1601,17 @@ wait_time = 2.0
 one_shot = true
 
 [node name="TextureRect" type="TextureRect" parent="Player/Camera3D/Duhota" unique_id=473335840]
-modulate = Color(1, 0, 0, 0.09146944)
+modulate = Color(1, 0, 0, 0)
 z_index = 3
 layout_direction = 1
 layout_mode = 0
-offset_left = -289.21753
-offset_top = -147.92578
-offset_right = 1443.1527
-offset_bottom = 795.9479
-scale = Vector2(0.98241127, 0.98241127)
-pivot_offset = Vector2(866.1851, 471.93683)
-texture = ExtResource("13_xtx8p")
+offset_left = -780.0
+offset_top = -467.0
+offset_right = 1930.4653
+offset_bottom = 1119.1338
+scale = Vector2(0.72564065, 0.72564065)
+pivot_offset = Vector2(1355.2327, 793.0669)
+expand_mode = 1
 stretch_mode = 6
 script = SubResource("GDScript_4nc4p")
 pulse_speed = 1.0
@@ -1147,13 +1623,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0656533, 0)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Player" unique_id=230893942]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2020961, 0)
-stream = ExtResource("12_w5m4x")
 volume_db = -25.0
 unit_size = 14.85
 max_db = -20.0
 max_distance = 20.0
 panning_strength = 0.7
-bus = &"Effect"
 
 [node name="Area3D" type="Area3D" parent="Player" unique_id=690158965]
 collision_layer = 128
@@ -1164,17 +1638,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2676587, 0)
 shape = SubResource("CapsuleShape3D_r2crg")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=919561544]
-environment = ExtResource("13_myhle")
 
 [node name="Заправка" type="Node" parent="." unique_id=126791314]
 
-[node name="Door" parent="Заправка" unique_id=582810663 instance=ExtResource("1_0u5sq")]
+[node name="Door" parent="Заправка" unique_id=582810663]
 transform = Transform3D(-2.0000002, 0, -1.7484557e-07, 0, 1.3631004, 0, 1.7484557e-07, 0, -2.0000002, -28.869555, -0.63350385, -2.679078)
 collision_layer = 15
 collision_mask = 15
 start_rot = Vector3(0, 180, 0)
 
-[node name="Door2" parent="Заправка" unique_id=1663869990 instance=ExtResource("5_vynuk")]
+[node name="Door2" parent="Заправка" unique_id=1663869990]
 transform = Transform3D(-0.99999964, 0, -8.742275e-08, 0, 1, 0, 8.742275e-08, 0, -0.99999964, -9.367741, -0.20644337, -11.063242)
 collision_layer = 15
 collision_mask = 15
@@ -1190,13 +1663,11 @@ transform = Transform3D(-8.195885e-08, 0, 1.25, 0, 1, 0, -1.875, 0, -5.4639237e-
 transform = Transform3D(100.000015, 4.5474735e-13, 0, 0, -1.1920929e-05, 99.99999, 4.5474735e-13, -99.99999, -1.1920929e-05, 0.29226542, 0.33040044, 1.1721115)
 material_override = SubResource("StandardMaterial3D_7bqql")
 mesh = SubResource("ArrayMesh_k8km8")
-skeleton = NodePath("")
 
 [node name="Cube_008" type="MeshInstance3D" parent="Заправка/Полки/warehouse_shelf2" unique_id=70915832]
 transform = Transform3D(36.27733, -6.82121e-13, -2.5410988e-21, 0, -1.3508643e-05, 3.7247946, 0, -113.3187, -4.4403015e-07, -0.003677845, 3.0330582, 0.0103263855)
 material_override = SubResource("StandardMaterial3D_4lfkn")
 mesh = SubResource("ArrayMesh_0u2wq")
-skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Заправка/Полки/warehouse_shelf2" unique_id=770773726]
 collision_layer = 7
@@ -1213,13 +1684,11 @@ transform = Transform3D(-8.195885e-08, 0, 1.25, 0, 1, 0, -1.875, 0, -5.4639237e-
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0.29226547, 0.33040044, 1.1721101)
 material_override = SubResource("StandardMaterial3D_7bqql")
 mesh = SubResource("ArrayMesh_k8km8")
-skeleton = NodePath("")
 
 [node name="Cube_008" type="MeshInstance3D" parent="Заправка/Полки/warehouse_shelf3" unique_id=846012154]
 transform = Transform3D(36.27733, 0, 0, 0, -4.953318e-06, 3.7247946, 0, -113.3187, -1.6281595e-07, -0.003677845, 3.0330582, 0.0103263855)
 material_override = SubResource("StandardMaterial3D_4lfkn")
 mesh = SubResource("ArrayMesh_0u2wq")
-skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Заправка/Полки/warehouse_shelf3" unique_id=178542818]
 collision_layer = 7
@@ -1236,13 +1705,11 @@ transform = Transform3D(-8.195885e-08, 0, 1.25, 0, 1, 0, -1.875, 0, -5.4639237e-
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0.29226547, 0.33040044, 1.1721101)
 material_override = SubResource("StandardMaterial3D_7bqql")
 mesh = SubResource("ArrayMesh_k8km8")
-skeleton = NodePath("")
 
 [node name="Cube_008" type="MeshInstance3D" parent="Заправка/Полки/warehouse_shelf4" unique_id=1840978538]
 transform = Transform3D(36.27733, 0, 0, 0, -4.953318e-06, 3.7247946, 0, -113.3187, -1.6281595e-07, -0.003677845, 3.0330582, 0.0103263855)
 material_override = SubResource("StandardMaterial3D_4lfkn")
 mesh = SubResource("ArrayMesh_0u2wq")
-skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Заправка/Полки/warehouse_shelf4" unique_id=182623590]
 collision_layer = 7
@@ -1259,13 +1726,11 @@ transform = Transform3D(-8.195885e-08, 0, 1.25, 0, 1, 0, -1.875, 0, -5.4639237e-
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0.29226547, 0.33040044, 1.1721101)
 material_override = SubResource("StandardMaterial3D_7bqql")
 mesh = SubResource("ArrayMesh_k8km8")
-skeleton = NodePath("")
 
 [node name="Cube_008" type="MeshInstance3D" parent="Заправка/Полки/warehouse_shelf5" unique_id=1443819320]
 transform = Transform3D(36.27733, 0, 0, 0, -4.953318e-06, 3.7247946, 0, -113.3187, -1.6281595e-07, -0.003677845, 3.0330582, 0.0103263855)
 material_override = SubResource("StandardMaterial3D_4lfkn")
 mesh = SubResource("ArrayMesh_0u2wq")
-skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Заправка/Полки/warehouse_shelf5" unique_id=676506955]
 collision_layer = 7
@@ -1282,13 +1747,11 @@ transform = Transform3D(-8.195885e-08, 0, 1.25, 0, 1, 0, -1.875, 0, -5.4639237e-
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0.29226547, 0.33040044, 1.1721101)
 material_override = SubResource("StandardMaterial3D_7bqql")
 mesh = SubResource("ArrayMesh_k8km8")
-skeleton = NodePath("")
 
 [node name="Cube_008" type="MeshInstance3D" parent="Заправка/Полки/warehouse_shelf6" unique_id=584223613]
 transform = Transform3D(36.27733, 0, 0, 0, -4.953318e-06, 3.7247946, 0, -113.3187, -1.6281595e-07, -0.003677845, 3.0330582, 0.0103263855)
 material_override = SubResource("StandardMaterial3D_4lfkn")
 mesh = SubResource("ArrayMesh_0u2wq")
-skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Заправка/Полки/warehouse_shelf6" unique_id=2136303242]
 collision_layer = 7
@@ -1305,13 +1768,11 @@ transform = Transform3D(-8.195885e-08, 0, 1.25, 0, 1, 0, -1.875, 0, -5.4639237e-
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0.29226547, 0.33040044, 1.1721101)
 material_override = SubResource("StandardMaterial3D_7bqql")
 mesh = SubResource("ArrayMesh_k8km8")
-skeleton = NodePath("")
 
 [node name="Cube_008" type="MeshInstance3D" parent="Заправка/Полки/warehouse_shelf7" unique_id=749894784]
 transform = Transform3D(36.27733, 0, 0, 0, -4.953318e-06, 3.7247946, 0, -113.3187, -1.6281595e-07, -0.003677845, 3.0330582, 0.0103263855)
 material_override = SubResource("StandardMaterial3D_4lfkn")
 mesh = SubResource("ArrayMesh_0u2wq")
-skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Заправка/Полки/warehouse_shelf7" unique_id=1310353993]
 collision_layer = 7
@@ -1368,7 +1829,6 @@ size = Vector3(3.3027344, 2.3110352, 1)
 
 [node name="CSGBox3D17" type="CSGBox3D" parent="Заправка/Стены/CollisionShape3D" unique_id=237950288]
 transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 0.99999976, -0.0606184, -0.22656679, 0.04290867)
-material_override = ExtResource("16_173o4")
 size = Vector3(0.089877605, 2.4451509, 3.5301208)
 
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="Заправка/Стены" unique_id=2086728744]
@@ -1402,7 +1862,6 @@ size = Vector3(3.0631104, 2.3110352, 1)
 
 [node name="CSGBox3D16" type="CSGBox3D" parent="Заправка/Стены/CollisionShape3D2" unique_id=585559054]
 transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 0.99999976, -0.07764721, -0.22656679, -0.26785183)
-material_override = ExtResource("16_173o4")
 size = Vector3(0.089877605, 2.4451509, 3.1249619)
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Заправка/Стены" unique_id=323095450]
@@ -1428,12 +1887,10 @@ size = Vector3(1.3595104, 1.9650156, 4.5546875)
 
 [node name="CSGBox3D14" type="CSGBox3D" parent="Заправка/Стены/CollisionShape3D4" unique_id=894002098]
 transform = Transform3D(0.9999463, 0, -0.010349564, 0, 1.1705685, 0, 0.010349564, 0, 0.9999463, -0.07474327, 0.0017341375, -6.207144)
-material_override = ExtResource("16_173o4")
 size = Vector3(0.089877605, 1.9650156, 5.3758545)
 
 [node name="CSGBox3D15" type="CSGBox3D" parent="Заправка/Стены/CollisionShape3D4" unique_id=1885927425]
 transform = Transform3D(0.9999463, 0, -0.010349564, 0, 1.1705685, 0, 0.010349564, 0, 0.9999463, -0.21917534, 0.0017341375, 7.747382)
-material_override = ExtResource("16_173o4")
 size = Vector3(0.089877605, 1.9650156, 4.5995483)
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Заправка/Стены" unique_id=2075759814]
@@ -1455,22 +1912,22 @@ size = Vector3(2.8214235, 2.3539143, 0.9501953)
 
 [node name="Лампы" type="Node" parent="Заправка" unique_id=499887456]
 
-[node name="LAmpa" parent="Заправка/Лампы" unique_id=418825919 instance=ExtResource("1_hnl5y")]
+[node name="LAmpa" parent="Заправка/Лампы" unique_id=418825919]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -18.301254, 4.1033936, -13.162857)
 
-[node name="LAmpa2" parent="Заправка/Лампы" unique_id=613184078 instance=ExtResource("1_hnl5y")]
+[node name="LAmpa2" parent="Заправка/Лампы" unique_id=613184078]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -12.173973, 4.1033936, -13.162857)
 
-[node name="LAmpa3" parent="Заправка/Лампы" unique_id=894506799 instance=ExtResource("1_hnl5y")]
+[node name="LAmpa3" parent="Заправка/Лампы" unique_id=894506799]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -25.818869, 4.1033936, -13.162857)
 
-[node name="LAmpa4" parent="Заправка/Лампы" unique_id=982320525 instance=ExtResource("1_hnl5y")]
+[node name="LAmpa4" parent="Заправка/Лампы" unique_id=982320525]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -25.818869, 4.1033936, -6.766962)
 
-[node name="LAmpa5" parent="Заправка/Лампы" unique_id=1426874106 instance=ExtResource("1_hnl5y")]
+[node name="LAmpa5" parent="Заправка/Лампы" unique_id=1426874106]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -18.383547, 4.1033936, -6.766962)
 
-[node name="LAmpa6" parent="Заправка/Лампы" unique_id=823233646 instance=ExtResource("1_hnl5y")]
+[node name="LAmpa6" parent="Заправка/Лампы" unique_id=823233646]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -13.332328, 4.1033936, -6.766962)
 
 [node name="Ящики" type="Node3D" parent="Заправка" unique_id=516686290]
@@ -1487,7 +1944,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009643555, 0.07788086, 0)
 shape = SubResource("BoxShape3D_88m6n")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Заправка/Ящики/Со стаканами" unique_id=1195301895]
-stream = ExtResource("18_82sth")
 volume_db = 25.0
 
 [node name="Sprite3D" type="Sprite3D" parent="Заправка/Ящики/Со стаканами" unique_id=1253678142]
@@ -1516,7 +1972,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009643555, 0.07788086, 0)
 shape = SubResource("BoxShape3D_88m6n")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Заправка/Ящики/С кофе" unique_id=1931413059]
-stream = ExtResource("18_82sth")
 volume_db = 25.0
 
 [node name="Sprite3D" type="Sprite3D" parent="Заправка/Ящики/С кофе" unique_id=309958320]
@@ -1545,7 +2000,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009643555, 0.07788086, 0)
 shape = SubResource("BoxShape3D_88m6n")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Заправка/Ящики/c батонами" unique_id=634021175]
-stream = ExtResource("18_82sth")
 volume_db = 25.0
 
 [node name="Sprite3D" type="Sprite3D" parent="Заправка/Ящики/c батонами" unique_id=477722827]
@@ -1573,7 +2027,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009643555, 0.07788086, 0)
 shape = SubResource("BoxShape3D_88m6n")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Заправка/Ящики/с снеками" unique_id=431411444]
-stream = ExtResource("18_82sth")
 volume_db = 25.0
 
 [node name="Sprite3D" type="Sprite3D" parent="Заправка/Ящики/с снеками" unique_id=399652656]
@@ -1589,25 +2042,12 @@ offset_bottom = 23.0
 text = "со снеками"
 label_settings = SubResource("LabelSettings_415sf")
 
-[node name="Table" parent="Заправка" unique_id=1041556568 instance=ExtResource("19_415sf")]
-
-[node name="Sprite3D" parent="Заправка/Table/Касса/Cofe_machine" parent_id_path=PackedInt32Array(1041556568, 780539148) index="4" unique_id=1361381740]
-texture = SubResource("ViewportTexture_xtx8p")
-
-[node name="Sprite3D" parent="Заправка/Table/Касса/Снеки" parent_id_path=PackedInt32Array(1041556568, 1560413509) index="2" unique_id=353422132]
-texture = SubResource("ViewportTexture_4nc4p")
-
-[node name="Sprite3D" parent="Заправка/Table/Касса" parent_id_path=PackedInt32Array(1041556568, 806910599) index="6" unique_id=25473584]
-texture = SubResource("ViewportTexture_aqjcs")
-
-[node name="Sprite3D" parent="Заправка/Table/CSGPolygon3D2" parent_id_path=PackedInt32Array(1041556568, 2106210827) index="1" unique_id=840912229]
-texture = SubResource("ViewportTexture_js04u")
+[node name="Table" parent="Заправка" unique_id=1041556568]
 
 [node name="мусорка" type="Area3D" parent="Заправка" unique_id=289094949]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.182058, 0.12507287, -3.8709977)
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("18_oou1n")
 
 [node name="мусорка" type="CSGBox3D" parent="Заправка/мусорка" unique_id=813335406]
 transform = Transform3D(1.1, 0, 0, 0, 1.33, 0, 0, 0, 1.1, 0.24725246, 0.14731449, 0.030954361)
@@ -1631,7 +2071,7 @@ size = Vector3(0.57891846, 1, 0.52882576)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26287842, -0.24395752, 0.013549805)
 shape = SubResource("BoxShape3D_f5ce8")
 
-[node name="Календарь" parent="Заправка" unique_id=524604911 instance=ExtResource("36_tsu7c")]
+[node name="Календарь" parent="Заправка" unique_id=524604911]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -15.897136, 2.2455337, -16.929031)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Заправка" unique_id=1368120920]
@@ -1657,8 +2097,8 @@ shape = SubResource("BoxShape3D_rcbt2")
 script = SubResource("GDScript_173o4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Тум-тум-туманище" unique_id=2108142952]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.738075, 1.9160767, -25.825167)
-shape = SubResource("BoxShape3D_xtx8p")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2770157, 1.9160767, -25.825167)
+shape = SubResource("BoxShape3D_vynuk")
 
 [node name="FogVolume2" type="FogVolume" parent="Тум-тум-туманище/CollisionShape3D" unique_id=1959127780]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13052273, 1.3496776, -4.7628384)
@@ -1670,7 +2110,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.135025, 1.9160767, 14.533
 shape = SubResource("BoxShape3D_vynuk")
 
 [node name="FogVolume2" type="FogVolume" parent="Тум-тум-туманище/CollisionShape3D2" unique_id=815431802]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.317917, 1.3496776, 5.522993)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.79514503, 1.3496776, 5.522993)
 size = Vector3(52.006508, 6.367918, 15.208372)
 material = SubResource("FogMaterial_aeg34")
 
@@ -1737,7 +2177,7 @@ transform = Transform3D(0.99943095, 0, -0.033730783, 0, 1, 0, 0.033730783, 0, 0.
 radius = 0.237
 height = 4.874756
 
-[node name="LAmpa" parent="Фонари/CSGCylinder3D" unique_id=856681316 instance=ExtResource("1_hnl5y")]
+[node name="LAmpa" parent="Фонари/CSGCylinder3D" unique_id=856681316]
 transform = Transform3D(0.1, 0, 0, 0, 0.0766341, 0, 0, 0, 0.1, -0.14111567, 1.9317033, -0.6446879)
 
 [node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Фонари" unique_id=319731682]
@@ -1745,7 +2185,7 @@ transform = Transform3D(0.5680736, 0, -0.8229778, 0, 1, 0, 0.8229778, 0, 0.56807
 radius = 0.237
 height = 4.874756
 
-[node name="LAmpa" parent="Фонари/CSGCylinder3D4" unique_id=364062515 instance=ExtResource("1_hnl5y")]
+[node name="LAmpa" parent="Фонари/CSGCylinder3D4" unique_id=364062515]
 transform = Transform3D(0.1, 0, 0, 0, 0.0766341, 0, 0, 0, 0.1, -0.14111567, 1.9317033, -0.6446879)
 
 [node name="CSGCylinder3D9" type="CSGCylinder3D" parent="Фонари" unique_id=1282071538]
@@ -1753,7 +2193,7 @@ transform = Transform3D(-0.050314073, 0, -0.99873346, 0, 1, 0, 0.99873346, 0, -0
 radius = 0.237
 height = 4.874756
 
-[node name="LAmpa" parent="Фонари/CSGCylinder3D9" unique_id=2044625972 instance=ExtResource("1_hnl5y")]
+[node name="LAmpa" parent="Фонари/CSGCylinder3D9" unique_id=2044625972]
 transform = Transform3D(0.1, 0, 0, 0, 0.0766341, 0, 0, 0, 0.1, -0.14111567, 1.9317033, -0.6446879)
 
 [node name="CSGCylinder3D11" type="CSGCylinder3D" parent="Фонари" unique_id=858447201]
@@ -1761,7 +2201,7 @@ transform = Transform3D(-0.050314073, 0, -0.99873346, 0, 1, 0, 0.99873346, 0, -0
 radius = 0.237
 height = 4.874756
 
-[node name="LAmpa" parent="Фонари/CSGCylinder3D11" unique_id=1447827617 instance=ExtResource("1_hnl5y")]
+[node name="LAmpa" parent="Фонари/CSGCylinder3D11" unique_id=1447827617]
 transform = Transform3D(0.1, 0, 0, 0, 0.0766341, 0, 0, 0, 0.1, -0.14111567, 1.9317033, -0.6446879)
 
 [node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Фонари" unique_id=85055496]
@@ -1769,7 +2209,7 @@ transform = Transform3D(0.05447962, 0, 0.9985149, 0, 1, 0, -0.9985149, 0, 0.0544
 radius = 0.237
 height = 4.874756
 
-[node name="LAmpa" parent="Фонари/CSGCylinder3D7" unique_id=1463920544 instance=ExtResource("1_hnl5y")]
+[node name="LAmpa" parent="Фонари/CSGCylinder3D7" unique_id=1463920544]
 transform = Transform3D(0.1, 0, 0, 0, 0.0766341, 0, 0, 0, 0.1, -0.14111567, 1.9317033, -0.6446879)
 
 [node name="CSGCylinder3D10" type="CSGCylinder3D" parent="Фонари" unique_id=1470441841]
@@ -1777,7 +2217,7 @@ transform = Transform3D(0.05447962, 0, 0.9985149, 0, 1, 0, -0.9985149, 0, 0.0544
 radius = 0.237
 height = 4.874756
 
-[node name="LAmpa" parent="Фонари/CSGCylinder3D10" unique_id=1244167010 instance=ExtResource("1_hnl5y")]
+[node name="LAmpa" parent="Фонари/CSGCylinder3D10" unique_id=1244167010]
 transform = Transform3D(0.1, 0, 0, 0, 0.0766341, 0, 0, 0, 0.1, -0.14111567, 1.9317033, -0.6446879)
 
 [node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Фонари" unique_id=709135714]
@@ -1785,7 +2225,7 @@ transform = Transform3D(0.05447962, 0, 0.9985149, 0, 1, 0, -0.9985149, 0, 0.0544
 radius = 0.237
 height = 4.874756
 
-[node name="LAmpa" parent="Фонари/CSGCylinder3D8" unique_id=1011580477 instance=ExtResource("1_hnl5y")]
+[node name="LAmpa" parent="Фонари/CSGCylinder3D8" unique_id=1011580477]
 transform = Transform3D(0.1, 0, 0, 0, 0.0766341, 0, 0, 0, 0.1, -0.14111567, 1.9317033, -0.6446879)
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Фонари" unique_id=723058940]
@@ -1793,7 +2233,7 @@ transform = Transform3D(0.8510952, 0, 0.5250113, 0, 1, 0, -0.5250113, 0, 0.85109
 radius = 0.237
 height = 4.881714
 
-[node name="LAmpa" parent="Фонари/CSGCylinder3D2" unique_id=1595559220 instance=ExtResource("1_hnl5y")]
+[node name="LAmpa" parent="Фонари/CSGCylinder3D2" unique_id=1595559220]
 transform = Transform3D(0.10000001, 0, 3.7252903e-09, 0, 0.0766341, 0, -3.7252903e-09, 0, 0.10000001, -0.9226656, 1.9317033, -5.9494414)
 
 [node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Фонари" unique_id=1514786897]
@@ -1801,7 +2241,7 @@ transform = Transform3D(0.8510952, 0, 0.5250113, 0, 1, 0, -0.5250113, 0, 0.85109
 radius = 0.237
 height = 4.881714
 
-[node name="LAmpa" parent="Фонари/CSGCylinder3D5" unique_id=618950581 instance=ExtResource("1_hnl5y")]
+[node name="LAmpa" parent="Фонари/CSGCylinder3D5" unique_id=618950581]
 transform = Transform3D(0.10000001, 0, 3.7252903e-09, 0, 0.0766341, 0, -3.7252903e-09, 0, 0.10000001, -3.675891, 1.9317033, -7.647812)
 
 [node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Фонари" unique_id=713758086]
@@ -1809,7 +2249,7 @@ transform = Transform3D(0.8510952, 0, 0.5250113, 0, 1, 0, -0.5250113, 0, 0.85109
 radius = 0.237
 height = 4.881714
 
-[node name="LAmpa" parent="Фонари/CSGCylinder3D6" unique_id=757113111 instance=ExtResource("1_hnl5y")]
+[node name="LAmpa" parent="Фонари/CSGCylinder3D6" unique_id=757113111]
 transform = Transform3D(0.10000001, 0, 3.7252903e-09, 0, 0.0766341, 0, -3.7252903e-09, 0, 0.10000001, -16.452606, 1.9317033, -4.7092924)
 
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Фонари" unique_id=415418087]
@@ -1817,19 +2257,19 @@ transform = Transform3D(-0.12606029, 0, -0.9920226, 0, 1, 0, 0.9920226, 0, -0.12
 radius = 0.237
 height = 4.874756
 
-[node name="LAmpa" parent="Фонари/CSGCylinder3D3" unique_id=1559743700 instance=ExtResource("1_hnl5y")]
+[node name="LAmpa" parent="Фонари/CSGCylinder3D3" unique_id=1559743700]
 transform = Transform3D(0.1, 0, 0, 0, 0.0766341, 0, 0, 0, 0.1, -0.14111567, 1.9317033, -0.6446879)
 
-[node name="LAmpa" parent="." unique_id=67730621 instance=ExtResource("8_ro5by")]
+[node name="LAmpa" parent="." unique_id=67730621]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -22.631876, 3.387203, 2.3273993)
 
-[node name="LAmpa2" parent="." unique_id=1996781391 instance=ExtResource("8_ro5by")]
+[node name="LAmpa2" parent="." unique_id=1996781391]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -27.111565, 3.387203, 2.3273993)
 
 [node name="Расходники" type="Node" parent="." unique_id=637064146]
 
-[node name="Krest" parent="Расходники" unique_id=1350055056 instance=ExtResource("36_rcbt2")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -21.396196, 1.1207951, 0.6105051)
+[node name="Krest" parent="Расходники" unique_id=1350055056]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -21.396196, 0.3344015, 0.6105051)
 
 [node name="Timer" type="Timer" parent="." unique_id=1117997177]
 wait_time = 5.0
@@ -1907,7 +2347,6 @@ mesh = SubResource("ArrayMesh_rcbt2")
 [node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="Дорога/CSGBakedMeshInstance3D2" unique_id=1122754581]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16522598, 0.14101124, 0.24364853)
 mesh = SubResource("ArrayMesh_xtx8p")
-skeleton = NodePath("")
 
 [node name="CSGBakedMeshInstance3D3" type="MeshInstance3D" parent="Дорога" unique_id=1156385207]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.324043, -0.4985857, 4.620442)
@@ -1916,12 +2355,10 @@ mesh = SubResource("ArrayMesh_4nc4p")
 [node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="Дорога/CSGBakedMeshInstance3D3" unique_id=559112885]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16522598, 0.14101124, 0.24364853)
 mesh = SubResource("ArrayMesh_xtx8p")
-skeleton = NodePath("")
 
 [node name="CSGBakedMeshInstance3D2" type="MeshInstance3D" parent="Дорога/CSGBakedMeshInstance3D3" unique_id=1893099720]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16522598, 0.14101124, -27.93279)
 mesh = SubResource("ArrayMesh_xtx8p")
-skeleton = NodePath("")
 
 [node name="CSGBakedMeshInstance3D4" type="MeshInstance3D" parent="Дорога" unique_id=204861724]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.453838, -0.4985857, 7.1470575)
@@ -2050,41 +2487,29 @@ affect_navigation_mesh = true
 
 [node name="LineRenderer3D" type="MeshInstance3D" parent="." unique_id=157698636]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, 7.7, 2, -5.5)
-
 mesh = SubResource("ImmediateMesh_24d4k")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
-script = ExtResource("17_r1ed2")
-points = Array[Vector3]([Vector3(7.7, 2, -5.5), Vector3(7.7, 2, -5.5)])
 metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D2" type="MeshInstance3D" parent="." unique_id=2062067384]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -7.1046586)
-
 mesh = SubResource("ImmediateMesh_r2crg")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
-script = ExtResource("17_r1ed2")
-points = Array[Vector3]([Vector3(-0.3, 1.9, -7.1), Vector3(-0.3, 1.9, -7.1)])
 metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D3" type="MeshInstance3D" parent="." unique_id=139751098]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -11.084127)
-
 mesh = SubResource("ImmediateMesh_hx20e")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
-script = ExtResource("17_r1ed2")
-points = Array[Vector3]([Vector3(-0.3, 1.9, -11), Vector3(-0.3, 1.9, -11)])
 metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D4" type="MeshInstance3D" parent="." unique_id=1666510536]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, 8, 2, -10.5)
-
 mesh = SubResource("ImmediateMesh_sd30g")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
-script = ExtResource("17_r1ed2")
-points = Array[Vector3]([Vector3(8, 2, -10.5), Vector3(8, 2, -10.5)])
 metadata/_custom_type_script = "uid://hajl3xibw433"
 
-[node name="driving in my car" parent="." unique_id=1589055185 instance=ExtResource("19_qyfae")]
+[node name="driving in my car" parent="." unique_id=1589055185]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.72218, 0.07518196, 40.256218)
 
 [node name="emeny" type="CharacterBody3D" parent="." unique_id=266263789]
@@ -2094,8 +2519,6 @@ collision_mask = 0
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
-script = ExtResource("26_w5m4x")
-movement_speed = 4.5
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="emeny" unique_id=2028813483]
 navigation_layers = 2
@@ -2123,18 +2546,8 @@ omni_range = 2.0
 transform = Transform3D(0.99999976, 0, 3.659295e-13, 0, 0.99999976, 0, -3.659295e-13, 0, 0.99999976, 0, -0.016279815, 0)
 shape = SubResource("CapsuleShape3D_md0e3")
 
-[node name="Настоящий пельмень2" parent="emeny" unique_id=1746730056 instance=ExtResource("27_173o4")]
+[node name="Настоящий пельмень2" parent="emeny" unique_id=1746730056]
 transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 0, 0, 0)
-
-[node name="Сфера" parent="emeny/Настоящий пельмень2" index="4" unique_id=1398575640]
-transform = Transform3D(92.23393, -1.41119635e-05, 211.53426, -38.638035, -1.090095e-05, 504.95932, -8.804106e-06, -99.99999, -8.4897e-05, -0.029922485, 2.5406032, -1.1295118)
-
-[node name="AnimationPlayer" parent="emeny/Настоящий пельмень2" index="6" unique_id=1846775429]
-process_mode = 3
-speed_scale = 1.3
-
-[node name="Camera3D" parent="emeny/Настоящий пельмень2" index="7" unique_id=1518745682]
-transform = Transform3D(-0.1083291, -0.36255175, 0.9256462, -0.042142097, 0.93196315, 0.36009437, -0.99322146, 2.607702e-08, -0.11623748, 14.321535, 11.460782, -2.1801574)
 
 [node name="Timer2" type="Timer" parent="." unique_id=2145315828]
 wait_time = 23.0
@@ -2144,8 +2557,6 @@ one_shot = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.617813, 0, 28.264473)
 
 [node name="Be" type="AudioStreamPlayer" parent="." unique_id=1417312252]
-stream = ExtResource("31_yyosc")
-bus = &"Effect"
 
 [node name="Tick" type="Timer" parent="." unique_id=454430915]
 wait_time = 0.05
@@ -2184,9 +2595,7 @@ size = Vector3(0.23693848, 0.63967896, 0.19476318)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Zp/CSGBox3D25" unique_id=398977773]
 transform = Transform3D(0.9999999, 0, 1.4210855e-14, 0, 1, 0, -1.4210855e-14, 0, 0.9999999, 0.06329298, -0.100043535, 0)
-stream = ExtResource("29_s6jno")
 max_distance = 5.0
-bus = &"Effect"
 
 [node name="CSGBox3D26" type="CSGBox3D" parent="Zp" unique_id=908224324]
 transform = Transform3D(-4.3711392e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711392e-08, 0.24350154, 1.4954605, -6.406519)
@@ -2215,9 +2624,7 @@ shape = SubResource("BoxShape3D_m2ycm")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Zp/CSGBox3D26" unique_id=1851744890]
 transform = Transform3D(0.9999999, 0, 1.7763568e-14, 0, 1, 0, -1.7763568e-14, 0, 0.9999999, 0.06329298, -0.100043535, -0.4146998)
-stream = ExtResource("29_s6jno")
 max_distance = 5.0
-bus = &"Effect"
 
 [node name="CSGBox3D27" type="CSGBox3D" parent="Zp" unique_id=182278684]
 transform = Transform3D(-4.3711392e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711392e-08, 0.24350154, 1.4954605, -10.396199)
@@ -2246,9 +2653,7 @@ shape = SubResource("BoxShape3D_m2ycm")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Zp/CSGBox3D27" unique_id=1675295754]
 transform = Transform3D(0.9999999, 0, 1.4210855e-14, 0, 1, 0, -1.4210855e-14, 0, 0.9999999, 0.06329298, -0.100043535, 0)
-stream = ExtResource("29_s6jno")
 max_distance = 5.0
-bus = &"Effect"
 
 [node name="CSGBox3D28" type="CSGBox3D" parent="Zp" unique_id=277126286]
 transform = Transform3D(-4.3711392e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711392e-08, 8.342983, 1.4954605, -10.320419)
@@ -2277,16 +2682,13 @@ shape = SubResource("BoxShape3D_m2ycm")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Zp/CSGBox3D28" unique_id=890077734]
 transform = Transform3D(0.9999999, 0, 1.4210855e-14, 0, 1, 0, -1.4210855e-14, 0, 0.9999999, 0.06329298, -0.100043535, 0)
-stream = ExtResource("29_s6jno")
 max_distance = 5.0
-bus = &"Effect"
 
 [node name="Prolog" type="Node" parent="." unique_id=217079328]
 script = SubResource("GDScript_myhle")
 
 [node name="Camera3D" type="Camera3D" parent="Prolog" unique_id=729336157]
 transform = Transform3D(0.068816304, 0, -0.99762934, 0, 1, 0, 0.99762934, 0, 0.068816304, 4.099226, 1.109387, 1.4501052)
-current = true
 
 [node name="Control" type="Control" parent="Prolog/Camera3D" unique_id=584474641]
 visible = false
@@ -2315,21 +2717,6 @@ modulate = Color(1, 1, 1, 0.56200004)
 z_index = -1
 position = Vector2(575, 325)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("8_e63ir")
-
-[node name="server" type="Control" parent="Prolog/Camera3D" unique_id=1994839488]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="Prolog/Camera3D/server" unique_id=7263202]
-layout_mode = 0
-offset_left = 287.0
-offset_top = 229.0
-offset_right = 551.0
-offset_bottom = 412.0
-label_settings = SubResource("LabelSettings_vqwn8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Prolog" unique_id=1844113501]
 libraries/ = SubResource("AnimationLibrary_vqwn8")
@@ -2338,18 +2725,16 @@ libraries/ = SubResource("AnimationLibrary_vqwn8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.595697, 0, 28.050842)
 script = SubResource("GDScript_w5m4x")
 
-[node name="car" parent="Лёлик тормоз" unique_id=1000964647 instance=ExtResource("30_yyosc")]
+[node name="car" parent="Лёлик тормоз" unique_id=1000964647]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.2152977, 1.711193, 12.272385)
 
-[node name="No_human" parent="Лёлик тормоз" unique_id=799308409 instance=ExtResource("31_82sth")]
+[node name="No_human" parent="Лёлик тормоз" unique_id=799308409]
 transform = Transform3D(-0.6, 0, 5.2453668e-08, 0, 0.6, 0, -5.2453668e-08, 0, -0.6, 0, 0, 12.862904)
 vkl = false
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Лёлик тормоз/No_human" unique_id=1223130168]
 transform = Transform3D(1.6666665, 0, 0, 0, 1.6666665, 0, 0, 0, 1.6666665, 0, 2.843537, 0)
-stream = ExtResource("32_82sth")
 volume_db = 10.0
-bus = &"Effect"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Лёлик тормоз" unique_id=418324410]
 libraries/ = SubResource("AnimationLibrary_173o4")
@@ -2365,10 +2750,10 @@ shape = SubResource("BoxShape3D_82sth")
 
 [node name="Proshlo" type="Timer" parent="." unique_id=12250803]
 
-[node name="ficus" parent="." unique_id=317783780 instance=ExtResource("34_s6jno")]
+[node name="ficus" parent="." unique_id=317783780]
 transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -20.183187, 0.71778715, -14.532577)
 
-[node name="schitok" parent="." unique_id=2007825618 instance=ExtResource("5_173o4")]
+[node name="schitok" parent="." unique_id=2007825618]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.221098, 1.8067225, 7.72001)
 
 [node name="Timer3" type="Timer" parent="." unique_id=1945309561]
@@ -2376,33 +2761,46 @@ wait_time = 0.1
 
 [node name="Timer4" type="Timer" parent="." unique_id=2053239838]
 
-[node name="cont_players" type="Node" parent="." unique_id=1430287667]
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=782420281]
-_spawnable_scenes = PackedStringArray("uid://b4o5se6ydd01k")
-spawn_path = NodePath("../cont_players")
-spawn_limit = 4
-
-[connection signal="_open" from="Заправка/Door2" to="." method="_on_door_2__open"]
+[connection signal="timeout" from="Player/Camera3D/game_ui/Timer" to="Player/Camera3D/game_ui" method="_on_timer_timeout"]
+[connection signal="animation_finished" from="Player/Camera3D/руки/SpringArm3D/AnimationPlayer" to="Player/Camera3D/руки" method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Player/Camera3D/руки/Timer" to="Player/Camera3D/руки" method="_on_timer_timeout"]
+[connection signal="button_down" from="Player/Camera3D/Menu/continue" to="Player/Camera3D/Menu" method="_on_continue_button_down"]
+[connection signal="focus_entered" from="Player/Camera3D/Menu/continue" to="Player/Camera3D/Menu" method="focus_entered"]
+[connection signal="button_down" from="Player/Camera3D/Menu/Settings" to="Player/Camera3D/Menu" method="_on_settings_button_down"]
+[connection signal="focus_entered" from="Player/Camera3D/Menu/Settings" to="Player/Camera3D/Menu" method="focus_entered"]
+[connection signal="button_down" from="Player/Camera3D/Menu/Quit" to="Player/Camera3D/Menu" method="_on_quit_button_down"]
+[connection signal="focus_entered" from="Player/Camera3D/Menu/Quit" to="Player/Camera3D/Menu" method="focus_entered"]
+[connection signal="button_down" from="Player/Camera3D/Menu/Save" to="Player/Camera3D/Menu" method="_on_save_button_down"]
+[connection signal="focus_entered" from="Player/Camera3D/Menu/Save" to="Player/Camera3D/Menu" method="focus_entered"]
+[connection signal="animation_finished" from="Player/Camera3D/Menu/AnimationPlayer" to="Player/Camera3D/Menu" method="_on_animation_player_animation_finished"]
+[connection signal="value_changed" from="Player/Camera3D/Menu/HSlider" to="Player" method="_on_h_slider_value_changed"]
+[connection signal="animation_finished" from="Player/Camera3D/end_day/AnimationPlayer" to="Player/Camera3D/end_day/AnimationPlayer" method="_on_day_finished"]
+[connection signal="timeout" from="Player/Camera3D/Duhota/Out" to="Player/Camera3D/Duhota" method="_on_out_timeout"]
+[connection signal="timeout" from="Player/Camera3D/Duhota/In" to="Player/Camera3D/Duhota" method="_on_in_timeout"]
 [connection signal="body_entered" from="Заправка/мусорка" to="Заправка/мусорка" method="_on_body_entered"]
+[connection signal="body_exited" from="Заправка/in" to="Player/Camera3D/Duhota" method="_on_in_body_exited"]
+[connection signal="body_exited" from="Заправка/out" to="Player/Camera3D/Duhota" method="_on_out_body_exited"]
 [connection signal="body_entered" from="Тум-тум-туманище/Area3D" to="Тум-тум-туманище" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Тум-тум-туманище/Area3D2" to="Тум-тум-туманище" method="_on_area_3d_2_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="davka" from="driving in my car" to="." method="die"]
-[connection signal="end_put" from="driving in my car" to="." method="_on_driving_in_my_car_end_put"]
-[connection signal="body_entered" from="emeny" to="." method="_on_emeny_body_entered"]
 [connection signal="body_entered" from="emeny/Area3D" to="emeny" method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="emeny/Timer" to="emeny" method="_on_timer_timeout"]
-[connection signal="animation_finished" from="emeny/Настоящий пельмень2/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Timer2" to="." method="_stop_run"]
 [connection signal="timeout" from="Tick" to="." method="_on_tick_timeout"]
+[connection signal="timeout" from="Tick" to="Player" method="_on_tick_timeout"]
+[connection signal="timeout" from="Tick" to="Player/Camera3D/Duhota" method="_on_tick_timeout"]
 [connection signal="timeout" from="Ожидание" to="." method="_on_ожидание_timeout"]
+[connection signal="area_entered" from="Zp/CSGBox3D25/ZPin1" to="Player/Camera3D/руки" method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Zp/CSGBox3D25/ZPin1" to="Player/Camera3D/руки" method="_on_area_3d_area_exited"]
+[connection signal="area_entered" from="Zp/CSGBox3D26/ZPin1" to="Player/Camera3D/руки" method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Zp/CSGBox3D26/ZPin1" to="Player/Camera3D/руки" method="_on_area_3d_area_exited"]
+[connection signal="area_entered" from="Zp/CSGBox3D27/ZPin1" to="Player/Camera3D/руки" method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Zp/CSGBox3D27/ZPin1" to="Player/Camera3D/руки" method="_on_area_3d_area_exited"]
+[connection signal="area_entered" from="Zp/CSGBox3D28/ZPin1" to="Player/Camera3D/руки" method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Zp/CSGBox3D28/ZPin1" to="Player/Camera3D/руки" method="_on_area_3d_area_exited"]
 [connection signal="animation_finished" from="Prolog/AnimationPlayer" to="Prolog" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Лёлик тормоз/AnimationPlayer" to="Лёлик тормоз" method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="Лёлик тормоз/Area3D" to="Лёлик тормоз" method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="Proshlo" to="." method="_on_proshlo_timeout"]
+[connection signal="timeout" from="Timer3" to="Player/Camera3D/руки" method="_on_timer_3_timeout"]
 [connection signal="timeout" from="Timer4" to="." method="die_part2"]
-[connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
-
-[editable path="Заправка/Table"]
-[editable path="emeny/Настоящий пельмень2"]

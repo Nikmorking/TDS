@@ -14,27 +14,12 @@ var walk = false
 
 var run = false
 
-
 func _ready() -> void:
-	if multiplayer.multiplayer_peer and multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.CONNECTION_CONNECTED:
-		# Если этот персонаж чужой для данного окна
-		if not is_multiplayer_authority():
-			# Полностью отключаем у него считывание встроенного ввода
-			set_process_input(false)
-			set_physics_process(false)
-			if has_node("Camera3D"):
-				$Camera3D.current = false
-			return
-			
-	# Код, который выполнится ТОЛЬКО для вашего родного персонажа:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	Global.player = self
-	if has_node("Camera3D"):
-		$Camera3D.current = true
-
+	
 
 func _physics_process(_delta: float) -> void:
-	# СЕТЕВОЙ ФИЛЬТР:
+	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += get_gravity().y * _delta
 		if run:
@@ -85,10 +70,7 @@ func _physics_process(_delta: float) -> void:
 
 
 
-func _input(event):
-	if multiplayer.multiplayer_peer and multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.CONNECTION_CONNECTED:
-		if not is_multiplayer_authority():
-			return
+func _input(event): 
 	if event is InputEventMouseMotion and !Global.isOnMenu:
 		if $Camera3D.rotation.x - deg_to_rad(event.relative.y) < deg_to_rad(90) and $Camera3D.rotation.x - deg_to_rad(event.relative.y) > deg_to_rad(-70):
 			$Camera3D.rotation += Vector3(deg_to_rad(-event.relative.y * Global.mouse_sens), 0, 0)
@@ -134,37 +116,3 @@ func _on_door_2__player_in():
 func _on_door_2__player_out():
 	in_door = false
 	pass # Replace with function body.
-
-
-func _enter_tree() -> void:
-	if multiplayer.multiplayer_peer and multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.CONNECTION_CONNECTED:
-		var current_node_name = name
-		var target_id = 1 # По умолчанию сервер
-		
-			# Превращаем StringName в обычную строку String
-		var name_string = str(current_node_name)
-	
-		if name_string.is_valid_int():
-			target_id = name_string.to_int()
-		else:
-		# Теперь спокойно перебираем символы строки
-			var digits = ""
-			for i in range(name_string.length()):
-				if name_string[i].is_valid_int():
-					digits += name_string[i]
-			if digits != "":
-				target_id = digits.to_int()
-
-		
-		# Жёстко выставляем сетевые права
-		set_multiplayer_authority(target_id)
-		var sync_node = get_node_or_null("MultiplayerSynchronizer")
-		if sync_node:
-			sync_node.set_multiplayer_authority(target_id)
-		
-		if not is_multiplayer_authority():
-			if has_node("Camera3D"):
-				$Camera3D.current = false # Принудительно гасим чужую камеру
-				$Camera3D.queue_free()    # Или полностью удаляем её из нашей сцены, чтобы она никогда не перехватила экран
-		
-		print("ЛОГ: Узел [", current_node_name, "] привязан к ID: ", target_id, ". Моё окно: ", multiplayer.get_unique_id(), ". Права совпали? ", is_multiplayer_authority())

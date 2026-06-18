@@ -12,6 +12,8 @@ resource_name = "Main menu"
 script/source = "extends Menu
 
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationPlayer.play(\"RESET\")
@@ -34,21 +36,31 @@ func _on_обучение_button_down():
 
 
 func _on_start_button_down():
-	Global.igra = true
-	get_tree().change_scene_to_file(\"res://scenes/AZC.tscn\")
+	Global.new = true
+	_on_host_button_down()
 	pass # Replace with function body.
 
 
 func _on_cont_button_down():
 	Global.is_load = true
-	Global.igra = true
-	get_tree().change_scene_to_file(\"res://scenes/AZC.tscn\")
+	_on_host_button_down()
 	pass # Replace with function body.
 
 
 func _on_quit__button_down():
 	get_tree().quit()
 	pass # Replace with function body.
+
+func _on_host_button_down():
+	Global.igra = true
+	Global.mp_mode = \"host\" # Запоминаем, что мы сервер
+	get_tree().change_scene_to_file(\"res://scenes/AZC.tscn\")
+
+func _on_join_button_down():
+	Global.igra = true
+	Global.mp_mode = \"join\" # Запоминаем, что мы клиент
+	Multiplayer.ip_addr = $TextEdit.text
+	get_tree().change_scene_to_file(\"res://scenes/AZC.tscn\")
 "
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_1lgq4"]
@@ -191,6 +203,8 @@ _data = {
 &"vis": SubResource("Animation_ypher")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_k41st"]
+
 [node name="MainMenu" type="Control" unique_id=1526012947]
 layout_mode = 3
 anchors_preset = 15
@@ -313,9 +327,34 @@ size = Vector2i(1920, 1080)
 
 [node name="Node3D" parent="SubViewport" unique_id=2010904094 instance=ExtResource("6_k41st")]
 
+[node name="pri" type="Button" parent="." unique_id=1475250209]
+layout_mode = 0
+offset_left = 536.0
+offset_top = 464.0
+offset_right = 1031.0
+offset_bottom = 537.0
+text = "присоединись"
+
+[node name="TextEdit" type="TextEdit" parent="." unique_id=805192052]
+layout_mode = 0
+offset_left = 549.0
+offset_top = 393.0
+offset_right = 791.0
+offset_bottom = 448.0
+
+[node name="Label" type="Label" parent="TextEdit" unique_id=1638614163]
+layout_mode = 0
+offset_left = 151.0
+offset_top = 8.0
+offset_right = 229.0
+offset_bottom = 57.0
+text = "<- сюда ip"
+label_settings = SubResource("LabelSettings_k41st")
+
 [connection signal="button_down" from="Cont" to="." method="_on_cont_button_down"]
 [connection signal="button_down" from="Start" to="." method="_on_start_button_down"]
 [connection signal="button_down" from="Settings" to="." method="_on_settings_button_down"]
 [connection signal="button_down" from="Quit" to="." method="_on_quit__button_down"]
 [connection signal="button_down" from="Обучение" to="." method="_on_обучение_button_down"]
 [connection signal="focus_entered" from="Обучение" to="." method="focus_entered"]
+[connection signal="button_down" from="pri" to="." method="_on_join_button_down"]

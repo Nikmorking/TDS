@@ -14,7 +14,6 @@ var k_otk = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	rot = 0
-	Global.get_player()
 	pass # Replace with function body.
 
 func _input(_event: InputEvent) -> void:

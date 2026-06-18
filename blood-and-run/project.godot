@@ -24,6 +24,7 @@ config/windows_native_icon="res://icons/B&R.ico"
 [autoload]
 
 Global="*uid://cf612yait5ek5"
+Multiplayer="*uid://7frxd1y33wmr"
 
 [display]
 

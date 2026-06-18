@@ -4,22 +4,29 @@ class_name Zaz
 
 func vis_time():
 	print(chas, "  ", min)
-	$Player/Camera3D/game_ui/time/Label2.text = str(chas)
-	$Player/Camera3D/game_ui/time/Label4.text = str(min)
+	Global.player.get_node("Camera3D/game_ui/time/Label2").text = str(chas)
+	Global.player.get_node("Camera3D/game_ui/time/Label4").text = str(min)
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	multiplayer.peer_connected.connect(Multiplayer._on_player_connected)
+	multiplayer.peer_disconnected.connect(Multiplayer._on_player_disconnected)
+	multiplayer.connected_to_server.connect(func(): print("Клиент: Я успешно вошел на сервер!"))
+	multiplayer.connection_failed.connect(func(): print("Клиент: Ошибка! Сервер не отвечает."))
 	Global.connect("load", vis_time)
 	Check_boxes = $"Заправка/Table/CSGPolygon3D2/SubViewport/Control/Control".get_children()
 	print(Check_boxes)
-	Global.get_player()
+	if Global.mp_mode == "host":
+		Multiplayer.start_host()
+	elif Global.mp_mode == "join":
+		Multiplayer.start_join()
 	print(Global.is_load)
 	if Global.is_load:
 		Global.load_game()
-	else:
-		$Prolog.start()
-	$Player/Camera3D/Menu.hide()
+	#if Global.new:
+		#$Prolog.start()
+	#Global.player.get_node("Camera3D/Menu").hide()
 	Global.is_load = false
 	rand = true 
 	if Global.fara_days != 1:
@@ -51,7 +58,9 @@ func _ready():
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_redo"):
-		Global.light_off()
+		#Global.light_off()
+		if multiplayer.is_server():
+			Multiplayer.print_once_per_client.rpc()
 		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		#_start_sream()
 		#$Timer2.start()
@@ -105,3 +114,8 @@ func die_part2():
 	Global.is_load = true
 	$Player/Camera3D/game_ui/Sprite2D.show()
 	pass
+
+
+func _on_multiplayer_spawner_spawned(node):
+	Multiplayer._on_player_spawned(node)
+	pass # Replace with function body.

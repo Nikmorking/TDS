@@ -1,5 +1,7 @@
 extends Node
 
+var new = false
+var mp_mode: String = ""
 var player: Node3D
 var isOnMenu = false
 var fara_days = 1
@@ -33,10 +35,6 @@ func _input(event):
 		load_game()
 	pass
 
-func get_player():
-	papa = get_tree().root.get_node("Node3D")
-	player = papa.get_node("Player")
-	pass
 
 
 func _ready():
@@ -61,7 +59,6 @@ func achivka(pr:String):
 var kasa
 func save():
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
-	get_player()
 	kasa = papa.get_node("Заправка/Table/Касса")
 	var node_data = [
 		fara_days,"Vector3"+str(player.position),

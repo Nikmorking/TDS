@@ -6,9 +6,6 @@ var kol_stakan = 0
 var pesna = "E"
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	Global.get_player()
-	pass # Replace with function body.
 
 func _input(event):
 	if Input.is_action_just_pressed("rush_e"):
@@ -51,12 +48,12 @@ func _start():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var marker: Node3D = Global.player.get_child(2)
-	if into:
-		if !$E.visible:
-			get_node(pesna).look_at(marker.global_position)
-		else:
-			$E.look_at(marker.global_position)
+	#var marker: Node3D = Global.player.get_child(2)
+	#if into:
+		#if !$E.visible:
+			#get_node(pesna).look_at(marker.global_position)
+		#else:
+			#$E.look_at(marker.global_position)
 	pass
 
 

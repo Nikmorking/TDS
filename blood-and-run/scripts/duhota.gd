@@ -1,6 +1,6 @@
 extends Control
 
-var duhota = 0
+var duhota = 1500
 var in_gas = 1
 @export var need = 3000
 
@@ -19,17 +19,27 @@ func _on_tick_timeout():
 		lev += 1
 	if duhota >need*0.75 and lev == 2:
 		lev += 1
-		$TextureRect.base_alpha = 0.5
-	if duhota >need*0.9:
-		$TextureRect.base_alpha = 0.75
-		$TextureRect.pulse_speed = 7
+		$AnimationPlayer.play("0.75")
+	if duhota >need*0.85 and lev == 3:
+		lev += 1
+		$AnimationPlayer.play("0.85")
 	if in_gas == 1:
 		duhota += (Global.fara_days+1)/2*randi_range(0,5)
-		if duhota > need:
+		if duhota > need and in_gas != 0:
 			duhota = 0
 			Global.papa.die("задожнулся")
 	elif in_gas == -1:
-		if duhota <= 0:
+		lev = 0
+		duhota -= (Global.fara_days+1)*randi_range(0,5)*1.5
+		if $TextureRect.base_alpha <= 0:
+			$TextureRect.base_alpha = 0
+		else:
+			$TextureRect.base_alpha -= 0.001
+		if $TextureRect.pulse_speed <= 0:
+			$TextureRect.base_alpha = 0
+		else:
+			$TextureRect.pulse_speed -= 0.01
+		if duhota < 0:
 			duhota = 0
 		else:
 			duhota -= (Global.fara_days+1)*randi_range(0,5)
