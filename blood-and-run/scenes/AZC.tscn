@@ -322,16 +322,16 @@ viewport_path = NodePath("Заправка/Ящики/c батонами/Sprite3
 [sub_resource type="ViewportTexture" id="ViewportTexture_vqwn8"]
 viewport_path = NodePath("Заправка/Ящики/с снеками/Sprite3D/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_xtx8p"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_fse4r"]
 viewport_path = NodePath("Касса/Cofe_machine/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_4nc4p"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_yyosc"]
 viewport_path = NodePath("Касса/Снеки/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_aqjcs"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_82sth"]
 viewport_path = NodePath("Касса/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_js04u"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_w5m4x"]
 viewport_path = NodePath("CSGPolygon3D2/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oou1n"]
@@ -387,9 +387,6 @@ size = Vector3(63.631836, 4.8321533, 1.9077606)
 density = 3.0
 albedo = Color(0.423651, 0.423651, 0.423651, 1)
 emission = Color(0.140447, 0.140447, 0.140447, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_4nc4p"]
-size = Vector3(69.29309, 4.8321533, 1.9077606)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vynuk"]
 size = Vector3(78.553955, 4.8321533, 1.9077606)
@@ -567,14 +564,13 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Arr
 geometry_parsed_geometry_type = 0
 agent_radius = 1.3
 
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_s6jno"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_fse4r"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_173o4"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_415sf"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_tsu7c"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_myhle"]
-
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_1huwv"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_rcbt2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wlgop"]
 radius = 5.330078
@@ -813,355 +809,6 @@ max_a = 67
 end_day = 12
 metadata/_edit_horizontal_guides_ = [324.0, 417.0, 230.0, 649.0]
 metadata/_edit_vertical_guides_ = [576.0, -291.0, 1156.0]
-
-<<<<<<< HEAD
-[node name="Player" type="CharacterBody3D" parent="." unique_id=1001959085]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.852661, 0, 3.7401729)
-collision_layer = 4097
-collision_mask = 4097
-script = ExtResource("2_y5rpb")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=681135391]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07942, 0)
-shape = SubResource("CapsuleShape3D_yyosc")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Player" unique_id=1712545990]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2598163, 0)
-shape = SubResource("CapsuleShape3D_w5m4x")
-
-[node name="Camera3D" type="Camera3D" parent="Player" unique_id=909887528]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0354624, -0.034546614)
-attributes = SubResource("CameraAttributesPractical_173o4")
-far = 40.0
-
-[node name="game_ui" type="Control" parent="Player/Camera3D" unique_id=1216830132]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1156.0
-offset_bottom = 637.0
-script = ExtResource("4_m2ycm")
-
-[node name="Label" type="Label" parent="Player/Camera3D/game_ui" unique_id=495396501]
-layout_mode = 0
-offset_left = 490.0
-offset_top = 309.0
-offset_right = 743.0
-offset_bottom = 381.0
-text = "               O"
-label_settings = SubResource("LabelSettings_s6jno")
-
-[node name="Timer" type="Timer" parent="Player/Camera3D/game_ui" unique_id=315172593]
-one_shot = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Player/Camera3D/game_ui" unique_id=1364612963]
-visible = false
-position = Vector2(576.5, 324.25)
-scale = Vector2(5.5048075, 2.6316872)
-texture = ExtResource("5_f5ce8")
-
-[node name="time" type="Control" parent="Player/Camera3D/game_ui" unique_id=1040417888]
-anchors_preset = 0
-offset_left = 4.0
-offset_top = -37.0
-offset_right = 4.0
-offset_bottom = -37.0
-
-[node name="Label2" type="Label" parent="Player/Camera3D/game_ui/time" unique_id=1445564055]
-layout_mode = 0
-offset_left = 969.0
-offset_top = 569.0
-offset_right = 1042.0
-offset_bottom = 657.0
-text = "10"
-label_settings = SubResource("LabelSettings_173o4")
-metadata/_edit_use_anchors_ = true
-
-[node name="Label4" type="Label" parent="Player/Camera3D/game_ui/time" unique_id=8955126]
-layout_mode = 0
-offset_left = 1037.0
-offset_top = 569.0
-offset_right = 1110.0
-offset_bottom = 657.0
-text = "00"
-label_settings = SubResource("LabelSettings_173o4")
-metadata/_edit_use_anchors_ = true
-
-[node name="Label3" type="Label" parent="Player/Camera3D/game_ui/time" unique_id=1211369038]
-layout_mode = 0
-offset_left = 1021.0
-offset_top = 568.0
-offset_right = 1063.0
-offset_bottom = 656.0
-text = ":"
-label_settings = SubResource("LabelSettings_173o4")
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Player/Camera3D/game_ui" unique_id=1699663777]
-visible = false
-z_index = 10
-layout_mode = 0
-offset_left = 435.0
-offset_top = 232.0
-offset_right = 718.0
-offset_bottom = 417.0
-fill_mode = 5
-nine_patch_stretch = true
-texture_under = SubResource("GradientTexture2D_tsu7c")
-texture_progress = SubResource("GradientTexture2D_xtx8p")
-
-[node name="руки" type="Node3D" parent="Player/Camera3D" unique_id=744049415]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1837149)
-script = ExtResource("3_cfvsp")
-
-[node name="RayCast3D" type="RayCast3D" parent="Player/Camera3D/руки" unique_id=698698215]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8498604)
-target_position = Vector3(0, 0, -3)
-collision_mask = 8195
-collide_with_areas = true
-debug_shape_custom_color = Color(1, 0, 1, 1)
-
-[node name="SpringArm3D" type="SpringArm3D" parent="Player/Camera3D/руки" unique_id=566155508]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.121459365, 0.7655535)
-collision_mask = 8
-shape = SubResource("SphereShape3D_173o4")
-spring_length = 2.0
-margin = 0.07
-
-[node name="Hand" type="Node3D" parent="Player/Camera3D/руки/SpringArm3D" unique_id=735795408]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -0.48008382, 2.2554448)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Camera3D/руки/SpringArm3D" unique_id=1691900076]
-libraries/ = SubResource("AnimationLibrary_tsu7c")
-
-[node name="Timer" type="Timer" parent="Player/Camera3D/руки" unique_id=1085419986]
-wait_time = 0.05
-one_shot = true
-
-[node name="Menu" type="Control" parent="Player/Camera3D" unique_id=1544090209]
-process_mode = 3
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1150.0
-offset_bottom = 647.0
-script = ExtResource("7_1q5xi")
-
-[node name="continue" type="Button" parent="Player/Camera3D/Menu" unique_id=876718918]
-process_mode = 3
-layout_mode = 0
-offset_left = 53.0
-offset_top = 175.0
-offset_right = 328.0
-offset_bottom = 246.0
-focus_neighbor_bottom = NodePath("../Settings")
-theme_override_font_sizes/font_size = 32
-text = "Сontinue"
-flat = true
-alignment = 0
-
-[node name="Settings" type="Button" parent="Player/Camera3D/Menu" unique_id=597107682]
-process_mode = 3
-layout_mode = 0
-offset_left = 53.0
-offset_top = 289.0
-offset_right = 328.0
-offset_bottom = 360.0
-focus_neighbor_top = NodePath("../continue")
-focus_neighbor_bottom = NodePath("../Quit")
-theme_override_font_sizes/font_size = 32
-text = "Settings"
-flat = true
-alignment = 0
-
-[node name="Quit" type="Button" parent="Player/Camera3D/Menu" unique_id=457525319]
-process_mode = 3
-layout_mode = 0
-offset_left = 53.0
-offset_top = 408.0
-offset_right = 328.0
-offset_bottom = 479.0
-focus_neighbor_top = NodePath("../Settings")
-focus_neighbor_bottom = NodePath("../Save")
-theme_override_font_sizes/font_size = 32
-text = "Quit"
-flat = true
-alignment = 0
-
-[node name="Save" type="Button" parent="Player/Camera3D/Menu" unique_id=1702990128]
-process_mode = 3
-layout_mode = 0
-offset_left = 53.0
-offset_top = 500.0
-offset_right = 328.0
-offset_bottom = 571.0
-focus_neighbor_top = NodePath("../Quit")
-theme_override_font_sizes/font_size = 32
-text = "Save"
-flat = true
-alignment = 0
-
-[node name="Menu" type="Sprite2D" parent="Player/Camera3D/Menu" unique_id=1837631402]
-process_mode = 3
-modulate = Color(1, 1, 1, 0.40392157)
-z_index = -1
-position = Vector2(575, 325)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("8_e63ir")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Camera3D/Menu" unique_id=1891119721]
-process_mode = 3
-libraries/ = SubResource("AnimationLibrary_rcbt2")
-speed_scale = 1.67
-
-[node name="Close" type="AudioStreamPlayer2D" parent="Player/Camera3D/Menu" unique_id=456702033]
-process_mode = 3
-stream = ExtResource("9_1huwv")
-volume_db = 10.0
-
-[node name="Open" type="AudioStreamPlayer2D" parent="Player/Camera3D/Menu" unique_id=1874614073]
-process_mode = 3
-stream = ExtResource("10_vqwn8")
-volume_db = 10.0
-
-[node name="Nakodka" type="AudioStreamPlayer2D" parent="Player/Camera3D/Menu" unique_id=198234903]
-process_mode = 3
-stream = ExtResource("11_vqwn8")
-volume_db = -20.0
-
-[node name="HSlider" type="HSlider" parent="Player/Camera3D/Menu" unique_id=1357401500]
-layout_mode = 0
-offset_left = 432.0
-offset_top = 547.0
-offset_right = 832.0
-offset_bottom = 602.0
-min_value = 0.1
-max_value = 1.0
-step = 0.05
-value = 0.30000000000000004
-
-[node name="end_day" type="Control" parent="Player/Camera3D" unique_id=495279189]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1154.0
-offset_bottom = 648.0
-
-[node name="Label2" type="Label" parent="Player/Camera3D/end_day" unique_id=1878874330]
-layout_mode = 0
-offset_left = 250.0
-offset_top = 252.0
-offset_right = 993.0
-offset_bottom = 379.0
-text = "Ночь"
-label_settings = SubResource("LabelSettings_xtx8p")
-
-[node name="Label1" type="Label" parent="Player/Camera3D/end_day" unique_id=2141845012]
-layout_mode = 0
-offset_left = 605.0
-offset_top = 248.0
-offset_right = 1348.0
-offset_bottom = 420.0
-text = "1"
-label_settings = SubResource("LabelSettings_xtx8p")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Camera3D/end_day" unique_id=1500811464]
-process_mode = 3
-root_node = NodePath("../..")
-libraries/ = SubResource("AnimationLibrary_4nc4p")
-script = SubResource("GDScript_aqjcs")
-
-[node name="Achivka" type="Control" parent="Player/Camera3D" unique_id=1769005417]
-process_mode = 3
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Camera3D/Achivka" unique_id=207960605]
-process_mode = 3
-libraries/ = SubResource("AnimationLibrary_js04u")
-
-[node name="Label2" type="Label" parent="Player/Camera3D/Achivka" unique_id=165137819]
-process_mode = 3
-layout_mode = 0
-offset_left = 1205.0
-offset_top = 44.0
-offset_right = 1718.0005
-offset_bottom = 140.0
-text = "ДОСТИЖЕНИЕ!"
-label_settings = SubResource("LabelSettings_24d4k")
-
-[node name="Duhota" type="Control" parent="Player/Camera3D" unique_id=816498100]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("12_rcbt2")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player/Camera3D/Duhota" unique_id=1859108798]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(578.75006, 327)
-scale = Vector2(18.007813, 10.15625)
-texture = SubResource("GradientTexture2D_rcbt2")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Camera3D/Duhota" unique_id=4042519]
-libraries/ = SubResource("AnimationLibrary_24d4k")
-
-[node name="TextureProgressBar2" type="ProgressBar" parent="Player/Camera3D/Duhota" unique_id=480478173]
-layout_mode = 0
-offset_left = 803.0
-offset_top = 603.0
-offset_right = 1129.0
-offset_bottom = 630.0
-max_value = 3000.0
-value = 77.0
-
-[node name="Out" type="Timer" parent="Player/Camera3D/Duhota" unique_id=935101497]
-wait_time = 2.0
-one_shot = true
-
-[node name="In" type="Timer" parent="Player/Camera3D/Duhota" unique_id=54457117]
-wait_time = 2.0
-one_shot = true
-
-[node name="TextureRect" type="TextureRect" parent="Player/Camera3D/Duhota" unique_id=473335840]
-modulate = Color(1, 0, 0, 0.09146944)
-z_index = 3
-layout_direction = 1
-layout_mode = 0
-offset_left = -289.21753
-offset_top = -147.92578
-offset_right = 1443.1527
-offset_bottom = 795.9479
-scale = Vector2(0.98241127, 0.98241127)
-pivot_offset = Vector2(866.1851, 471.93683)
-texture = ExtResource("13_xtx8p")
-stretch_mode = 6
-script = SubResource("GDScript_4nc4p")
-pulse_speed = 1.0
-pulse_depth = 0.0
-base_alpha = 0.0
-
-[node name="Marker3D" type="Marker3D" parent="Player" unique_id=452555931]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0656533, 0)
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Player" unique_id=230893942]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2020961, 0)
-stream = ExtResource("12_w5m4x")
-volume_db = -25.0
-unit_size = 14.85
-max_db = -20.0
-max_distance = 20.0
-panning_strength = 0.7
-bus = &"Effect"
-
-[node name="Area3D" type="Area3D" parent="Player" unique_id=690158965]
-collision_layer = 128
-collision_mask = 128
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Area3D" unique_id=1389635465]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2676587, 0)
-shape = SubResource("CapsuleShape3D_r2crg")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=919561544]
 environment = ExtResource("13_myhle")
@@ -1592,16 +1239,16 @@ label_settings = SubResource("LabelSettings_415sf")
 [node name="Table" parent="Заправка" unique_id=1041556568 instance=ExtResource("19_415sf")]
 
 [node name="Sprite3D" parent="Заправка/Table/Касса/Cofe_machine" parent_id_path=PackedInt32Array(1041556568, 780539148) index="4" unique_id=1361381740]
-texture = SubResource("ViewportTexture_xtx8p")
+texture = SubResource("ViewportTexture_fse4r")
 
 [node name="Sprite3D" parent="Заправка/Table/Касса/Снеки" parent_id_path=PackedInt32Array(1041556568, 1560413509) index="2" unique_id=353422132]
-texture = SubResource("ViewportTexture_4nc4p")
+texture = SubResource("ViewportTexture_yyosc")
 
 [node name="Sprite3D" parent="Заправка/Table/Касса" parent_id_path=PackedInt32Array(1041556568, 806910599) index="6" unique_id=25473584]
-texture = SubResource("ViewportTexture_aqjcs")
+texture = SubResource("ViewportTexture_82sth")
 
 [node name="Sprite3D" parent="Заправка/Table/CSGPolygon3D2" parent_id_path=PackedInt32Array(1041556568, 2106210827) index="1" unique_id=840912229]
-texture = SubResource("ViewportTexture_js04u")
+texture = SubResource("ViewportTexture_w5m4x")
 
 [node name="мусорка" type="Area3D" parent="Заправка" unique_id=289094949]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.182058, 0.12507287, -3.8709977)
@@ -2050,8 +1697,7 @@ affect_navigation_mesh = true
 
 [node name="LineRenderer3D" type="MeshInstance3D" parent="." unique_id=157698636]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, 7.7, 2, -5.5)
-
-mesh = SubResource("ImmediateMesh_24d4k")
+mesh = SubResource("ImmediateMesh_s6jno")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(7.7, 2, -5.5), Vector3(7.7, 2, -5.5)])
@@ -2059,8 +1705,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D2" type="MeshInstance3D" parent="." unique_id=2062067384]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -7.1046586)
-
-mesh = SubResource("ImmediateMesh_r2crg")
+mesh = SubResource("ImmediateMesh_173o4")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -7.1), Vector3(-0.3, 1.9, -7.1)])
@@ -2068,8 +1713,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D3" type="MeshInstance3D" parent="." unique_id=139751098]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -11.084127)
-
-mesh = SubResource("ImmediateMesh_hx20e")
+mesh = SubResource("ImmediateMesh_tsu7c")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -11), Vector3(-0.3, 1.9, -11)])
@@ -2077,8 +1721,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D4" type="MeshInstance3D" parent="." unique_id=1666510536]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, 8, 2, -10.5)
-
-mesh = SubResource("ImmediateMesh_sd30g")
+mesh = SubResource("ImmediateMesh_rcbt2")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(8, 2, -10.5), Vector3(8, 2, -10.5)])
@@ -2134,7 +1777,7 @@ process_mode = 3
 speed_scale = 1.3
 
 [node name="Camera3D" parent="emeny/Настоящий пельмень2" index="7" unique_id=1518745682]
-transform = Transform3D(-0.1083291, -0.36255175, 0.9256462, -0.042142097, 0.93196315, 0.36009437, -0.99322146, 2.607702e-08, -0.11623748, 14.321535, 11.460782, -2.1801574)
+transform = Transform3D(-0.10832911, -0.36255175, 0.9256462, -0.042142097, 0.93196315, 0.36009437, -0.99322146, 2.9802308e-08, -0.116237484, 14.321535, 11.460782, -2.1801574)
 
 [node name="Timer2" type="Timer" parent="." unique_id=2145315828]
 wait_time = 23.0
