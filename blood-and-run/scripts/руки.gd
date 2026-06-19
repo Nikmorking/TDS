@@ -26,6 +26,8 @@ var kol = 0
 func _ready():
 	papa = get_parent()
 	posled_naklon = papa.rotation_degrees.x
+	spawner_hand.spawn_function = _in_hand
+	spawner_ras.spawn_function = _stavit
 	pass # Replace with function body.
 
 var chin = 0
@@ -55,13 +57,9 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_open"):
 		print("click")
 		pr = true
+		obj = $SpringArm3D/Hand.get_child(0)
 		if obj:
-			stavit = [obj.named, obj.global_position]
-			obj.queue_free()
-			spawner = Global.papa.get_node("Расходник-инатор")
-			spawner.spawn_function = _stavit_rashodnic
-			print(spawner.spawn_function)
-			spawner.spawn(stavit)
+			request_spawn_ras_on_server.rpc_id(1, [1,obj.named, obj.global_position])
 			#$Timer.start()
 		else: 
 			if $RayCast3D.is_colliding():
@@ -121,17 +119,6 @@ func instance_na(name: String) -> Object:
 		Global.krest = true
 	return ret_obj
 
-func add_to_hand(name: String):
-	print(name)
-	obj = instance_na(name)
-	if obj:
-		obj.freeze = true
-		obj.position = Vector3.ZERO
-		obj.name = obj.name + str(kol)
-		kol += 1
-		print(obj.get_class())
-		return obj
-	pass
 
 func _process(delta):
 	if zp:
@@ -140,28 +127,9 @@ func _process(delta):
 
 
 var stavit
-@onready var spawner: MultiplayerSpawner = Global.papa.get_node("Расходник-инатор")
+@onready var spawner_ras: MultiplayerSpawner = Global.papa.get_node("Расходник-инатор")
+@onready var spawner_hand: MultiplayerSpawner = get_node("Расходник-инатор")
 var rashodnik: Node3D
-func _stavit_rashodnic(stav:Array):
-	rashodnik = instance_na(stav.get(0))
-	if aim:
-		$SpringArm3D/AnimationPlayer.play("RESET")
-	Global.krest = false
-	rashodnik.position = stav.get(1)
-	rashodnik.freeze = false
-	rashodnik.gravity_scale = 1.4
-	for i in hand_marker.get_children():
-		if i.is_class("RigidBody3D"):
-			i.queue_free()
-	var coll: CollisionShape3D = rashodnik.get_node("Coll")
-	coll.disabled = false
-	rashodnik.rotation = get_parent().rotation
-	if rashodnik.named == "Krest":
-				rashodnik.get_node("Time").start()
-	rashodnik.look_at(Global.player.position)
-	rashodnik.rotation.x = 0
-	rashodnik.rotation.z = 0
-	return rashodnik
 
 func fnc_zp():
 	if zp_in:
@@ -207,7 +175,7 @@ func _colling():
 					var kasa = col.get_parent()
 					if col.name == "Stakan":
 						if kasa.kol_stakan > 0:
-							add_to_hand("Stakan")
+							request_spawn_hand_on_server.rpc_id(1, "Stakan")
 							kasa.vzat_stakan()
 							kasa.vis_stakan()
 					elif col.name == "Календарь":
@@ -233,11 +201,11 @@ func _colling():
 							kasa.sel("Нет кофе")
 						if kasa.cofe_gotova:
 							kasa.cofe_gotova = false
-							add_to_hand("Stakan_cofe")
+							request_spawn_hand_on_server.rpc_id(1, "Stakan_cofe")
 							kasa.sel(str(kasa.cofe)+"/10")
 					elif col.name == "Снеки":
 						if kasa.snacks > 0:
-							add_to_hand("snack")
+							request_spawn_hand_on_server.rpc_id(1, "snack")
 							kasa.snacks -= 1
 							kasa.set_snack()
 					elif col.name == "schitok":
@@ -245,13 +213,11 @@ func _colling():
 						is_rem = true
 				elif col.is_class("RigidBody3D"):
 					if !col.freeze:
-						add_to_hand(col.named)
+						spawner_hand.spawn(col.named)
 						if col.get_parent().name == "Расходники":
-							col.queue_free()
+							Global.papa.destroy_col.rpc(col.name)
 				elif Global.papa.get_node("Расходники").get_children().size() < col_rashod:
-					spawner = get_node("Расходник-инатор")
-					spawner.spawn_function = add_to_hand
-					spawner.spawn(col.name)
+					spawner_hand.spawn(col.name)
 					#add_to_hand(col.name)
 					print(col.get_parent())
 					if Global.get_papa(2, col).name == "Ящики":
@@ -281,15 +247,46 @@ func _on_animation_player_animation_finished(anim_name):
 	pass # Replace with function body.
 
 
-func _on_timer_timeout():
-	spawner = Global.papa.get_node("Расходник-инатор")
-	spawner.spawn_function = _stavit_rashodnic
-	print(spawner.spawn_function)
-	spawner.spawn(stavit)
-	pass # Replace with function body.
+func _stavit(stav):
+	var node: Node3D = instance_na(stav.get(1))
+	node.global_position = stav.get(2)
+	if aim:
+		$SpringArm3D/AnimationPlayer.play("RESET")
+	Global.krest = false
+	node.freeze = false
+	node.gravity_scale = 1.4
+	for i in hand_marker.get_children():
+		if i.is_class("RigidBody3D"):
+			i.queue_free()
+	var coll: CollisionShape3D = node.get_node("Coll")
+	coll.disabled = false
+	node.rotation = get_parent().rotation
+	if node.named == "Krest":
+				node.get_node("Time").start()
+	if Global.player: node.look_at(Global.player.position)
+	node.rotation.x = 0
+	node.rotation.z = 0
+	return node
 
+func _in_hand(data):
+	var item_name = data
+	var node = instance_na(item_name)
+	print(data)
+	if node:
+		node.position = Vector3.ZERO
+		node.name = node.name + str(kol)
+		kol += 1
+		print(node.get_class())
+		return node
+	return node
 
+@rpc("any_peer", "call_local")
+func request_spawn_hand_on_server(stav):
+	if multiplayer.is_server():
+		spawner_hand.spawn(stav)
 
-func _on_расходникинатор_despawned(node):
-	node.queue_free()
-	pass # Replace with function body.
+@rpc("any_peer", "call_local")
+func request_spawn_ras_on_server(stav):
+	if multiplayer.is_server():
+		spawner_ras.spawn(stav)
+		

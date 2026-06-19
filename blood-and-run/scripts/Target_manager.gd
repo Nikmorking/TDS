@@ -116,3 +116,8 @@ func _on_driving_in_my_car_end_put():
 		$"driving in my car".n = 2
 		rand = false
 	pass # Replace with function body.
+
+@rpc("any_peer", "call_local")
+func destroy_col(col):
+	print(col)
+	$"Расходники".get_node(str(col)).queue_free()
