@@ -638,6 +638,18 @@ properties/1/replication_mode = 2
 properties/2/path = NodePath("Camera3D:rotation")
 properties/2/spawn = true
 properties/2/replication_mode = 2
+properties/3/path = NodePath("Camera3D/руки:position")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("Camera3D/руки/SpringArm3D:position")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("Camera3D/руки/SpringArm3D/Hand:position")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath("Camera3D:position")
+properties/6/spawn = true
+properties/6/replication_mode = 1
 
 [node name="Player" type="CharacterBody3D" unique_id=565194940]
 collision_layer = 4097
@@ -762,8 +774,8 @@ wait_time = 0.05
 one_shot = true
 
 [node name="Расходник-инатор" type="MultiplayerSpawner" parent="Camera3D/руки" unique_id=462099619]
-_spawnable_scenes = PackedStringArray("uid://cymwf4jdrq86o", "uid://cbe6pu0sxv4kl", "uid://caro2nfx5s3ln", "uid://d3rabg2sk7hno", "uid://ehio2k2chdj4", "uid://dsl0h8dye8dkr", "uid://djbnqo186r3wp", "uid://djscstv0lleby")
 spawn_path = NodePath("../SpringArm3D/Hand")
+spawn_limit = 100
 
 [node name="Menu" type="Control" parent="Camera3D" unique_id=1081682958]
 process_mode = 3
@@ -1013,7 +1025,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9224982, -0.24598062)
 [connection signal="timeout" from="Camera3D/game_ui/Timer" to="Camera3D/game_ui" method="_on_timer_timeout"]
 [connection signal="animation_finished" from="Camera3D/руки/SpringArm3D/AnimationPlayer" to="Camera3D/руки" method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Camera3D/руки/Timer" to="Camera3D/руки" method="_on_timer_timeout"]
-[connection signal="spawned" from="Camera3D/руки/Расходник-инатор" to="Camera3D/руки" method="_on_расходникинатор_spawned"]
 [connection signal="button_down" from="Camera3D/Menu/continue" to="Camera3D/Menu" method="_on_continue_button_down"]
 [connection signal="focus_entered" from="Camera3D/Menu/continue" to="Camera3D/Menu" method="focus_entered"]
 [connection signal="button_down" from="Camera3D/Menu/Settings" to="Camera3D/Menu" method="_on_settings_button_down"]

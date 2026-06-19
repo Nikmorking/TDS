@@ -20,11 +20,10 @@ func _input(event: InputEvent) -> void:
 			if not is_multiplayer_authority():
 				return # Если это сетевой клон чужого игрока, полностью игнорируем нажатие
 		if !Global.isOnMenu:
-			get_tree().paused = true
+			#get_tree().paused = true
 			Global.isOnMenu = true
 			$Open.play()
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			get_tree().paused = true 
 			#$CharacterBody3D.velocity = Vector3(0, 0, 0)
 			get_parent().get_node("game_ui").hide()
 			show()

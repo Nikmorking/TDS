@@ -56,7 +56,13 @@ func _input(event):
 		print("click")
 		pr = true
 		if obj:
-			_stavit_rashodnic()
+			stavit = [obj.named, obj.global_position]
+			obj.queue_free()
+			spawner = Global.papa.get_node("Расходник-инатор")
+			spawner.spawn_function = _stavit_rashodnic
+			print(spawner.spawn_function)
+			spawner.spawn(stavit)
+			#$Timer.start()
 		else: 
 			if $RayCast3D.is_colliding():
 				_colling()
@@ -122,9 +128,9 @@ func add_to_hand(name: String):
 		obj.freeze = true
 		obj.position = Vector3.ZERO
 		obj.name = obj.name + str(kol)
-		hand_marker.add_child(obj)
 		kol += 1
 		print(obj.get_class())
+		return obj
 	pass
 
 func _process(delta):
@@ -133,22 +139,29 @@ func _process(delta):
 	pass
 
 
+var stavit
+@onready var spawner: MultiplayerSpawner = Global.papa.get_node("Расходник-инатор")
 var rashodnik: Node3D
-func _stavit_rashodnic():
-			if aim:
-				$SpringArm3D/AnimationPlayer.play("RESET")
-			rashodnik = instance_na(obj.named)
-			Global.krest = false
-			rashodnik.position = obj.global_position 
-			rashodnik.freeze = false
-			rashodnik.gravity_scale = 1.4
-			for i in hand_marker.get_children():
-				if i.is_class("RigidBody3D"):
-					i.queue_free()
-			var coll: CollisionShape3D = rashodnik.get_node("Coll")
-			coll.disabled = false
-			rashodnik.rotation = get_parent().rotation
-			$Timer.start()
+func _stavit_rashodnic(stav:Array):
+	rashodnik = instance_na(stav.get(0))
+	if aim:
+		$SpringArm3D/AnimationPlayer.play("RESET")
+	Global.krest = false
+	rashodnik.position = stav.get(1)
+	rashodnik.freeze = false
+	rashodnik.gravity_scale = 1.4
+	for i in hand_marker.get_children():
+		if i.is_class("RigidBody3D"):
+			i.queue_free()
+	var coll: CollisionShape3D = rashodnik.get_node("Coll")
+	coll.disabled = false
+	rashodnik.rotation = get_parent().rotation
+	if rashodnik.named == "Krest":
+				rashodnik.get_node("Time").start()
+	rashodnik.look_at(Global.player.position)
+	rashodnik.rotation.x = 0
+	rashodnik.rotation.z = 0
+	return rashodnik
 
 func fnc_zp():
 	if zp_in:
@@ -207,7 +220,7 @@ func _colling():
 							kalendar = 0
 					elif col.name == "Бак" and zp:
 						col.get_node("Au").play()
-						Global.get_papa(3, self).zaprav()
+						Global.papa.zaprav()
 						print(Global.get_papa(3, self), "zzz")
 					elif col.name == "Cofe_machine":
 						if kasa.cofe > 0:
@@ -236,7 +249,10 @@ func _colling():
 						if col.get_parent().name == "Расходники":
 							col.queue_free()
 				elif Global.papa.get_node("Расходники").get_children().size() < col_rashod:
-					add_to_hand(col.name)
+					spawner = get_node("Расходник-инатор")
+					spawner.spawn_function = add_to_hand
+					spawner.spawn(col.name)
+					#add_to_hand(col.name)
 					print(col.get_parent())
 					if Global.get_papa(2, col).name == "Ящики":
 						col.get_parent().get_node("AudioStreamPlayer3D").play()
@@ -266,18 +282,12 @@ func _on_animation_player_animation_finished(anim_name):
 
 
 func _on_timer_timeout():
-	Global.papa.get_node("Расходники").add_child(rashodnik)
-	if rashodnik.named == "Krest":
-				rashodnik.get_node("Time").start()
-	rashodnik.look_at(Global.player.position)
-	rashodnik.rotation.x = 0
-	rashodnik.rotation.z = 0
+	spawner = Global.papa.get_node("Расходник-инатор")
+	spawner.spawn_function = _stavit_rashodnic
+	print(spawner.spawn_function)
+	spawner.spawn(stavit)
 	pass # Replace with function body.
 
-
-func _on_расходникинатор_spawned(node):
-	$SpringArm3D/Hand.add_child(node)
-	pass # Replace with function body.
 
 
 func _on_расходникинатор_despawned(node):

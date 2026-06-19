@@ -5,7 +5,7 @@ var mp_mode: String = ""
 var player: Node3D
 var isOnMenu = false
 var fara_days = 1
-@onready var papa = get_tree().root.get_node("Node3D")
+var papa
 var zp = 0
 var is_load = false
 var lela = true

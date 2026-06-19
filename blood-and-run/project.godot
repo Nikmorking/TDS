@@ -28,7 +28,6 @@ Multiplayer="*uid://7frxd1y33wmr"
 
 [display]
 
-window/size/mode=4
 window/size/initial_position_type=0
 window/stretch/mode="canvas_items"
 

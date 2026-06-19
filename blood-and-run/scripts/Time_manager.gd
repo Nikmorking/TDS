@@ -58,8 +58,8 @@ func _on_tick_timeout():
 func _end_day():
 	Global.fara_days += 1
 	Global.lela = true
-	$Player/Camera3D/end_day/Label1.text = str(Global.fara_days)
-	$Player/Camera3D/end_day/AnimationPlayer.play("End_day")
+	Global.player.get_node("Camera3D/end_day/Label1").text = str(Global.fara_days)
+	Global.player.get_node("Camera3D/end_day/AnimationPlayer").play("End_day")
 	start_day = true
 	rand = true
 	proshlo = 0

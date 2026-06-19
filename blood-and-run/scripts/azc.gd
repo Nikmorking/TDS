@@ -128,6 +128,7 @@ func _on_multiplayer_spawner_spawned(node):
 
 func _on_расходникинатор_spawned(node):
 	$"Расходники".add_child(node)
+	print(node)
 	pass # Replace with function body.
 
 
