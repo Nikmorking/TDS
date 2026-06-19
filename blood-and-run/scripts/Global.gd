@@ -29,10 +29,10 @@ func light_off():
 		papa.c.volumetric_fog_emission = Color(0.139, 0.0, 0.081, 1.0)
 
 func _input(event):
-	if Input.is_action_just_pressed("ui_copy"):
-		save()
-	if Input.is_action_just_pressed("ui_paste"):
-		load_game()
+	#if Input.is_action_just_pressed("ui_copy"):
+		#save()
+	#if Input.is_action_just_pressed("ui_paste"):
+		#load_game()
 	pass
 
 

@@ -4,6 +4,7 @@ class_name Stakanchiki
 @export var named:String
 var play = true
 
+
 func _ready():
 	if !Global.krest_pos:
 		Global.krest_pos = position

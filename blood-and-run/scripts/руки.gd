@@ -59,6 +59,7 @@ func _input(event):
 		pr = true
 		obj = $SpringArm3D/Hand.get_child(0)
 		if obj:
+			await get_tree().create_timer(0.05).timeout
 			request_spawn_ras_on_server.rpc_id(1, [1,obj.named, obj.global_position])
 			#$Timer.start()
 		else: 
@@ -213,6 +214,7 @@ func _colling():
 						is_rem = true
 				elif col.is_class("RigidBody3D"):
 					if !col.freeze:
+						await get_tree().create_timer(0.05).timeout
 						spawner_hand.spawn(col.named)
 						if col.get_parent().name == "Расходники":
 							Global.papa.destroy_col.rpc(col.name)
@@ -275,6 +277,7 @@ func _in_hand(data):
 	if node:
 		node.position = Vector3.ZERO
 		node.name = node.name + str(kol)
+		node.freeze = true
 		kol += 1
 		print(node.get_class())
 		return node
@@ -288,5 +291,6 @@ func request_spawn_hand_on_server(stav):
 @rpc("any_peer", "call_local")
 func request_spawn_ras_on_server(stav):
 	if multiplayer.is_server():
+		$SpringArm3D/Hand.get_child(0).queue_free()
 		spawner_ras.spawn(stav)
 		
