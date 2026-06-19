@@ -228,6 +228,9 @@ _data = {
 &"RESET": SubResource("Animation_myhle")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_jej6c"]
+font_size = 32
+
 [sub_resource type="LabelSettings" id="LabelSettings_xtx8p"]
 font_size = 126
 
@@ -758,6 +761,10 @@ libraries/ = SubResource("AnimationLibrary_tsu7c")
 wait_time = 0.05
 one_shot = true
 
+[node name="Расходник-инатор" type="MultiplayerSpawner" parent="Camera3D/руки" unique_id=462099619]
+_spawnable_scenes = PackedStringArray("uid://cymwf4jdrq86o", "uid://cbe6pu0sxv4kl", "uid://caro2nfx5s3ln", "uid://d3rabg2sk7hno", "uid://ehio2k2chdj4", "uid://dsl0h8dye8dkr", "uid://djbnqo186r3wp", "uid://djscstv0lleby")
+spawn_path = NodePath("../SpringArm3D/Hand")
+
 [node name="Menu" type="Control" parent="Camera3D" unique_id=1081682958]
 process_mode = 3
 visible = false
@@ -859,6 +866,14 @@ min_value = 0.1
 max_value = 1.0
 step = 0.05
 value = 0.30000000000000004
+
+[node name="Label" type="Label" parent="Camera3D/Menu" unique_id=1824905119]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 82.0
+offset_right = 319.0
+offset_bottom = 127.0
+label_settings = SubResource("LabelSettings_jej6c")
 
 [node name="end_day" type="Control" parent="Camera3D" unique_id=932247834]
 modulate = Color(1, 1, 1, 0)
@@ -992,9 +1007,13 @@ replication_config = SubResource("SceneReplicationConfig_xtx8p")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.020874023, 1.4732308, 0.04522252)
 height = 1.6833496
 
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCylinder3D" unique_id=17516597]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9224982, -0.24598062)
+
 [connection signal="timeout" from="Camera3D/game_ui/Timer" to="Camera3D/game_ui" method="_on_timer_timeout"]
 [connection signal="animation_finished" from="Camera3D/руки/SpringArm3D/AnimationPlayer" to="Camera3D/руки" method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Camera3D/руки/Timer" to="Camera3D/руки" method="_on_timer_timeout"]
+[connection signal="spawned" from="Camera3D/руки/Расходник-инатор" to="Camera3D/руки" method="_on_расходникинатор_spawned"]
 [connection signal="button_down" from="Camera3D/Menu/continue" to="Camera3D/Menu" method="_on_continue_button_down"]
 [connection signal="focus_entered" from="Camera3D/Menu/continue" to="Camera3D/Menu" method="focus_entered"]
 [connection signal="button_down" from="Camera3D/Menu/Settings" to="Camera3D/Menu" method="_on_settings_button_down"]
@@ -1008,3 +1027,5 @@ height = 1.6833496
 [connection signal="animation_finished" from="Camera3D/end_day/AnimationPlayer" to="Camera3D/end_day/AnimationPlayer" method="_on_day_finished"]
 [connection signal="timeout" from="Camera3D/Duhota/Out" to="Camera3D/Duhota" method="_on_out_timeout"]
 [connection signal="timeout" from="Camera3D/Duhota/In" to="Camera3D/Duhota" method="_on_in_timeout"]
+[connection signal="area_entered" from="Area3D" to="Camera3D/руки" method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Area3D" to="Camera3D/руки" method="_on_area_3d_area_exited"]

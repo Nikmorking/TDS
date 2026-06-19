@@ -16,6 +16,17 @@ albedo_texture = ExtResource("2_kuua7")
 [sub_resource type="BoxShape3D" id="BoxShape3D_kuua7"]
 size = Vector3(1.7078247, 0.9707184, 0.96469116)
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_m3jal"]
+properties/0/path = NodePath(".:freeze")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
 [node name="pachka_snackov" type="RigidBody3D" unique_id=1350055056]
 collision_layer = 6
 collision_mask = 6
@@ -52,6 +63,9 @@ collision_layer = 0
 [node name="Coll" type="CollisionShape3D" parent="Area3D" unique_id=137741628]
 transform = Transform3D(1, 0, 0, 0, 0.0016755613, 0.99999857, 0, -0.99999857, 0.0016755613, 0.28171378, -0.042337075, -0.0458712)
 shape = SubResource("BoxShape3D_kuua7")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=2128862045]
+replication_config = SubResource("SceneReplicationConfig_m3jal")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

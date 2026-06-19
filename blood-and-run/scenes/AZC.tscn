@@ -564,13 +564,13 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Arr
 geometry_parsed_geometry_type = 0
 agent_radius = 1.3
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_s6jno"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_fse4r"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_173o4"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_415sf"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_tsu7c"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_myhle"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_rcbt2"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_1huwv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wlgop"]
 radius = 5.330078
@@ -1697,7 +1697,7 @@ affect_navigation_mesh = true
 
 [node name="LineRenderer3D" type="MeshInstance3D" parent="." unique_id=157698636]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, 7.7, 2, -5.5)
-mesh = SubResource("ImmediateMesh_s6jno")
+mesh = SubResource("ImmediateMesh_fse4r")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(7.7, 2, -5.5), Vector3(7.7, 2, -5.5)])
@@ -1705,7 +1705,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D2" type="MeshInstance3D" parent="." unique_id=2062067384]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -7.1046586)
-mesh = SubResource("ImmediateMesh_173o4")
+mesh = SubResource("ImmediateMesh_415sf")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -7.1), Vector3(-0.3, 1.9, -7.1)])
@@ -1713,7 +1713,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D3" type="MeshInstance3D" parent="." unique_id=139751098]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -11.084127)
-mesh = SubResource("ImmediateMesh_tsu7c")
+mesh = SubResource("ImmediateMesh_myhle")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -11), Vector3(-0.3, 1.9, -11)])
@@ -1721,7 +1721,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D4" type="MeshInstance3D" parent="." unique_id=1666510536]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, 8, 2, -10.5)
-mesh = SubResource("ImmediateMesh_rcbt2")
+mesh = SubResource("ImmediateMesh_1huwv")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(8, 2, -10.5), Vector3(8, 2, -10.5)])
@@ -2026,6 +2026,10 @@ _spawnable_scenes = PackedStringArray("uid://b4o5se6ydd01k")
 spawn_path = NodePath("../cont_players")
 spawn_limit = 4
 
+[node name="Расходник-инатор" type="MultiplayerSpawner" parent="." unique_id=32829088]
+_spawnable_scenes = PackedStringArray("uid://cymwf4jdrq86o", "uid://cbe6pu0sxv4kl", "uid://caro2nfx5s3ln", "uid://d3rabg2sk7hno", "uid://ehio2k2chdj4", "uid://dsl0h8dye8dkr", "uid://djbnqo186r3wp", "uid://djscstv0lleby")
+spawn_path = NodePath("../Расходники")
+
 [connection signal="_open" from="Заправка/Door2" to="." method="_on_door_2__open"]
 [connection signal="body_entered" from="Заправка/мусорка" to="Заправка/мусорка" method="_on_body_entered"]
 [connection signal="body_entered" from="Тум-тум-туманище/Area3D" to="Тум-тум-туманище" method="_on_area_3d_body_entered"]
@@ -2046,6 +2050,7 @@ spawn_limit = 4
 [connection signal="timeout" from="Proshlo" to="." method="_on_proshlo_timeout"]
 [connection signal="timeout" from="Timer4" to="." method="die_part2"]
 [connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
+[connection signal="spawned" from="Расходник-инатор" to="." method="_on_расходникинатор_spawned"]
 
 [editable path="Заправка/Table"]
 [editable path="emeny/Настоящий пельмень2"]

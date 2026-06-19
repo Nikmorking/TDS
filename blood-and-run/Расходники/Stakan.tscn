@@ -16,9 +16,20 @@ radius = 0.23095703
 radius = 0.25927734
 height = 0.6845625
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5pj2o"]
+properties/0/path = NodePath(".:freeze")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
 [node name="Stakan" type="RigidBody3D" unique_id=1350055056]
-collision_layer = 6
-collision_mask = 6
+collision_layer = 8198
+collision_mask = 8198
 mass = 1000.0
 physics_material_override = SubResource("PhysicsMaterial_t61dd")
 gravity_scale = 0.0
@@ -50,6 +61,9 @@ shape = SubResource("CapsuleShape3D_qasdk")
 transform = Transform3D(15, 0, 0, 0, -6.556708e-07, 13, 0, -15, -5.68248e-07, -0.06131333, 0.1080547, -0.21682788)
 material_override = ExtResource("3_5pj2o")
 mesh = ExtResource("4_qg681")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1357403286]
+replication_config = SubResource("SceneReplicationConfig_5pj2o")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

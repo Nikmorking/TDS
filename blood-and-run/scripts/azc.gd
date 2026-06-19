@@ -21,6 +21,11 @@ func _ready():
 		Multiplayer.start_host()
 	elif Global.mp_mode == "join":
 		Multiplayer.start_join()
+	else:
+		Global.papa = self
+		var player_instance = load("res://scenes/player.tscn").instantiate()
+		$cont_players.add_child(player_instance)
+		Global.player = player_instance
 	print(Global.is_load)
 	if Global.is_load:
 		Global.load_game()
@@ -118,4 +123,14 @@ func die_part2():
 
 func _on_multiplayer_spawner_spawned(node):
 	Multiplayer._on_player_spawned(node)
+	pass # Replace with function body.
+
+
+func _on_расходникинатор_spawned(node):
+	$"Расходники".add_child(node)
+	pass # Replace with function body.
+
+
+func _on_расходникинатор_despawned(node):
+	node.queue_free()
 	pass # Replace with function body.

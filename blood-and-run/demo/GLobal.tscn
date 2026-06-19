@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dkq8oyckijb85"]
+
+[ext_resource type="Script" uid="uid://cf612yait5ek5" path="res://scripts/Global.gd" id="1_6qr2i"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_xryjb"]
+
+[node name="GLobal" type="Node" unique_id=512155429]
+script = ExtResource("1_6qr2i")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=233951540]
+replication_config = SubResource("SceneReplicationConfig_xryjb")

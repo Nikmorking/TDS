@@ -53,7 +53,11 @@ func _on_quit__button_down():
 
 func _on_host_button_down():
 	Global.igra = true
-	Global.mp_mode = \"host\" # Запоминаем, что мы сервер
+	print($CheckButton.button_pressed)
+	if $CheckButton.button_pressed:
+		Global.mp_mode = \"host\" # Запоминаем, что мы сервер
+	else:
+		Global.mp_mode = \"offline\"
 	get_tree().change_scene_to_file(\"res://scenes/AZC.tscn\")
 
 func _on_join_button_down():
@@ -205,6 +209,9 @@ _data = {
 
 [sub_resource type="LabelSettings" id="LabelSettings_k41st"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_1lgq4"]
+font_size = 32
+
 [node name="MainMenu" type="Control" unique_id=1526012947]
 layout_mode = 3
 anchors_preset = 15
@@ -350,6 +357,23 @@ offset_right = 229.0
 offset_bottom = 57.0
 text = "<- сюда ip"
 label_settings = SubResource("LabelSettings_k41st")
+
+[node name="Label" type="Label" parent="." unique_id=1263429871]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 203.0
+offset_right = 300.0
+offset_bottom = 248.0
+text = "Multiplayer"
+label_settings = SubResource("LabelSettings_1lgq4")
+
+[node name="CheckButton" type="CheckButton" parent="." unique_id=2065726852]
+layout_mode = 0
+offset_left = 315.0
+offset_top = 218.0
+offset_right = 359.0
+offset_bottom = 242.0
+scale = Vector2(1.5, 1.5)
 
 [connection signal="button_down" from="Cont" to="." method="_on_cont_button_down"]
 [connection signal="button_down" from="Start" to="." method="_on_start_button_down"]

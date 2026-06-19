@@ -47,6 +47,9 @@ func _on_timer_3_timeout() -> void:
 		pass # Replace with function body.
 
 func _input(event):
+	if Global.mp_mode != "offline" and multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.CONNECTION_CONNECTED:
+			if not is_multiplayer_authority():
+				return # Если это сетевой клон чужого игрока, полностью игнорируем нажатие
 	if Input.is_action_just_released("ui_open"):
 		pr = false
 	if Input.is_action_just_pressed("ui_open"):
@@ -150,16 +153,16 @@ func _stavit_rashodnic():
 func fnc_zp():
 	if zp_in:
 		if $RayCast3D.get_collider().name == "ZP1":
-			points = $"../../../LineRenderer3D".points
+			points = Global.papa.get_node("LineRenderer3D").points
 			$RayCast3D.get_collider().get_parent().get_node("AudioStreamPlayer3D").play()
 		if $RayCast3D.get_collider().name == "ZP2":
-			points = $"../../../LineRenderer3D2".points
+			points = Global.papa.get_node("LineRenderer3D2").points
 			$RayCast3D.get_collider().get_parent().get_node("AudioStreamPlayer3D").play()
 		if $RayCast3D.get_collider().name == "ZP3":
-			points = $"../../../LineRenderer3D3".points
+			points = Global.papa.get_node("LineRenderer3D3").points
 			$RayCast3D.get_collider().get_parent().get_node("AudioStreamPlayer3D").play()
 		if $RayCast3D.get_collider().name == "ZP4":
-			points = $"../../../LineRenderer3D4".points
+			points = Global.papa.get_node("LineRenderer3D4").points
 			$RayCast3D.get_collider().get_parent().get_node("AudioStreamPlayer3D").play()
 		if !zp:
 			zp = true
@@ -225,13 +228,14 @@ func _colling():
 							kasa.snacks -= 1
 							kasa.set_snack()
 					elif col.name == "schitok":
-						$"../../../Timer3".start()
+						Global.papa.get_node("Timer3").start()
 						is_rem = true
 				elif col.is_class("RigidBody3D"):
-					add_to_hand(col.named)
-					if col.get_parent().name == "Расходники":
-						col.queue_free()
-				elif $"../../../Расходники".get_children().size() < col_rashod:
+					if !col.freeze:
+						add_to_hand(col.named)
+						if col.get_parent().name == "Расходники":
+							col.queue_free()
+				elif Global.papa.get_node("Расходники").get_children().size() < col_rashod:
 					add_to_hand(col.name)
 					print(col.get_parent())
 					if Global.get_papa(2, col).name == "Ящики":
@@ -268,4 +272,14 @@ func _on_timer_timeout():
 	rashodnik.look_at(Global.player.position)
 	rashodnik.rotation.x = 0
 	rashodnik.rotation.z = 0
+	pass # Replace with function body.
+
+
+func _on_расходникинатор_spawned(node):
+	$SpringArm3D/Hand.add_child(node)
+	pass # Replace with function body.
+
+
+func _on_расходникинатор_despawned(node):
+	node.queue_free()
 	pass # Replace with function body.

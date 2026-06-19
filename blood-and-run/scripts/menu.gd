@@ -16,15 +16,23 @@ func _on_continue_button_down() -> void:
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_released("Escape") and Global.igra:
+		if Global.mp_mode != "offline" and multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.CONNECTION_CONNECTED:
+			if not is_multiplayer_authority():
+				return # Если это сетевой клон чужого игрока, полностью игнорируем нажатие
 		if !Global.isOnMenu:
+			get_tree().paused = true
 			Global.isOnMenu = true
 			$Open.play()
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			get_tree().paused = true 
 			#$CharacterBody3D.velocity = Vector3(0, 0, 0)
 			get_parent().get_node("game_ui").hide()
 			show()
 			get_node("AnimationPlayer").play("Open")
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			get_tree().paused = true
+			if  Global.mp_mode != "offline":
+				$Label.text = "Сервер запущен"
+			else:
+				$Label.text = "Сервер не запущен"
 		else:
 			cont()
 

@@ -75,10 +75,10 @@ func _on_proshlo_timeout():
 	print(proshlo)
 	if proshlo %15 == 0 and !start_day:
 			min +=5
-			$Player/Camera3D/game_ui/time/Label4.text = str(min)
+			Global.player.get_node("Camera3D/game_ui/time/Label4").text = str(min)
 			if min %6 == 0:
 				chas +=1
-				$Player/Camera3D/game_ui/time/Label2.text = str(chas)
-				$Player/Camera3D/game_ui/time/Label4.text = "00"
+				Global.player.get_node("Camera3D/game_ui/time/Label2").text = str(chas)
+				Global.player.get_node("Camera3D/game_ui/time/Label4").text = "00"
 				min = 0
 	pass # Replace with function body.

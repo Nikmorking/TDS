@@ -16,7 +16,7 @@ var run = false
 
 
 func _ready() -> void:
-	if multiplayer.multiplayer_peer and multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.CONNECTION_CONNECTED:
+	if Global.mp_mode != "offline" and multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.CONNECTION_CONNECTED:
 		# Если этот персонаж чужой для данного окна
 		if not is_multiplayer_authority():
 			# Полностью отключаем у него считывание встроенного ввода
@@ -29,6 +29,7 @@ func _ready() -> void:
 	# Код, который выполнится ТОЛЬКО для вашего родного персонажа:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	Global.player = self
+	position = Vector3(-21,2.5,0)
 	if has_node("Camera3D"):
 		$Camera3D.current = true
 
@@ -86,7 +87,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func _input(event):
-	if multiplayer.multiplayer_peer and multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.CONNECTION_CONNECTED:
+	if Global.mp_mode != "offline" and multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.CONNECTION_CONNECTED:
 		if not is_multiplayer_authority():
 			return
 	if event is InputEventMouseMotion and !Global.isOnMenu:
@@ -137,7 +138,8 @@ func _on_door_2__player_out():
 
 
 func _enter_tree() -> void:
-	if multiplayer.multiplayer_peer and multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.CONNECTION_CONNECTED:
+	print(multiplayer.multiplayer_peer)
+	if Global.mp_mode != "offline" and multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.CONNECTION_CONNECTED:
 		var current_node_name = name
 		var target_id = 1 # По умолчанию сервер
 		
@@ -164,7 +166,6 @@ func _enter_tree() -> void:
 		
 		if not is_multiplayer_authority():
 			if has_node("Camera3D"):
-				$Camera3D.current = false # Принудительно гасим чужую камеру
-				$Camera3D.queue_free()    # Или полностью удаляем её из нашей сцены, чтобы она никогда не перехватила экран
+				$Camera3D.current = false # Принудительно гасим чужую камеру чтобы она никогда не перехватила экран
 		
 		print("ЛОГ: Узел [", current_node_name, "] привязан к ID: ", target_id, ". Моё окно: ", multiplayer.get_unique_id(), ". Права совпали? ", is_multiplayer_authority())

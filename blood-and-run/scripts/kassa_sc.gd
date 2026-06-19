@@ -36,6 +36,13 @@ func statan_voshol(body: Node3D):
 		for i in $CSGCylinder3D.get_children():
 			i.show()
 		vis_stakan()
+	if body.named == "Stakan" and kol_stakan != 5 and !body.freeze:
+		print("staklam")
+		body.queue_free()
+		kol_stakan += 1
+		vis_stakan()
+		$Stakan.position.y += 0.3
+		$CSGCylinder3D.get_child(kol_stakan-1).show()
 	pass # Replace with function body.
 
 func vis_stakan():
@@ -106,7 +113,7 @@ func load_var(data):
 	sel(str(cofe)+"/10")
 	if kol_stakan >0:
 		$CSGCylinder3D.show()
-		$Stakan.position.y -= 0.3 * kol_stakan
+		$Stakan.position.y = 1
 		var st = $CSGCylinder3D.get_children()
 		for i in kol_stakan:
 			st.get(i).show()

@@ -10,9 +10,9 @@ func _run_pl():
 			if Global.krest:
 				$emeny.navigation_agent.path_desired_distance = 1.5
 				$emeny.navigation_agent.target_desired_distance = 1.5
-				$emeny.movement_target_position = $"Player/Camera3D/руки".obj.get_node("Marker").global_position
+				$emeny.movement_target_position = Global.player.get_node("Camera3D/руки").obj.get_node("Marker").global_position
 			else:
-				$emeny.movement_target_position = $Player.global_position
+				$emeny.movement_target_position = Global.player.global_position
 			$emeny.actor_setup()
 			$emeny.start = true
 			$emeny/Timer.start()

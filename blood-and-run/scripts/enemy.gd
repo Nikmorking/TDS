@@ -19,7 +19,6 @@ func _physics_process(delta):
 
 
 func _on_timer_timeout():
-	Global.get_player()
 	get_parent()._run_pl()
 	#movement_target_position =Krest Global.player.global_position
 	#if get_parent().get_node("Расходники").get_child(0):
