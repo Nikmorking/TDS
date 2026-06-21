@@ -12,6 +12,7 @@ var Check_boxes:Array
 var zakaz:Array
 var y_kassu = false
 
+@rpc("any_peer", "call_local")
 func vupoln(i:String):
 	get_node("No_human/Good").play()
 	var chexk: CheckBox = Check_boxes[zakaz.find(i)]
@@ -50,11 +51,12 @@ func next():
 		$No_human.actor_setup()
 	pass # Replace with function body.
 
+@rpc("any_peer", "call_local")
 func zaprav():
 	print(zakaz)
 	print(zakaz.find("Zapravka") != -1)
 	if zakaz.find("Zapravka") != -1:
-		vupoln("Zapravka")
+		vupoln.rpc("Zapravka")
 		print(zakaz)
 		if 0 == zakaz.size():
 			Global.zp += 1

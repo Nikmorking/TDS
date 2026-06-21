@@ -57,10 +57,10 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_open"):
 		print("click")
 		pr = true
-		obj = $SpringArm3D/Hand.get_child(0)
+		if $SpringArm3D/Hand.get_child_count() == 1: obj = $SpringArm3D/Hand.get_child(0)
 		if obj:
 			await get_tree().create_timer(0.05).timeout
-			request_spawn_ras_on_server.rpc_id(1, [1,obj.named, obj.global_position])
+			request_spawn_ras_on_server.rpc_id(1, [obj.named, obj.global_position])
 			#$Timer.start()
 		else: 
 			if $RayCast3D.is_colliding():
@@ -121,7 +121,7 @@ func instance_na(name: String) -> Object:
 	return ret_obj
 
 
-func _process(delta):
+func _physics_process(delta):
 	if zp:
 		points.set(1, global_position)
 	pass
@@ -176,9 +176,8 @@ func _colling():
 					var kasa = col.get_parent()
 					if col.name == "Stakan":
 						if kasa.kol_stakan > 0:
-							request_spawn_hand_on_server.rpc_id(1, "Stakan")
-							kasa.vzat_stakan()
-							kasa.vis_stakan()
+							add_in_hand.rpc("Stakan")
+							kasa.vzat_stakan.rpc()
 					elif col.name == "Календарь":
 						kalendar += 1
 						if kalendar == 6:
@@ -189,7 +188,7 @@ func _colling():
 							kalendar = 0
 					elif col.name == "Бак" and zp:
 						col.get_node("Au").play()
-						Global.papa.zaprav()
+						Global.papa.zaprav.rpc()
 						print(Global.get_papa(3, self), "zzz")
 					elif col.name == "Cofe_machine":
 						if kasa.cofe > 0:
@@ -206,9 +205,8 @@ func _colling():
 							kasa.sel(str(kasa.cofe)+"/10")
 					elif col.name == "Снеки":
 						if kasa.snacks > 0:
-							request_spawn_hand_on_server.rpc_id(1, "snack")
-							kasa.snacks -= 1
-							kasa.set_snack()
+							add_in_hand.rpc( "snack")
+							kasa.vzat_snack.rpc()
 					elif col.name == "schitok":
 						Global.papa.get_node("Timer3").start()
 						is_rem = true
@@ -250,8 +248,8 @@ func _on_animation_player_animation_finished(anim_name):
 
 
 func _stavit(stav):
-	var node: Node3D = instance_na(stav.get(1))
-	node.global_position = stav.get(2)
+	var node: Node3D = instance_na(stav.get(0))
+	node.global_position = stav.get(1)
 	if aim:
 		$SpringArm3D/AnimationPlayer.play("RESET")
 	Global.krest = false
@@ -269,6 +267,20 @@ func _stavit(stav):
 	node.rotation.x = 0
 	node.rotation.z = 0
 	return node
+
+@rpc("any_peer", "call_local")
+func add_in_hand(data):
+	var item_name = data
+	var node = instance_na(item_name)
+	print(data)
+	if node:
+		node.position = Vector3.ZERO
+		node.name = node.name + str(kol)
+		node.freeze = true
+		kol += 1
+		print(node.get_class())
+		hand_marker.add_child(node)
+	
 
 func _in_hand(data):
 	var item_name = data

@@ -15,7 +15,12 @@ var delta_light = 0
 var rand = true
 var start_day = true
 
+func _ready():
+	Global.connect("load", vis_time.rpc)
+
 func _on_tick_timeout():
+	if not multiplayer.is_server():
+		return
 	if time_left:
 			Global.zp -= 1
 			Global.papa.prov_list("-1р к ЗП")
@@ -39,21 +44,30 @@ func _on_tick_timeout():
 			var b = randi_range(-10,1)
 			if b < -1:
 				if b>=-8 or Global.fara_days < 3:
-					$"driving in my car"._start()
+					$"driving in my car"._start.rpc()
 				elif proshlo - delta_light >60 and Global.fara_days >= 4:
-					Global.light_off()
+					Global.light_off.rpc()
 					delta_light = proshlo
 				else:
 					end_day -= 10
 			else:
 				if b> -1:
-					Global.papa._start_sream()
+					Global.papa._start_sream.rpc()
 				else:
 					$"Лёлик тормоз".tormoz()
 			rand = true
 	pass # Replace with function body.
 
-
+@rpc("any_peer", "call_local")
+func vis_time(chas_t, min_t):
+	print(chas_t, "  ", min_t)
+	chas = chas_t
+	min = min_t
+	Global.player.get_node("Camera3D/game_ui/time/Label2").text = str(chas)
+	if min == 0:
+		Global.player.get_node("Camera3D/game_ui/time/Label4").text = "00"
+	else:
+		Global.player.get_node("Camera3D/game_ui/time/Label4").text = str(min)
 
 func _end_day():
 	Global.fara_days += 1
@@ -71,14 +85,14 @@ func _end_day():
 
 
 func _on_proshlo_timeout():
+	if not multiplayer.is_server():
+		return
 	proshlo +=1
 	print(proshlo)
 	if proshlo %15 == 0 and !start_day:
 			min +=5
-			Global.player.get_node("Camera3D/game_ui/time/Label4").text = str(min)
 			if min %6 == 0:
 				chas +=1
-				Global.player.get_node("Camera3D/game_ui/time/Label2").text = str(chas)
-				Global.player.get_node("Camera3D/game_ui/time/Label4").text = "00"
 				min = 0
+			vis_time.rpc(chas, min)
 	pass # Replace with function body.

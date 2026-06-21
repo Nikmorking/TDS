@@ -1,6 +1,5 @@
 extends CSGBox3D
 
-
 var kol_stakan = 0
 var cofe = 0
 var stakan = false
@@ -10,6 +9,7 @@ var snacks = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	MultiplayerSynchronizer
 	#cofe = 10
 	#stakan = true
 	if Global.fara_days == 1:
@@ -26,9 +26,9 @@ func _input(event):
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
-func statan_voshol(body: Node3D):
-	if body.named == "Stakanchiki" and kol_stakan == 0:
-		body.queue_free()
+@rpc("any_peer", "call_local")
+func vospoln_stakanchiki():
+		print("add stakan")
 		$CSGCylinder3D.show()
 		kol_stakan = 5
 		$CSGCylinder3D.show()
@@ -36,15 +36,25 @@ func statan_voshol(body: Node3D):
 		for i in $CSGCylinder3D.get_children():
 			i.show()
 		vis_stakan()
-	if body.named == "Stakan" and kol_stakan != 5 and !body.freeze:
+
+@rpc("any_peer", "call_local")
+func add_stakan():
 		print("staklam")
-		body.queue_free()
 		kol_stakan += 1
 		vis_stakan()
 		$Stakan.position.y += 0.3
 		$CSGCylinder3D.get_child(kol_stakan-1).show()
+
+func statan_voshol(body: Node3D):
+	if body.named == "Stakanchiki" and kol_stakan == 0:
+		vospoln_stakanchiki.rpc()
+		body.queue_free()
+	if body.named == "Stakan" and kol_stakan != 5 and !body.freeze:
+		body.queue_free()
+		add_stakan.rpc()
 	pass # Replace with function body.
 
+@rpc("any_peer", "call_local")
 func vis_stakan():
 	$SubViewport/Control/Label.text = str(kol_stakan) + "/5"
 
@@ -77,6 +87,15 @@ func cofe_gotovo():
 	pass # Replace with function body.
 
 
+@rpc("any_peer", "call_local")
+func _snack_voshlo(named):
+	print("voxhjlo")
+	if named == "pachka_snackov":
+		snacks = 10
+		set_snack()
+	if named == "snack":
+		snacks += 1
+		set_snack()
 
 func set_snack():
 	$"Снеки/SubViewport/Control/Label".text = str(snacks) + "/10"
@@ -88,15 +107,11 @@ func set_snack():
 		snaki.get(i).show()
 
 
+
 func on_snaks(body):
-	if body.named == "pachka_snackov":
-		snacks = 10
+	_snack_voshlo.rpc(body.named)
+	if body.named == "snack" or body.named == "pachka_snackov":
 		body.queue_free()
-		set_snack()
-	if body.named == "snack":
-		snacks += 1
-		body.queue_free()
-		set_snack()
 	pass # Replace with function body.
 
 
@@ -121,10 +136,16 @@ func load_var(data):
 		$CSGCylinder3D.hide()
 	set_snack()
 	vis_stakan()
-	
 
+
+@rpc("any_peer", "call_local")
 func vzat_stakan():
 	kol_stakan -= 1
 	$Stakan.position.y -= 0.3
 	$CSGCylinder3D.get_children().get(kol_stakan).hide()
 	vis_stakan()
+
+@rpc("any_peer", "call_local")
+func vzat_snack():
+	snacks -= 1
+	set_snack()

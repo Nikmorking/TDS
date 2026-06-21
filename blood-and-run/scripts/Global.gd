@@ -19,6 +19,7 @@ signal bad
 signal load
 signal _light_off
 
+@rpc("any_peer", "call_local")
 func light_off():
 	_light_off.emit()
 	light_work = !light_work

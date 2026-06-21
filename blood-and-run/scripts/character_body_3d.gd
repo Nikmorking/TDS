@@ -143,7 +143,6 @@ func _enter_tree() -> void:
 		var current_node_name = name
 		var target_id = 1 # По умолчанию сервер
 		
-			# Превращаем StringName в обычную строку String
 		var name_string = str(current_node_name)
 	
 		if name_string.is_valid_int():
@@ -163,9 +162,13 @@ func _enter_tree() -> void:
 		var sync_node = get_node_or_null("MultiplayerSynchronizer")
 		if sync_node:
 			sync_node.set_multiplayer_authority(target_id)
-		
 		if not is_multiplayer_authority():
 			if has_node("Camera3D"):
 				$Camera3D.current = false # Принудительно гасим чужую камеру чтобы она никогда не перехватила экран
+				$Camera3D/Menu.queue_free()
+				$Camera3D/end_day.queue_free()
+				$Camera3D/game_ui.queue_free()
+				$Camera3D/Duhota.queue_free()
+				$Camera3D/Achivka.queue_free()
 		
 		print("ЛОГ: Узел [", current_node_name, "] привязан к ID: ", target_id, ". Моё окно: ", multiplayer.get_unique_id(), ". Права совпали? ", is_multiplayer_authority())

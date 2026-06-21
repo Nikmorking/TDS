@@ -79,13 +79,13 @@ func _spawn_player(id):
 func _on_player_spawned(node: Node):
 	# Имя созданного узла — это строка с ID игрока (например "24196863")
 	var player_id = node.name.to_int()
+	Global.player = node
 	Global.papa.get_node("Prolog/Camera3D/server").hide()
 	# Принудительно выставляем права на клиенте в момент рождения узла
 	node.set_multiplayer_authority(player_id)
 	var sync_node = node.get_node_or_null("MultiplayerSynchronizer")
 	if sync_node:
 		sync_node.set_multiplayer_authority(player_id)
-		
 	print("Клиент зафиксировал спавн узла ", node.name, ". Права выданы ID: ", player_id)
 
 func _handle_connection_failure():

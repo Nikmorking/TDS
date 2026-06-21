@@ -10,6 +10,17 @@ height = 3.4802246
 radius = 0.7011719
 height = 3.4472656
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_fhsek"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath("Good:playing")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+
 [node name="No_human" type="CharacterBody3D" unique_id=266263789]
 transform = Transform3D(-2.6226834e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.6226834e-08, 0, 0, 0)
 script = ExtResource("1_wlgop")
@@ -62,5 +73,8 @@ stream = ExtResource("2_fhsek")
 volume_db = 9.0
 max_distance = 10.0
 bus = &"Effect"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1917351285]
+replication_config = SubResource("SceneReplicationConfig_fhsek")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

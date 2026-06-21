@@ -2,19 +2,12 @@ extends Target_manager
 class_name Zaz
 
 
-func vis_time():
-	print(chas, "  ", min)
-	Global.player.get_node("Camera3D/game_ui/time/Label2").text = str(chas)
-	Global.player.get_node("Camera3D/game_ui/time/Label4").text = str(min)
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	multiplayer.peer_connected.connect(Multiplayer._on_player_connected)
 	multiplayer.peer_disconnected.connect(Multiplayer._on_player_disconnected)
 	multiplayer.connected_to_server.connect(func(): print("Клиент: Я успешно вошел на сервер!"))
 	multiplayer.connection_failed.connect(func(): print("Клиент: Ошибка! Сервер не отвечает."))
-	Global.connect("load", vis_time)
 	Check_boxes = $"Заправка/Table/CSGPolygon3D2/SubViewport/Control/Control".get_children()
 	print(Check_boxes)
 	if Global.mp_mode == "host":
@@ -123,15 +116,4 @@ func die_part2():
 
 func _on_multiplayer_spawner_spawned(node):
 	Multiplayer._on_player_spawned(node)
-	pass # Replace with function body.
-
-
-func _on_расходникинатор_spawned(node):
-	$"Расходники".add_child(node)
-	print(node)
-	pass # Replace with function body.
-
-
-func _on_расходникинатор_despawned(node):
-	node.queue_free()
 	pass # Replace with function body.

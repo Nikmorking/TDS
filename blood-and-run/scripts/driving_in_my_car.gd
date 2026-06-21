@@ -46,7 +46,7 @@ func conti():
 	$Parking.stop()
 	$Driving.play(frame)
 
-
+@rpc("any_peer", "call_local")
 func _start():
 	rotation_degrees = Vector3(0, 0, 0)
 	if randi_range(0, 10) > 9:
