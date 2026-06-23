@@ -1,5 +1,7 @@
 extends Node
 
+var nickname = ""
+var players:Array = []
 var new = false
 var mp_mode: String = ""
 var player: Node3D
@@ -47,6 +49,10 @@ func get_papa(col: float, sel: Node) -> Node:
 	for i in col:
 		sel = sel.get_parent()
 	return sel
+
+@rpc("any_peer", "call_local")
+func _add_player(id, named):
+	players.append([id, named])
 
 
 func esc():

@@ -24,6 +24,7 @@ func start_host():
 		print("Сервер успешно запущен!")
 		# Спавним создателя сервера (его ID всегда равен 1)
 		_spawn_player(1)
+		Global._add_player.rpc_id(1, 1, Global.nickname)
 	else:
 		print("Ошибка запуска сервера: ", error)
 

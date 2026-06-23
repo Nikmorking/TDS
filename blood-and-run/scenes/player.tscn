@@ -645,6 +645,12 @@ properties/4/path = NodePath("Camera3D:position")
 properties/4/spawn = true
 properties/4/replication_mode = 2
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_jej6c"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
+[sub_resource type="LabelSettings" id="LabelSettings_f1ej7"]
+font_size = 24
+
 [node name="Player" type="CharacterBody3D" unique_id=565194940]
 collision_layer = 4097
 collision_mask = 4097
@@ -1015,6 +1021,22 @@ height = 1.6833496
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCylinder3D" unique_id=17516597]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9224982, -0.24598062)
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=604739794]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.036876, 0.6480018, -0.13133633)
+centered = false
+flip_h = true
+texture = SubResource("ViewportTexture_jej6c")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D" unique_id=2107329461]
+transparent_bg = true
+size = Vector2i(256, 256)
+
+[node name="Label" type="Label" parent="Sprite3D/SubViewport" unique_id=2139772788]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Niki"
+label_settings = SubResource("LabelSettings_f1ej7")
 
 [connection signal="timeout" from="Camera3D/game_ui/Timer" to="Camera3D/game_ui" method="_on_timer_timeout"]
 [connection signal="animation_finished" from="Camera3D/руки/SpringArm3D/AnimationPlayer" to="Camera3D/руки" method="_on_animation_player_animation_finished"]

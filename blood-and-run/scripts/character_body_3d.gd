@@ -2,7 +2,7 @@ extends CharacterBody3D
 class_name Player
 
 
-
+var nickname = "Niki"
 var SPEED = 5.0
 var JUMP_VELOCITY = 4.5
 var in_door = false
@@ -26,10 +26,14 @@ func _ready() -> void:
 				$Camera3D.current = false
 			return
 			
-	# Код, который выполнится ТОЛЬКО для вашего родного персонажа:
+	if not multiplayer.is_server():
+		Global._add_player.rpc_id(1, multiplayer.get_unique_id(), Global.nickname)
+		#Код, который выполнится ТОЛЬКО для вашего родного персонажа:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	Global.player = self
 	position = Vector3(-21,2.5,0)
+	nickname = Global.nickname
+	$Sprite3D/SubViewport/Label.text = nickname
 	if has_node("Camera3D"):
 		$Camera3D.current = true
 

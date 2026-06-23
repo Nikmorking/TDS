@@ -55,16 +55,25 @@ func _on_host_button_down():
 	Global.igra = true
 	print($CheckButton.button_pressed)
 	if $CheckButton.button_pressed:
-		Global.mp_mode = \"host\" # Запоминаем, что мы сервер
+		if $LineEdit2.text != \"\":
+			Global.mp_mode = \"host\" # Запоминаем, что мы сервер
+			Global.nickname = $LineEdit2.text
+			get_tree().change_scene_to_file(\"res://scenes/AZC.tscn\")
+		else:
+			$Label2.show()
 	else:
 		Global.mp_mode = \"offline\"
-	get_tree().change_scene_to_file(\"res://scenes/AZC.tscn\")
+		get_tree().change_scene_to_file(\"res://scenes/AZC.tscn\")
 
 func _on_join_button_down():
-	Global.igra = true
-	Global.mp_mode = \"join\" # Запоминаем, что мы клиент
-	Multiplayer.ip_addr = $TextEdit.text
-	get_tree().change_scene_to_file(\"res://scenes/AZC.tscn\")
+	if $LineEdit2.text != \"\":
+		Global.nickname = $LineEdit2.text
+		Global.igra = true
+		Global.mp_mode = \"join\" # Запоминаем, что мы клиент
+		Multiplayer.ip_addr = $LineEdit.text
+		get_tree().change_scene_to_file(\"res://scenes/AZC.tscn\")
+	else:
+		$Label2.show()
 "
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_1lgq4"]
@@ -207,10 +216,13 @@ _data = {
 &"vis": SubResource("Animation_ypher")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_k41st"]
-
 [sub_resource type="LabelSettings" id="LabelSettings_1lgq4"]
 font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_k41st"]
+line_spacing = 0.0
+font_size = 24
+font_color = Color(1, 0, 0, 1)
 
 [node name="MainMenu" type="Control" unique_id=1526012947]
 layout_mode = 3
@@ -342,22 +354,6 @@ offset_right = 1031.0
 offset_bottom = 537.0
 text = "присоединись"
 
-[node name="TextEdit" type="TextEdit" parent="." unique_id=805192052]
-layout_mode = 0
-offset_left = 549.0
-offset_top = 393.0
-offset_right = 791.0
-offset_bottom = 448.0
-
-[node name="Label" type="Label" parent="TextEdit" unique_id=1638614163]
-layout_mode = 0
-offset_left = 151.0
-offset_top = 8.0
-offset_right = 229.0
-offset_bottom = 57.0
-text = "<- сюда ip"
-label_settings = SubResource("LabelSettings_k41st")
-
 [node name="Label" type="Label" parent="." unique_id=1263429871]
 layout_mode = 0
 offset_left = 123.0
@@ -375,6 +371,37 @@ offset_right = 359.0
 offset_bottom = 242.0
 scale = Vector2(1.5, 1.5)
 
+[node name="LineEdit2" type="LineEdit" parent="." unique_id=1333512734]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.041
+anchor_top = -0.30100003
+anchor_right = -0.041
+anchor_bottom = -0.30100003
+offset_left = 846.232
+offset_top = 562.04803
+offset_right = 1083.232
+offset_bottom = 630.04803
+placeholder_text = "Ваше имя"
+
+[node name="LineEdit" type="LineEdit" parent="." unique_id=1044603184]
+layout_mode = 0
+offset_left = 539.0
+offset_top = 367.0
+offset_right = 776.0
+offset_bottom = 435.0
+placeholder_text = "Ip адресс сервера"
+
+[node name="Label2" type="Label" parent="." unique_id=1245320835]
+visible = false
+layout_mode = 0
+offset_left = 798.0
+offset_top = 310.0
+offset_right = 1072.0
+offset_bottom = 410.0
+text = "Введите своё имя !"
+label_settings = SubResource("LabelSettings_k41st")
+
 [connection signal="button_down" from="Cont" to="." method="_on_cont_button_down"]
 [connection signal="button_down" from="Start" to="." method="_on_start_button_down"]
 [connection signal="button_down" from="Settings" to="." method="_on_settings_button_down"]
@@ -382,3 +409,4 @@ scale = Vector2(1.5, 1.5)
 [connection signal="button_down" from="Обучение" to="." method="_on_обучение_button_down"]
 [connection signal="focus_entered" from="Обучение" to="." method="focus_entered"]
 [connection signal="button_down" from="pri" to="." method="_on_join_button_down"]
+[connection signal="text_changed" from="LineEdit" to="." method="_on_line_edit_text_changed"]
