@@ -1056,23 +1056,6 @@ size = Vector3(0.089877605, 2.4451509, 3.1249619)
 transform = Transform3D(-0.01034961, 0, 0.9999464, 0, 1, 0, -0.9999464, 0, -0.01034961, -20.390219, 1.8473511, -17.76856)
 shape = SubResource("BoxShape3D_g0orn")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Заправка/Стены/CollisionShape3D4" unique_id=788519571]
-transform = Transform3D(-0.010349608, 0, -0.9999463, 0, 1, 0, 0.9999463, 0, -0.010349608, -0.051553726, 0.06855774, 0.027130127)
-material_override = SubResource("StandardMaterial3D_p6l7r")
-size = Vector3(22.999512, 4.8318176, 1)
-
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Заправка/Стены/CollisionShape3D4/CSGBox3D2" unique_id=1460090033]
-transform = Transform3D(1, 0, 4.2351647e-22, 0, 1, 0, -4.2351647e-22, 0, 1, 20.362556, -1.9159088, 17.71729)
-operation = 2
-
-[node name="CSGBox3D13" type="CSGBox3D" parent="Заправка/Стены/CollisionShape3D4/CSGBox3D2/CSGCombiner3D" unique_id=909578245]
-transform = Transform3D(-4.3711392e-08, 0, 1, 0, 1.1705685, 0, -1, 0, -4.3711392e-08, -26.596256, 1.8490852, -17.679367)
-size = Vector3(1.3595104, 1.9650156, 5.3758545)
-
-[node name="CSGBox3D16" type="CSGBox3D" parent="Заправка/Стены/CollisionShape3D4/CSGBox3D2/CSGCombiner3D" unique_id=1088474757]
-transform = Transform3D(-4.371092e-08, 0, 0.9999921, 0, 1.1705685, 0, -0.9999921, 0, -4.371092e-08, -12.660548, 1.8490852, -17.679365)
-size = Vector3(1.3595104, 1.9650156, 4.5546875)
-
 [node name="CSGBox3D14" type="CSGBox3D" parent="Заправка/Стены/CollisionShape3D4" unique_id=894002098]
 transform = Transform3D(0.9999463, 0, -0.010349564, 0, 1.1705685, 0, 0.010349564, 0, 0.9999463, -0.07474327, 0.0017341375, -6.207144)
 material_override = ExtResource("16_173o4")
@@ -1679,6 +1662,23 @@ collision_mask = 15
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30022812, -0.49546385, 1.4683685)
 shape = SubResource("BoxShape3D_y5rpb")
 
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D" unique_id=788519571]
+transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 0.9999998, -11.677333, 1.92171, -7.768718)
+material_override = SubResource("StandardMaterial3D_p6l7r")
+size = Vector3(22.999512, 4.8318176, 1)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D/CSGBox3D2" unique_id=1460090033]
+transform = Transform3D(1, 0, 4.2351647e-22, 0, 1, 0, -4.2351647e-22, 0, 1, 20.362556, -1.9159088, 17.71729)
+operation = 2
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D2/CSGCombiner3D" unique_id=909578245]
+transform = Transform3D(-4.3711392e-08, 0, 1, 0, 1.1705685, 0, -1, 0, -4.3711392e-08, -26.596256, 1.8490852, -17.679367)
+size = Vector3(1.3595104, 1.9650156, 5.3758545)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D2/CSGCombiner3D" unique_id=1088474757]
+transform = Transform3D(-4.371092e-08, 0, 0.9999921, 0, 1.1705685, 0, -0.9999921, 0, -4.371092e-08, -12.660548, 1.8490852, -17.679365)
+size = Vector3(1.3595104, 1.9650156, 4.5546875)
+
 [node name="NavigationRegion3D2" type="NavigationRegion3D" parent="." unique_id=1160924384]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.685224, -0.07776737, -9.948573)
 navigation_mesh = SubResource("NavigationMesh_82sth")
@@ -1777,7 +1777,7 @@ process_mode = 3
 speed_scale = 1.3
 
 [node name="Camera3D" parent="emeny/Настоящий пельмень2" index="7" unique_id=1518745682]
-transform = Transform3D(-0.10832911, -0.36255175, 0.9256462, -0.042142097, 0.93196315, 0.36009437, -0.99322146, 2.9802308e-08, -0.116237484, 14.321535, 11.460782, -2.1801574)
+transform = Transform3D(-0.1083291, -0.36255175, 0.9256462, -0.042142097, 0.93196315, 0.36009437, -0.99322146, 2.607702e-08, -0.11623748, 14.321535, 11.460782, -2.1801574)
 
 [node name="Timer2" type="Timer" parent="." unique_id=2145315828]
 wait_time = 23.0
