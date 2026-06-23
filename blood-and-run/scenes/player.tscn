@@ -821,6 +821,7 @@ offset_top = 408.0
 offset_right = 328.0
 offset_bottom = 479.0
 focus_neighbor_top = NodePath("../Settings")
+focus_neighbor_right = NodePath("../VBoxContainer")
 focus_neighbor_bottom = NodePath("../Save")
 theme_override_font_sizes/font_size = 32
 text = "Quit"
@@ -874,6 +875,8 @@ offset_left = 432.0
 offset_top = 547.0
 offset_right = 832.0
 offset_bottom = 602.0
+focus_neighbor_left = NodePath("../Quit")
+focus_neighbor_top = NodePath("../Quit")
 min_value = 0.1
 max_value = 1.0
 step = 0.05
@@ -886,6 +889,17 @@ offset_top = 82.0
 offset_right = 319.0
 offset_bottom = 127.0
 label_settings = SubResource("LabelSettings_jej6c")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera3D/Menu" unique_id=1939616023]
+layout_mode = 0
+offset_left = 970.0
+offset_top = 35.0
+offset_right = 1010.0
+offset_bottom = 75.0
+
+[node name="ready" type="Button" parent="Camera3D/Menu/VBoxContainer" unique_id=2104234484]
+layout_mode = 2
+text = "Все готовы"
 
 [node name="end_day" type="Control" parent="Camera3D" unique_id=932247834]
 modulate = Color(1, 1, 1, 0)
@@ -1051,6 +1065,7 @@ label_settings = SubResource("LabelSettings_f1ej7")
 [connection signal="focus_entered" from="Camera3D/Menu/Save" to="Camera3D/Menu" method="focus_entered"]
 [connection signal="animation_finished" from="Camera3D/Menu/AnimationPlayer" to="Camera3D/Menu" method="_on_animation_player_animation_finished"]
 [connection signal="value_changed" from="Camera3D/Menu/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="button_down" from="Camera3D/Menu/VBoxContainer/ready" to="Camera3D/Menu" method="_on_ready_button_down"]
 [connection signal="animation_finished" from="Camera3D/end_day/AnimationPlayer" to="Camera3D/end_day/AnimationPlayer" method="_on_day_finished"]
 [connection signal="timeout" from="Camera3D/Duhota/Out" to="Camera3D/Duhota" method="_on_out_timeout"]
 [connection signal="timeout" from="Camera3D/Duhota/In" to="Camera3D/Duhota" method="_on_in_timeout"]

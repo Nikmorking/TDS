@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bre26ws07w06b" path="res://scenes/lampa.tscn" id="1_hnl5y"]
 [ext_resource type="Script" uid="uid://2a77xvtsjape" path="res://scripts/azc.gd" id="1_p6l7r"]
 [ext_resource type="PackedScene" uid="uid://5fibawxaliiy" path="res://scenes/schitok.tscn" id="5_173o4"]
+[ext_resource type="PackedScene" uid="uid://rdgh2c6w4bvv" path="res://Models/polka.fbx" id="5_415sf"]
 [ext_resource type="PackedScene" uid="uid://dism06b1iip8u" path="res://scenes/doorS.tscn" id="5_vynuk"]
 [ext_resource type="Texture2D" uid="uid://be2meyinowmx1" path="res://Texture/menu.png" id="8_e63ir"]
 [ext_resource type="PackedScene" uid="uid://ki8fgnhihyot" path="res://scenes/lampa_mini.tscn" id="8_ro5by"]
@@ -322,16 +323,16 @@ viewport_path = NodePath("Заправка/Ящики/c батонами/Sprite3
 [sub_resource type="ViewportTexture" id="ViewportTexture_vqwn8"]
 viewport_path = NodePath("Заправка/Ящики/с снеками/Sprite3D/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_fse4r"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_yyosc"]
 viewport_path = NodePath("Касса/Cofe_machine/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_yyosc"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_82sth"]
 viewport_path = NodePath("Касса/Снеки/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_82sth"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_w5m4x"]
 viewport_path = NodePath("Касса/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_w5m4x"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_s6jno"]
 viewport_path = NodePath("CSGPolygon3D2/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oou1n"]
@@ -564,13 +565,13 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Arr
 geometry_parsed_geometry_type = 0
 agent_radius = 1.3
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_s6jno"]
-
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_173o4"]
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_tsu7c"]
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_rcbt2"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_xtx8p"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wlgop"]
 radius = 5.330078
@@ -945,28 +946,8 @@ collision_mask = 7
 transform = Transform3D(36.27733, -4.5474735e-13, -2.5410988e-21, 0, -1.46491675e-05, 3.7247946, 0, -122.88612, -4.4403015e-07, -0.003677845, 3.0330582, 0.0103263855)
 shape = SubResource("ConcavePolygonShape3D_vqwn8")
 
-[node name="warehouse_shelf7" type="Node3D" parent="Заправка/Полки" unique_id=1243981786]
-transform = Transform3D(-8.195885e-08, 0, 1.25, 0, 1, 0, -1.875, 0, -5.4639237e-08, -21.754902, -0.08912885, -3.7529635)
-
-[node name="Cube_001" type="MeshInstance3D" parent="Заправка/Полки/warehouse_shelf7" unique_id=796525233]
-transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0.29226547, 0.33040044, 1.1721101)
-material_override = SubResource("StandardMaterial3D_7bqql")
-mesh = SubResource("ArrayMesh_k8km8")
-skeleton = NodePath("")
-
-[node name="Cube_008" type="MeshInstance3D" parent="Заправка/Полки/warehouse_shelf7" unique_id=749894784]
-transform = Transform3D(36.27733, 0, 0, 0, -4.953318e-06, 3.7247946, 0, -113.3187, -1.6281595e-07, -0.003677845, 3.0330582, 0.0103263855)
-material_override = SubResource("StandardMaterial3D_4lfkn")
-mesh = SubResource("ArrayMesh_0u2wq")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Заправка/Полки/warehouse_shelf7" unique_id=1310353993]
-collision_layer = 7
-collision_mask = 7
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Заправка/Полки/warehouse_shelf7/StaticBody3D" unique_id=508852035]
-transform = Transform3D(36.27733, -4.5474735e-13, -2.5410988e-21, 0, -1.46491675e-05, 3.7247946, 0, -122.88612, -4.4403015e-07, -0.003677845, 3.0330582, 0.0103263855)
-shape = SubResource("ConcavePolygonShape3D_vqwn8")
+[node name="polka" parent="Заправка/Полки" unique_id=997370393 instance=ExtResource("5_415sf")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.3, -23.134941, 0.44985473, -4.0284457)
 
 [node name="Стены" type="StaticBody3D" parent="Заправка" unique_id=1628848288]
 collision_layer = 11
@@ -1222,16 +1203,16 @@ label_settings = SubResource("LabelSettings_415sf")
 [node name="Table" parent="Заправка" unique_id=1041556568 instance=ExtResource("19_415sf")]
 
 [node name="Sprite3D" parent="Заправка/Table/Касса/Cofe_machine" parent_id_path=PackedInt32Array(1041556568, 780539148) index="4" unique_id=1361381740]
-texture = SubResource("ViewportTexture_fse4r")
-
-[node name="Sprite3D" parent="Заправка/Table/Касса/Снеки" parent_id_path=PackedInt32Array(1041556568, 1560413509) index="2" unique_id=353422132]
 texture = SubResource("ViewportTexture_yyosc")
 
-[node name="Sprite3D" parent="Заправка/Table/Касса" parent_id_path=PackedInt32Array(1041556568, 806910599) index="6" unique_id=25473584]
+[node name="Sprite3D" parent="Заправка/Table/Касса/Снеки" parent_id_path=PackedInt32Array(1041556568, 1560413509) index="2" unique_id=353422132]
 texture = SubResource("ViewportTexture_82sth")
 
-[node name="Sprite3D" parent="Заправка/Table/CSGPolygon3D2" parent_id_path=PackedInt32Array(1041556568, 2106210827) index="1" unique_id=840912229]
+[node name="Sprite3D" parent="Заправка/Table/Касса" parent_id_path=PackedInt32Array(1041556568, 806910599) index="6" unique_id=25473584]
 texture = SubResource("ViewportTexture_w5m4x")
+
+[node name="Sprite3D" parent="Заправка/Table/CSGPolygon3D2" parent_id_path=PackedInt32Array(1041556568, 2106210827) index="1" unique_id=840912229]
+texture = SubResource("ViewportTexture_s6jno")
 
 [node name="мусорка" type="Area3D" parent="Заправка" unique_id=289094949]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.182058, 0.12507287, -3.8709977)
@@ -1697,7 +1678,7 @@ affect_navigation_mesh = true
 
 [node name="LineRenderer3D" type="MeshInstance3D" parent="." unique_id=157698636]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, 7.7, 2, -5.5)
-mesh = SubResource("ImmediateMesh_s6jno")
+mesh = SubResource("ImmediateMesh_173o4")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(7.7, 2, -5.5), Vector3(7.7, 2, -5.5)])
@@ -1705,7 +1686,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D2" type="MeshInstance3D" parent="." unique_id=2062067384]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -7.1046586)
-mesh = SubResource("ImmediateMesh_173o4")
+mesh = SubResource("ImmediateMesh_tsu7c")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -7.1), Vector3(-0.3, 1.9, -7.1)])
@@ -1713,7 +1694,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D3" type="MeshInstance3D" parent="." unique_id=139751098]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, -0.34281585, 1.3866243, -11.084127)
-mesh = SubResource("ImmediateMesh_tsu7c")
+mesh = SubResource("ImmediateMesh_rcbt2")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(-0.3, 1.9, -11), Vector3(-0.3, 1.9, -11)])
@@ -1721,7 +1702,7 @@ metadata/_custom_type_script = "uid://hajl3xibw433"
 
 [node name="LineRenderer3D4" type="MeshInstance3D" parent="." unique_id=1666510536]
 transform = Transform3D(-4.3711495e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711495e-08, 8, 2, -10.5)
-mesh = SubResource("ImmediateMesh_rcbt2")
+mesh = SubResource("ImmediateMesh_xtx8p")
 skeleton = NodePath("../Zp/CSGBox3D25/ZP1")
 script = ExtResource("17_r1ed2")
 points = Array[Vector3]([Vector3(8, 2, -10.5), Vector3(8, 2, -10.5)])

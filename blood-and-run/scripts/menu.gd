@@ -29,9 +29,18 @@ func _input(event: InputEvent) -> void:
 			show()
 			get_node("AnimationPlayer").play("Open")
 			if  Global.mp_mode != "offline":
-				$Label.text = "Сервер запущен"
+				if Global.lobby_ready: $Label.text = "Лобби закрыто"
+				else: $Label.text = "Лобби открыто"
 			else:
 				$Label.text = "Сервер не запущен"
+			for i in $VBoxContainer.get_children():
+				if str(i.name) != "ready" or not multiplayer.is_server(): i.queue_free()
+			for i in Global.players[1].size():
+				var item = load("res://demo/item_player_list.tscn").instantiate()
+				item.get_node("Label").text = str(Global.players[1][i])
+				item.list = [Global.players[0][i], Global.players[1][i]]
+				if Global.lobby_ready: item.get_node("Button").queue_free()
+				$VBoxContainer.add_child(item)
 		else:
 			cont()
 
@@ -87,4 +96,14 @@ func _on__quit_button_down():
 
 func _on_save_button_down():
 	Global.save()
+	pass # Replace with function body.
+
+
+func _on_ready_button_down() -> void:
+	if multiplayer.is_server():
+		Global._lobby_ready.rpc()
+		$VBoxContainer/ready.queue_free()
+		$Label.text = "Лобби закрыто"
+		for i in $VBoxContainer.get_children():
+			if not i.is_class("Button"): i.get_node("Button").queue_free()
 	pass # Replace with function body.

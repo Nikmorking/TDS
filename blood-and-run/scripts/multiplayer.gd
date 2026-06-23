@@ -58,6 +58,9 @@ func start_join():
 
 func _on_player_connected(id):
 	# Этот код выполняется на сервере, когда заходит новый клиент
+	if Global.lobby_ready: 
+		multiplayer.multiplayer_peer.disconnect_peer(id)
+		return
 	if multiplayer.is_server():
 		_spawn_player(id)
 

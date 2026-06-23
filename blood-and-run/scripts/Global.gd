@@ -1,7 +1,9 @@
 extends Node
 
+
+var lobby_ready = false
 var nickname = ""
-var players:Array = []
+var players:Array = [[], []]
 var new = false
 var mp_mode: String = ""
 var player: Node3D
@@ -38,7 +40,9 @@ func _input(event):
 		#load_game()
 	pass
 
-
+@rpc("any_peer", "call_local")
+func _lobby_ready():
+	lobby_ready = true
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -52,8 +56,19 @@ func get_papa(col: float, sel: Node) -> Node:
 
 @rpc("any_peer", "call_local")
 func _add_player(id, named):
-	players.append([id, named])
+	players.get(0).append(id)
+	players.get(1).append(str(named))
+	_syn_players.rpc(players)
 
+
+@rpc("any_peer", "call_local")
+func _syn_players(player_s):
+	players = player_s
+	for i in papa.get_node("cont_players").get_children():
+		var index:int = players[0].find(int(i.name))
+		print(index)
+		i.get_node("Sprite3D/SubViewport/Label").text = players[1][index]
+		print(players[1][index])
 
 func esc():
 	get_tree().paused = false

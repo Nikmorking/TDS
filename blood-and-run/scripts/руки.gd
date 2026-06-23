@@ -54,7 +54,7 @@ func _input(event):
 				return # Если это сетевой клон чужого игрока, полностью игнорируем нажатие
 	if Input.is_action_just_released("ui_open"):
 		pr = false
-	if Input.is_action_just_pressed("ui_open"):
+	if Input.is_action_just_pressed("ui_open") and Global.lobby_ready:
 		print("click")
 		pr = true
 		if $SpringArm3D/Hand.get_child_count() == 1: obj = $SpringArm3D/Hand.get_child(0)
