@@ -28,40 +28,6 @@
 [ext_resource type="PackedScene" uid="uid://ehio2k2chdj4" path="res://Расходники/krest.tscn" id="36_rcbt2"]
 [ext_resource type="PackedScene" uid="uid://csk2re235lvol" path="res://Models/календарь.tscn" id="36_tsu7c"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7bqql"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vvlay"]
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_hsns4"]
-_surfaces = [{
-"aabb": AABB(-0.006570742, -0.00064658344, -0.0029315266, 0.0072991624, 0.024725838, 0.030332394),
-"format": 34359742465,
-"index_count": 144,
-"index_data": PackedByteArray("AAABAAIAAgADAAAAAQAAAAQABAAAAAMABQACAAEAAwACAAUABAAGAAEAAQAGAAUAAwAHAAQABgAEAAcABQAHAAMABwAFAAYACAAJAAoACgALAAgACQAIAAwADAAIAAsADQAKAAkACwAKAA0ADAAOAAkACQAOAA0ACwAPAAwADgAMAA8ADQAPAAsADwANAA4AEAARABIAEgATABAAEQAQABQAFAAQABMAFQASABEAEwASABUAFAAWABEAEQAWABUAEwAXABQAFgAUABcAFQAXABMAFwAVABYAGAAZABoAGgAbABgAGQAYABwAHAAYABsAHQAaABkAGwAaAB0AHAAeABkAGQAeAB0AGwAfABwAHgAcAB8AHQAfABsAHwAdAB4A"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 32,
-"vertex_data": PackedByteArray("e/M+unt/KTrJd+A8e/M+unt/KbrJd+A8e/M+unt/KbrbHkC7e/M+unt/KTrbHkC7e/M+Ont/KTrJd+A8e/M+Ont/KbrbHkC7e/M+Ont/KbrJd+A8e/M+Ont/KTrbHkC7e/M+uttBxTzJd+A8e/M+uuOpujzJd+A8e/M+uuOpujzbHkC7e/M+uttBxTzbHkC7e/M+OttBxTzJd+A8e/M+OuOpujzbHkC7e/M+OuOpujzJd+A8e/M+OttBxTzbHkC7YU/Xu9tBxTzJd+A8YU/Xu+OpujzJd+A8YU/Xu+OpujzbHkC7YU/Xu9tBxTzbHkC7g5Knu9tBxTzJd+A8g5Knu+OpujzbHkC7g5Knu+OpujzJd+A8g5Knu9tBxTzbHkC7YU/Xu3t/KTrJd+A8YU/Xu3t/KbrJd+A8YU/Xu3t/KbrbHkC7YU/Xu3t/KTrbHkC7g5Knu3t/KTrJd+A8g5Knu3t/KbrbHkC7g5Knu3t/KbrJd+A8g5Knu3t/KTrbHkC7")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_k8km8"]
-resource_name = "Cube_001"
-_surfaces = [{
-"aabb": AABB(-0.006570742, -0.00064658344, -0.0029315266, 0.0072991624, 0.024725838, 0.030332394),
-"attribute_data": PackedByteArray("AAAgPwAAQD8AACA/AACAPwAAwD4AAIA/AADAPgAAQD8AACA/AAAAPwAAID8AAEA/AADAPgAAQD8AAMA+AAAAPwAAID8AAIA+AAAgPwAAAD8AAMA+AAAAPwAAwD4AAIA+AAAgPwAAAAAAACA/AACAPgAAwD4AAIA+AADAPgAAAAAAAMA+AACAPgAAwD4AAAA/AAAAPgAAAD8AAAA+AACAPgAAYD8AAIA+AABgPwAAAD8AACA/AAAAPwAAID8AAIA+AAAgPwAAQD8AACA/AACAPwAAwD4AAIA/AADAPgAAQD8AACA/AAAAPwAAID8AAEA/AADAPgAAQD8AAMA+AAAAPwAAID8AAIA+AAAgPwAAAD8AAMA+AAAAPwAAwD4AAIA+AAAgPwAAAAAAACA/AACAPgAAwD4AAIA+AADAPgAAAAAAAMA+AACAPgAAwD4AAAA/AAAAPgAAAD8AAAA+AACAPgAAYD8AAIA+AABgPwAAAD8AACA/AAAAPwAAID8AAIA+AAAgPwAAQD8AACA/AACAPwAAwD4AAIA/AADAPgAAQD8AACA/AAAAPwAAID8AAEA/AADAPgAAQD8AAMA+AAAAPwAAID8AAIA+AAAgPwAAAD8AAMA+AAAAPwAAwD4AAIA+AAAgPwAAAAAAACA/AACAPgAAwD4AAIA+AADAPgAAAAAAAMA+AACAPgAAwD4AAAA/AAAAPgAAAD8AAAA+AACAPgAAYD8AAIA+AABgPwAAAD8AACA/AAAAPwAAID8AAIA+AAAgPwAAQD8AACA/AACAPwAAwD4AAIA/AADAPgAAQD8AACA/AAAAPwAAID8AAEA/AADAPgAAQD8AAMA+AAAAPwAAID8AAIA+AAAgPwAAAD8AAMA+AAAAPwAAwD4AAIA+AAAgPwAAAAAAACA/AACAPgAAwD4AAIA+AADAPgAAAAAAAMA+AACAPgAAwD4AAAA/AAAAPgAAAD8AAAA+AACAPgAAYD8AAIA+AABgPwAAAD8AACA/AAAAPwAAID8AAIA+"),
-"format": 34359742487,
-"index_count": 144,
-"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQAGAAZABoAGgAbABgAHAAdAB4AHgAfABwAIAAhACIAIgAjACAAJAAlACYAJgAnACQAKAApACoAKgArACgALAAtAC4ALgAvACwAMAAxADIAMgAzADAANAA1ADYANgA3ADQAOAA5ADoAOgA7ADgAPAA9AD4APgA/ADwAQABBAEIAQgBDAEAARABFAEYARgBHAEQASABJAEoASgBLAEgATABNAE4ATgBPAEwAUABRAFIAUgBTAFAAVABVAFYAVgBXAFQAWABZAFoAWgBbAFgAXABdAF4AXgBfAFwA"),
-"material": SubResource("StandardMaterial3D_vvlay"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 96,
-"vertex_data": PackedByteArray("e/M+unt/KTrJd+A8e/M+unt/KbrJd+A8e/M+unt/KbrbHkC7e/M+unt/KTrbHkC7e/M+Ont/KTrJd+A8e/M+unt/KTrJd+A8e/M+unt/KTrbHkC7e/M+Ont/KTrbHkC7e/M+Ont/KbrJd+A8e/M+Ont/KTrJd+A8e/M+Ont/KTrbHkC7e/M+Ont/KbrbHkC7e/M+unt/KbrJd+A8e/M+Ont/KbrJd+A8e/M+Ont/KbrbHkC7e/M+unt/KbrbHkC7e/M+Ont/KbrbHkC7e/M+Ont/KTrbHkC7e/M+unt/KTrbHkC7e/M+unt/KbrbHkC7e/M+unt/KbrJd+A8e/M+unt/KTrJd+A8e/M+Ont/KTrJd+A8e/M+Ont/KbrJd+A8e/M+uttBxTzJd+A8e/M+uuOpujzJd+A8e/M+uuOpujzbHkC7e/M+uttBxTzbHkC7e/M+OttBxTzJd+A8e/M+uttBxTzJd+A8e/M+uttBxTzbHkC7e/M+OttBxTzbHkC7e/M+OuOpujzJd+A8e/M+OttBxTzJd+A8e/M+OttBxTzbHkC7e/M+OuOpujzbHkC7e/M+uuOpujzJd+A8e/M+OuOpujzJd+A8e/M+OuOpujzbHkC7e/M+uuOpujzbHkC7e/M+OuOpujzbHkC7e/M+OttBxTzbHkC7e/M+uttBxTzbHkC7e/M+uuOpujzbHkC7e/M+uuOpujzJd+A8e/M+uttBxTzJd+A8e/M+OttBxTzJd+A8e/M+OuOpujzJd+A8YU/Xu9tBxTzJd+A8YU/Xu+OpujzJd+A8YU/Xu+OpujzbHkC7YU/Xu9tBxTzbHkC7g5Knu9tBxTzJd+A8YU/Xu9tBxTzJd+A8YU/Xu9tBxTzbHkC7g5Knu9tBxTzbHkC7g5Knu+OpujzJd+A8g5Knu9tBxTzJd+A8g5Knu9tBxTzbHkC7g5Knu+OpujzbHkC7YU/Xu+OpujzJd+A8g5Knu+OpujzJd+A8g5Knu+OpujzbHkC7YU/Xu+OpujzbHkC7g5Knu+OpujzbHkC7g5Knu9tBxTzbHkC7YU/Xu9tBxTzbHkC7YU/Xu+OpujzbHkC7YU/Xu+OpujzJd+A8YU/Xu9tBxTzJd+A8g5Knu9tBxTzJd+A8g5Knu+OpujzJd+A8YU/Xu3t/KTrJd+A8YU/Xu3t/KbrJd+A8YU/Xu3t/KbrbHkC7YU/Xu3t/KTrbHkC7g5Knu3t/KTrJd+A8YU/Xu3t/KTrJd+A8YU/Xu3t/KTrbHkC7g5Knu3t/KTrbHkC7g5Knu3t/KbrJd+A8g5Knu3t/KTrJd+A8g5Knu3t/KTrbHkC7g5Knu3t/KbrbHkC7YU/Xu3t/KbrJd+A8g5Knu3t/KbrJd+A8g5Knu3t/KbrbHkC7YU/Xu3t/KbrbHkC7g5Knu3t/KbrbHkC7g5Knu3t/KTrbHkC7YU/Xu3t/KTrbHkC7YU/Xu3t/KbrbHkC7YU/Xu3t/KbrJd+A8YU/Xu3t/KTrJd+A8g5Knu3t/KTrJd+A8g5Knu3t/KbrJd+A8AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//f////3//v/9/////f/+//3////9//7//f////3//v////3//f/+/////f/9//7////9//3//v////3//f/+//38AAP9//7//fwAA/3//v/9/AAD/f/+//38AAP9//7//////////v/////////+//////////7//////////v/9//38AAP+//3//fwAA/7//f/9/AAD/v/9//38AAP+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//f////3//v/9/////f/+//3////9//7//f////3//v////3//f/+/////f/9//7////9//3//v////3//f/+//38AAP9//7//fwAA/3//v/9/AAD/f/+//38AAP9//7//////////v/////////+//////////7//////////v/9//38AAP+//3//fwAA/7//f/9/AAD/v/9//38AAP+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//f////3//v/9/////f/+//3////9//7//f////3//v////3//f/+/////f/9//7////9//3//v////3//f/+//38AAP9//7//fwAA/3//v/9/AAD/f/+//38AAP9//7//////////v/////////+//////////7//////////v/9//38AAP+//3//fwAA/7//f/9/AAD/v/9//38AAP+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//f////3//v/9/////f/+//3////9//7//f////3//v////3//f/+/////f/9//7////9//3//v////3//f/+//38AAP9//7//fwAA/3//v/9/AAD/f/+//38AAP9//7//////////v/////////+//////////7//////////v/9//38AAP+//3//fwAA/7//f/9/AAD/v/9//38AAP+/")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_hsns4")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4lfkn"]
 albedo_color = Color(0.37394673, 0.36260527, 0.33200586, 1)
 
@@ -831,109 +797,11 @@ start_rot = Vector3(0, -90, 0)
 [node name="Полки" type="Node3D" parent="Заправка" unique_id=1911514701]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36524224, 0)
 
-[node name="warehouse_shelf2" type="Node3D" parent="Заправка/Полки" unique_id=1922642289]
-transform = Transform3D(-8.195885e-08, 0, 1.25, 0, 1, 0, -1.875, 0, -5.4639237e-08, -14.469994, -0.08912885, -7.906889)
-
-[node name="Cube_001" type="MeshInstance3D" parent="Заправка/Полки/warehouse_shelf2" unique_id=752910455]
-transform = Transform3D(100.000015, 4.5474735e-13, 0, 0, -1.1920929e-05, 99.99999, 4.5474735e-13, -99.99999, -1.1920929e-05, 0.29226542, 0.33040044, 1.1721115)
-material_override = SubResource("StandardMaterial3D_7bqql")
-mesh = SubResource("ArrayMesh_k8km8")
-skeleton = NodePath("")
-
-[node name="Cube_008" type="MeshInstance3D" parent="Заправка/Полки/warehouse_shelf2" unique_id=70915832]
-transform = Transform3D(36.27733, -6.82121e-13, -2.5410988e-21, 0, -1.3508643e-05, 3.7247946, 0, -113.3187, -4.4403015e-07, -0.003677845, 3.0330582, 0.0103263855)
-material_override = SubResource("StandardMaterial3D_4lfkn")
-mesh = SubResource("ArrayMesh_0u2wq")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Заправка/Полки/warehouse_shelf2" unique_id=770773726]
-collision_layer = 7
-collision_mask = 7
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Заправка/Полки/warehouse_shelf2/StaticBody3D" unique_id=909671225]
-transform = Transform3D(36.27733, -4.5474735e-13, -2.5410988e-21, 0, -1.46491675e-05, 3.7247946, 0, -122.88612, -4.4403015e-07, -0.003677845, 3.0330582, 0.0103263855)
-shape = SubResource("ConcavePolygonShape3D_vqwn8")
-
-[node name="warehouse_shelf3" type="Node3D" parent="Заправка/Полки" unique_id=1197546925]
-transform = Transform3D(-8.195885e-08, 0, 1.25, 0, 1, 0, -1.875, 0, -5.4639237e-08, -18.21873, -0.08912885, -7.906889)
-
-[node name="Cube_001" type="MeshInstance3D" parent="Заправка/Полки/warehouse_shelf3" unique_id=187592989]
-transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0.29226547, 0.33040044, 1.1721101)
-material_override = SubResource("StandardMaterial3D_7bqql")
-mesh = SubResource("ArrayMesh_k8km8")
-skeleton = NodePath("")
-
-[node name="Cube_008" type="MeshInstance3D" parent="Заправка/Полки/warehouse_shelf3" unique_id=846012154]
-transform = Transform3D(36.27733, 0, 0, 0, -4.953318e-06, 3.7247946, 0, -113.3187, -1.6281595e-07, -0.003677845, 3.0330582, 0.0103263855)
-material_override = SubResource("StandardMaterial3D_4lfkn")
-mesh = SubResource("ArrayMesh_0u2wq")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Заправка/Полки/warehouse_shelf3" unique_id=178542818]
-collision_layer = 7
-collision_mask = 7
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Заправка/Полки/warehouse_shelf3/StaticBody3D" unique_id=1130021308]
-transform = Transform3D(36.27733, -4.5474735e-13, -2.5410988e-21, 0, -1.46491675e-05, 3.7247946, 0, -122.88612, -4.4403015e-07, -0.003677845, 3.0330582, 0.0103263855)
-shape = SubResource("ConcavePolygonShape3D_vqwn8")
-
-[node name="warehouse_shelf4" type="Node3D" parent="Заправка/Полки" unique_id=1446067101]
-transform = Transform3D(-8.195885e-08, 0, 1.25, 0, 1, 0, -1.875, 0, -5.4639237e-08, -21.754902, -0.08912885, -7.906889)
-
-[node name="Cube_001" type="MeshInstance3D" parent="Заправка/Полки/warehouse_shelf4" unique_id=1219867851]
-transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0.29226547, 0.33040044, 1.1721101)
-material_override = SubResource("StandardMaterial3D_7bqql")
-mesh = SubResource("ArrayMesh_k8km8")
-skeleton = NodePath("")
-
-[node name="Cube_008" type="MeshInstance3D" parent="Заправка/Полки/warehouse_shelf4" unique_id=1840978538]
-transform = Transform3D(36.27733, 0, 0, 0, -4.953318e-06, 3.7247946, 0, -113.3187, -1.6281595e-07, -0.003677845, 3.0330582, 0.0103263855)
-material_override = SubResource("StandardMaterial3D_4lfkn")
-mesh = SubResource("ArrayMesh_0u2wq")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Заправка/Полки/warehouse_shelf4" unique_id=182623590]
-collision_layer = 7
-collision_mask = 7
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Заправка/Полки/warehouse_shelf4/StaticBody3D" unique_id=908188569]
-transform = Transform3D(36.27733, -4.5474735e-13, -2.5410988e-21, 0, -1.46491675e-05, 3.7247946, 0, -122.88612, -4.4403015e-07, -0.003677845, 3.0330582, 0.0103263855)
-shape = SubResource("ConcavePolygonShape3D_vqwn8")
-
-[node name="warehouse_shelf5" type="Node3D" parent="Заправка/Полки" unique_id=1949785988]
-transform = Transform3D(-8.195885e-08, 0, 1.25, 0, 1, 0, -1.875, 0, -5.4639237e-08, -14.469994, -0.08912885, -3.7529635)
-
-[node name="Cube_001" type="MeshInstance3D" parent="Заправка/Полки/warehouse_shelf5" unique_id=1175089392]
-transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0.29226547, 0.33040044, 1.1721101)
-material_override = SubResource("StandardMaterial3D_7bqql")
-mesh = SubResource("ArrayMesh_k8km8")
-skeleton = NodePath("")
-
-[node name="Cube_008" type="MeshInstance3D" parent="Заправка/Полки/warehouse_shelf5" unique_id=1443819320]
-transform = Transform3D(36.27733, 0, 0, 0, -4.953318e-06, 3.7247946, 0, -113.3187, -1.6281595e-07, -0.003677845, 3.0330582, 0.0103263855)
-material_override = SubResource("StandardMaterial3D_4lfkn")
-mesh = SubResource("ArrayMesh_0u2wq")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Заправка/Полки/warehouse_shelf5" unique_id=676506955]
-collision_layer = 7
-collision_mask = 7
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Заправка/Полки/warehouse_shelf5/StaticBody3D" unique_id=171390346]
-transform = Transform3D(36.27733, -4.5474735e-13, -2.5410988e-21, 0, -1.46491675e-05, 3.7247946, 0, -122.88612, -4.4403015e-07, -0.003677845, 3.0330582, 0.0103263855)
-shape = SubResource("ConcavePolygonShape3D_vqwn8")
-
 [node name="warehouse_shelf6" type="Node3D" parent="Заправка/Полки" unique_id=212402519]
-transform = Transform3D(-8.195885e-08, 0, 1.25, 0, 1, 0, -1.875, 0, -5.4639237e-08, -18.21873, -0.08912885, -3.7529635)
-
-[node name="Cube_001" type="MeshInstance3D" parent="Заправка/Полки/warehouse_shelf6" unique_id=489792871]
-transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0.29226547, 0.33040044, 1.1721101)
-material_override = SubResource("StandardMaterial3D_7bqql")
-mesh = SubResource("ArrayMesh_k8km8")
-skeleton = NodePath("")
+transform = Transform3D(-8.195885e-08, 0, 1.25, 0, 1, 0, -1.875, 0, -5.4639237e-08, -18.21873, -0.08912885, -17.304075)
 
 [node name="Cube_008" type="MeshInstance3D" parent="Заправка/Полки/warehouse_shelf6" unique_id=584223613]
-transform = Transform3D(36.27733, 0, 0, 0, -4.953318e-06, 3.7247946, 0, -113.3187, -1.6281595e-07, -0.003677845, 3.0330582, 0.0103263855)
+transform = Transform3D(36.27733, -2.2737368e-13, -4.2351647e-22, 0, -4.953318e-06, 3.7247946, 0, -113.3187, -1.6281595e-07, -0.0036773682, 3.0330582, -0.025835037)
 material_override = SubResource("StandardMaterial3D_4lfkn")
 mesh = SubResource("ArrayMesh_0u2wq")
 skeleton = NodePath("")
@@ -947,7 +815,22 @@ transform = Transform3D(36.27733, -4.5474735e-13, -2.5410988e-21, 0, -1.46491675
 shape = SubResource("ConcavePolygonShape3D_vqwn8")
 
 [node name="polka" parent="Заправка/Полки" unique_id=997370393 instance=ExtResource("5_415sf")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.3, -23.134941, 0.44985473, -4.0284457)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.3, -24.808855, 0.44985473, -3.2866342)
+
+[node name="polka2" parent="Заправка/Полки" unique_id=338507083 instance=ExtResource("5_415sf")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.3, -20.363337, 0.44985473, -3.2866342)
+
+[node name="polka3" parent="Заправка/Полки" unique_id=2018029939 instance=ExtResource("5_415sf")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.3, -16.086678, 0.44985473, -3.2866342)
+
+[node name="polka4" parent="Заправка/Полки" unique_id=980358318 instance=ExtResource("5_415sf")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.3, -24.808855, 0.44985473, -8.306379)
+
+[node name="polka5" parent="Заправка/Полки" unique_id=1294612597 instance=ExtResource("5_415sf")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.3, -20.363337, 0.44985473, -8.306379)
+
+[node name="polka6" parent="Заправка/Полки" unique_id=1275923194 instance=ExtResource("5_415sf")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.3, -16.086678, 0.44985473, -8.306379)
 
 [node name="Стены" type="StaticBody3D" parent="Заправка" unique_id=1628848288]
 collision_layer = 11
@@ -1758,7 +1641,7 @@ process_mode = 3
 speed_scale = 1.3
 
 [node name="Camera3D" parent="emeny/Настоящий пельмень2" index="7" unique_id=1518745682]
-transform = Transform3D(-0.1083291, -0.36255175, 0.9256462, -0.042142097, 0.93196315, 0.36009437, -0.99322146, 2.607702e-08, -0.11623748, 14.321535, 11.460782, -2.1801574)
+transform = Transform3D(-0.10832911, -0.36255175, 0.9256462, -0.042142097, 0.93196315, 0.36009437, -0.99322146, 2.9802308e-08, -0.116237484, 14.321535, 11.460782, -2.1801574)
 
 [node name="Timer2" type="Timer" parent="." unique_id=2145315828]
 wait_time = 23.0

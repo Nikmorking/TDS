@@ -70,12 +70,16 @@ func _input(event):
 	pass
 
 
-func _on_door_2__open():
+@rpc("any_peer", "call_local")
+func _start_day():
 	if start_day:
 		$Tick.start()
 		rand = false
 		$Proshlo.start()
 		start_day = false
+
+func _on_door_2__open():
+	_start_day.rpc_id(1)
 	pass # Replace with function body.
 
 
