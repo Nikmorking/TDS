@@ -58,7 +58,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.051407605, 0)
 shape = SubResource("CapsuleShape3D_qasdk")
 
 [node name="Stakan" type="MeshInstance3D" parent="." unique_id=1757482970]
-transform = Transform3D(15, 0, 0, 0, -6.556708e-07, 13, 0, -15, -5.68248e-07, -0.06131333, 0.1080547, -0.21682788)
+transform = Transform3D(15, 0, 0, 0, -6.556708e-07, 13, 0, -15, -5.68248e-07, 0, 0, 0)
 material_override = ExtResource("3_5pj2o")
 mesh = ExtResource("4_qg681")
 

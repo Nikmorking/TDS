@@ -22,6 +22,7 @@ var krest_pos:Vector3
 signal bad
 signal load
 signal _light_off
+signal _syn_players
 
 @rpc("any_peer", "call_local")
 func light_off():
@@ -43,6 +44,8 @@ func _input(event):
 @rpc("any_peer", "call_local")
 func _lobby_ready():
 	lobby_ready = true
+	player.get_node("Camera3D/game_ui/Lobby").hide()
+	achivka("Игра началась!")
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -56,27 +59,29 @@ func get_papa(col: float, sel: Node) -> Node:
 
 @rpc("any_peer", "call_local")
 func _add_player(id, named):
-	players.get(0).append(id)
-	players.get(1).append(str(named))
-	_syn_players.rpc(players)
+	if multiplayer.is_server():
+		players[0].append(id)
+		players[1].append(str(named))
+		syn_players.rpc(players)
 
 
 @rpc("any_peer", "call_local")
-func _syn_players(player_s):
+func syn_players(player_s):
 	players = player_s
 	for i in papa.get_node("cont_players").get_children():
 		var index:int = players[0].find(int(i.name))
 		print(index)
 		i.get_node("Sprite3D/SubViewport/Label").text = players[1][index]
 		print(players[1][index])
+	_syn_players.emit(players[0].back(), players[1].back())
 
 func esc():
 	get_tree().paused = false
 	isOnMenu = false
 
 func achivka(pr:String):
-	get_parent().get_node("Node3D/Player/Camera3D/Achivka/Label2").text = pr
-	get_parent().get_node("Node3D/Player/Camera3D/Achivka/AnimationPlayer").play("Achivka")
+	player.get_node("Camera3D/Achivka/Label2").text = pr
+	player.get_node("Camera3D/Achivka/AnimationPlayer").play("Achivka")
 
 var kasa
 func save():

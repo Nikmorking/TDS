@@ -12,9 +12,9 @@ func _ready():
 	MultiplayerSynchronizer
 	#cofe = 10
 	#stakan = true
-	if Global.fara_days == 1:
+	if Global.fara_days == 0:
 		$Cofe_machine/CollisionShape3D.disabled = true
-		$Cofe_machine/CSGCylinder3D.hide()
+		$Cofe_machine/mesh.hide()
 		$Cofe_machine/Sprite3D.hide()
 		
 		
@@ -65,6 +65,7 @@ func on_cofe_machine(body: Node3D):
 		sel(str(cofe)+"/10")
 	elif body.named == "Stakan":
 		stakan = true
+		$Cofe_machine/Stakan.show()
 	pass # Replace with function body.
 
 var vari = 0
@@ -77,10 +78,11 @@ func sel(str: String):
 		$Cofe_machine/Timer.start()
 	pass
 
-
 func cofe_gotovo():
 	$Cofe_machine/AudioStreamPlayer3D.stop()
 	$Cofe_machine/SubViewport/Control/Label.text = "Кофе готово"
+	$Cofe_machine/Stakan.hide()
+	$Cofe_machine/Stakan_s_cofe.show()
 	cofe -= 1
 	cofe_gotova = true
 	stakan = false

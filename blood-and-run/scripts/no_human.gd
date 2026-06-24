@@ -43,6 +43,7 @@ func _physics_process(delta):
 func _on_area_3d_body_entered(body):
 	#print(body.named)
 	body_entered.emit(body)
+	if body.is_class("RigidBody3D"): body.queue_free()
 	pass # Replace with function body.
 
 func go():

@@ -37,13 +37,17 @@ func _on_обучение_button_down():
 
 func _on_start_button_down():
 	Global.new = true
-	_on_host_button_down()
+	Global.mp_mode = \"offline\"
+	Global.igra = true
+	get_tree().change_scene_to_file(\"res://scenes/AZC.tscn\")
 	pass # Replace with function body.
 
 
 func _on_cont_button_down():
 	Global.is_load = true
-	_on_host_button_down()
+	Global.mp_mode = \"offline\"
+	Global.igra = true
+	get_tree().change_scene_to_file(\"res://scenes/AZC.tscn\")
 	pass # Replace with function body.
 
 
@@ -54,23 +58,20 @@ func _on_quit__button_down():
 func _on_host_button_down():
 	Global.igra = true
 	print($CheckButton.button_pressed)
-	if $CheckButton.button_pressed:
-		if $multi/LineEdit2.text != \"\":
-			Global.mp_mode = \"host\" # Запоминаем, что мы сервер
-			Global.nickname = $multi/LineEdit2.text
-			get_tree().change_scene_to_file(\"res://scenes/AZC.tscn\")
-		else:
-			$multi/Label2.show()
-	else:
-		Global.mp_mode = \"offline\"
+	if $multi/LineEdit2.text != \"\":
+		Global.mp_mode = \"host\" # Запоминаем, что мы сервер
+		Global.nickname = $multi/LineEdit2.text
 		get_tree().change_scene_to_file(\"res://scenes/AZC.tscn\")
+	else:
+		$multi/Label2.show()
 
 func _on_join_button_down():
 	if $multi/LineEdit2.text != \"\":
 		Global.nickname = $multi/LineEdit2.text
 		Global.igra = true
 		Global.mp_mode = \"join\" # Запоминаем, что мы клиент
-		Multiplayer.ip_addr = $multi/LineEdit.text
+		if $multi/LineEdit.text != \"\":
+			Multiplayer.ip_addr = $multi/LineEdit.text
 		get_tree().change_scene_to_file(\"res://scenes/AZC.tscn\")
 	else:
 		$multi/Label2.show()
@@ -78,6 +79,13 @@ func _on_join_button_down():
 
 func _on_check_button_toggled(toggled_on: bool) -> void:
 	$multi.visible = toggled_on
+	$Cont.visible = !toggled_on
+	$Start.visible = !toggled_on
+	pass # Replace with function body.
+
+
+func _on_start_mult_button_down():
+	_on_host_button_down()
 	pass # Replace with function body.
 "
 
@@ -270,10 +278,10 @@ alignment = 0
 [node name="Start" type="Button" parent="." unique_id=1884149124]
 process_mode = 3
 layout_mode = 0
-offset_left = 115.0
-offset_top = 238.0
-offset_right = 434.0
-offset_bottom = 309.0
+offset_left = 111.0
+offset_top = 144.0
+offset_right = 430.0
+offset_bottom = 215.0
 focus_neighbor_bottom = NodePath("../Settings")
 theme_override_font_sizes/font_size = 32
 text = "Начать новую игру"
@@ -350,9 +358,9 @@ texture = ExtResource("5_ypher")
 [node name="CheckButton" type="CheckButton" parent="." unique_id=2065726852]
 layout_mode = 0
 offset_left = 315.0
-offset_top = 218.0
+offset_top = 260.0
 offset_right = 359.0
-offset_bottom = 242.0
+offset_bottom = 284.0
 scale = Vector2(1.5, 1.5)
 
 [node name="Label" type="Label" parent="CheckButton" unique_id=1263429871]
@@ -372,14 +380,26 @@ size = Vector2i(1920, 1080)
 [node name="multi" type="Control" parent="." unique_id=1667209782]
 visible = false
 anchors_preset = 0
+offset_left = 14.0
+offset_top = 40.0
+offset_right = 14.0
+offset_bottom = 40.0
+
+[node name="start_mult" type="Button" parent="multi" unique_id=391525873]
+layout_mode = 0
+offset_left = 791.0
+offset_top = 464.0
+offset_right = 1031.0
+offset_bottom = 537.0
+text = "Создать лобби"
 
 [node name="pri" type="Button" parent="multi" unique_id=1475250209]
 layout_mode = 0
 offset_left = 536.0
 offset_top = 464.0
-offset_right = 1031.0
+offset_right = 776.0
 offset_bottom = 537.0
-text = "присоединись"
+text = "Присоединиться к лобби"
 
 [node name="LineEdit2" type="LineEdit" parent="multi" unique_id=1333512734]
 layout_mode = 1
@@ -419,5 +439,6 @@ label_settings = SubResource("LabelSettings_k41st")
 [connection signal="button_down" from="Обучение" to="." method="_on_обучение_button_down"]
 [connection signal="focus_entered" from="Обучение" to="." method="focus_entered"]
 [connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="button_down" from="multi/start_mult" to="." method="_on_start_mult_button_down"]
 [connection signal="button_down" from="multi/pri" to="." method="_on_join_button_down"]
 [connection signal="text_changed" from="multi/LineEdit" to="." method="_on_line_edit_text_changed"]

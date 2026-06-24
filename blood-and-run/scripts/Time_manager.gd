@@ -80,7 +80,7 @@ func _end_day():
 	energy = 0
 	chas = 10
 	min = 0
-	Global.save() 
+	if Global.mp_mode == "offline": Global.save() 
 	get_tree().paused = true
 
 

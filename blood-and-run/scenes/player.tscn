@@ -55,6 +55,9 @@ fill = 1
 fill_from = Vector2(0.49541286, 0.5)
 fill_to = Vector2(0.71100914, 0.18348624)
 
+[sub_resource type="LabelSettings" id="LabelSettings_oprun"]
+font_size = 24
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_173o4"]
 margin = 3.05
 
@@ -288,7 +291,7 @@ func _process(delta):
 
 func _on_day_finished(anim_name):
 	get_tree().paused = false
-	Global.is_load = true
+	if Global.mp_mode == \"offline\": Global.is_load = true
 	if Global.fara_days == 5:
 		Global.achivka(\"Ты заработал \"+str(Global.zp)+\"р\")
 	else:
@@ -744,6 +747,15 @@ fill_mode = 5
 nine_patch_stretch = true
 texture_under = SubResource("GradientTexture2D_tsu7c")
 texture_progress = SubResource("GradientTexture2D_xtx8p")
+
+[node name="Lobby" type="Label" parent="Camera3D/game_ui" unique_id=1369290629]
+layout_mode = 0
+offset_left = 379.0
+offset_top = 384.0
+offset_right = 872.0
+offset_bottom = 418.0
+text = "Ожидайте, когда игра начнётся"
+label_settings = SubResource("LabelSettings_oprun")
 
 [node name="руки" type="Node3D" parent="Camera3D" unique_id=1062435021]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1837149)

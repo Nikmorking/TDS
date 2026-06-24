@@ -54,7 +54,8 @@ func _input(event):
 				return # Если это сетевой клон чужого игрока, полностью игнорируем нажатие
 	if Input.is_action_just_released("ui_open"):
 		pr = false
-	if Input.is_action_just_pressed("ui_open") and Global.lobby_ready:
+	if Input.is_action_just_pressed("ui_open") and (
+		Global.mp_mode == "offline" or Global.lobby_ready):
 		print("click")
 		pr = true
 		if $SpringArm3D/Hand.get_child_count() == 1: obj = $SpringArm3D/Hand.get_child(0)
@@ -201,12 +202,21 @@ func _colling():
 							kasa.sel("Нет кофе")
 						if kasa.cofe_gotova:
 							kasa.cofe_gotova = false
-							request_spawn_hand_on_server.rpc_id(1, "Stakan_cofe")
+							if Global.mp_mode == "offline":
+								add_in_hand("Stakan_cofe")
+								
+							else:
+								request_spawn_hand_on_server.rpc_id(1, "Stakan_cofe")
 							kasa.sel(str(kasa.cofe)+"/10")
+							kasa.get_node("Cofe_machine/Stakan_s_cofe").hide()
 					elif col.name == "Снеки":
 						if kasa.snacks > 0:
-							add_in_hand.rpc( "snack")
-							kasa.vzat_snack.rpc()
+							if Global.mp_mode == "offline":
+								add_in_hand("snack")
+								kasa.vzat_snack()
+							else:
+								add_in_hand.rpc( "snack")
+								kasa.vzat_snack.rpc()
 					elif col.name == "schitok":
 						Global.papa.get_node("Timer3").start()
 						is_rem = true

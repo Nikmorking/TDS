@@ -10,7 +10,7 @@ func _run_pl():
 			if Global.krest:
 				$emeny.navigation_agent.path_desired_distance = 1.5
 				$emeny.navigation_agent.target_desired_distance = 1.5
-				$emeny.movement_target_position = Global.player.get_node("Camera3D/руки/SpringArm3D/Hand").get_child(0).get_node("Marker").global_position
+				if Global.player.get_node("Camera3D/руки/SpringArm3D/Hand").get_children().size() != 0:$emeny.movement_target_position = Global.player.get_node("Camera3D/руки/SpringArm3D/Hand").get_child(0).get_node("Marker").global_position
 			else:
 				$emeny.movement_target_position = Global.player.global_position
 			$emeny.actor_setup()
@@ -78,11 +78,9 @@ func _on_no_human_body_entered(body: Node):
 			prov_list("+1р к ЗП")
 	pass # Replace with function body.
 
-func _pridi():
-	if Global.fara_days == 1:
-		zakaz = zakaz_list[randi_range(0, 4)]
-	else:
-		zakaz = zakaz_list[randi_range(0,20)]
+@rpc("any_peer", "call_local")
+func _pridi(seed):
+	zakaz = zakaz_list[seed]
 	for i in Check_boxes:
 		i.button_pressed = false
 	for i in zakaz.size():
@@ -109,7 +107,13 @@ func _pridi():
 func _on_driving_in_my_car_end_put():	
 	print(str($"driving in my car".n) + "hjhj")
 	if $"driving in my car".n != 5:
-		_pridi()
+		if multiplayer.is_server():
+			var seed
+			if Global.fara_days == 1:
+				seed = randi_range(0, 4)
+			else:
+				seed = randi_range(0,20)
+			_pridi.rpc(seed)
 	else:
 		print("llllaaaa")
 		$"driving in my car".position = $Markers/Marker3D5.position

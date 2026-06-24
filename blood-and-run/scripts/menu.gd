@@ -4,6 +4,8 @@ class_name Menu
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Global._syn_players.connect(on_players_sun)
+	if Global.mp_mode == "offline": $VBoxContainer.queue_free()
 	pass # Replace with function body.
 
 
@@ -31,16 +33,17 @@ func _input(event: InputEvent) -> void:
 			if  Global.mp_mode != "offline":
 				if Global.lobby_ready: $Label.text = "Лобби закрыто"
 				else: $Label.text = "Лобби открыто"
+				$Save.hide()
+				for i in $VBoxContainer.get_children():
+					if str(i.name) != "ready" or not multiplayer.is_server(): i.queue_free()
+				for i in Global.players[1].size():
+					var item = load("res://demo/item_player_list.tscn").instantiate()
+					item.get_node("Label").text = str(Global.players[1][i])
+					item.list = [Global.players[0][i], Global.players[1][i]]
+					if Global.lobby_ready: item.get_node("Button").queue_free()
+					$VBoxContainer.add_child(item)
 			else:
 				$Label.text = "Сервер не запущен"
-			for i in $VBoxContainer.get_children():
-				if str(i.name) != "ready" or not multiplayer.is_server(): i.queue_free()
-			for i in Global.players[1].size():
-				var item = load("res://demo/item_player_list.tscn").instantiate()
-				item.get_node("Label").text = str(Global.players[1][i])
-				item.list = [Global.players[0][i], Global.players[1][i]]
-				if Global.lobby_ready: item.get_node("Button").queue_free()
-				$VBoxContainer.add_child(item)
 		else:
 			cont()
 
@@ -56,7 +59,7 @@ func cont():
 			hide()
 
 func _on_quit_button_down() -> void:
-	Global.save()
+	if  Global.mp_mode == "offline": Global.save()
 	get_tree().quit()
 	pass # Replace with function body.
 
@@ -107,3 +110,10 @@ func _on_ready_button_down() -> void:
 		for i in $VBoxContainer.get_children():
 			if not i.is_class("Button"): i.get_node("Button").queue_free()
 	pass # Replace with function body.
+
+func on_players_sun(id, nick):
+	var item = load("res://demo/item_player_list.tscn").instantiate()
+	item.get_node("Label").text = str(nick)
+	item.list = [id,nick]
+	$VBoxContainer.add_child(item)
+	

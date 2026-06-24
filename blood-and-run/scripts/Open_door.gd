@@ -17,7 +17,8 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("rush_e") and Global.lobby_ready:
+	if Input.is_action_just_pressed("rush_e") and (
+		Global.mp_mode == "offline" or Global.lobby_ready):
 		if need_door and !Global.player.get_node("Camera3D/руки").obj:
 			print("door")
 			k_otk += 1
@@ -26,17 +27,27 @@ func _input(_event: InputEvent) -> void:
 				Global.papa._67()
 				printerr("Буква: B")
 			if door_open:
-				$AnimationPlayer.play("close door")
+				if Global.mp_mode == "offline": _close()
+				else: _close.rpc()
 				$Open.play()
 				$Timer.start()
 			else:
 				print("open")
-				$AnimationPlayer.play("close_door")
+				if Global.mp_mode == "offline": _open_()
+				else: _open_.rpc()
 				$Key.play()
 				$Timer.start()
 				$Timer2.start()
 			door_open = !door_open
 	pass
+
+@rpc("any_peer", "call_local")
+func _close():
+	$AnimationPlayer.play("close door")
+
+@rpc("any_peer", "call_local")
+func _open_():
+	$AnimationPlayer.play("close_door")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
