@@ -42,7 +42,7 @@ func _on_timer_3_timeout() -> void:
 			if chin == 100:
 				chin = 0
 				$"../game_ui/TextureProgressBar".hide()
-				Global.light_off()
+				Global.light_off.rpc()
 		else:
 			chin = 0
 			$"../game_ui/TextureProgressBar".hide()
@@ -179,73 +179,72 @@ func _on_area_3d_area_exited(area: Area3D) -> void:
 var kalendar = 0
 var is_rem = false
 func _colling():
-				is_rem = false
-				var col: Node3D = $RayCast3D.get_collider()
-				print("coll", col.name)
-				if col.is_class("Area3D"):
-					var kasa = col.get_parent()
-					if col.name == "Stakan":
-						if kasa.kol_stakan > 0:
-							add_in_hand.rpc("Stakan")
-							kasa.vzat_stakan.rpc()
-					elif col.name == "Календарь":
-						kalendar += 1
-						if kalendar == 6:
-							if Global.fara_days == 3:
-								Global.achivka("Достижение: \n С 3 сентября!")
-								printerr("Буква: U")
-							col.get_node("Aud").play()
-							kalendar = 0
-					elif col.name == "Бак" and zp:
-						col.get_node("Au").play()
-						Global.papa.zaprav.rpc()
-						print(Global.get_papa(3, self), "zzz")
-					elif col.name == "Cofe_machine":
-						if kasa.cofe > 0:
-							if kasa.stakan:
-								kasa.sel("Варка")
-								kasa.get_node("Cofe_machine/AudioStreamPlayer3D").play()
-							else:
-								kasa.sel("нет стакана")
-						else:
-							kasa.sel("Нет кофе")
-						if kasa.cofe_gotova:
-							kasa.cofe_gotova = false
-							if Global.mp_mode == "offline":
-								add_in_hand("Stakan_cofe")
-								
-							else:
-								request_spawn_hand_on_server.rpc_id(1, "Stakan_cofe")
-							kasa.sel(str(kasa.cofe)+"/10")
-							kasa.get_node("Cofe_machine/Stakan_s_cofe").hide()
-					elif col.name == "Снеки":
-						if kasa.snacks > 0:
-							if Global.mp_mode == "offline":
-								add_in_hand("snack")
-								kasa.vzat_snack()
-							else:
-								add_in_hand.rpc( "snack")
-								kasa.vzat_snack.rpc()
-					elif col.name == "schitok":
-						Global.papa.get_node("Timer3").start()
-						is_rem = true
-				elif col.is_class("RigidBody3D"):
-					if !col.freeze:
-						await get_tree().create_timer(0.05).timeout
-						if Global.mp_mode == "offline": add_in_hand(col.named)
-						else: spawner_hand.spawn(col.named)
-						if col.get_parent().name == "Расходники":
-							Global.papa.destroy_col.rpc(col.name)
-				elif Global.papa.get_node("Расходники").get_children().size() < col_rashod:
-					if Global.mp_mode == "offline": add_in_hand(col.name)
-					else: spawner_hand.spawn(col.name)
-					print(col.get_parent())
-					if Global.get_papa(2, col).name == "Ящики":
-						col.get_parent().get_node("AudioStreamPlayer3D").play()
+	is_rem = false
+	var col: Node3D = $RayCast3D.get_collider()
+	print("coll", col.name)
+	if col.is_class("Area3D"):
+		var kasa = col.get_parent()
+		if col.name == "Stakan":
+			if kasa.kol_stakan > 0:
+				add_in_hand.rpc("Stakan")
+				kasa.vzat_stakan.rpc()
+		elif col.name == "Календарь":
+			kalendar += 1
+			if kalendar == 6:
+				if Global.fara_days == 3:
+					Global.achivka("Достижение: \n С 3 сентября!")
+					printerr("Буква: U")
+					col.get_node("Aud").play()
+					kalendar = 0
+		elif col.name == "Бак" and zp:
+			col.get_node("Au").play()
+			Global.papa.zaprav.rpc()
+			print(Global.get_papa(3, self), "zzz")
+		elif col.name == "Cofe_machine":
+			if kasa.cofe > 0:
+				if kasa.stakan:
+					kasa.sel("Варка")
+					kasa.get_node("Cofe_machine/AudioStreamPlayer3D").play()
 				else:
-					$"../.."._print_in_ui("               O \n \n ты утилизируй шнягу")
-					print("Продай что нибудь ненужное! Но чтобы продать что то ненужное,сначало нужно купить что-то ненужное, а у нас денег нет.")
-				fnc_zp()
+					kasa.sel("нет стакана")
+			else:
+				kasa.sel("Нет кофе")
+			if kasa.cofe_gotova:
+				kasa.cofe_gotova = false
+				if Global.mp_mode == "offline":
+					add_in_hand("Stakan_cofe")
+				else:
+					request_spawn_hand_on_server.rpc_id(1, "Stakan_cofe")
+				kasa.sel(str(kasa.cofe)+"/10")
+				kasa.get_node("Cofe_machine/Stakan_s_cofe").hide()
+		elif col.name == "Снеки":
+			if kasa.snacks > 0:
+				if Global.mp_mode == "offline":
+					add_in_hand("snack")
+					kasa.vzat_snack()
+				else:
+					add_in_hand.rpc( "snack")
+					kasa.vzat_snack.rpc()
+		elif col.name == "schitok":
+			get_node("Timer3").start()
+			is_rem = true
+	elif col.is_class("RigidBody3D"):
+		if !col.freeze:
+			await get_tree().create_timer(0.05).timeout
+			if Global.mp_mode == "offline": add_in_hand(col.named)
+			else: spawner_hand.spawn(col.named)
+			if col.get_parent().name == "Расходники":
+				Global.papa.destroy_col.rpc(col.name)
+	elif Global.papa.get_node("Расходники").get_children().size() < col_rashod:
+		if Global.mp_mode == "offline": add_in_hand(col.name)
+		else: spawner_hand.spawn(col.name)
+		print(col.get_parent())
+		if Global.get_papa(2, col).name == "Ящики":
+			col.get_parent().get_node("AudioStreamPlayer3D").play()
+	else:
+		$"../.."._print_in_ui("               O \n \n ты утилизируй шнягу")
+		print("Продай что нибудь ненужное! Но чтобы продать что то ненужное,сначало нужно купить что-то ненужное, а у нас денег нет.")
+	fnc_zp()
 
 
 

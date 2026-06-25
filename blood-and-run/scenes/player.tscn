@@ -789,6 +789,9 @@ one_shot = true
 spawn_path = NodePath("../SpringArm3D/Hand")
 spawn_limit = 100
 
+[node name="Timer3" type="Timer" parent="Camera3D/руки" unique_id=1211830592]
+wait_time = 0.1
+
 [node name="Menu" type="Control" parent="Camera3D" unique_id=1081682958]
 process_mode = 3
 visible = false
@@ -1067,6 +1070,7 @@ label_settings = SubResource("LabelSettings_f1ej7")
 [connection signal="timeout" from="Camera3D/game_ui/Timer" to="Camera3D/game_ui" method="_on_timer_timeout"]
 [connection signal="animation_finished" from="Camera3D/руки/SpringArm3D/AnimationPlayer" to="Camera3D/руки" method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Camera3D/руки/Timer" to="Camera3D/руки" method="_on_timer_timeout"]
+[connection signal="timeout" from="Camera3D/руки/Timer3" to="Camera3D/руки" method="_on_timer_3_timeout"]
 [connection signal="button_down" from="Camera3D/Menu/continue" to="Camera3D/Menu" method="_on_continue_button_down"]
 [connection signal="focus_entered" from="Camera3D/Menu/continue" to="Camera3D/Menu" method="focus_entered"]
 [connection signal="button_down" from="Camera3D/Menu/Settings" to="Camera3D/Menu" method="_on_settings_button_down"]

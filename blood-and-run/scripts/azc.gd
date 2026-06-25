@@ -63,7 +63,8 @@ func _input(event):
 		#_start_sream()
 		#$Timer2.start()
 	if Input.is_action_just_pressed("ui_home"):
-		_start_sream()
+		Global.light_off.rpc()
+		#_start_sream()
 		#back()
 		#$"driving in my car"._start()
 		
