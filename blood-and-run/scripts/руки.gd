@@ -54,18 +54,27 @@ func _input(event):
 				return # Если это сетевой клон чужого игрока, полностью игнорируем нажатие
 	if Input.is_action_just_released("ui_open"):
 		pr = false
-	if Input.is_action_just_pressed("ui_open") and (
-		Global.mp_mode == "offline" or Global.lobby_ready):
+	if Input.is_action_just_pressed("ui_open"):
 		print("click")
 		pr = true
-		if $SpringArm3D/Hand.get_child_count() == 1: obj = $SpringArm3D/Hand.get_child(0)
-		if obj:
-			await get_tree().create_timer(0.05).timeout
-			request_spawn_ras_on_server.rpc_id(1, [obj.named, obj.global_position])
-			#$Timer.start()
-		else: 
-			if $RayCast3D.is_colliding():
-				_colling()
+		if $SpringArm3D/Hand.get_child_count() >0: obj = $SpringArm3D/Hand.get_child(0)
+		if Global.mp_mode == "offline":
+			printt(obj)
+			if obj:
+				var stav = [obj.named, obj.global_position]
+				obj.queue_free()
+				await get_tree().create_timer(0.07).timeout
+				Global.papa.get_node("Расходники").add_child(_stavit(stav))
+			else:
+				if $RayCast3D.is_colliding(): _colling()
+		else: if Global.lobby_ready:
+			if obj:
+				await get_tree().create_timer(0.05).timeout
+				request_spawn_ras_on_server.rpc_id(1, [obj.named, obj.global_position])
+				#$Timer.start()
+			else: 
+				if $RayCast3D.is_colliding():
+					_colling()
 	if Input.is_action_just_pressed("+"):
 		if $SpringArm3D.spring_length < 2.5:
 			$SpringArm3D.spring_length += 0.1
@@ -223,12 +232,13 @@ func _colling():
 				elif col.is_class("RigidBody3D"):
 					if !col.freeze:
 						await get_tree().create_timer(0.05).timeout
-						spawner_hand.spawn(col.named)
+						if Global.mp_mode == "offline": add_in_hand(col.named)
+						else: spawner_hand.spawn(col.named)
 						if col.get_parent().name == "Расходники":
 							Global.papa.destroy_col.rpc(col.name)
 				elif Global.papa.get_node("Расходники").get_children().size() < col_rashod:
-					spawner_hand.spawn(col.name)
-					#add_to_hand(col.name)
+					if Global.mp_mode == "offline": add_in_hand(col.name)
+					else: spawner_hand.spawn(col.name)
 					print(col.get_parent())
 					if Global.get_papa(2, col).name == "Ящики":
 						col.get_parent().get_node("AudioStreamPlayer3D").play()
@@ -280,6 +290,7 @@ func _stavit(stav):
 
 @rpc("any_peer", "call_local")
 func add_in_hand(data):
+	await get_tree().create_timer(0.05).timeout
 	var item_name = data
 	var node = instance_na(item_name)
 	print(data)
@@ -293,6 +304,7 @@ func add_in_hand(data):
 	
 
 func _in_hand(data):
+	await get_tree().create_timer(0.05).timeout
 	var item_name = data
 	var node = instance_na(item_name)
 	print(data)

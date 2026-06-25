@@ -1085,7 +1085,7 @@ label_settings = SubResource("LabelSettings_415sf")
 
 [node name="Table" parent="Заправка" unique_id=1041556568 instance=ExtResource("19_415sf")]
 
-[node name="Sprite3D" parent="Заправка/Table/Касса/Cofe_machine" parent_id_path=PackedInt32Array(1041556568, 780539148) index="4" unique_id=1361381740]
+[node name="Sprite3D" parent="Заправка/Table/Касса/Cofe_machine" parent_id_path=PackedInt32Array(1041556568, 780539148) index="3" unique_id=1361381740]
 texture = SubResource("ViewportTexture_yyosc")
 
 [node name="Sprite3D" parent="Заправка/Table/Касса/Снеки" parent_id_path=PackedInt32Array(1041556568, 1560413509) index="2" unique_id=353422132]
