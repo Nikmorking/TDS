@@ -8,7 +8,7 @@ func _ready():
 	multiplayer.peer_disconnected.connect(Multiplayer._on_player_disconnected)
 	multiplayer.connected_to_server.connect(func(): print("Клиент: Я успешно вошел на сервер!"))
 	multiplayer.connection_failed.connect(func(): print("Клиент: Ошибка! Сервер не отвечает."))
-	Check_boxes = $"Заправка/Table/CSGPolygon3D2/SubViewport/Control/Control".get_children()
+	Check_boxes = $"Заправка/Table/CSGPolygon3D/SubViewport/Control/Control".get_children()
 	print(Check_boxes)
 	if Global.mp_mode == "host":
 		Multiplayer.start_host()
