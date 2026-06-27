@@ -9,16 +9,14 @@ var snacks = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	MultiplayerSynchronizer
 	#cofe = 10
+	$"../CSGPolygon3D/ekran/AnimationPlayer".play("glich")
 	#stakan = true
 	if Global.fara_days == 0:
 		$Cofe_machine/CollisionShape3D.disabled = true
 		$Cofe_machine/mesh.hide()
 		$Cofe_machine/Sprite3D.hide()
 		
-		
-	
 	pass # Replace with function body.
 
 func _input(event):

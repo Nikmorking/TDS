@@ -142,24 +142,30 @@ var stavit
 @onready var spawner_hand: MultiplayerSpawner = get_node("Расходник-инатор")
 var rashodnik: Node3D
 
+
+var mesh: MeshInstance3D
 func fnc_zp():
 	if zp_in:
-		if $RayCast3D.get_collider().name == "ZP1":
-			points = Global.papa.get_node("LineRenderer3D").points
-			$RayCast3D.get_collider().get_parent().get_node("AudioStreamPlayer3D").play()
-		if $RayCast3D.get_collider().name == "ZP2":
-			points = Global.papa.get_node("LineRenderer3D2").points
-			$RayCast3D.get_collider().get_parent().get_node("AudioStreamPlayer3D").play()
-		if $RayCast3D.get_collider().name == "ZP3":
+		var col = $RayCast3D.get_collider()
+		if col.name == "ZP3":
 			points = Global.papa.get_node("LineRenderer3D3").points
-			$RayCast3D.get_collider().get_parent().get_node("AudioStreamPlayer3D").play()
-		if $RayCast3D.get_collider().name == "ZP4":
-			points = Global.papa.get_node("LineRenderer3D4").points
-			$RayCast3D.get_collider().get_parent().get_node("AudioStreamPlayer3D").play()
+			col.get_parent().get_node("mesh/1").hide()
+			mesh = col.get_parent().get_node("mesh/Cylinder_007")
+			var shad: ShaderMaterial = mesh.get_surface_override_material(0)
+			if shad:
+				shad.set_shader_parameter("cutoff_y", -0.124)
+				mesh.set_surface_override_material(0, shad)
+			col.get_parent().get_node("AudioStreamPlayer3D").play()
 		if !zp:
 			zp = true
 		else:
 			points.set(1, points.get(0))
+			if col.get_parent().name == "CSGBox3D27":
+				col.get_parent().get_node("mesh/1").show()
+				var mesh: MeshInstance3D = col.get_parent().get_node("mesh/Cylinder_007")
+				var shad: ShaderMaterial = mesh.get_surface_override_material(0)
+				shad.set_shader_parameter("cutoff_y", -0.4)
+				mesh.set_surface_override_material(0, shad)
 			zp = false
 	pass
 
@@ -172,6 +178,11 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 
 func _on_area_3d_area_exited(area: Area3D) -> void:
 	points.set(1, points.get(0))
+	Global.papa.get_node("Zp/CSGBox3D27/mesh/1").show()
+	if mesh: 
+		var shad: ShaderMaterial = mesh.get_surface_override_material(0)
+		shad.set_shader_parameter("cutoff_y", -0.4)
+		mesh.set_surface_override_material(0, shad)
 	zp = false
 	zp_in = false
 	pass # Replace with function body.
@@ -285,6 +296,7 @@ func _stavit(stav):
 	if Global.player: node.look_at(Global.player.position)
 	node.rotation.x = 0
 	node.rotation.z = 0
+	if stav.get(0) == "snack": node.rotate_y(1.57)
 	return node
 
 @rpc("any_peer", "call_local")

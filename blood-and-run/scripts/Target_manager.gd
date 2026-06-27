@@ -54,6 +54,10 @@ func _on_timer_timeout() -> void:
 	pass # Replace with function body.
 
 func _pripersa():
+	var mat: StandardMaterial3D = $"Заправка/Table/CSGPolygon3D/ekran".material_override
+	var shad: ShaderMaterial = mat.next_pass
+	shad.set_shader_parameter("line_color", Vector4(0.5, 0.5, 0.5, 1.0))
+	$"Заправка/Table/CSGPolygon3D//SubViewport/Control/RichTextLabel".text = ""
 	$"driving in my car".n = 5
 	$"driving in my car".i -= 1
 	$"driving in my car".rotate_y(-1.57)
@@ -94,6 +98,9 @@ func _pridi(seed):
 	nd = true
 	$No_human.movement_target_position = $Markers/Marker3D2.position
 	$No_human.actor_setup() 
+	var mat: StandardMaterial3D = $"Заправка/Table/CSGPolygon3D/ekran".material_override
+	var shad: ShaderMaterial = mat.next_pass
+	shad.set_shader_parameter("line_color", Vector4(0.5, 0.5, 0.5, 0.2))
 	print(zakaz)
 	for i in zakaz:
 		$"Заправка/Table/CSGPolygon3D/SubViewport/Control/RichTextLabel".text += "* "

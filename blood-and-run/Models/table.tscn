@@ -13,6 +13,7 @@
 [ext_resource type="Material" uid="uid://cehxhcf454q5q" path="res://mater/grey.tres" id="10_jrmna"]
 [ext_resource type="PackedScene" uid="uid://d4n0hb3fpw6ir" path="res://Models/snek.fbx" id="11_myvrn"]
 [ext_resource type="Material" uid="uid://d1mdfbsfxfvf" path="res://mater/brown.tres" id="12_3dp1s"]
+[ext_resource type="Shader" uid="uid://lrkou54p0qqo" path="res://mater/monit.gdshader" id="14_dlnaw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cfvsp"]
 size = Vector3(2.2872314, 1.0596924, 2.8095398)
@@ -291,7 +292,15 @@ RichTextLabel/styles/normal = null
 [sub_resource type="ViewportTexture" id="ViewportTexture_4p7hl"]
 viewport_path = NodePath("CSGPolygon3D/SubViewport")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3dp1s"]
+render_priority = 0
+shader = ExtResource("14_dlnaw")
+shader_parameter/line_color = Color(0.6649216, 0.66492164, 0.6649215, 1)
+shader_parameter/line_count = 1.0
+shader_parameter/line_thickness = 0.20800000988
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bawi3"]
+next_pass = SubResource("ShaderMaterial_3dp1s")
 emission_enabled = true
 emission = Color(0.8192276, 0.81922776, 0.8192277, 1)
 
@@ -305,6 +314,44 @@ _surfaces = [{
 "vertex_count": 36,
 "vertex_data": PackedByteArray("AAAAvQDJKL8AaGI/AAAAvQDJKL8AaGK/AAAAvQDJKD8AaGK/AAAAPQDJKL8AaGK/AAAAvQDJKL8AaGK/AAAAvQDJKL8AaGI/AAAAvQDJKD8AaGK/AAAAvQDJKL8AaGK/AAAAPQDJKL8AaGK/AAAAvQDJKD8AaGK/AAAAvQDJKD8AaGI/AAAAvQDJKL8AaGI/AAAAvQDJKL8AaGI/AAAAvQDJKD8AaGI/AAAAPQDJKD8AaGI/AAAAPQDJKD8AaGI/AAAAvQDJKD8AaGI/AAAAvQDJKD8AaGK/AAAAvQDJKL8AaGI/AAAAPQDJKL8AaGI/AAAAPQDJKL8AaGK/AAAAPQDJKD8AaGI/AAAAPQDJKL8AaGI/AAAAvQDJKL8AaGI/AAAAPQDJKL8AaGK/AAAAPQDJKL8AaGI/AAAAPQDJKD8AaGI/AAAAPQDJKL8AaGK/AAAAPQDJKD8AaGK/AAAAvQDJKD8AaGK/AAAAvQDJKD8AaGK/AAAAPQDJKD8AaGK/AAAAPQDJKD8AaGI/AAAAPQDJKD8AaGI/AAAAPQDJKD8AaGK/AAAAPQDJKL8AaGK/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA/////wAA/z//////AAD/P/////8AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//////AAD/f/////8AAP9//////wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8/////f/9//n////9//3/+f////3//f/5//////wAA/z//////AAD/P/////8AAP8//3//////AAD/f/////8AAP9//////wAA////f/9//n////9//3/+f////3//f/5/")
 }]
+
+[sub_resource type="Animation" id="Animation_dlnaw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material_override:next_pass:shader_parameter/line_count")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_3dp1s"]
+resource_name = "glich"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material_override:next_pass:shader_parameter/line_count")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.46666667, 1.0667, 1.5999999, 2.0666666, 2.5333333, 2.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [75.000003515, 125.00000589, 75.000003515, 175.000008265, 125.00000589, 200.0000094525, 75.000003515]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_78bpj"]
+_data = {
+&"RESET": SubResource("Animation_dlnaw"),
+&"glich": SubResource("Animation_3dp1s")
+}
 
 [node name="Table" type="Node3D" unique_id=1041556568]
 
@@ -659,13 +706,16 @@ offset_bottom = 157.0
 scale = Vector2(1.7, 1.7)
 
 [node name="Sprite3D" type="Sprite3D" parent="CSGPolygon3D" unique_id=840912229]
-transform = Transform3D(-3.7638564e-08, -0.12706447, 0.9918925, -4.8216102e-09, 0.99189365, 0.12706435, -0.8681064, 4.440892e-16, -4.3711303e-08, -0.27310848, -0.014735222, -0.1761322)
+transform = Transform3D(-3.7638564e-08, -0.12706447, 0.9918925, -4.8216102e-09, 0.99189365, 0.12706435, -0.8681064, 4.440892e-16, -4.3711303e-08, -0.27310848, -0.014735222, -0.23677826)
 texture = SubResource("ViewportTexture_4p7hl")
 
-[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="CSGPolygon3D" unique_id=1759406873]
-transform = Transform3D(0.9971388, -0.12675369, -4.0193981e-10, 0.12269824, 1.0300964, 6.557667e-09, -3.2873615e-10, -5.54058e-09, 1.2283871, -0.43905354, 0.031627536, -0.10130119)
+[node name="ekran" type="MeshInstance3D" parent="CSGPolygon3D" unique_id=1759406873]
+transform = Transform3D(0.9971388, -0.12675369, -4.0193981e-10, 0.12269824, 1.0300964, 6.557667e-09, -3.2873615e-10, -5.54058e-09, 1.2283871, -0.43905354, 0.031627536, -0.08514786)
 material_override = SubResource("StandardMaterial3D_bawi3")
 mesh = SubResource("ArrayMesh_jrmna")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CSGPolygon3D/ekran" unique_id=1387129952]
+libraries/ = SubResource("AnimationLibrary_78bpj")
 
 [connection signal="body_entered" from="Radio/Radio" to="Radio" method="_on_radio_body_entered"]
 [connection signal="body_exited" from="Radio/Radio" to="Radio" method="_on_radio_body_exited"]

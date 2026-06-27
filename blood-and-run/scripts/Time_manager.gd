@@ -19,7 +19,7 @@ func _ready():
 	Global.connect("load", vis_time.rpc)
 
 func _on_tick_timeout():
-	if not multiplayer.is_server():
+	if Global.mp_mode != "offline" and not multiplayer.is_server():
 		return
 	if time_left:
 			Global.zp -= 1
