@@ -24,6 +24,11 @@ signal load
 signal _light_off
 signal _syn_players
 
+
+var ekran: MeshInstance3D
+var mat: StandardMaterial3D
+var knopka: MeshInstance3D
+
 @rpc("any_peer", "call_local")
 func light_off():
 	_light_off.emit()
@@ -31,8 +36,22 @@ func light_off():
 	if Global.light_work:
 		papa.c.volumetric_fog_emission = Color("4f1c5e")
 		papa.rand = false
+		mat = ekran.material_override
+		mat.emission = Color.WHITE
+		mat.albedo_color = Color.WHITE
+		mat = knopka.material_override
+		mat.emission = Color.RED
+		mat.albedo_color = Color.RED
 	else:
 		papa.c.volumetric_fog_emission = Color(0.139, 0.0, 0.081, 1.0)
+		ekran = papa.get_node("Заправка/Table/CSGPolygon3D/ekran")
+		mat = ekran.material_override
+		mat.emission = Color.BLACK
+		mat.albedo_color = Color.BLACK
+		knopka = papa.get_node("Заправка/Table/Касса/Cofe_machine/mesh/Cylinder_004")
+		mat = knopka.material_override
+		mat.emission = Color.BLACK
+		mat.albedo_color = Color.BLACK
 
 func _input(event):
 	#if Input.is_action_just_pressed("ui_copy"):

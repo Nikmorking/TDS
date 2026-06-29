@@ -295,7 +295,7 @@ viewport_path = NodePath("CSGPolygon3D/SubViewport")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3dp1s"]
 render_priority = 0
 shader = ExtResource("14_dlnaw")
-shader_parameter/line_color = Color(0.6649216, 0.66492164, 0.6649215, 1)
+shader_parameter/line_color = Color(0, 0, 0, 1)
 shader_parameter/line_count = 1.0
 shader_parameter/line_thickness = 0.20800000988
 
@@ -344,7 +344,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.46666667, 1.0667, 1.5999999, 2.0666666, 2.5333333, 2.9666667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [75.000003515, 125.00000589, 75.000003515, 175.000008265, 125.00000589, 200.0000094525, 75.000003515]
+"values": [75.000003515, 125.00000589, 75.000003515, 175.000008265, 125.00000589, 200.0000094525, 125.00000589]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_78bpj"]

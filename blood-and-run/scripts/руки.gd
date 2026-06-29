@@ -212,14 +212,15 @@ func _colling():
 			Global.papa.zaprav.rpc()
 			print(Global.get_papa(3, self), "zzz")
 		elif col.name == "Cofe_machine":
-			if kasa.cofe > 0:
-				if kasa.stakan:
-					kasa.sel("Варка")
-					kasa.get_node("Cofe_machine/AudioStreamPlayer3D").play()
-				else:
-					kasa.sel("нет стакана")
-			else:
+			if kasa.cofe <= 0:
 				kasa.sel("Нет кофе")
+			elif not kasa.stakan:
+				kasa.sel("нет стакана")
+			elif not Global.light_work:
+				kasa.sel("нет света")
+			else:
+				kasa.sel("Варка")
+				kasa.get_node("Cofe_machine/AudioStreamPlayer3D").play()
 			if kasa.cofe_gotova:
 				kasa.cofe_gotova = false
 				if Global.mp_mode == "offline":
