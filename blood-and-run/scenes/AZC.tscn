@@ -554,6 +554,12 @@ size = Vector3(0.5135956, 1.4562696, 0.24293518)
 [sub_resource type="BoxShape3D" id="BoxShape3D_m2ycm"]
 size = Vector3(2.5858974, 0.99772644, 4.072941)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_4nc4p"]
+size = Vector3(1.3340149, 4.4056244, 2.2210693)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_myhle"]
+size = Vector3(2.0721512, 1.6635962, 3.2257996)
+
 [sub_resource type="GDScript" id="GDScript_myhle"]
 resource_name = "Prolog"
 script/source = "extends Node
@@ -1690,6 +1696,17 @@ bus = &"Effect"
 
 [node name="mesh" parent="Zp/CSGBox3D27" unique_id=1110498778 instance=ExtResource("22_myhle")]
 transform = Transform3D(-0.6, 0, -9.059749e-08, 0, 0.6, 0, 9.059749e-08, 0, -0.6, 0.645319, -1.9004028, -0.6136069)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Zp" unique_id=1905422838]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5702558, -8.620858)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Zp/StaticBody3D" unique_id=377966560]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21879578, 0.26761627, -1.6170044)
+shape = SubResource("BoxShape3D_4nc4p")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Zp/StaticBody3D" unique_id=849310278]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24770272, -1.032537, 1.7316685)
+shape = SubResource("BoxShape3D_myhle")
 
 [node name="Prolog" type="Node" parent="." unique_id=217079328]
 script = SubResource("GDScript_myhle")

@@ -12,6 +12,7 @@
 [ext_resource type="FontFile" uid="uid://5dau83l3l8w3" path="res://demo/AlwaysAngryBB[RUSbyPenka220]-Regular.otf" id="10_a38lo"]
 [ext_resource type="Script" uid="uid://b4o5gu1g5y7xh" path="res://scripts/duhota.gd" id="11_4ni07"]
 [ext_resource type="Texture2D" uid="uid://2cwvmrn16qci" path="res://Texture/blood.png" id="12_l71n6"]
+[ext_resource type="PackedScene" uid="uid://cflmsb81hgmv" path="res://Models/шланг.tscn" id="13_f1ej7"]
 [ext_resource type="AudioStream" uid="uid://b7djpdlxind5d" path="res://sounds/шаги.mp3" id="13_ke2ow"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yyosc"]
@@ -792,6 +793,10 @@ spawn_limit = 100
 [node name="Timer3" type="Timer" parent="Camera3D/руки" unique_id=1211830592]
 wait_time = 0.1
 
+[node name="шланг" parent="Camera3D/руки" unique_id=1651641096 instance=ExtResource("13_f1ej7")]
+transform = Transform3D(-0.3637584, -0.062386185, -0.15423298, 1.9455902e-08, 0.37081337, -0.14999151, 0.16637261, -0.1364017, -0.33721617, 0.28052488, -0.959962, -0.46160507)
+visible = false
+
 [node name="Menu" type="Control" parent="Camera3D" unique_id=1081682958]
 process_mode = 3
 visible = false
@@ -1087,3 +1092,5 @@ label_settings = SubResource("LabelSettings_f1ej7")
 [connection signal="timeout" from="Camera3D/Duhota/In" to="Camera3D/Duhota" method="_on_in_timeout"]
 [connection signal="area_entered" from="Area3D" to="Camera3D/руки" method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Area3D" to="Camera3D/руки" method="_on_area_3d_area_exited"]
+
+[editable path="Camera3D/руки/шланг"]

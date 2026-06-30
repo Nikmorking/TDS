@@ -133,9 +133,7 @@ func instance_na(name: String) -> Object:
 
 func _physics_process(delta):
 	if zp:
-		points.set(1, global_position)
-	pass
-
+		points.set(1, $"шланг/Цилиндр_001".global_position)
 
 var stavit
 @onready var spawner_ras: MultiplayerSpawner = Global.papa.get_node("Расходник-инатор")
@@ -150,6 +148,7 @@ func fnc_zp():
 		if col.name == "ZP3":
 			points = Global.papa.get_node("LineRenderer3D3").points
 			col.get_parent().get_node("mesh/1").hide()
+			$"шланг".show()
 			mesh = col.get_parent().get_node("mesh/Cylinder_007")
 			var shad: ShaderMaterial = mesh.get_surface_override_material(0)
 			if shad:
@@ -159,6 +158,7 @@ func fnc_zp():
 		if !zp:
 			zp = true
 		else:
+			$"шланг".hide()
 			points.set(1, points.get(0))
 			if col.get_parent().name == "CSGBox3D27":
 				col.get_parent().get_node("mesh/1").show()
@@ -178,6 +178,7 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 
 func _on_area_3d_area_exited(area: Area3D) -> void:
 	points.set(1, points.get(0))
+	$"шланг".hide()
 	Global.papa.get_node("Zp/CSGBox3D27/mesh/1").show()
 	if mesh: 
 		var shad: ShaderMaterial = mesh.get_surface_override_material(0)
