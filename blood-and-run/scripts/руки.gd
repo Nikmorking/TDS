@@ -2,15 +2,7 @@ extends Node3D
 
 @onready var hand_marker = $SpringArm3D/Hand
 
-var stakanchiki = load("res://Расходники/1.tscn")
-var cofe = load("res://Расходники/cofe.tscn")
-var stakan = load("res://Расходники/Stakan.tscn")
-var stakan_s_cofe = load("res://Расходники/Stakan_s_cofe.tscn")
-var ahabka_buttonov = load("res://Расходники/ahabka_buttonov.tscn")
-var button = load("res://Models/button/source/poly.glb")
-var pachka_snackov = load("res://Расходники/pachka_snackov.tscn")
-var snack = load("res://Расходники/snack.tscn")
-var krest = load("res://Расходники/krest.tscn")
+@export var rashodniki: Array = [[], []]
 var zp = false
 var zp_in = false
 var points: Array 
@@ -100,32 +92,10 @@ func eat():
 
 func instance_na(name: String) -> Object:
 	var ret_obj
-	if name == "Со стаканами" or name == "Stakanchiki":
-		ret_obj = stakanchiki.instantiate()
-		return ret_obj
-	if name == "С кофе" or name == "Cofe":
-		ret_obj = cofe.instantiate()
-		return ret_obj
-	if name == "Stakan":
-		ret_obj = stakan.instantiate()
-		return ret_obj
-	if name == "Stakan_cofe":
-		ret_obj = stakan_s_cofe.instantiate()
-		return ret_obj
-	if name == "batonovo" or name == "ahabka_buttonov":
-		ret_obj = ahabka_buttonov.instantiate()
-		return ret_obj
-	if name == "button":
-		ret_obj = button.instantiate()
-		return ret_obj
-	if name == "pachka_snackov" or name == "с снеками":
-		ret_obj = pachka_snackov.instantiate()
-		return ret_obj
-	if name == "snack":
-		ret_obj = snack.instantiate()
-		return ret_obj
+	for i in rashodniki:
+		if i[0].find(name) != -1:
+			ret_obj = i[1].instantiate()
 	if name == "Krest":
-		ret_obj = krest.instantiate()
 		ret_obj.get_node("Area3D/Coll").disabled = false
 		Global.krest = true
 	return ret_obj
@@ -142,6 +112,7 @@ var rashodnik: Node3D
 
 
 var mesh: MeshInstance3D
+@rpc("any_peer", "call_local")
 func fnc_zp():
 	if zp_in:
 		var col = $RayCast3D.get_collider()
@@ -245,19 +216,19 @@ func _colling():
 		if !col.freeze:
 			await get_tree().create_timer(0.05).timeout
 			if Global.mp_mode == "offline": add_in_hand(col.named)
-			else: spawner_hand.spawn(col.named)
+			else: add_in_hand.rpc(col.named)
 			if col.get_parent().name == "Расходники":
 				Global.papa.destroy_col.rpc(col.name)
 	elif Global.papa.get_node("Расходники").get_children().size() < col_rashod:
 		if Global.mp_mode == "offline": add_in_hand(col.name)
-		else: spawner_hand.spawn(col.name)
+		else: add_in_hand.rpc(col.name)
 		print(col.get_parent())
 		if Global.get_papa(2, col).name == "Ящики":
 			col.get_parent().get_node("AudioStreamPlayer3D").play()
 	else:
 		$"../.."._print_in_ui("               O \n \n ты утилизируй шнягу")
 		print("Продай что нибудь ненужное! Но чтобы продать что то ненужное,сначало нужно купить что-то ненужное, а у нас денег нет.")
-	fnc_zp()
+	fnc_zp.rpc()
 
 
 
@@ -304,7 +275,7 @@ func _stavit(stav):
 @rpc("any_peer", "call_local")
 func add_in_hand(data):
 	await get_tree().create_timer(0.05).timeout
-	var item_name = data
+	var item_name = str(data)
 	var node = instance_na(item_name)
 	print(data)
 	if node:

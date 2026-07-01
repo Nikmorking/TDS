@@ -4,14 +4,23 @@
 [ext_resource type="Script" uid="uid://bhsi6d5auuidh" path="res://scripts/ui.gd" id="2_f1ej7"]
 [ext_resource type="Texture2D" uid="uid://bvmyaqt4cgpaj" path="res://scenes/318748684_bc04d5c7d7c38229a9a8e5933851aab1.png" id="3_oprun"]
 [ext_resource type="Script" uid="uid://cnnqcnah1ft1y" path="res://scripts/руки.gd" id="4_a8ls1"]
+[ext_resource type="PackedScene" uid="uid://djscstv0lleby" path="res://Расходники/1.tscn" id="5_a38lo"]
 [ext_resource type="Script" uid="uid://drjt1yu0s6a0o" path="res://scripts/menu.gd" id="5_qfm1y"]
+[ext_resource type="PackedScene" uid="uid://dsl0h8dye8dkr" path="res://Расходники/cofe.tscn" id="6_4ni07"]
 [ext_resource type="Texture2D" uid="uid://be2meyinowmx1" path="res://Texture/menu.png" id="6_fulsm"]
 [ext_resource type="AudioStream" uid="uid://dkmxx220ci41x" path="res://sounds/close.wav" id="7_4r5pv"]
+[ext_resource type="PackedScene" uid="uid://cbe6pu0sxv4kl" path="res://Расходники/Stakan.tscn" id="7_l71n6"]
 [ext_resource type="AudioStream" uid="uid://b6abahg8uksh6" path="res://sounds/open.wav" id="8_60mlk"]
+[ext_resource type="PackedScene" uid="uid://cymwf4jdrq86o" path="res://Расходники/Stakan_s_cofe.tscn" id="8_ke2ow"]
 [ext_resource type="AudioStream" uid="uid://tomgjbqso8ed" path="res://sounds/Navodka.mp3" id="9_i4ail"]
+[ext_resource type="PackedScene" uid="uid://djbnqo186r3wp" path="res://Расходники/ahabka_buttonov.tscn" id="9_ujl30"]
+[ext_resource type="PackedScene" uid="uid://d3rabg2sk7hno" path="res://Расходники/pachka_snackov.tscn" id="10_31cv2"]
 [ext_resource type="FontFile" uid="uid://5dau83l3l8w3" path="res://demo/AlwaysAngryBB[RUSbyPenka220]-Regular.otf" id="10_a38lo"]
 [ext_resource type="Script" uid="uid://b4o5gu1g5y7xh" path="res://scripts/duhota.gd" id="11_4ni07"]
+[ext_resource type="PackedScene" uid="uid://caro2nfx5s3ln" path="res://Расходники/snack.tscn" id="11_pf23h"]
+[ext_resource type="PackedScene" uid="uid://ehio2k2chdj4" path="res://Расходники/krest.tscn" id="12_dt7fs"]
 [ext_resource type="Texture2D" uid="uid://2cwvmrn16qci" path="res://Texture/blood.png" id="12_l71n6"]
+[ext_resource type="PackedScene" uid="uid://cbaviyah5c6ud" path="res://Models/button/source/poly.glb" id="13_4ni07"]
 [ext_resource type="PackedScene" uid="uid://cflmsb81hgmv" path="res://Models/шланг.tscn" id="13_f1ej7"]
 [ext_resource type="AudioStream" uid="uid://b7djpdlxind5d" path="res://sounds/шаги.mp3" id="13_ke2ow"]
 
@@ -761,6 +770,7 @@ label_settings = SubResource("LabelSettings_oprun")
 [node name="руки" type="Node3D" parent="Camera3D" unique_id=1062435021]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1837149)
 script = ExtResource("4_a8ls1")
+rashodniki = [[["Со стаканами", "Stakanchiki"], ExtResource("5_a38lo")], [["С кофе", "Cofe"], ExtResource("6_4ni07")], [["Stakan"], ExtResource("7_l71n6")], [["Stakan_cofe"], ExtResource("8_ke2ow")], [["batonovo", "ahabka_buttonov"], ExtResource("9_ujl30")], [["pachka_snackov", "с снеками"], ExtResource("10_31cv2")], [["snack"], ExtResource("11_pf23h")], [["Krest"], ExtResource("12_dt7fs")], [["button"], ExtResource("13_4ni07")]]
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D/руки" unique_id=576354602]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8498604)
