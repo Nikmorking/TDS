@@ -55,7 +55,7 @@ func cont():
 			Global.esc()
 			$Close.play()
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			get_parent().get_node("game_ui").show()
+			#get_parent().get_node("game_ui").show()
 			hide()
 
 func _on_quit_button_down() -> void:
