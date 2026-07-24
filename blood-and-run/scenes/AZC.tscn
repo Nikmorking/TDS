@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dism06b1iip8u" path="res://scenes/doorS.tscn" id="5_vynuk"]
 [ext_resource type="Texture2D" uid="uid://be2meyinowmx1" path="res://Texture/menu.png" id="8_e63ir"]
 [ext_resource type="PackedScene" uid="uid://ki8fgnhihyot" path="res://scenes/lampa_mini.tscn" id="8_ro5by"]
+[ext_resource type="PackedScene" uid="uid://cgtemd1k4v7db" path="res://musorka.tscn" id="11_1huwv"]
 [ext_resource type="Environment" uid="uid://cc7unamcaasd2" path="res://demo/new_environment.tres" id="13_myhle"]
 [ext_resource type="Material" uid="uid://buc3wjgnofj26" path="res://mater/glass.tres" id="16_173o4"]
 [ext_resource type="Material" uid="uid://cehxhcf454q5q" path="res://mater/grey.tres" id="16_myhle"]
@@ -301,11 +302,6 @@ viewport_path = NodePath("Касса/SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_s6jno"]
 viewport_path = NodePath("CSGPolygon3D/SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oou1n"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m2ycm"]
-albedo_color = Color(0.2819191, 0.28191918, 0.281919, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f5ce8"]
 size = Vector3(0.67614746, 0.321167, 0.6940918)
@@ -1107,27 +1103,12 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource("18_oou1n")
 
-[node name="мусорка" type="CSGBox3D" parent="Заправка/мусорка" unique_id=813335406]
-transform = Transform3D(1.1, 0, 0, 0, 1.33, 0, 0, 0, 1.1, 0.24725246, 0.14731449, 0.030954361)
-size = Vector3(0.7756653, 0.83524036, 0.7772064)
-material = SubResource("StandardMaterial3D_oou1n")
-
-[node name="CSGBox3D15" type="CSGBox3D" parent="Заправка/мусорка/мусорка" unique_id=604768600]
-transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0.01662445, 0.36678803, -0.024055958)
-size = Vector3(0.89632607, 0.17293024, 0.91960216)
-material = SubResource("StandardMaterial3D_m2ycm")
-
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Заправка/мусорка/мусорка" unique_id=1797038814]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24340516, -0.23688745)
-operation = 2
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Заправка/мусорка/мусорка/CSGCombiner3D" unique_id=1125144076]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007147789, 0.07637471, 0.2326951)
-size = Vector3(0.57891846, 1, 0.52882576)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Заправка/мусорка" unique_id=831463267]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26287842, -0.24395752, 0.013549805)
 shape = SubResource("BoxShape3D_f5ce8")
+
+[node name="musorka" parent="Заправка/мусорка" unique_id=1505271735 instance=ExtResource("11_1huwv")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.2598114, -0.35092354, 0.005945921)
 
 [node name="Календарь" parent="Заправка" unique_id=524604911 instance=ExtResource("36_tsu7c")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -15.897136, 2.2455337, -16.929031)
@@ -1646,7 +1627,7 @@ process_mode = 3
 speed_scale = 1.3
 
 [node name="Camera3D" parent="emeny/Настоящий пельмень2" index="7" unique_id=1518745682]
-transform = Transform3D(-0.10832911, -0.36255175, 0.9256462, -0.042142097, 0.93196315, 0.36009437, -0.99322146, 2.9802308e-08, -0.116237484, 14.321535, 11.460782, -2.1801574)
+transform = Transform3D(-0.1083291, -0.36255175, 0.9256462, -0.042142097, 0.93196315, 0.36009437, -0.99322146, 2.607702e-08, -0.11623748, 14.321535, 11.460782, -2.1801574)
 
 [node name="Timer2" type="Timer" parent="." unique_id=2145315828]
 wait_time = 23.0
