@@ -49,8 +49,8 @@ func conti():
 @rpc("any_peer", "call_local")
 func _start():
 	rotation_degrees = Vector3(0, 0, 0)
-	if randi_range(0, 10) > 9:
-		$Driving.stream = load("res://sounds/Driving in my car.mp3")
+	if randi_range(0, 10) > 5:
+		$Driving.stream = load("res://sounds/pwgood driving in my car cover.mp3")
 	else:
 		$Driving.stream = load("res://sounds/inside-car-wet-driving_fydabreu.mp3")
 	$Driving.play()
