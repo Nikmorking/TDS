@@ -87,19 +87,19 @@ func _on_door_2__open():
 
 func die(prichina: String):
 	print(prichina)
-	if prichina == "Задавлен":
-		$Player/Camera3D/Achivka/AnimationPlayer.speed_scale = 4
-		Global.achivka("                      Задавлен")
-		printerr("Буква: Z")
-	$Be.play()
-	if prichina == "Съели" :
-		$"emeny/Настоящий пельмень2/AnimationPlayer".play("new_animation")
-	else:
-		$Player/Camera3D/game_ui/Sprite2D.show()
-		$Timer4.start()
-	$emeny.vkl = false
-	$emeny.process_mode = ProcessMode.PROCESS_MODE_DISABLED
-	$emeny.start = false
+	#if prichina == "Задавлен":
+		#$Player/Camera3D/Achivka/AnimationPlayer.speed_scale = 4
+		#Global.achivka("                      Задавлен")
+		#printerr("Буква: Z")
+	#$Be.play()
+	#if prichina == "Съели" :
+		#$"emeny/Настоящий пельмень2/AnimationPlayer".play("new_animation")
+	#else:
+		#$Player/Camera3D/game_ui/Sprite2D.show()
+		#$Timer4.start()
+	#$emeny.vkl = false
+	#$emeny.process_mode = ProcessMode.PROCESS_MODE_DISABLED
+	#$emeny.start = false
 
 
 
