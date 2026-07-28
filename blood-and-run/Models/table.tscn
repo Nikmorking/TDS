@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://d4n0hb3fpw6ir" path="res://Models/snek.fbx" id="11_myvrn"]
 [ext_resource type="Material" uid="uid://d1mdfbsfxfvf" path="res://mater/brown.tres" id="12_3dp1s"]
 [ext_resource type="Shader" uid="uid://lrkou54p0qqo" path="res://mater/monit.gdshader" id="14_dlnaw"]
+[ext_resource type="Shader" uid="uid://drbywytc087uk" path="res://mater/test.tres" id="15_3dp1s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cfvsp"]
 size = Vector3(2.2872314, 1.0596924, 2.8095398)
@@ -295,9 +296,9 @@ viewport_path = NodePath("CSGPolygon3D/SubViewport")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3dp1s"]
 render_priority = 0
 shader = ExtResource("14_dlnaw")
-shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/line_color = Color(0.5, 0.5, 0.5, 1)
 shader_parameter/line_count = 1.0
-shader_parameter/line_thickness = 0.20800000988
+shader_parameter/line_thickness = 0.2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bawi3"]
 next_pass = SubResource("ShaderMaterial_3dp1s")
@@ -314,6 +315,29 @@ _surfaces = [{
 "vertex_count": 36,
 "vertex_data": PackedByteArray("AAAAvQDJKL8AaGI/AAAAvQDJKL8AaGK/AAAAvQDJKD8AaGK/AAAAPQDJKL8AaGK/AAAAvQDJKL8AaGK/AAAAvQDJKL8AaGI/AAAAvQDJKD8AaGK/AAAAvQDJKL8AaGK/AAAAPQDJKL8AaGK/AAAAvQDJKD8AaGK/AAAAvQDJKD8AaGI/AAAAvQDJKL8AaGI/AAAAvQDJKL8AaGI/AAAAvQDJKD8AaGI/AAAAPQDJKD8AaGI/AAAAPQDJKD8AaGI/AAAAvQDJKD8AaGI/AAAAvQDJKD8AaGK/AAAAvQDJKL8AaGI/AAAAPQDJKL8AaGI/AAAAPQDJKL8AaGK/AAAAPQDJKD8AaGI/AAAAPQDJKL8AaGI/AAAAvQDJKL8AaGI/AAAAPQDJKL8AaGK/AAAAPQDJKL8AaGI/AAAAPQDJKD8AaGI/AAAAPQDJKL8AaGK/AAAAPQDJKD8AaGK/AAAAvQDJKD8AaGK/AAAAvQDJKD8AaGK/AAAAPQDJKD8AaGK/AAAAPQDJKD8AaGI/AAAAPQDJKD8AaGI/AAAAPQDJKD8AaGK/AAAAPQDJKL8AaGK/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA/////wAA/z//////AAD/P/////8AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//////AAD/f/////8AAP9//////wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8/////f/9//n////9//3/+f////3//f/5//////wAA/z//////AAD/P/////8AAP8//3//////AAD/f/////8AAP9//////wAA////f/9//n////9//3/+f////3//f/5/")
 }]
+
+[sub_resource type="GDScript" id="GDScript_dlnaw"]
+resource_name = "ekran"
+script/source = "extends MeshInstance3D
+
+@onready var shad: ShaderMaterial = material_override.next_pass
+var run = false
+
+func _ready():
+	Global.connect(\"bad\", change_red)
+
+func change_red():
+	if run:
+		change_color(Vector4(0.5, 0.5, 0.5, 1.0))
+		shad.set_shader_parameter(\"line_thickness\", 0.2)
+	else:
+		change_color(Vector4(0.9, 0.0, 0.0, 1.0))
+		shad.set_shader_parameter(\"line_thickness\", 0.5)
+	run = !run
+
+func change_color(color: Vector4):
+	shad.set_shader_parameter(\"line_color\", color)
+"
 
 [sub_resource type="Animation" id="Animation_dlnaw"]
 length = 0.001
@@ -352,6 +376,10 @@ _data = {
 &"RESET": SubResource("Animation_dlnaw"),
 &"glich": SubResource("Animation_3dp1s")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gxs3d"]
+render_priority = 0
+shader = ExtResource("15_3dp1s")
 
 [node name="Table" type="Node3D" unique_id=1041556568]
 
@@ -648,25 +676,25 @@ render_target_update_mode = 4
 [node name="Control" type="Control" parent="CSGPolygon3D/SubViewport" unique_id=1330116561]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 92.0
+offset_left = 129.0
 offset_top = 42.0
 offset_right = 399.0
 offset_bottom = 340.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CSGPolygon3D/SubViewport/Control" unique_id=481161717]
 layout_mode = 0
-offset_left = -111.0
+offset_left = -128.21
 offset_top = 21.0
-offset_right = 85.50003
-offset_bottom = 275.00003
+offset_right = 89.33499
+offset_bottom = 275.0
 theme = SubResource("Theme_8oxcy")
 bbcode_enabled = true
 tab_size = 0
 
 [node name="Control" type="Control" parent="CSGPolygon3D/SubViewport/Control" unique_id=1904294015]
 anchors_preset = 0
-offset_left = 63.0
-offset_right = 103.0
+offset_left = 11.65
+offset_right = 51.65
 offset_bottom = 40.0
 
 [node name="CheckBox1" type="CheckBox" parent="CSGPolygon3D/SubViewport/Control/Control" unique_id=2112553547]
@@ -706,16 +734,22 @@ offset_bottom = 157.0
 scale = Vector2(1.7, 1.7)
 
 [node name="Sprite3D" type="Sprite3D" parent="CSGPolygon3D" unique_id=840912229]
-transform = Transform3D(-3.7638564e-08, -0.12706447, 0.9918925, -4.8216102e-09, 0.99189365, 0.12706435, -0.8681064, 4.440892e-16, -4.3711303e-08, -0.27310848, -0.014735222, -0.23677826)
+transform = Transform3D(-3.7638564e-08, -0.12706447, 0.9918925, -4.8216102e-09, 0.99189365, 0.12706435, -0.8681064, 4.440892e-16, -4.3711303e-08, -0.27310848, 0.016986847, -0.16230774)
 texture = SubResource("ViewportTexture_4p7hl")
 
 [node name="ekran" type="MeshInstance3D" parent="CSGPolygon3D" unique_id=1759406873]
 transform = Transform3D(0.9971388, -0.12675369, -4.0193981e-10, 0.12269824, 1.0300964, 6.557667e-09, -3.2873615e-10, -5.54058e-09, 1.2283871, -0.43905354, 0.031627536, -0.08514786)
 material_override = SubResource("StandardMaterial3D_bawi3")
 mesh = SubResource("ArrayMesh_jrmna")
+script = SubResource("GDScript_dlnaw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CSGPolygon3D/ekran" unique_id=1387129952]
 libraries/ = SubResource("AnimationLibrary_78bpj")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1614539706]
+transform = Transform3D(1, 0, 0, 0, 0.998466, -0.05536842, 0, 0.05536842, 0.998466, -19.33652, 1.1148683, -14.204834)
+size = Vector3(1.0023499, 0.7156677, 1)
+material = SubResource("ShaderMaterial_gxs3d")
 
 [connection signal="body_entered" from="Radio/Radio" to="Radio" method="_on_radio_body_entered"]
 [connection signal="body_exited" from="Radio/Radio" to="Radio" method="_on_radio_body_exited"]

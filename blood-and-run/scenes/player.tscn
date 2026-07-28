@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://cbaviyah5c6ud" path="res://Models/button/source/poly.glb" id="13_4ni07"]
 [ext_resource type="PackedScene" uid="uid://cflmsb81hgmv" path="res://Models/шланг.tscn" id="13_f1ej7"]
 [ext_resource type="AudioStream" uid="uid://b7djpdlxind5d" path="res://sounds/шаги.mp3" id="13_ke2ow"]
+[ext_resource type="PackedScene" uid="uid://dbbxrfoqjd3ae" path="res://dialog/control.tscn" id="23_l71n6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yyosc"]
 radius = 0.382215
@@ -685,9 +686,11 @@ far = 40.0
 
 [node name="game_ui" type="Control" parent="Camera3D" unique_id=717445556]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1156.0
-offset_bottom = 637.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2_f1ej7")
 
 [node name="Label" type="Label" parent="Camera3D/game_ui" unique_id=2000084557]
@@ -984,6 +987,7 @@ text = "ДОСТИЖЕНИЕ!"
 label_settings = SubResource("LabelSettings_24d4k")
 
 [node name="Duhota" type="Control" parent="Camera3D" unique_id=1237213985]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -1035,6 +1039,9 @@ pulse_speed = 1.0
 pulse_depth = 0.0
 base_alpha = 0.0
 
+[node name="Dialog" parent="Camera3D" unique_id=1175453783 instance=ExtResource("23_l71n6")]
+visible = false
+
 [node name="Marker3D" type="Marker3D" parent="." unique_id=374591385]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0656533, 0)
 
@@ -1084,7 +1091,7 @@ label_settings = SubResource("LabelSettings_f1ej7")
 
 [connection signal="timeout" from="Camera3D/game_ui/Timer" to="Camera3D/game_ui" method="_on_timer_timeout"]
 [connection signal="animation_finished" from="Camera3D/руки/SpringArm3D/AnimationPlayer" to="Camera3D/руки" method="_on_animation_player_animation_finished"]
-[connection signal="timeout" from="Camera3D/руки/Timer" to="Camera3D/руки" method="_on_timer_timeout"]
+[connection signal="timeout" from="Camera3D/руки/Timer" to="Camera3D/руки" method="_on_tik_timeout"]
 [connection signal="timeout" from="Camera3D/руки/Timer3" to="Camera3D/руки" method="_on_timer_3_timeout"]
 [connection signal="button_down" from="Camera3D/Menu/continue" to="Camera3D/Menu" method="_on_continue_button_down"]
 [connection signal="focus_entered" from="Camera3D/Menu/continue" to="Camera3D/Menu" method="focus_entered"]
@@ -1104,3 +1111,5 @@ label_settings = SubResource("LabelSettings_f1ej7")
 [connection signal="area_exited" from="Area3D" to="Camera3D/руки" method="_on_area_3d_area_exited"]
 
 [editable path="Camera3D/руки/шланг"]
+[editable path="Camera3D/Dialog"]
+[editable path="Camera3D/Dialog/VBoxContainer/VBoxContainer/PanelContainer2"]

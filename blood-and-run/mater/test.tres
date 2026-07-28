@@ -1,0 +1,54 @@
+[gd_resource type="VisualShader" format=3 uid="uid://drbywytc087uk"]
+
+[ext_resource type="Texture2D" uid="uid://devplyctska5l" path="res://icon.svg" id="1_xfj74"]
+[ext_resource type="Texture2D" uid="uid://crd0s7fhph686" path="res://Texture/TV_04.jpg" id="2_4vpyr"]
+
+[sub_resource type="VisualShaderNodeReroute" id="VisualShaderNodeReroute_xfj74"]
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_4vpyr"]
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_xfj74"]
+constant = 0.05
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_074iu"]
+expanded_output_ports = [0]
+input_name = "vertex"
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_omh1f"]
+size = Vector2(940.00006, 460)
+expression = "float d = i.x*i.x+i.y*i.y;
+if(d>r){ou=c1;}
+else{ou=c2;}"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_y4yho"]
+expanded_output_ports = [0]
+texture = ExtResource("1_xfj74")
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_t2coe"]
+texture = ExtResource("2_4vpyr")
+texture_type = 1
+
+[resource]
+nodes/vertex/0/position = Vector2(736, 128)
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_074iu")
+nodes/fragment/3/position = Vector2(-1152, 32)
+nodes/fragment/4/node = SubResource("VisualShaderNodeExpression_omh1f")
+nodes/fragment/4/position = Vector2(-720, 192)
+nodes/fragment/4/size = Vector2(940.00006, 460)
+nodes/fragment/4/input_ports = "0,3,i;1,0,r;2,4,c1;3,4,c2;"
+nodes/fragment/4/output_ports = "0,4,ou;"
+nodes/fragment/4/expression = "float d = i.x*i.x+i.y*i.y;
+if(d>r){ou=c1;}
+else{ou=c2;}"
+nodes/fragment/8/node = SubResource("VisualShaderNodeTexture_y4yho")
+nodes/fragment/8/position = Vector2(-1616, 608)
+nodes/fragment/9/node = SubResource("VisualShaderNodeTexture_t2coe")
+nodes/fragment/9/position = Vector2(-1568, 288)
+nodes/fragment/10/node = SubResource("VisualShaderNodeReroute_xfj74")
+nodes/fragment/10/position = Vector2(-16, 720)
+nodes/fragment/11/node = SubResource("VisualShaderNodeVectorCompose_4vpyr")
+nodes/fragment/11/position = Vector2(-1008, 560)
+nodes/fragment/12/node = SubResource("VisualShaderNodeFloatConstant_xfj74")
+nodes/fragment/12/position = Vector2(-1136, 272)
+nodes/fragment/connections = PackedInt32Array(3, 0, 4, 0, 4, 0, 0, 0, 9, 0, 4, 2, 8, 4, 10, 0, 10, 0, 0, 1, 8, 1, 11, 0, 8, 2, 11, 1, 8, 3, 11, 2, 11, 0, 4, 3, 12, 0, 4, 1)

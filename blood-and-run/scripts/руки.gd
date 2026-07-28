@@ -46,7 +46,7 @@ func _input(event):
 				return # Если это сетевой клон чужого игрока, полностью игнорируем нажатие
 	if Input.is_action_just_released("ui_open"):
 		pr = false
-	if Input.is_action_just_pressed("ui_open"):
+	if Input.is_action_just_pressed("ui_open") and !Global.isOnMenu:
 		print("click")
 		pr = true
 		if $SpringArm3D/Hand.get_child_count() >0: obj = $SpringArm3D/Hand.get_child(0)
@@ -166,11 +166,15 @@ func _colling():
 	var col: Node3D = $RayCast3D.get_collider()
 	print("coll", col.name)
 	if col.is_class("Area3D"):
+		if col.name == "No_human" and Global.papa.y_kassu:
+			col.get_parent().look_to(Global.get_papa(2, self))
+			$"../Dialog".start_dialogue()
 		var kasa = col.get_parent()
 		if col.name == "Stakan":
 			if kasa.kol_stakan > 0:
 				add_in_hand.rpc("Stakan")
 				kasa.vzat_stakan.rpc()
+				pass
 		elif col.name == "Календарь":
 			kalendar += 1
 			if kalendar == 6:
@@ -179,6 +183,7 @@ func _colling():
 					printerr("Буква: U")
 					col.get_node("Aud").play()
 					kalendar = 0
+					pass
 		elif col.name == "Бак" and zp:
 			col.get_node("Au").play()
 			Global.papa.zaprav.rpc()
@@ -201,6 +206,7 @@ func _colling():
 					request_spawn_hand_on_server.rpc_id(1, "Stakan_cofe")
 				kasa.sel(str(kasa.cofe)+"/10")
 				kasa.get_node("Cofe_machine/Stakan_s_cofe").hide()
+			pass
 		elif col.name == "Снеки":
 			if kasa.snacks > 0:
 				if Global.mp_mode == "offline":
@@ -209,6 +215,7 @@ func _colling():
 				else:
 					add_in_hand.rpc( "snack")
 					kasa.vzat_snack.rpc()
+			pass
 		elif col.name == "schitok":
 			get_node("Timer3").start()
 			is_rem = true

@@ -1,0 +1,34 @@
+GDRE Tools v2.6.0
+CachyOS Linux #1 SMP PREEMPT_DYNAMIC Mon, 20 Jul 2026 21:09:58 +0000, NVIDIA GeForce RTX 3060, vulkan
+Opening file: ~/Загрузки/dialog.zip
+WARNING: Could not retrieve version string from AndroidManifest.xml
+   at: try_open_pack (modules/gdsdecomp/utility/file_access_apk.cpp:421)
+Loaded 6 imported files
+Detected Engine Version: 4.5.0
+Detected Bytecode Revision: 4.5.0-stable (ebc36a7)
+Extracted 16 files, no errors detected!
+Saved project config.
+
+
+********************************EXPORT REPORT********************************
+
+Totals:                                 
+Decompiled scripts:                     2
+Scripts not decompiled:                 0
+Imported resources for export session:  6
+Successfully converted:                 6
+Lossy:                                  1
+Rewrote metadata:                       1
+Non-importable conversions:             0
+Not converted:                          0
+Failed conversions:                     0
+-------------
+
+
+
+------------------------------------------------------------------------------------
+
+Use Godot editor version 4.5.0 to edit the project.
+
+*******************************************************************************
+

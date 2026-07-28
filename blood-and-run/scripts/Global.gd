@@ -23,6 +23,7 @@ signal bad
 signal load
 signal _light_off
 signal _syn_players
+signal end_dialog
 
 
 var ekran: MeshInstance3D

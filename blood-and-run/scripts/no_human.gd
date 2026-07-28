@@ -9,6 +9,7 @@ var mtp_list:Array
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 
 func _ready():
+	Global.connect("end_dialog", to_norm)
 	# These values need to be adjusted for the actor's speed
 	# and the navigation layout.
 	navigation_agent.path_desired_distance = 0.5
@@ -17,6 +18,9 @@ func _ready():
 	# Make sure to not await during _ready.
 	#actor_setup.call_deferred()
 	movement_target_position = get_parent().position
+
+func to_norm():
+	if old_rot: rotation = old_rot
 
 func actor_setup():
 	# Wait for the first physics frame so the NavigationServer can sync.
@@ -51,3 +55,12 @@ func go():
 	var current_agent_position: Vector3 = global_position
 	var next_path_position: Vector3 = navigation_agent.get_next_path_position()
 	velocity = current_agent_position.direction_to(next_path_position) * movement_speed
+
+var old_rot
+func look_to(node:Node3D):
+	old_rot = rotation
+	look_at(node.position)
+	rotate_y(3.14)
+	rotation.x = old_rot.x
+	rotation.z = old_rot.z
+	
