@@ -1,24 +1,110 @@
 [gd_resource type="VisualShader" format=3 uid="uid://drbywytc087uk"]
 
+[ext_resource type="Texture2D" uid="uid://8wo7gw0xeo44" path="res://Texture/TV_04_зшы.jpg" id="1_4vpyr"]
 [ext_resource type="Texture2D" uid="uid://devplyctska5l" path="res://icon.svg" id="1_xfj74"]
 [ext_resource type="Texture2D" uid="uid://crd0s7fhph686" path="res://Texture/TV_04.jpg" id="2_4vpyr"]
 
 [sub_resource type="VisualShaderNodeReroute" id="VisualShaderNodeReroute_xfj74"]
 
-[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_4vpyr"]
-
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_xfj74"]
 constant = 0.05
+
+[sub_resource type="VisualShaderNodeGlobalExpression" id="VisualShaderNodeGlobalExpression_xfj74"]
+size = Vector2(680, 480)
+expression = "bool lid(vec2 p, float k, float w) {
+    float line_y = k * p.x;
+    return (p.y < line_y + w) && (p.y > line_y - w);
+}
+bool par(float pos, float kof){
+return pos < kof && pos > kof*-1.0;
+}
+bool to(float kof, vec2 i){
+return lid(i, 1.0, kof*1.5) 
+|| lid(i, -1.0, kof*1.5) 
+|| par(i.y, kof)
+|| par(i.x, kof);
+}
+// Функция возвращает true, если точка попадает на один из лучей
+bool sunburst(vec2 p, float count, float thickness) {
+    // 1. Находим угол точки в радианах
+    float angle = atan(p.y, p.x); 
+    
+    // 2. Делаем синусоидальную волну по кругу
+    // sin() будет плавно переключаться между -1 и 1
+    float pattern = sin(angle * count); 
+    
+    // 3. Превращаем плавную волну в четкую линию (маску)
+    // thickness задает ширину полос (значения от 0.0 до 1.0)
+    return pattern > (1.0 - thickness); 
+}"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_vdk7r"]
+texture = ExtResource("1_4vpyr")
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_4vpyr"]
+parameter_name = "FloatParameter"
+default_value_enabled = true
+default_value = 50.0
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_074iu"]
 expanded_output_ports = [0]
 input_name = "vertex"
 
 [sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_omh1f"]
-size = Vector2(940.00006, 460)
-expression = "float d = i.x*i.x+i.y*i.y;
-if(d>r){ou=c1;}
-else{ou=c2;}"
+size = Vector2(1040, 860)
+expression = "float k = 1.0;
+float b = -0.1;
+float d = dot(i, i); // Эквивалентно i.x * i.x + i.y * i.y
+float dist = length(i);
+
+if (d > r) {
+    ou = mix(c1,vec3(0.0,0.0,0.0),0.97);
+}
+else {
+	//bool u = to(0.04, i);
+	//bool u = sunburst(i, 100.0,0.2);
+    //if (u) {
+		//ou = mix(c2, vec3(6.0, 6.0, 6.0), sin(dist));
+        //if (j){ou = vec3(0.0, 0.0, 0.0);}
+		//else{ou = vec3(1.0, 0.0, 0.0);}
+    //}
+	//else {
+	//float falloff = clamp(1.0 - (dist), 0.0, 1.0);
+	//falloff = pow(falloff, 2.0); // Делает спад более плавным
+        //float s = (sin((dist+1.0) * chasto)+1.0)/2.0;
+		//s = pow(s, 4.0);
+        //ou = falloff*mix(mix( mix(c2,vec3(0.0,0.0,0.0),0.6),mix(c2,vec3(1.0,0.0,1.0),0.7), s), vec3(0.0,0.0,0.0), 0.9);
+    //}
+	// 1. Искажаем дистанцию, добавляя вторую синусоиду (создает случайную ширину полос)
+float distorted_dist = dist + sin(dist * chasto * 0.35) * 0.4;
+
+// 2. Базовая волна
+float wave = sin(distorted_dist * chasto);
+
+// 3. Добавляем быстрый 1D псевдо-шум для резких случайных сдвигов толщины
+float noise = fract(sin(floor(distorted_dist * chasto)) * 43758.5453);
+wave += (noise - 0.5) * 0.6; // накладываем шум на волну
+
+// 4. Регулируем баланс фиолетового и черного:
+// Переводим wave из диапазона [-1, 1] в [0, 1]
+float pattern = (wave + 1.0) * 0.5;
+
+// С помощью smoothstep делаем фиолетовые полосы широкими, 
+// а черные прослойки — узкими и четкими
+float mask = smoothstep(0.15, 0.4, pattern); 
+
+// 5. Цвет и плавное затухание к краям
+vec3 bright_purple = mix(vec3(0.7, 0.1, 1.0), c2, 0.1); // Яркий неоновый фиолетовый
+vec3 dark_purple   = mix(vec3(0.1, 0.0, 0.15), c2, 0.1); // Тёмно-фиолетовый вместо чисто черного
+
+float falloff = clamp(1.0 - (dist), 0.0, 1.0);
+falloff = pow(falloff, 1.5);
+
+// Смешиваем тёмный фиолетовый и яркий неоновый
+vec3 final_color = mix(dark_purple, bright_purple * 2.0, mask);
+
+ou = final_color * falloff;
+}"
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_y4yho"]
 expanded_output_ports = [0]
@@ -32,23 +118,106 @@ texture_type = 1
 [resource]
 nodes/vertex/0/position = Vector2(736, 128)
 nodes/fragment/3/node = SubResource("VisualShaderNodeInput_074iu")
-nodes/fragment/3/position = Vector2(-1152, 32)
+nodes/fragment/3/position = Vector2(-1232, -208)
 nodes/fragment/4/node = SubResource("VisualShaderNodeExpression_omh1f")
-nodes/fragment/4/position = Vector2(-720, 192)
-nodes/fragment/4/size = Vector2(940.00006, 460)
-nodes/fragment/4/input_ports = "0,3,i;1,0,r;2,4,c1;3,4,c2;"
+nodes/fragment/4/position = Vector2(-672, -48)
+nodes/fragment/4/size = Vector2(1040, 860)
+nodes/fragment/4/input_ports = "0,3,i;1,0,r;2,4,c1;3,4,c2;4,0,chasto;"
 nodes/fragment/4/output_ports = "0,4,ou;"
-nodes/fragment/4/expression = "float d = i.x*i.x+i.y*i.y;
-if(d>r){ou=c1;}
-else{ou=c2;}"
+nodes/fragment/4/expression = "float k = 1.0;
+float b = -0.1;
+float d = dot(i, i); // Эквивалентно i.x * i.x + i.y * i.y
+float dist = length(i);
+
+if (d > r) {
+    ou = mix(c1,vec3(0.0,0.0,0.0),0.97);
+}
+else {
+	//bool u = to(0.04, i);
+	//bool u = sunburst(i, 100.0,0.2);
+    //if (u) {
+		//ou = mix(c2, vec3(6.0, 6.0, 6.0), sin(dist));
+        //if (j){ou = vec3(0.0, 0.0, 0.0);}
+		//else{ou = vec3(1.0, 0.0, 0.0);}
+    //}
+	//else {
+	//float falloff = clamp(1.0 - (dist), 0.0, 1.0);
+	//falloff = pow(falloff, 2.0); // Делает спад более плавным
+        //float s = (sin((dist+1.0) * chasto)+1.0)/2.0;
+		//s = pow(s, 4.0);
+        //ou = falloff*mix(mix( mix(c2,vec3(0.0,0.0,0.0),0.6),mix(c2,vec3(1.0,0.0,1.0),0.7), s), vec3(0.0,0.0,0.0), 0.9);
+    //}
+	// 1. Искажаем дистанцию, добавляя вторую синусоиду (создает случайную ширину полос)
+float distorted_dist = dist + sin(dist * chasto * 0.35) * 0.4;
+
+// 2. Базовая волна
+float wave = sin(distorted_dist * chasto);
+
+// 3. Добавляем быстрый 1D псевдо-шум для резких случайных сдвигов толщины
+float noise = fract(sin(floor(distorted_dist * chasto)) * 43758.5453);
+wave += (noise - 0.5) * 0.6; // накладываем шум на волну
+
+// 4. Регулируем баланс фиолетового и черного:
+// Переводим wave из диапазона [-1, 1] в [0, 1]
+float pattern = (wave + 1.0) * 0.5;
+
+// С помощью smoothstep делаем фиолетовые полосы широкими, 
+// а черные прослойки — узкими и четкими
+float mask = smoothstep(0.15, 0.4, pattern); 
+
+// 5. Цвет и плавное затухание к краям
+vec3 bright_purple = mix(vec3(0.7, 0.1, 1.0), c2, 0.1); // Яркий неоновый фиолетовый
+vec3 dark_purple   = mix(vec3(0.1, 0.0, 0.15), c2, 0.1); // Тёмно-фиолетовый вместо чисто черного
+
+float falloff = clamp(1.0 - (dist), 0.0, 1.0);
+falloff = pow(falloff, 1.5);
+
+// Смешиваем тёмный фиолетовый и яркий неоновый
+vec3 final_color = mix(dark_purple, bright_purple * 2.0, mask);
+
+ou = final_color * falloff;
+}"
 nodes/fragment/8/node = SubResource("VisualShaderNodeTexture_y4yho")
 nodes/fragment/8/position = Vector2(-1616, 608)
 nodes/fragment/9/node = SubResource("VisualShaderNodeTexture_t2coe")
-nodes/fragment/9/position = Vector2(-1568, 288)
+nodes/fragment/9/position = Vector2(-1504, 112)
 nodes/fragment/10/node = SubResource("VisualShaderNodeReroute_xfj74")
 nodes/fragment/10/position = Vector2(-16, 720)
-nodes/fragment/11/node = SubResource("VisualShaderNodeVectorCompose_4vpyr")
-nodes/fragment/11/position = Vector2(-1008, 560)
 nodes/fragment/12/node = SubResource("VisualShaderNodeFloatConstant_xfj74")
-nodes/fragment/12/position = Vector2(-1136, 272)
-nodes/fragment/connections = PackedInt32Array(3, 0, 4, 0, 4, 0, 0, 0, 9, 0, 4, 2, 8, 4, 10, 0, 10, 0, 0, 1, 8, 1, 11, 0, 8, 2, 11, 1, 8, 3, 11, 2, 11, 0, 4, 3, 12, 0, 4, 1)
+nodes/fragment/12/position = Vector2(-1280, 80)
+nodes/fragment/13/node = SubResource("VisualShaderNodeGlobalExpression_xfj74")
+nodes/fragment/13/position = Vector2(-400, 928)
+nodes/fragment/13/size = Vector2(680, 480)
+nodes/fragment/13/input_ports = ""
+nodes/fragment/13/output_ports = ""
+nodes/fragment/13/expression = "bool lid(vec2 p, float k, float w) {
+    float line_y = k * p.x;
+    return (p.y < line_y + w) && (p.y > line_y - w);
+}
+bool par(float pos, float kof){
+return pos < kof && pos > kof*-1.0;
+}
+bool to(float kof, vec2 i){
+return lid(i, 1.0, kof*1.5) 
+|| lid(i, -1.0, kof*1.5) 
+|| par(i.y, kof)
+|| par(i.x, kof);
+}
+// Функция возвращает true, если точка попадает на один из лучей
+bool sunburst(vec2 p, float count, float thickness) {
+    // 1. Находим угол точки в радианах
+    float angle = atan(p.y, p.x); 
+    
+    // 2. Делаем синусоидальную волну по кругу
+    // sin() будет плавно переключаться между -1 и 1
+    float pattern = sin(angle * count); 
+    
+    // 3. Превращаем плавную волну в четкую линию (маску)
+    // thickness задает ширину полос (значения от 0.0 до 1.0)
+    return pattern > (1.0 - thickness); 
+}"
+nodes/fragment/14/node = SubResource("VisualShaderNodeTexture_vdk7r")
+nodes/fragment/14/position = Vector2(-1488, 432)
+nodes/fragment/15/node = SubResource("VisualShaderNodeFloatParameter_4vpyr")
+nodes/fragment/15/position = Vector2(-1008, 240)
+nodes/fragment/connections = PackedInt32Array(3, 0, 4, 0, 4, 0, 0, 0, 9, 0, 4, 2, 8, 4, 10, 0, 10, 0, 0, 1, 12, 0, 4, 1, 14, 0, 4, 3, 15, 0, 4, 4)

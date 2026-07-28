@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://d4n0hb3fpw6ir" path="res://Models/snek.fbx" id="11_myvrn"]
 [ext_resource type="Material" uid="uid://d1mdfbsfxfvf" path="res://mater/brown.tres" id="12_3dp1s"]
 [ext_resource type="Shader" uid="uid://lrkou54p0qqo" path="res://mater/monit.gdshader" id="14_dlnaw"]
-[ext_resource type="Shader" uid="uid://drbywytc087uk" path="res://mater/test.tres" id="15_3dp1s"]
+[ext_resource type="Shader" uid="uid://c70wtf0jijs7x" path="res://mater/visual_shader.tres" id="15_3dp1s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cfvsp"]
 size = Vector3(2.2872314, 1.0596924, 2.8095398)
@@ -377,9 +377,13 @@ _data = {
 &"glich": SubResource("Animation_3dp1s")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gxs3d"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_78bpj"]
 render_priority = 0
 shader = ExtResource("15_3dp1s")
+shader_parameter/Count = 30.035
+shader_parameter/Random = 5.3
+shader_parameter/Radius = 0.335
+shader_parameter/Razmer = 1.18
 
 [node name="Table" type="Node3D" unique_id=1041556568]
 
@@ -749,7 +753,7 @@ libraries/ = SubResource("AnimationLibrary_78bpj")
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1614539706]
 transform = Transform3D(1, 0, 0, 0, 0.998466, -0.05536842, 0, 0.05536842, 0.998466, -19.33652, 1.1148683, -14.204834)
 size = Vector3(1.0023499, 0.7156677, 1)
-material = SubResource("ShaderMaterial_gxs3d")
+material = SubResource("ShaderMaterial_78bpj")
 
 [connection signal="body_entered" from="Radio/Radio" to="Radio" method="_on_radio_body_entered"]
 [connection signal="body_exited" from="Radio/Radio" to="Radio" method="_on_radio_body_exited"]

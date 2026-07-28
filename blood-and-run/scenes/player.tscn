@@ -41,7 +41,7 @@ dof_blur_amount = 0.34
 
 [sub_resource type="LabelSettings" id="LabelSettings_s6jno"]
 line_spacing = 7.0
-font_size = 20
+font_size = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_173o4"]
 font_size = 43
@@ -669,6 +669,8 @@ font_size = 24
 collision_layer = 4097
 collision_mask = 4097
 script = ExtResource("1_jej6c")
+metadata/_edit_horizontal_guides_ = [325.0]
+metadata/_edit_vertical_guides_ = [562.0]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1664940774]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07942, 0)
@@ -695,10 +697,10 @@ script = ExtResource("2_f1ej7")
 
 [node name="Label" type="Label" parent="Camera3D/game_ui" unique_id=2000084557]
 layout_mode = 0
-offset_left = 490.0
-offset_top = 309.0
-offset_right = 743.0
-offset_bottom = 381.0
+offset_left = 553.0
+offset_top = 320.0
+offset_right = 806.0
+offset_bottom = 392.0
 text = "               O"
 label_settings = SubResource("LabelSettings_s6jno")
 
@@ -943,10 +945,10 @@ offset_bottom = 648.0
 
 [node name="Label2" type="Label" parent="Camera3D/end_day" unique_id=1419800238]
 layout_mode = 0
-offset_left = 250.0
-offset_top = 252.0
-offset_right = 993.0
-offset_bottom = 379.0
+offset_left = 255.0
+offset_top = 253.0
+offset_right = 998.0
+offset_bottom = 425.0
 text = "Ночь"
 label_settings = SubResource("LabelSettings_xtx8p")
 
