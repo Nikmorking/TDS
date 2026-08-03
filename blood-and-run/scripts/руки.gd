@@ -44,9 +44,9 @@ func _input(event):
 	if Global.mp_mode != "offline" and multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.CONNECTION_CONNECTED:
 			if not is_multiplayer_authority():
 				return # Если это сетевой клон чужого игрока, полностью игнорируем нажатие
-	if Input.is_action_just_released("ui_open"):
+	elif Input.is_action_just_released("ui_open"):
 		pr = false
-	if Input.is_action_just_pressed("ui_open") and !Global.isOnMenu:
+	elif Input.is_action_just_pressed("ui_open") and !Global.isOnMenu:
 		print("click")
 		pr = true
 		if $SpringArm3D/Hand.get_child_count() >0: obj = $SpringArm3D/Hand.get_child(0)
@@ -55,8 +55,12 @@ func _input(event):
 			if obj:
 				var stav = [obj.named, obj.global_position]
 				obj.queue_free()
-				await get_tree().create_timer(0.07).timeout
-				Global.papa.get_node("Расходники").add_child(_stavit(stav))
+				await get_tree().create_timer(0.0_7).timeout
+				var node = _stavit(stav)
+				Global.papa.get_node("Расходники").add_child(node)
+				node.look_at(Global.get_papa(2, self).global_position)
+				node.rotation.x = 0
+				node.rotation.z = 0
 			else:
 				if $RayCast3D.is_colliding(): _colling()
 		else: if Global.lobby_ready:
@@ -67,13 +71,13 @@ func _input(event):
 			else: 
 				if $RayCast3D.is_colliding():
 					_colling()
-	if Input.is_action_just_pressed("+"):
+	elif Input.is_action_just_pressed("+"):
 		if $SpringArm3D.spring_length < 2.5:
 			$SpringArm3D.spring_length += 0.1
-	if Input.is_action_just_pressed("-"):
+	elif Input.is_action_just_pressed("-"):
 		if $SpringArm3D.spring_length > 1:
 			$SpringArm3D.spring_length -= 0.1
-	if Input.is_action_just_pressed("eat"):
+	elif Input.is_action_just_pressed("eat"):
 		eat()
 			
 var tea = 0
@@ -165,10 +169,12 @@ func _colling():
 	is_rem = false
 	var col: Node3D = $RayCast3D.get_collider()
 	print("coll", col.name)
+	if col.name == "Стены":
+		Global.start_dialog.emit("zurk")
 	if col.is_class("Area3D"):
 		if col.name == "No_human" and Global.papa.y_kassu:
 			col.get_parent().look_to(Global.get_papa(2, self))
-			$"../Dialog".start_dialogue()
+			Global.start_dialog.emit("start")
 		var kasa = col.get_parent()
 		if col.name == "Stakan":
 			if kasa.kol_stakan > 0:
@@ -273,9 +279,6 @@ func _stavit(stav):
 	node.rotation = get_parent().rotation
 	if node.named == "Krest":
 				node.get_node("Time").start()
-	if Global.player: node.look_at(Global.player.position)
-	node.rotation.x = 0
-	node.rotation.z = 0
 	if stav.get(0) == "snack": node.rotate_y(1.57)
 	return node
 
@@ -319,3 +322,23 @@ func request_spawn_ras_on_server(stav):
 		$SpringArm3D/Hand.get_child(0).queue_free()
 		spawner_ras.spawn(stav)
 		
+
+
+
+func icons():
+	$"../game_ui".back()
+	if $SpringArm3D/Hand.get_child_count() == 0:
+		var col = $RayCast3D.get_collider()
+		if col:
+			if col.name == "No_human" && Global.papa.y_kassu:
+					$"../game_ui".change("Разговор")
+			elif col.name == "Door":
+					$"../game_ui".change("2")
+			elif col.name == "Стены":
+					$"../game_ui".change("Лупа")
+			else:
+				if col.is_class("RigidBody3D") or Global.get_papa(2, col).name == "Ящики":
+					$"../game_ui".change("Sprite2D")
+	
+	if !$RayCast3D.get_collider(): $"../game_ui".back()
+	pass

@@ -23,6 +23,8 @@ properties/2/replication_mode = 2
 
 [node name="No_human" type="CharacterBody3D" unique_id=266263789]
 transform = Transform3D(-2.6226834e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.6226834e-08, 0, 0, 0)
+collision_layer = 65
+collision_mask = 65
 script = ExtResource("1_wlgop")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=158501101]

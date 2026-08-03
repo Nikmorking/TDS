@@ -17,10 +17,10 @@ var dialogue_data: Dictionary = {}
 var current_node_lines: Array = []
 var current_line_index: int = 0
 
-signal press
 
 func _ready() -> void :
 	load_dialogue_from_file("res://dialog/dialog-1.txt")
+	Global.connect("start_dialog", start_dialogue)
 
 
 func parse_dialogue_text(text: String) -> void :
@@ -101,7 +101,6 @@ func start_dialogue_node(node_name: String) -> void :
 	if not dialogue_data.has(node_name):
 		push_error("Метка диалога не найдена: " + node_name)
 		return
-
 	current_node_lines = dialogue_data[node_name]
 	current_line_index = 0
 	clear_choices()
@@ -133,12 +132,13 @@ func show_next_line() -> void :
 
 func end(arg: String):
 	#spawn_speech_box("я", meta_data.get(arg), 0, 0.5)
-	await press
+	hide()
+	await get_tree().create_timer(0.05).timeout
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	posledniy_dialog = "start"
+	posledniy_dialog = ""
+	current_line_index = 0
 	hide()
 	Global.end_dialog.emit()
-	await get_tree().create_timer(0.1).timeout
 	Global.isOnMenu = false
 	#$VBoxContainer.hide()
 	#$CenterContainer.show()
@@ -221,7 +221,6 @@ func clear_choices() -> void :
 func _input(event: InputEvent) -> void :
 	if event.is_action_pressed("ui_accept") or (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT):
 		var has_choices = false
-		press.emit()
 		for child in choices_container.get_children():
 			if child.name.begins_with("PanelContainer"):
 				has_choices = true
@@ -254,11 +253,14 @@ func _on_button_button_down():
 	pass
 
 
-var posledniy_dialog = "start"
-func start_dialogue():
+var posledniy_dialog = ""
+func start_dialogue(named):
 	$"../game_ui".hide()
-	show()
+	if posledniy_dialog == "":
+		start_dialogue_node(named)
+	else:
+		start_dialogue_node(posledniy_dialog)
+	if current_node_lines.size() != 0: show()
 	Global.isOnMenu = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	start_dialogue_node(posledniy_dialog)
 	

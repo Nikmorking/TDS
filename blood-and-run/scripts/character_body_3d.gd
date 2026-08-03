@@ -16,16 +16,18 @@ var run = false
 
 
 func _ready() -> void:
-	if Global.mp_mode != "offline" and multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.CONNECTION_CONNECTED:
-		# Если этот персонаж чужой для данного окна
-		if not is_multiplayer_authority():
+	if Global.mp_mode != "offline":
+		if multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.CONNECTION_CONNECTED:
+			# Если этот персонаж чужой для данного окна
+			if not is_multiplayer_authority():
 			# Полностью отключаем у него считывание встроенного ввода
-			set_process_input(false)
-			set_physics_process(false)
-			if has_node("Camera3D"):
-				$Camera3D.current = false
-			return
-			
+				set_process_input(false)
+				set_physics_process(false)
+				if has_node("Camera3D"):
+					$Camera3D.current = false
+				return
+	else:
+		Global.player = self
 	if not multiplayer.is_server():
 		Global._add_player.rpc_id(1, multiplayer.get_unique_id(), Global.nickname)
 		#Код, который выполнится ТОЛЬКО для вашего родного персонажа:

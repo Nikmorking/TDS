@@ -461,8 +461,8 @@ material_override = ExtResource("7_rk3qh")
 mesh = ExtResource("8_myvrn")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Касса" unique_id=1676361758]
-collision_layer = 7
-collision_mask = 7
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Касса/StaticBody3D" unique_id=1151495822]
 transform = Transform3D(0.9999727, 0, 0, 0, 1, 0, 0, 0, 0.9999727, -0.078897476, 0, 0.0723238)

@@ -24,6 +24,8 @@ signal load
 signal _light_off
 signal _syn_players
 signal end_dialog
+signal start_dialog
+signal nav_door 
 
 
 var ekran: MeshInstance3D
@@ -156,4 +158,3 @@ func load_game():
 		papa.min = int(node_data.get(8))
 		load.emit()
 	pass
-	
