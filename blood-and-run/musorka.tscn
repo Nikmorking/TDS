@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cgtemd1k4v7db"]
+
+[ext_resource type="PackedScene" uid="uid://cjw882xta4u55" path="res://Models/musorka.fbx" id="1_04ek3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n6wrm"]
+albedo_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cxism"]
+albedo_color = Color(0.4045111, 0.40451115, 0.4045111, 1)
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6hnhn"]
+albedo_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yd2rl"]
+albedo_color = Color(0.25275356, 0.25275356, 0.25275356, 1)
+metallic = 0.5
+
+[node name="musorka" unique_id=1505271735 instance=ExtResource("1_04ek3")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="Куб" parent="." index="0" unique_id=1633736817]
+material_override = SubResource("StandardMaterial3D_n6wrm")
+
+[node name="Цилиндр" parent="." index="1" unique_id=1120065797]
+material_override = SubResource("StandardMaterial3D_cxism")
+
+[node name="Цилиндр_001" parent="." index="2" unique_id=1402048974]
+material_override = SubResource("StandardMaterial3D_6hnhn")
+
+[node name="Цилиндр_002" parent="." index="3" unique_id=1715031857]
+material_override = SubResource("StandardMaterial3D_yd2rl")

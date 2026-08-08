@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dv4gplg016quf"
-path="res://.godot/imported/models.fbx-b851c349c5a201d336a2ea510ce845b2.scn"
+uid="uid://cjw882xta4u55"
+path="res://.godot/imported/musorka.fbx-893df994e147e51fb9fb148e72c089a4.scn"
 
 [deps]
 
-source_file="res://Models/models.fbx"
-dest_files=["res://.godot/imported/models.fbx-b851c349c5a201d336a2ea510ce845b2.scn"]
+source_file="res://Models/musorka.fbx"
+dest_files=["res://.godot/imported/musorka.fbx-893df994e147e51fb9fb148e72c089a4.scn"]
 
 [params]
 
@@ -41,4 +41,4 @@ _subresources={}
 fbx/importer=0
 fbx/allow_geometry_helper_nodes=false
 fbx/embedded_image_handling=1
-fbx/naming_version=1
+fbx/naming_version=2
