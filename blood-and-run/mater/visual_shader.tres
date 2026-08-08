@@ -1,0 +1,242 @@
+[gd_resource type="VisualShader" format=3 uid="uid://c70wtf0jijs7x"]
+
+[ext_resource type="Texture2D" uid="uid://crd0s7fhph686" path="res://Texture/TV_04.jpg" id="1_n84b6"]
+[ext_resource type="Texture2D" uid="uid://8wo7gw0xeo44" path="res://Texture/TV_04_зшы.jpg" id="1_olj0s"]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_hrxub"]
+parameter_name = "Razmer"
+default_value_enabled = true
+default_value = 0.5
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_sg301"]
+texture = ExtResource("1_olj0s")
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_r6imp"]
+size = Vector2(1200, 1200)
+expression = "if (dot(st, st) < r)
+{
+float dist = length(st);
+
+    // 2. Искажаем дистанцию
+    float distorted_dist = dist + sin(dist * frequency * 0.3) * (randomness * 0.05);
+
+    // 3. Косинус для фиолетового центра
+    float wave = cos(distorted_dist * frequency);
+
+    // 4. Формируем кольца
+	float ring_id = floor(distorted_dist * frequency);
+
+    // 3. Рандомное число от 0.0 до 1.0 для КАЖДОГО кольца индивидуально
+    float ring_random_thickness = fract(sin(ring_id * 12.9898) * 43758.5453);
+    float rings = abs(wave);
+    rings = pow(rings, razmer); // Регулирует ширину тёмных полос
+
+
+
+
+float local_razmer = mix(razmer * 0.3, razmer * 2.0, ring_random_thickness);
+    rings = pow(rings, local_razmer);
+
+    // 6. Двойное затухание: внутреннее для колец и широкое мягкое для ореола (Halo)
+    float ring_falloff = smoothstep(r, r * 0.2, dist);
+    float ambient_falloff = smoothstep(r * 1.6, 0.0, dist) * 0.4;
+
+    // 7. Формируем паттерн и смешиваем с фоновой текстурой c3
+    vec3 spot_pattern = mix(c1, c2, rings);
+    vec3 final_spot = mix(c1 * 0.4, spot_pattern, ring_falloff);
+
+    alb = mix(c3, final_spot, max(ring_falloff, ambient_falloff));
+
+EMISSION = c2 * rings * ring_falloff * 1.5;
+}
+else{alb = c3;}"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_n84b6"]
+input_name = "vertex"
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_olj0s"]
+parameter_name = "Count"
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_vwqd6"]
+parameter_name = "Random"
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_olj0s"]
+output_port_for_preview = 0
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(0, 0, 0), 2, Vector3(0.6, 1, 0.1)]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_vwqd6"]
+texture = ExtResource("1_n84b6")
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_n84b6"]
+parameter_name = "Radius"
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_n84b6"]
+output_port_for_preview = 0
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(0, 0, 0), 2, Vector3(0.8, 0.8, 0.8)]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_hrxub"]
+size = Vector2(1020, 660)
+expression = "    vec2 st = ver.xy;    vec2 st = VERTEX.xy;
+    float dist = length(st);
+    
+    // 2. Искажаем дистанцию
+    float distorted_dist = dist + sin(dist * frequency * 0.3) * (randomness * 0.05);
+
+    // 3. Используем COSINE: cos(0) = 1.0, поэтому в самом центре всегда фиолетовое пятно!
+    float wave = cos(distorted_dist * frequency);
+
+    // 4. Формируем кольца
+    float rings = abs(wave);
+    rings = pow(rings, 0.35); // Регулирует ширину тёмных полос
+
+    // 5. Мягкая маска круга
+    float falloff = clamp(1.0 - dist, 0.0, 1.0);
+    falloff = smoothstep(0.0, 1.0, falloff);
+
+    // 6. Смешиваем цвета
+    vec3 final_rgb = mix(line_color.rgb, spot_color.rgb, rings);
+
+    ALBEDO = final_rgb;
+    ALPHA = falloff * spot_color.a;
+    float dist = length(st);
+    
+    // 2. Искажаем дистанцию
+    float distorted_dist = dist + sin(dist * frequency * 0.3) * (randomness * 0.05);
+
+    // 3. Используем COSINE: cos(0) = 1.0, поэтому в самом центре всегда фиолетовое пятно!
+    float wave = cos(distorted_dist * frequency);
+
+    // 4. Формируем кольца
+    float rings = abs(wave);
+    rings = pow(rings, 0.35); // Регулирует ширину тёмных полос
+
+    // 5. Мягкая маска круга
+    float falloff = clamp(1.0 - (dist / radius), 0.0, 1.0);
+    falloff = smoothstep(0.0, 1.0, falloff);
+
+    // 6. Смешиваем цвета
+    vec3 final_rgb = mix(line_color.rgb, spot_color.rgb, rings);
+
+    ALBEDO = final_rgb;
+    ALPHA = falloff * spot_color.a;"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_sg301"]
+input_name = "vertex"
+
+[resource]
+nodes/vertex/2/node = SubResource("VisualShaderNodeExpression_hrxub")
+nodes/vertex/2/position = Vector2(-912, -128)
+nodes/vertex/2/size = Vector2(1020, 660)
+nodes/vertex/2/input_ports = "0,3,ver;1,0,frequency;2,0,randomness;3,4,input3;4,4,input4;"
+nodes/vertex/2/output_ports = ""
+nodes/vertex/2/expression = "    vec2 st = ver.xy;    vec2 st = VERTEX.xy;
+    float dist = length(st);
+    
+    // 2. Искажаем дистанцию
+    float distorted_dist = dist + sin(dist * frequency * 0.3) * (randomness * 0.05);
+
+    // 3. Используем COSINE: cos(0) = 1.0, поэтому в самом центре всегда фиолетовое пятно!
+    float wave = cos(distorted_dist * frequency);
+
+    // 4. Формируем кольца
+    float rings = abs(wave);
+    rings = pow(rings, 0.35); // Регулирует ширину тёмных полос
+
+    // 5. Мягкая маска круга
+    float falloff = clamp(1.0 - dist, 0.0, 1.0);
+    falloff = smoothstep(0.0, 1.0, falloff);
+
+    // 6. Смешиваем цвета
+    vec3 final_rgb = mix(line_color.rgb, spot_color.rgb, rings);
+
+    ALBEDO = final_rgb;
+    ALPHA = falloff * spot_color.a;
+    float dist = length(st);
+    
+    // 2. Искажаем дистанцию
+    float distorted_dist = dist + sin(dist * frequency * 0.3) * (randomness * 0.05);
+
+    // 3. Используем COSINE: cos(0) = 1.0, поэтому в самом центре всегда фиолетовое пятно!
+    float wave = cos(distorted_dist * frequency);
+
+    // 4. Формируем кольца
+    float rings = abs(wave);
+    rings = pow(rings, 0.35); // Регулирует ширину тёмных полос
+
+    // 5. Мягкая маска круга
+    float falloff = clamp(1.0 - (dist / radius), 0.0, 1.0);
+    falloff = smoothstep(0.0, 1.0, falloff);
+
+    // 6. Смешиваем цвета
+    vec3 final_rgb = mix(line_color.rgb, spot_color.rgb, rings);
+
+    ALBEDO = final_rgb;
+    ALPHA = falloff * spot_color.a;"
+nodes/vertex/3/node = SubResource("VisualShaderNodeInput_sg301")
+nodes/vertex/3/position = Vector2(-1424, -128)
+nodes/fragment/0/position = Vector2(816, 96)
+nodes/fragment/2/node = SubResource("VisualShaderNodeExpression_r6imp")
+nodes/fragment/2/position = Vector2(-720, 192)
+nodes/fragment/2/size = Vector2(1200, 1200)
+nodes/fragment/2/input_ports = "0,3,st;1,0,frequency;2,0,randomness;3,4,c2;4,4,c1;5,0,r;6,0,razmer;7,4,c3;"
+nodes/fragment/2/output_ports = "0,4,alb;1,4,emmi;"
+nodes/fragment/2/expression = "if (dot(st, st) < r)
+{
+float dist = length(st);
+
+    // 2. Искажаем дистанцию
+    float distorted_dist = dist + sin(dist * frequency * 0.3) * (randomness * 0.05);
+
+    // 3. Косинус для фиолетового центра
+    float wave = cos(distorted_dist * frequency);
+
+    // 4. Формируем кольца
+	float ring_id = floor(distorted_dist * frequency);
+
+    // 3. Рандомное число от 0.0 до 1.0 для КАЖДОГО кольца индивидуально
+    float ring_random_thickness = fract(sin(ring_id * 12.9898) * 43758.5453);
+    float rings = abs(wave);
+    rings = pow(rings, razmer); // Регулирует ширину тёмных полос
+
+
+
+
+float local_razmer = mix(razmer * 0.3, razmer * 2.0, ring_random_thickness);
+    rings = pow(rings, local_razmer);
+
+    // 6. Двойное затухание: внутреннее для колец и широкое мягкое для ореола (Halo)
+    float ring_falloff = smoothstep(r, r * 0.2, dist);
+    float ambient_falloff = smoothstep(r * 1.6, 0.0, dist) * 0.4;
+
+    // 7. Формируем паттерн и смешиваем с фоновой текстурой c3
+    vec3 spot_pattern = mix(c1, c2, rings);
+    vec3 final_spot = mix(c1 * 0.4, spot_pattern, ring_falloff);
+
+    alb = mix(c3, final_spot, max(ring_falloff, ambient_falloff));
+
+EMISSION = c2 * rings * ring_falloff * 1.5;
+}
+else{alb = c3;}"
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_n84b6")
+nodes/fragment/3/position = Vector2(-1120, 112)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatParameter_olj0s")
+nodes/fragment/4/position = Vector2(-1504, 192)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_vwqd6")
+nodes/fragment/5/position = Vector2(-1808, 368)
+nodes/fragment/6/node = SubResource("VisualShaderNodeMix_olj0s")
+nodes/fragment/6/position = Vector2(-1344, 464)
+nodes/fragment/7/node = SubResource("VisualShaderNodeTexture_vwqd6")
+nodes/fragment/7/position = Vector2(-1792, 816)
+nodes/fragment/8/node = SubResource("VisualShaderNodeFloatParameter_n84b6")
+nodes/fragment/8/position = Vector2(-1280, 848)
+nodes/fragment/9/node = SubResource("VisualShaderNodeMix_n84b6")
+nodes/fragment/9/position = Vector2(-1072, 560)
+nodes/fragment/10/node = SubResource("VisualShaderNodeFloatParameter_hrxub")
+nodes/fragment/10/position = Vector2(-1072, 1088)
+nodes/fragment/11/node = SubResource("VisualShaderNodeTexture_sg301")
+nodes/fragment/11/position = Vector2(-1920, 496)
+nodes/fragment/connections = PackedInt32Array(3, 0, 2, 0, 2, 0, 0, 0, 4, 0, 2, 1, 5, 0, 2, 2, 8, 0, 2, 5, 6, 0, 2, 3, 7, 0, 9, 0, 9, 0, 2, 4, 10, 0, 2, 6, 11, 0, 6, 0, 7, 0, 2, 7)

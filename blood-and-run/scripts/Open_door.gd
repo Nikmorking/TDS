@@ -14,7 +14,16 @@ var k_otk = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	rot = 0
+	Global.connect("nav_door", change_need)
 	pass # Replace with function body.
+
+func change_need(obj, flag):
+	if obj:
+		if obj == self:
+			need_door = flag
+		elif obj.get_parent() == self:
+			need_door = flag
+	else: need_door = flag
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("rush_e") and (

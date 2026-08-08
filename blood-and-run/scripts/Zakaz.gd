@@ -22,7 +22,7 @@ func vupoln(i:String):
 func prov_list(str:String):
 			if Global.zp == 10:
 				Global.achivka("Достижение: \nПочти Миллионник")
-			$"Заправка/Table/CSGPolygon3D/SubViewport/Control/RichTextLabel".text = str + "\nСейчас ЗП "+str(Global.zp) + "р"
+			$"Заправка/Table/CSGPolygon3D/SubViewport/Control/RichTextLabel".text = str + "\nСейчас ЗП "+str(int(Global.zp)) + "р"
 			for i in Check_boxes:
 				i.hide()
 			back()

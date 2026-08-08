@@ -103,6 +103,8 @@ bind/15/pose = Transform3D(0.016498536, -0.99962723, -0.0217576, -0.021662233, 0
 
 [node name="No_human" type="CharacterBody3D" unique_id=266263789]
 transform = Transform3D(-2.6226834e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.6226834e-08, 0, 0, 0)
+collision_layer = 65
+collision_mask = 65
 script = ExtResource("1_wlgop")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=158501101]
@@ -140,11 +142,11 @@ avoidance_enabled = true
 debug_enabled = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 
-[node name="Area3D" type="Area3D" parent="." unique_id=1813067330]
+[node name="No_human" type="Area3D" parent="." unique_id=1813067330]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1901331121]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="No_human" unique_id=1901331121]
 transform = Transform3D(0.99999976, 0, 4.7961635e-13, 0, 0.99999976, 0, -4.7961635e-13, 0, 0.99999976, 0, 1.7455314, 0)
 shape = SubResource("CapsuleShape3D_wlgop")
 

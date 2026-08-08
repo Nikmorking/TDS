@@ -6,9 +6,6 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_v0ymc"]
 size = Vector3(1.02271, 2.3615, 0.001)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_b0ws2"]
-size = Vector3(0.944153, 0.855713, 1.07117)
-
 [sub_resource type="Animation" id="Animation_vvcv5"]
 length = 0.001
 tracks/0/type = "value"
@@ -142,13 +139,6 @@ script = ExtResource("1_pjrhx")
 transform = Transform3D(-0.870693, 0, -7.61184e-08, 0, 0.870721, 0, 7.61184e-08, 0, -0.870693, 0.48221, 1.12439, -0.045913)
 shape = SubResource("BoxShape3D_v0ymc")
 
-[node name="Area3D" type="Area3D" parent="." unique_id=1247519616]
-transform = Transform3D(-0.870721, 0, -7.61208e-08, 0, 0.870721, 0, 7.61208e-08, 0, -0.870721, 0.442379, 0.724123, -0.048361)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1635672074]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.142665, -0.185814, -0.717203)
-shape = SubResource("BoxShape3D_b0ws2")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1373957410]
 libraries/ = SubResource("AnimationLibrary_6867o")
 
@@ -160,13 +150,6 @@ skeleton = NodePath("")
 [node name="Timer" type="Timer" parent="." unique_id=996576025]
 
 [node name="Timer2" type="Timer" parent="." unique_id=1812431196]
-
-[node name="Area3D2" type="Area3D" parent="." unique_id=1369155818]
-transform = Transform3D(-0.870721, 0, -7.61208e-08, 0, 0.870721, 0, 7.61208e-08, 0, -0.870721, 0.442379, 0.724123, -1.1783987)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2" unique_id=878836794]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.142665, -0.185814, -0.717203)
-shape = SubResource("BoxShape3D_b0ws2")
 
 [node name="Open" type="AudioStreamPlayer3D" parent="." unique_id=1630317992]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7179682, 1.1917982, 6.276677e-08)
@@ -182,9 +165,5 @@ volume_db = -15.0
 max_distance = 5.0
 bus = &"Effect"
 
-[connection signal="body_entered" from="Area3D" to="." method="Next_to_door"]
-[connection signal="body_exited" from="Area3D" to="." method="come_back"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="Area3D2" to="." method="Next_to_door"]
-[connection signal="body_exited" from="Area3D2" to="." method="come_back"]
