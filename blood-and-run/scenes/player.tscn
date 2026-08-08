@@ -712,8 +712,9 @@ one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera3D/game_ui" unique_id=2026314038]
 visible = false
-position = Vector2(575, 325)
-scale = Vector2(0.39999965, 0.37667152)
+modulate = Color(1, 1, 1, 0.5647059)
+position = Vector2(575, 324)
+scale = Vector2(0.2399998, 0.22833574)
 texture = ExtResource("3_ke2ow")
 
 [node name="time" type="Control" parent="Camera3D/game_ui" unique_id=1259499635]
@@ -777,20 +778,23 @@ label_settings = SubResource("LabelSettings_oprun")
 
 [node name="Лупа" type="Sprite2D" parent="Camera3D/game_ui" unique_id=1784177361]
 visible = false
-position = Vector2(577.5, 324.75)
-scale = Vector2(0.06999996, 0.070999965)
+modulate = Color(1, 1, 1, 0.5647059)
+position = Vector2(575, 325)
+scale = Vector2(0.045999955, 0.04699997)
 texture = ExtResource("6_31cv2")
 
 [node name="Разговор" type="Sprite2D" parent="Camera3D/game_ui" unique_id=157582782]
 visible = false
-position = Vector2(575, 325.00003)
-scale = Vector2(0.72, 0.66)
+modulate = Color(1, 1, 1, 0.5647059)
+position = Vector2(575, 324)
+scale = Vector2(0.42000073, 0.3800001)
 texture = ExtResource("25_ujl30")
 
 [node name="2" type="Sprite2D" parent="Camera3D/game_ui" unique_id=2036143143]
 visible = false
-position = Vector2(579, 326)
-scale = Vector2(0.25000066, 0.265625)
+modulate = Color(1, 1, 1, 0.5647059)
+position = Vector2(575, 325.00003)
+scale = Vector2(0.1640631, 0.15625)
 texture = ExtResource("6_pf23h")
 
 [node name="руки" type="Node3D" parent="Camera3D" unique_id=1062435021]
@@ -820,7 +824,7 @@ libraries/ = SubResource("AnimationLibrary_tsu7c")
 
 [node name="Timer" type="Timer" parent="Camera3D/руки" unique_id=1167998102]
 wait_time = 0.05
-one_shot = true
+autostart = true
 
 [node name="Расходник-инатор" type="MultiplayerSpawner" parent="Camera3D/руки" unique_id=462099619]
 spawn_path = NodePath("../SpringArm3D/Hand")
@@ -832,10 +836,6 @@ wait_time = 0.1
 [node name="шланг" parent="Camera3D/руки" unique_id=1651641096 instance=ExtResource("13_f1ej7")]
 transform = Transform3D(-0.3637584, -0.062386185, -0.15423298, 1.9455902e-08, 0.37081337, -0.14999151, 0.16637261, -0.1364017, -0.33721617, 0.28052488, -0.959962, -0.46160507)
 visible = false
-
-[node name="Timer2" type="Timer" parent="Camera3D/руки" unique_id=1937757256]
-wait_time = 0.3
-autostart = true
 
 [node name="Menu" type="Control" parent="Camera3D" unique_id=1081682958]
 process_mode = 3
@@ -965,10 +965,10 @@ text = "Все готовы"
 modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 0
-offset_left = -46.0
-offset_top = 99.0
-offset_right = 1108.0
-offset_bottom = 747.0
+offset_left = -41.0
+offset_top = 101.0
+offset_right = 1113.0
+offset_bottom = 749.0
 
 [node name="Label2" type="Label" parent="Camera3D/end_day" unique_id=1419800238]
 layout_mode = 0
@@ -1120,9 +1120,9 @@ label_settings = SubResource("LabelSettings_f1ej7")
 
 [connection signal="timeout" from="Camera3D/game_ui/Timer" to="Camera3D/game_ui" method="_on_timer_timeout"]
 [connection signal="animation_finished" from="Camera3D/руки/SpringArm3D/AnimationPlayer" to="Camera3D/руки" method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Camera3D/руки/Timer" to="Camera3D/руки" method="icons"]
 [connection signal="timeout" from="Camera3D/руки/Timer" to="Camera3D/руки" method="_on_tik_timeout"]
 [connection signal="timeout" from="Camera3D/руки/Timer3" to="Camera3D/руки" method="_on_timer_3_timeout"]
-[connection signal="timeout" from="Camera3D/руки/Timer2" to="Camera3D/руки" method="icons"]
 [connection signal="button_down" from="Camera3D/Menu/continue" to="Camera3D/Menu" method="_on_continue_button_down"]
 [connection signal="focus_entered" from="Camera3D/Menu/continue" to="Camera3D/Menu" method="focus_entered"]
 [connection signal="button_down" from="Camera3D/Menu/Settings" to="Camera3D/Menu" method="_on_settings_button_down"]

@@ -19,7 +19,6 @@ func _on_timer_timeout() -> void:
 func change(named):
 	$Label.hide()
 	get_node(named).show()
-	if named == "2": Global.nav_door.emit(true)
 
 func back():
 	$Label.show()
@@ -27,4 +26,4 @@ func back():
 	$"2".hide()
 	$"Разговор".hide()
 	$"Лупа".hide()
-	Global.nav_door.emit(false)
+	Global.nav_door.emit(null, false)

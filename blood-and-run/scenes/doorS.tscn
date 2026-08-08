@@ -24,7 +24,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("StaticBody3D:rotation")
+tracks/1/path = NodePath("Door:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -36,7 +36,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("StaticBody3D2:rotation")
+tracks/2/path = NodePath("Door2:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -51,7 +51,7 @@ resource_name = "close door"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("StaticBody3D:rotation")
+tracks/0/path = NodePath("Door:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -63,7 +63,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("StaticBody3D2:rotation")
+tracks/1/path = NodePath("Door2:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -78,7 +78,7 @@ resource_name = "close_door"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("StaticBody3D:rotation")
+tracks/0/path = NodePath("Door:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -90,7 +90,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("StaticBody3D2:rotation")
+tracks/1/path = NodePath("Door2:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -135,10 +135,8 @@ shader_parameter/roughness = 0.5
 shader_parameter/normal_strength = 8.0
 shader_parameter/edge_color = Color(0, 0.8, 0, 1)
 
-[node name="Door" type="StaticBody3D" unique_id=1663869990]
+[node name="Door" type="StaticBody3D" unique_id=897783436]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
-collision_layer = 3
-collision_mask = 3
 script = ExtResource("1_hxdes")
 door_open = false
 
@@ -156,26 +154,26 @@ libraries/ = SubResource("AnimationLibrary_6867o")
 
 [node name="Node3D" type="Node3D" parent="." unique_id=1445018575]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=815021876]
+[node name="Door" type="StaticBody3D" parent="." unique_id=815021876]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3949416, 0.8276905, 1.0476617e-07)
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D" unique_id=6471536]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Door" unique_id=6471536]
 transform = Transform3D(-0.870693, 0, -7.61184e-08, 0, 0.870721, 0, 7.61184e-08, 0, -0.870693, -0.6252943, 0.18950021, -0.005317016)
 shape = SubResource("BoxShape3D_v0ymc")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="StaticBody3D/CollisionShape3D5" unique_id=39202005]
+[node name="CSGBox3D" type="CSGBox3D" parent="Door/CollisionShape3D5" unique_id=39202005]
 transform = Transform3D(1.1485101, 0, -5.684342e-14, 0, 1.1484735, 0, 5.684342e-14, 0, 1.1485101, 0.005697429, -0.0009971857, -0.07046274)
 size = Vector3(1.1912842, 2.2838745, 0.13378906)
 material = SubResource("ShaderMaterial_jwqke")
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=1097800055]
+[node name="Door2" type="StaticBody3D" parent="." unique_id=1097800055]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2040253, 0.9922543, -1.0525923e-07)
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D2" unique_id=2085124440]
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Door2" unique_id=2085124440]
 transform = Transform3D(-0.870693, 0, -7.61184e-08, 0, 0.870721, 0, 7.61184e-08, 0, -0.870693, 0.5246164, 0.00345546, -0.0053169397)
 shape = SubResource("BoxShape3D_v0ymc")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="StaticBody3D2/CollisionShape3D6" unique_id=1473794803]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Door2/CollisionShape3D6" unique_id=1473794803]
 transform = Transform3D(1.1485101, 0, -5.684342e-14, 0, 1.1484735, 0, 5.684342e-14, 0, 1.1485101, -0.010220468, 0.008816481, -0.07046274)
 size = Vector3(1.2174072, 2.3009644, 0.13378906)
 material = SubResource("ShaderMaterial_jwqke")

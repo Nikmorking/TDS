@@ -326,15 +326,20 @@ func request_spawn_ras_on_server(stav):
 
 
 func icons():
+	var ui = get_parent().get_node("game_ui")
+	if !ui:
+		return
 	$"../game_ui".back()
 	if $SpringArm3D/Hand.get_child_count() == 0:
 		var col = $RayCast3D.get_collider()
 		if col:
-			if col.name == "No_human" && Global.papa.y_kassu:
+			var col_name: String = col.name
+			if col_name == "No_human" && Global.papa.y_kassu:
 					$"../game_ui".change("Разговор")
-			elif col.name == "Door":
+			elif !col_name.find("Door"):
 					$"../game_ui".change("2")
-			elif col.name == "Стены":
+					Global.nav_door.emit(col, true)
+			elif col_name == "Стены":
 					$"../game_ui".change("Лупа")
 			else:
 				if col.is_class("RigidBody3D") or Global.get_papa(2, col).name == "Ящики":
