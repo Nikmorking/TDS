@@ -28,13 +28,12 @@ Multiplayer="*uid://7frxd1y33wmr"
 
 [display]
 
-window/size/mode=3
 window/size/initial_position_type=0
 window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/LANServerBroadcast/plugin.cfg", "res://addons/LineRenderer/plugin.cfg")
+enabled=PackedStringArray("res://addons/LineRenderer/plugin.cfg")
 
 [input]
 

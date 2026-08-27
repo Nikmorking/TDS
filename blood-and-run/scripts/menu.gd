@@ -52,11 +52,15 @@ func _input(event: InputEvent) -> void:
 		$AnimationPlayer.play("RESET")
 
 func cont():
-			Global.esc()
-			$Close.play()
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			#get_parent().get_node("game_ui").show()
-			hide()
+	Global.esc()
+	Global.end_dialog.emit()
+	$Close.play()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	get_parent().get_node("game_ui").show()
+	hide()
+	for i in $"../Dialog/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer".get_children():
+		i.queue_free()
+	$"../Dialog".hide()
 
 func _on_quit_button_down() -> void:
 	if  Global.mp_mode == "offline": Global.save()

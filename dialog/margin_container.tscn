@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://byorvetny4jnd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gyc6d"]
+font_size = 32
+
+[node name="MarginContainer" type="MarginContainer" unique_id=1175732141]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1395946210]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Margin" type="MarginContainer" parent="PanelContainer" unique_id=1864638341]
+layout_mode = 2
+theme_override_constants/margin_left = 13
+theme_override_constants/margin_top = 13
+theme_override_constants/margin_right = 13
+theme_override_constants/margin_bottom = 13
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Margin" unique_id=1556463712]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label2" type="Label" parent="PanelContainer/Margin/VBoxContainer" unique_id=378664336]
+layout_mode = 2
+text = " Рагнар"
+
+[node name="Label" type="Label" parent="PanelContainer/Margin/VBoxContainer" unique_id=702396695]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = " Как дела ?  Я тварь в доспехах.
+Я никого не убивал"
+label_settings = SubResource("LabelSettings_gyc6d")
+autowrap_mode = 3

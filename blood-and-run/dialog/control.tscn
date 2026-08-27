@@ -1,0 +1,214 @@
+[gd_scene format=3 uid="uid://dbbxrfoqjd3ae"]
+
+[ext_resource type="Script" uid="uid://bhwbf44ap65pa" path="res://dialog/dialog_system-1.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://djf2dqt1ue4hk" path="res://dialog/panel_container_2.tscn" id="2"]
+[ext_resource type="Script" uid="uid://cxhuxwur5dhd0" path="res://dialog/label.gd" id="3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g7b7a"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_qtu10"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_gyc6d"]
+font_size = 32
+
+[node name="Control" type="Control" unique_id=1175453783]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 138.0
+offset_top = -1.0
+offset_right = -68.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1516828955]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -195.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer" unique_id=341703704]
+visible = false
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/margin_left = 13
+theme_override_constants/margin_bottom = 100
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer3" unique_id=2039583256]
+layout_mode = 2
+
+[node name="exit" type="Button" parent="VBoxContainer/MarginContainer3/HBoxContainer" unique_id=247049849]
+layout_mode = 2
+text = "Выйти"
+
+[node name="return" type="Button" parent="VBoxContainer/MarginContainer3/HBoxContainer" unique_id=746975548]
+layout_mode = 2
+text = "Начать с начала"
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer3/HBoxContainer" unique_id=1788143297]
+layout_mode = 2
+text = "увидеть"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1646365380]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 450
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer" unique_id=972794365]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer" unique_id=1036151667]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 62
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer" unique_id=786226277]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 25
+
+[node name="HSplitContainer" type="HFlowContainer" parent="VBoxContainer/MarginContainer2" unique_id=1529866008]
+layout_mode = 2
+last_wrap_alignment = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer2/HSplitContainer" unique_id=719797040]
+layout_mode = 2
+size_flags_horizontal = 3
+flat = true
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer2/HSplitContainer/Button" unique_id=1436497607]
+z_index = -4
+y_sort_enabled = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.42745098, 0, 0.2901961, 1)
+
+[node name="Button2" type="Button" parent="VBoxContainer/MarginContainer2/HSplitContainer" unique_id=217748659]
+z_index = 2
+layout_mode = 2
+size_flags_horizontal = 3
+button_mask = 7
+flat = true
+
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer2/HSplitContainer/Button2" unique_id=884428069]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -22.5
+offset_right = 96.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "dkkxjxjjdjdjz"
+label_settings = SubResource("LabelSettings_g7b7a")
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer2/HSplitContainer/Button2" unique_id=363134728]
+z_index = -4
+y_sort_enabled = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12582263, 0.00013228737, 0.36577615, 1)
+
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer2/HSplitContainer" unique_id=1978610560]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_g7b7a")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=890594878]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 10
+
+[node name="PanelContainer2" parent="VBoxContainer/VBoxContainer" unique_id=718413999 instance=ExtResource("2")]
+layout_mode = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer" unique_id=487570586]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Margin" type="MarginContainer" parent="VBoxContainer/PanelContainer2" unique_id=1254298149]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_left = 13
+theme_override_constants/margin_top = 13
+theme_override_constants/margin_right = 13
+theme_override_constants/margin_bottom = 13
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer2/Margin" unique_id=24087262]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="Label2" type="Label" parent="VBoxContainer/PanelContainer2/Margin/VBoxContainer" unique_id=704354154]
+layout_mode = 2
+size_flags_vertical = 8
+text = " Рагнар"
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer2/Margin/VBoxContainer" unique_id=388576442]
+custom_minimum_size = Vector2(1200, 0)
+layout_mode = 2
+text = "Как дела ? Я тварь в доспехах. Я никого не убивал  рататататататат имипипипиипи"
+label_settings = SubResource("LabelSettings_qtu10")
+autowrap_mode = 3
+script = ExtResource("3")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1278047359]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1811934834]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1482528485]
+layout_mode = 2
+text = "Конец !"
+label_settings = SubResource("LabelSettings_gyc6d")
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer" unique_id=53440632]
+layout_mode = 2
+text = "Начать с начала"
+
+[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1797070178]
+layout_mode = 2
+text = "Выйти"
+
+[connection signal="button_down" from="VBoxContainer/MarginContainer3/HBoxContainer/exit" to="." method="_on_exit_button_down"]
+[connection signal="button_down" from="VBoxContainer/MarginContainer3/HBoxContainer/return" to="." method="_on_return_button_down"]
+[connection signal="button_down" from="VBoxContainer/MarginContainer3/HBoxContainer/Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="CenterContainer/VBoxContainer/Button" to="." method="_on_return_button_down"]
+[connection signal="button_down" from="CenterContainer/VBoxContainer/Button2" to="." method="_on_exit_button_down"]
+
+[editable path="VBoxContainer/VBoxContainer/PanelContainer2"]

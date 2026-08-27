@@ -2,12 +2,14 @@
 
 [ext_resource type="Script" uid="uid://ciw0wsurkg36p" path="res://scripts/character_body_3d.gd" id="1_jej6c"]
 [ext_resource type="Script" uid="uid://bhsi6d5auuidh" path="res://scripts/ui.gd" id="2_f1ej7"]
-[ext_resource type="Texture2D" uid="uid://bvmyaqt4cgpaj" path="res://scenes/318748684_bc04d5c7d7c38229a9a8e5933851aab1.png" id="3_oprun"]
+[ext_resource type="Texture2D" uid="uid://bhjko8mek80n" path="res://icons/хватать.png" id="3_ke2ow"]
 [ext_resource type="Script" uid="uid://cnnqcnah1ft1y" path="res://scripts/руки.gd" id="4_a8ls1"]
 [ext_resource type="PackedScene" uid="uid://djscstv0lleby" path="res://Расходники/1.tscn" id="5_a38lo"]
 [ext_resource type="Script" uid="uid://drjt1yu0s6a0o" path="res://scripts/menu.gd" id="5_qfm1y"]
 [ext_resource type="PackedScene" uid="uid://dsl0h8dye8dkr" path="res://Расходники/cofe.tscn" id="6_4ni07"]
+[ext_resource type="Texture2D" uid="uid://dw2rw6pj21g4l" path="res://icons/лупа.png" id="6_31cv2"]
 [ext_resource type="Texture2D" uid="uid://be2meyinowmx1" path="res://Texture/menu.png" id="6_fulsm"]
+[ext_resource type="Texture2D" uid="uid://df444fyycj6dw" path="res://icons/E.png" id="6_pf23h"]
 [ext_resource type="AudioStream" uid="uid://dkmxx220ci41x" path="res://sounds/close.wav" id="7_4r5pv"]
 [ext_resource type="PackedScene" uid="uid://cbe6pu0sxv4kl" path="res://Расходники/Stakan.tscn" id="7_l71n6"]
 [ext_resource type="AudioStream" uid="uid://b6abahg8uksh6" path="res://sounds/open.wav" id="8_60mlk"]
@@ -23,6 +25,8 @@
 [ext_resource type="PackedScene" uid="uid://cbaviyah5c6ud" path="res://Models/button/source/poly.glb" id="13_4ni07"]
 [ext_resource type="PackedScene" uid="uid://cflmsb81hgmv" path="res://Models/шланг.tscn" id="13_f1ej7"]
 [ext_resource type="AudioStream" uid="uid://b7djpdlxind5d" path="res://sounds/шаги.mp3" id="13_ke2ow"]
+[ext_resource type="PackedScene" uid="uid://dbbxrfoqjd3ae" path="res://dialog/control.tscn" id="23_l71n6"]
+[ext_resource type="Texture2D" uid="uid://cvn643y4b6o27" path="res://icons/разговор.png" id="25_ujl30"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yyosc"]
 radius = 0.382215
@@ -40,7 +44,7 @@ dof_blur_amount = 0.34
 
 [sub_resource type="LabelSettings" id="LabelSettings_s6jno"]
 line_spacing = 7.0
-font_size = 20
+font_size = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_173o4"]
 font_size = 43
@@ -668,6 +672,8 @@ font_size = 24
 collision_layer = 4097
 collision_mask = 4097
 script = ExtResource("1_jej6c")
+metadata/_edit_horizontal_guides_ = [325.0]
+metadata/_edit_vertical_guides_ = [562.0]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1664940774]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07942, 0)
@@ -685,17 +691,19 @@ far = 40.0
 
 [node name="game_ui" type="Control" parent="Camera3D" unique_id=717445556]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1156.0
-offset_bottom = 637.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2_f1ej7")
 
 [node name="Label" type="Label" parent="Camera3D/game_ui" unique_id=2000084557]
 layout_mode = 0
-offset_left = 490.0
-offset_top = 309.0
-offset_right = 743.0
-offset_bottom = 381.0
+offset_left = 553.0
+offset_top = 320.0
+offset_right = 806.0
+offset_bottom = 392.0
 text = "               O"
 label_settings = SubResource("LabelSettings_s6jno")
 
@@ -704,9 +712,10 @@ one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera3D/game_ui" unique_id=2026314038]
 visible = false
-position = Vector2(576.5, 324.25)
-scale = Vector2(5.5048075, 2.6316872)
-texture = ExtResource("3_oprun")
+modulate = Color(1, 1, 1, 0.5647059)
+position = Vector2(575, 324)
+scale = Vector2(0.2399998, 0.22833574)
+texture = ExtResource("3_ke2ow")
 
 [node name="time" type="Control" parent="Camera3D/game_ui" unique_id=1259499635]
 anchors_preset = 0
@@ -767,6 +776,27 @@ offset_bottom = 418.0
 text = "Ожидайте, когда игра начнётся"
 label_settings = SubResource("LabelSettings_oprun")
 
+[node name="Лупа" type="Sprite2D" parent="Camera3D/game_ui" unique_id=1784177361]
+visible = false
+modulate = Color(1, 1, 1, 0.5647059)
+position = Vector2(575, 325)
+scale = Vector2(0.045999955, 0.04699997)
+texture = ExtResource("6_31cv2")
+
+[node name="Разговор" type="Sprite2D" parent="Camera3D/game_ui" unique_id=157582782]
+visible = false
+modulate = Color(1, 1, 1, 0.5647059)
+position = Vector2(575, 324)
+scale = Vector2(0.42000073, 0.3800001)
+texture = ExtResource("25_ujl30")
+
+[node name="2" type="Sprite2D" parent="Camera3D/game_ui" unique_id=2036143143]
+visible = false
+modulate = Color(1, 1, 1, 0.5647059)
+position = Vector2(575, 325.00003)
+scale = Vector2(0.1640631, 0.15625)
+texture = ExtResource("6_pf23h")
+
 [node name="руки" type="Node3D" parent="Camera3D" unique_id=1062435021]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1837149)
 script = ExtResource("4_a8ls1")
@@ -794,7 +824,7 @@ libraries/ = SubResource("AnimationLibrary_tsu7c")
 
 [node name="Timer" type="Timer" parent="Camera3D/руки" unique_id=1167998102]
 wait_time = 0.05
-one_shot = true
+autostart = true
 
 [node name="Расходник-инатор" type="MultiplayerSpawner" parent="Camera3D/руки" unique_id=462099619]
 spawn_path = NodePath("../SpringArm3D/Hand")
@@ -935,15 +965,17 @@ text = "Все готовы"
 modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1154.0
-offset_bottom = 648.0
+offset_left = -41.0
+offset_top = 101.0
+offset_right = 1113.0
+offset_bottom = 749.0
 
 [node name="Label2" type="Label" parent="Camera3D/end_day" unique_id=1419800238]
 layout_mode = 0
-offset_left = 250.0
-offset_top = 252.0
-offset_right = 993.0
-offset_bottom = 379.0
+offset_left = 255.0
+offset_top = 253.0
+offset_right = 998.0
+offset_bottom = 425.0
 text = "Ночь"
 label_settings = SubResource("LabelSettings_xtx8p")
 
@@ -984,6 +1016,7 @@ text = "ДОСТИЖЕНИЕ!"
 label_settings = SubResource("LabelSettings_24d4k")
 
 [node name="Duhota" type="Control" parent="Camera3D" unique_id=1237213985]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -1035,6 +1068,9 @@ pulse_speed = 1.0
 pulse_depth = 0.0
 base_alpha = 0.0
 
+[node name="Dialog" parent="Camera3D" unique_id=1175453783 instance=ExtResource("23_l71n6")]
+visible = false
+
 [node name="Marker3D" type="Marker3D" parent="." unique_id=374591385]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0656533, 0)
 
@@ -1084,7 +1120,8 @@ label_settings = SubResource("LabelSettings_f1ej7")
 
 [connection signal="timeout" from="Camera3D/game_ui/Timer" to="Camera3D/game_ui" method="_on_timer_timeout"]
 [connection signal="animation_finished" from="Camera3D/руки/SpringArm3D/AnimationPlayer" to="Camera3D/руки" method="_on_animation_player_animation_finished"]
-[connection signal="timeout" from="Camera3D/руки/Timer" to="Camera3D/руки" method="_on_timer_timeout"]
+[connection signal="timeout" from="Camera3D/руки/Timer" to="Camera3D/руки" method="icons"]
+[connection signal="timeout" from="Camera3D/руки/Timer" to="Camera3D/руки" method="_on_tik_timeout"]
 [connection signal="timeout" from="Camera3D/руки/Timer3" to="Camera3D/руки" method="_on_timer_3_timeout"]
 [connection signal="button_down" from="Camera3D/Menu/continue" to="Camera3D/Menu" method="_on_continue_button_down"]
 [connection signal="focus_entered" from="Camera3D/Menu/continue" to="Camera3D/Menu" method="focus_entered"]
@@ -1104,3 +1141,5 @@ label_settings = SubResource("LabelSettings_f1ej7")
 [connection signal="area_exited" from="Area3D" to="Camera3D/руки" method="_on_area_3d_area_exited"]
 
 [editable path="Camera3D/руки/шланг"]
+[editable path="Camera3D/Dialog"]
+[editable path="Camera3D/Dialog/VBoxContainer/VBoxContainer/PanelContainer2"]

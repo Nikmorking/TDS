@@ -4,17 +4,6 @@
 [ext_resource type="Shader" uid="uid://critgpmkvrxlh" path="res://mater/Chast.gdshader" id="2_7cnbw"]
 [ext_resource type="Material" uid="uid://cehxhcf454q5q" path="res://mater/grey.tres" id="2_k5e1m"]
 
-[sub_resource type="GDScript" id="GDScript_k5e1m"]
-resource_name = "zp"
-script/source = "extends Node3D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	
-	pass # Replace with function body.
-"
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_173o4"]
 albedo_color = Color(0.6321235, 0.6321235, 0.6321234, 1)
 
@@ -501,7 +490,6 @@ shadow_mesh = SubResource("ArrayMesh_lj8it")
 
 [node name="mesh" type="Node3D" unique_id=1110498778]
 transform = Transform3D(-0.6, 0, -9.0597496e-08, 0, 0.6, 0, 9.0597496e-08, 0, -0.6, 0, 0, 0)
-script = SubResource("GDScript_k5e1m")
 
 [node name="Cube_008" type="MeshInstance3D" parent="." unique_id=1710022785]
 transform = Transform3D(20, 0, 0, 0, -4.7683716e-06, 19.999998, 0, -19.999998, -4.7683716e-06, 6.883157, 1.4654846, -0.9627512)
