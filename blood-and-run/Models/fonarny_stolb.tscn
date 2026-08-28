@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://cjt0bl45rvjh"]
+
+[ext_resource type="PackedScene" uid="uid://bbhfocxs3ptwr" path="res://Models/fonarny stolb.fbx" id="1_80iwi"]
+[ext_resource type="Texture2D" uid="uid://cv26yr05sejrc" path="res://Models/smoke_02.png" id="2_gnspr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6cp7s"]
+albedo_color = Color(0.3530626, 0.35306263, 0.35306257, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n85rn"]
+albedo_color = Color(0.91228896, 0.9122889, 0.91228884, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o8yda"]
+albedo_color = Color(1, 0.9411765, 0.13725491, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p22jt"]
+albedo_color = Color(0.62233794, 0.622338, 0.62233794, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bb1vx"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+initial_velocity_min = -0.29999998
+initial_velocity_max = 0.29999998
+gravity = Vector3(0, -0.1, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = -2.2351742e-06
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q6xv8"]
+metallic = 1.0
+metallic_texture = ExtResource("2_gnspr")
+roughness_texture = ExtResource("2_gnspr")
+roughness_texture_channel = 4
+
+[sub_resource type="SphereMesh" id="SphereMesh_ylpn1"]
+material = SubResource("StandardMaterial3D_q6xv8")
+radius = 0.003
+height = 0.006
+
+[node name="fonarny stolb" unique_id=901564989 instance=ExtResource("1_80iwi")]
+
+[node name="Cube" parent="." index="0" unique_id=1562455188]
+material_override = SubResource("StandardMaterial3D_6cp7s")
+
+[node name="Куб_001" parent="." index="1" unique_id=63238527]
+material_override = SubResource("StandardMaterial3D_n85rn")
+
+[node name="Сфера" parent="." index="2" unique_id=1038186695]
+material_override = SubResource("StandardMaterial3D_o8yda")
+
+[node name="Цилиндр" parent="." index="3" unique_id=1069953761]
+material_override = SubResource("StandardMaterial3D_p22jt")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="4" unique_id=794461082]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.443713, 18.743988, -0.042490125)
+light_color = Color(0.69411767, 0.6862745, 0, 1)
+light_energy = 0.8
+light_volumetric_fog_energy = 0.5
+shadow_enabled = true
+omni_range = 15.0
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="5" unique_id=551900959]
+transform = Transform3D(7, 0, 0, 0, 10, 0, 0, 0, 7, -8.436436, 16.822563, -0.12032592)
+cast_shadow = 0
+amount = 50
+lifetime = 2.0599999999999996
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_bb1vx")
+draw_pass_1 = SubResource("SphereMesh_ylpn1")

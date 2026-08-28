@@ -8,8 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://dism06b1iip8u" path="res://scenes/doorS.tscn" id="5_vynuk"]
 [ext_resource type="Texture2D" uid="uid://be2meyinowmx1" path="res://Texture/menu.png" id="8_e63ir"]
 [ext_resource type="PackedScene" uid="uid://ki8fgnhihyot" path="res://scenes/lampa_mini.tscn" id="8_ro5by"]
-[ext_resource type="PackedScene" uid="uid://cgtemd1k4v7db" path="res://musorka.tscn" id="11_1huwv"]
+[ext_resource type="PackedScene" uid="uid://cgtemd1k4v7db" path="res://Models/musorka.tscn" id="11_1huwv"]
 [ext_resource type="Environment" uid="uid://cc7unamcaasd2" path="res://demo/new_environment.tres" id="13_myhle"]
+[ext_resource type="PackedScene" uid="uid://bgvvt712cenew" path="res://Models/zabor.tscn" id="14_vqwn8"]
+[ext_resource type="PackedScene" uid="uid://cjt0bl45rvjh" path="res://Models/fonarny_stolb.tscn" id="15_yyosc"]
 [ext_resource type="Material" uid="uid://buc3wjgnofj26" path="res://mater/glass.tres" id="16_173o4"]
 [ext_resource type="Material" uid="uid://cehxhcf454q5q" path="res://mater/grey.tres" id="16_myhle"]
 [ext_resource type="Script" uid="uid://hajl3xibw433" path="res://addons/LineRenderer/line_renderer.gd" id="17_r1ed2"]
@@ -319,6 +321,9 @@ depth = 0.01
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rcbt2"]
 size = Vector3(0.14782715, 2.486206, 2.3447876)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_173o4"]
+size = Vector3(17.226929, 2.6522217, 0.20495605)
 
 [sub_resource type="GDScript" id="GDScript_173o4"]
 resource_name = "Loop"
@@ -985,22 +990,22 @@ material = SubResource("StandardMaterial3D_42sn8")
 [node name="Лампы" type="Node" parent="Заправка" unique_id=499887456]
 
 [node name="LAmpa" parent="Заправка/Лампы" unique_id=418825919 instance=ExtResource("1_hnl5y")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -18.301254, 4.1033936, -13.162857)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -18.301254, 3.5626445, -13.162857)
 
 [node name="LAmpa2" parent="Заправка/Лампы" unique_id=613184078 instance=ExtResource("1_hnl5y")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -12.173973, 4.1033936, -13.162857)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -12.173973, 3.5626445, -13.162857)
 
 [node name="LAmpa3" parent="Заправка/Лампы" unique_id=894506799 instance=ExtResource("1_hnl5y")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -25.818869, 4.1033936, -13.162857)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -25.818869, 3.5626445, -13.162857)
 
 [node name="LAmpa4" parent="Заправка/Лампы" unique_id=982320525 instance=ExtResource("1_hnl5y")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -25.818869, 4.1033936, -6.766962)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -25.818869, 3.5626445, -6.766962)
 
 [node name="LAmpa5" parent="Заправка/Лампы" unique_id=1426874106 instance=ExtResource("1_hnl5y")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -18.383547, 4.1033936, -6.766962)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -18.383547, 3.5626445, -6.766962)
 
 [node name="LAmpa6" parent="Заправка/Лампы" unique_id=823233646 instance=ExtResource("1_hnl5y")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -13.332328, 4.1033936, -6.766962)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -13.332328, 3.5626445, -6.766962)
 
 [node name="Ящики" type="Node3D" parent="Заправка" unique_id=516686290]
 
@@ -1173,6 +1178,32 @@ collision_layer = 15
 collision_mask = 15
 start_rot = Vector3(0, 180, 0)
 
+[node name="Заборы" type="Node" parent="Заправка" unique_id=242070639]
+
+[node name="zabor" parent="Заправка/Заборы" unique_id=37255250 instance=ExtResource("14_vqwn8")]
+transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, -27.4272, -0.3393333, 5.152834)
+
+[node name="zabor2" parent="Заправка/Заборы" unique_id=76739122 instance=ExtResource("14_vqwn8")]
+transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, -24.510653, -0.3393333, 5.152834)
+
+[node name="zabor3" parent="Заправка/Заборы" unique_id=504061628 instance=ExtResource("14_vqwn8")]
+transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, -21.608677, -0.3393333, 5.152834)
+
+[node name="zabor4" parent="Заправка/Заборы" unique_id=977980147 instance=ExtResource("14_vqwn8")]
+transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, -18.680239, -0.3393333, 5.152834)
+
+[node name="zabor5" parent="Заправка/Заборы" unique_id=1399618676 instance=ExtResource("14_vqwn8")]
+transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, -15.763691, -0.3393333, 5.152834)
+
+[node name="zabor6" parent="Заправка/Заборы" unique_id=1633225508 instance=ExtResource("14_vqwn8")]
+transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, -12.861715, -0.3393333, 5.152834)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Заправка/Заборы" unique_id=1724689611]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Заправка/Заборы/StaticBody3D" unique_id=237881007]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.694508, 0.82611084, 5.156107)
+shape = SubResource("BoxShape3D_173o4")
+
 [node name="Тум-тум-туманище" type="StaticBody3D" parent="." unique_id=1175494086]
 script = SubResource("GDScript_173o4")
 
@@ -1252,72 +1283,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.600191, -0.1871742, 28.258
 
 [node name="Фонари" type="Node" parent="." unique_id=427375748]
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Фонари" unique_id=74947927]
-transform = Transform3D(0.99943095, 0, -0.033730783, 0, 1, 0, 0.033730783, 0, 0.99943095, 4.9981003, 1.863322, 12.532743)
-radius = 0.237
-height = 4.874756
-
-[node name="LAmpa" parent="Фонари/CSGCylinder3D" unique_id=856681316 instance=ExtResource("1_hnl5y")]
-transform = Transform3D(0.1, 0, 0, 0, 0.0766341, 0, 0, 0, 0.1, -0.14111567, 1.9317033, -0.6446879)
-
-[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Фонари" unique_id=319731682]
-transform = Transform3D(0.5680736, 0, -0.8229778, 0, 1, 0, 0.8229778, 0, 0.5680736, 19.845152, 1.863322, -18.05795)
-radius = 0.237
-height = 4.874756
-
-[node name="LAmpa" parent="Фонари/CSGCylinder3D4" unique_id=364062515 instance=ExtResource("1_hnl5y")]
-transform = Transform3D(0.1, 0, 0, 0, 0.0766341, 0, 0, 0, 0.1, -0.14111567, 1.9317033, -0.6446879)
-
-[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="Фонари" unique_id=1282071538]
-transform = Transform3D(-0.050314073, 0, -0.99873346, 0, 1, 0, 0.99873346, 0, -0.050314073, 19.407602, 1.863322, -0.2282238)
-radius = 0.237
-height = 4.874756
-
-[node name="LAmpa" parent="Фонари/CSGCylinder3D9" unique_id=2044625972 instance=ExtResource("1_hnl5y")]
-transform = Transform3D(0.1, 0, 0, 0, 0.0766341, 0, 0, 0, 0.1, -0.14111567, 1.9317033, -0.6446879)
-
-[node name="CSGCylinder3D11" type="CSGCylinder3D" parent="Фонари" unique_id=858447201]
-transform = Transform3D(-0.050314073, 0, -0.99873346, 0, 1, 0, 0.99873346, 0, -0.050314073, 19.407602, 1.863322, 17.81932)
-radius = 0.237
-height = 4.874756
-
-[node name="LAmpa" parent="Фонари/CSGCylinder3D11" unique_id=1447827617 instance=ExtResource("1_hnl5y")]
-transform = Transform3D(0.1, 0, 0, 0, 0.0766341, 0, 0, 0, 0.1, -0.14111567, 1.9317033, -0.6446879)
-
-[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Фонари" unique_id=85055496]
-transform = Transform3D(0.05447962, 0, 0.9985149, 0, 1, 0, -0.9985149, 0, 0.05447962, 27.742193, 1.863322, -10.930497)
-radius = 0.237
-height = 4.874756
-
-[node name="LAmpa" parent="Фонари/CSGCylinder3D7" unique_id=1463920544 instance=ExtResource("1_hnl5y")]
-transform = Transform3D(0.1, 0, 0, 0, 0.0766341, 0, 0, 0, 0.1, -0.14111567, 1.9317033, -0.6446879)
-
-[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="Фонари" unique_id=1470441841]
-transform = Transform3D(0.05447962, 0, 0.9985149, 0, 1, 0, -0.9985149, 0, 0.05447962, 27.742193, 1.863322, -30.88253)
-radius = 0.237
-height = 4.874756
-
-[node name="LAmpa" parent="Фонари/CSGCylinder3D10" unique_id=1244167010 instance=ExtResource("1_hnl5y")]
-transform = Transform3D(0.1, 0, 0, 0, 0.0766341, 0, 0, 0, 0.1, -0.14111567, 1.9317033, -0.6446879)
-
-[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Фонари" unique_id=709135714]
-transform = Transform3D(0.05447962, 0, 0.9985149, 0, 1, 0, -0.9985149, 0, 0.05447962, 27.742193, 1.863322, 9.970378)
-radius = 0.237
-height = 4.874756
-
-[node name="LAmpa" parent="Фонари/CSGCylinder3D8" unique_id=1011580477 instance=ExtResource("1_hnl5y")]
-transform = Transform3D(0.1, 0, 0, 0, 0.0766341, 0, 0, 0, 0.1, -0.14111567, 1.9317033, -0.6446879)
-
-[node name="LAmpa2" parent="Фонари/CSGCylinder3D8" unique_id=1595559220 instance=ExtResource("1_hnl5y")]
-transform = Transform3D(0.057059903, 0, -0.082122885, 0, 0.0766341, 0, 0.082122885, 0, 0.057059903, 4.596531, 1.9351823, -62.41673)
-
 [node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Фонари" unique_id=1514786897]
 transform = Transform3D(0.8510952, 0, 0.5250113, 0, 1, 0, -0.5250113, 0, 0.8510952, 11.420224, 1.866801, -3.6228263)
 radius = 0.237
 height = 4.881714
 
 [node name="LAmpa" parent="Фонари/CSGCylinder3D5" unique_id=618950581 instance=ExtResource("1_hnl5y")]
-transform = Transform3D(0.10000001, 0, 3.7252903e-09, 0, 0.0766341, 0, -3.7252903e-09, 0, 0.10000001, -3.675891, 1.9317033, -7.647812)
+transform = Transform3D(0.057357654, 0, 0.08191522, 0, 0.0766341, 0, -0.08191522, 0, 0.057357654, -3.675891, 1.9317033, -7.647812)
 
 [node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Фонари" unique_id=713758086]
 transform = Transform3D(0.8510952, 0, 0.5250113, 0, 1, 0, -0.5250113, 0, 0.8510952, 11.420224, 1.866801, -12.810788)
@@ -1325,15 +1297,31 @@ radius = 0.237
 height = 4.881714
 
 [node name="LAmpa" parent="Фонари/CSGCylinder3D6" unique_id=757113111 instance=ExtResource("1_hnl5y")]
-transform = Transform3D(0.10000001, 0, 3.7252903e-09, 0, 0.0766341, 0, -3.7252903e-09, 0, 0.10000001, -16.452606, 1.9317033, -4.7092924)
+transform = Transform3D(0.048480965, 0, 0.087461986, 0, 0.0766341, 0, -0.087461986, 0, 0.048480965, -16.452606, 1.9317033, -4.7092924)
 
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Фонари" unique_id=415418087]
-transform = Transform3D(-0.12606029, 0, -0.9920226, 0, 1, 0, 0.9920226, 0, -0.12606029, -8.245657, 1.863322, -21.7784)
-radius = 0.237
-height = 4.874756
+[node name="fonarny stolb" parent="Фонари" unique_id=901564989 instance=ExtResource("15_yyosc")]
+transform = Transform3D(-1.0927847e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.0927847e-08, 4.990179, -0.513, 12.648415)
 
-[node name="LAmpa" parent="Фонари/CSGCylinder3D3" unique_id=1559743700 instance=ExtResource("1_hnl5y")]
-transform = Transform3D(0.1, 0, 0, 0, 0.0766341, 0, 0, 0, 0.1, -0.14111567, 1.9317033, -0.6446879)
+[node name="LAmpa2" parent="Фонари" unique_id=1595559220 instance=ExtResource("1_hnl5y")]
+transform = Transform3D(0.1, 0, 0, 0, 0.0766341, 0, 0, 0, 0.1, -34.33142, 3.7985044, 1.9802337)
+
+[node name="fonarny stolb2" parent="Фонари" unique_id=767205843 instance=ExtResource("15_yyosc")]
+transform = Transform3D(-0.25, 0, 3.774895e-08, 0, 0.25, 0, -3.774895e-08, 0, -0.25, 19.549877, -0.513, 17.872385)
+
+[node name="fonarny stolb3" parent="Фонари" unique_id=606506695 instance=ExtResource("15_yyosc")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 27.778204, -0.513, 10.114446)
+
+[node name="fonarny stolb4" parent="Фонари" unique_id=757205641 instance=ExtResource("15_yyosc")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 27.778204, -0.513, -10.954109)
+
+[node name="fonarny stolb5" parent="Фонари" unique_id=1005122883 instance=ExtResource("15_yyosc")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 27.778204, -0.513, -30.895353)
+
+[node name="fonarny stolb6" parent="Фонари" unique_id=1017955880 instance=ExtResource("15_yyosc")]
+transform = Transform3D(-0.25, 0, -2.1855694e-08, 0, 0.25, 0, 2.1855694e-08, 0, -0.25, 19.768984, -0.513, -18.104252)
+
+[node name="fonarny stolb7" parent="Фонари" unique_id=1315358101 instance=ExtResource("15_yyosc")]
+transform = Transform3D(-0.25, 0, -2.1855694e-08, 0, 0.25, 0, 2.1855694e-08, 0, -0.25, 19.768984, -0.513, -0.2672367)
 
 [node name="LAmpa" parent="." unique_id=67730621 instance=ExtResource("8_ro5by")]
 transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, -35.37123, 3.387203, -8.351227)
@@ -1574,6 +1562,12 @@ size = Vector3(1.3595104, 1.9650156, 5.3758545)
 [node name="CSGBox3D16" type="CSGBox3D" parent="NavigationRegion3D/CSGBox3D2/CSGCombiner3D" unique_id=1088474757]
 transform = Transform3D(-4.371092e-08, 0, 0.9999921, 0, 1.1705685, 0, -0.9999921, 0, -4.371092e-08, -12.660548, 1.8490852, -17.679365)
 size = Vector3(1.3595104, 1.9650156, 4.5546875)
+
+[node name="NavigationObstacle3D11" type="NavigationObstacle3D" parent="NavigationRegion3D" unique_id=1806105840]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.398532, -0.58295596, 13.015543)
+height = 3.0
+vertices = PackedVector3Array(12.484014, 0, 2.16862, -5.2740498, 0, 1.8878984, -5.2278976, 0, 1.2580643, 12.372421, 0, 1.7838411)
+affect_navigation_mesh = true
 
 [node name="NavigationRegion3D2" type="NavigationRegion3D" parent="." unique_id=1160924384]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.694943, -0.077768326, -9.927971)
@@ -1838,6 +1832,9 @@ spawn_limit = 4
 [node name="Расходник-инатор" type="MultiplayerSpawner" parent="." unique_id=32829088]
 spawn_path = NodePath("../Расходники")
 spawn_limit = 100
+
+[node name="fonarny stolb6" parent="." unique_id=1547511749 instance=ExtResource("15_yyosc")]
+transform = Transform3D(-0.25, 0, -2.1855694e-08, 0, 0.25, 0, 2.1855694e-08, 0, -0.25, -8.217336, -0.513, -21.867214)
 
 [connection signal="_open" from="Заправка/Door2" to="." method="_on_door_2__open"]
 [connection signal="body_entered" from="Заправка/мусорка" to="Заправка/мусорка" method="_on_body_entered"]

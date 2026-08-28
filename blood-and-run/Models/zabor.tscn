@@ -1,0 +1,57 @@
+[gd_scene format=4 uid="uid://bgvvt712cenew"]
+
+[ext_resource type="PackedScene" uid="uid://c2plrnik5xpv2" path="res://Models/zabor.fbx" id="1_kihmm"]
+[ext_resource type="Texture2D" uid="uid://dpc252sw3uqw1" path="res://Models/сетка.png" id="2_uknfd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fkn5g"]
+albedo_color = Color(0.380189, 0.380189, 0.38018897, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hdvnh"]
+transparency = 1
+albedo_texture = ExtResource("2_uknfd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_obcf5"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_24ygd"]
+_surfaces = [{
+"aabb": AABB(-0.01, -0.01, 0, 0.02, 0.02, 1e-05),
+"format": 34359742465,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAgADAAAA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("CtcjPArXIzwAAAAACtcjPArXI7wAAAAACtcjvArXI7wAAAAACtcjvArXIzwAAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ontg8"]
+resource_name = "Плоскость"
+_surfaces = [{
+"aabb": AABB(-0.01, -0.01, 0, 0.02, 0.02, 1e-05),
+"attribute_data": PackedByteArray("AACAPwAAAAAAAIA/AACAPwAAAAAAAIA/AAAAAAAAAAA="),
+"format": 34359742487,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAgADAAAA"),
+"material": SubResource("StandardMaterial3D_obcf5"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("CtcjPArXIzwAAAAACtcjPArXI7wAAAAACtcjvArXI7wAAAAACtcjvArXIzwAAAAA/3//f////7//f/9/////v/9//3////+//3//f////78=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_24ygd")
+
+[node name="zabor" unique_id=37255250 instance=ExtResource("1_kihmm")]
+
+[node name="Cube_001" parent="." index="0" unique_id=276719076]
+material_override = SubResource("StandardMaterial3D_fkn5g")
+
+[node name="Плоскость" parent="." index="1" unique_id=201250087]
+material_override = SubResource("StandardMaterial3D_hdvnh")
+
+[node name="Плоскость2" type="MeshInstance3D" parent="." index="2" unique_id=2029085485]
+transform = Transform3D(-2.7926395e-05, 6.334689e-05, -100, -234.26367, 5.1061963e-19, 5.9604645e-06, -6.9815974e-06, 267.92587, 2.0663207e-05, 0, 2.312089, -2.763961)
+material_override = SubResource("StandardMaterial3D_hdvnh")
+mesh = SubResource("ArrayMesh_ontg8")
+skeleton = NodePath("")
