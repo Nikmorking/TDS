@@ -344,6 +344,8 @@ func icons():
 			else:
 				if col.is_class("RigidBody3D") or Global.get_papa(2, col).name == "Ящики":
 					$"../game_ui".change("Sprite2D")
-	
+				elif col.name == "Stakan": 
+					if col.get_parent().kol_stakan != 0: 
+						$"../game_ui".change("Sprite2D")
 	if !$RayCast3D.get_collider(): $"../game_ui".back()
 	pass
