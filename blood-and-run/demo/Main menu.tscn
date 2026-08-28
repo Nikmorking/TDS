@@ -16,8 +16,6 @@ script/source = "extends Menu
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$AnimationPlayer.play(\"RESET\")
-	$AnimationPlayer.play(\"vis\")
 	if FileAccess.file_exists(\"user://savegame.save\"):
 		var save_file = FileAccess.open(\"user://savegame.save\", FileAccess.READ)
 		if save_file.get_length() > 0:
@@ -58,34 +56,31 @@ func _on_quit__button_down():
 func _on_host_button_down():
 	Global.igra = true
 	print($VBoxContainer/CheckButton.button_pressed)
-	if $multi/GridContainer/LineEdit2.text != \"\":
+	if $CenterContainer/VBoxContainer/multi/GridContainer/LineEdit2.text != \"\":
 		Global.mp_mode = \"host\" # Запоминаем, что мы сервер
-		Global.nickname = $multi/GridContainer/LineEdit2.text
+		Global.nickname = $CenterContainer/VBoxContainer/multi/GridContainer/LineEdit2.text
 		get_tree().change_scene_to_file(\"res://scenes/AZC.tscn\")
 	else:
-		$multi/Label2.show()
+		$CenterContainer/VBoxContainer/multi/Label2.show()
+
 
 func _on_join_button_down():
-	if $multi/GridContainer/LineEdit2.text != \"\":
-		Global.nickname = $multi/GridContainer/LineEdit2.text
+	if $CenterContainer/VBoxContainer/multi/GridContainer/LineEdit2.text != \"\":
+		Global.nickname = $CenterContainer/VBoxContainer/multi/GridContainer/LineEdit2.text
 		Global.igra = true
 		Global.mp_mode = \"join\" # Запоминаем, что мы клиент
-		if $multi/GridContainer/LineEdit.text != \"\":
-			Multiplayer.ip_addr = $multi/GridContainer/LineEdit.text
+		if $CenterContainer/VBoxContainer/multi/GridContainer/LineEdit.text != \"\":
+			Multiplayer.ip_addr = $CenterContainer/VBoxContainer/multi/GridContainer/LineEdit.text
 		get_tree().change_scene_to_file(\"res://scenes/AZC.tscn\")
 	else:
-		$multi/Label2.show()
+		$CenterContainer/VBoxContainer/multi/Label2.show()
 
 
 func _on_check_button_toggled(toggled_on: bool) -> void:
-	$multi.visible = toggled_on
+	$CenterContainer/VBoxContainer/multi.visible = toggled_on
 	print($CenterContainer/VBoxContainer/Cont.modulate.a)
-	if toggled_on:
-		$CenterContainer/VBoxContainer/Cont.modulate.a = 0
-		$CenterContainer/VBoxContainer/Start.modulate.a  = 0
-	else:
-		$CenterContainer/VBoxContainer/Cont.modulate.a = 1
-		$CenterContainer/VBoxContainer/Start.modulate.a = 1
+	$CenterContainer/VBoxContainer/Cont.visible = !toggled_on
+	$CenterContainer/VBoxContainer/Start.visible = !toggled_on
 	pass # Replace with function body.
 
 
@@ -100,132 +95,12 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="Animation" id="Animation_415sf"]
 resource_name = "Open"
 length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CenterContainer/VBoxContainer/Quit:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-296, 408), Vector2(-296, 408), Vector2(53, 408)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CenterContainer/VBoxContainer/Settings:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.53333336, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-296, 289), Vector2(-296, 289), Vector2(53, 289)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("continue:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-296, 175), Vector2(53, 175)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Restart:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-434, 98), Vector2(51, 79)]
-}
 
 [sub_resource type="Animation" id="Animation_myhle"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CenterContainer/VBoxContainer/Quit:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(111, 455)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CenterContainer/VBoxContainer/Settings:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(111, 336)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("continue:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(53, 175)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Restart:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(53, 416)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_ypher"]
 resource_name = "vis"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.03, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ccpfg"]
 _data = {
@@ -300,67 +175,67 @@ size = Vector2i(1920, 1080)
 
 [node name="Node3D" parent="SubViewport" unique_id=2010904094 instance=ExtResource("6_k41st")]
 
-[node name="multi" type="Control" parent="." unique_id=1667209782]
-anchors_preset = 0
-offset_left = 1121.0
-offset_top = 689.0
-offset_right = 1121.0
-offset_bottom = 689.0
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1466842629]
+layout_mode = 0
+offset_right = 540.0
+offset_bottom = 685.0
 
-[node name="Label2" type="Label" parent="multi" unique_id=1245320835]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1783517670]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+theme_override_constants/separation = 52
+
+[node name="multi" type="Control" parent="CenterContainer/VBoxContainer" unique_id=1667209782]
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer/multi" unique_id=1245320835]
 visible = false
 layout_mode = 0
-offset_left = -386.0
-offset_top = -205.0
-offset_right = -112.0
-offset_bottom = -105.0
+offset_right = 274.0
+offset_bottom = 100.0
 text = "Введите своё имя !"
 label_settings = SubResource("LabelSettings_k41st")
 
-[node name="GridContainer" type="GridContainer" parent="multi" unique_id=754278275]
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer/multi" unique_id=754278275]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -387.0
-offset_top = -153.0
-offset_right = -24.0
-offset_bottom = -68.0
+offset_right = 363.0
+offset_bottom = 85.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 23
 theme_override_constants/v_separation = 23
 columns = 2
 
-[node name="LineEdit" type="LineEdit" parent="multi/GridContainer" unique_id=1044603184]
+[node name="LineEdit" type="LineEdit" parent="CenterContainer/VBoxContainer/multi/GridContainer" unique_id=1044603184]
 layout_mode = 2
 placeholder_text = "Ip адресс сервера"
 
-[node name="LineEdit2" type="LineEdit" parent="multi/GridContainer" unique_id=1333512734]
+[node name="LineEdit2" type="LineEdit" parent="CenterContainer/VBoxContainer/multi/GridContainer" unique_id=1333512734]
 layout_mode = 2
 placeholder_text = "Ваше имя"
 
-[node name="pri" type="Button" parent="multi/GridContainer" unique_id=1475250209]
+[node name="pri" type="Button" parent="CenterContainer/VBoxContainer/multi/GridContainer" unique_id=1475250209]
 layout_mode = 2
 text = "Присоединиться к лобби"
 
-[node name="start_mult" type="Button" parent="multi/GridContainer" unique_id=391525873]
+[node name="start_mult" type="Button" parent="CenterContainer/VBoxContainer/multi/GridContainer" unique_id=391525873]
 layout_mode = 2
 text = "Создать лобби"
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1466842629]
-process_mode = 4
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/multi" unique_id=2054836532]
 layout_mode = 0
-offset_right = 540.0
-offset_bottom = 685.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1783517670]
-layout_mode = 2
-theme_override_constants/separation = 52
+offset_top = -44.0
+offset_right = 207.0
+offset_bottom = -21.0
+text = "Настройки сетевой игры:"
 
 [node name="Cont" type="Button" parent="CenterContainer/VBoxContainer" unique_id=362784527]
 process_mode = 3
-visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Продолжить"
@@ -418,9 +293,9 @@ offset_bottom = 35.666668
 text = "Multiplayer"
 label_settings = SubResource("LabelSettings_1lgq4")
 
-[connection signal="text_changed" from="multi/GridContainer/LineEdit" to="." method="_on_line_edit_text_changed"]
-[connection signal="button_down" from="multi/GridContainer/pri" to="." method="_on_join_button_down"]
-[connection signal="button_down" from="multi/GridContainer/start_mult" to="." method="_on_start_mult_button_down"]
+[connection signal="text_changed" from="CenterContainer/VBoxContainer/multi/GridContainer/LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="button_down" from="CenterContainer/VBoxContainer/multi/GridContainer/pri" to="." method="_on_join_button_down"]
+[connection signal="button_down" from="CenterContainer/VBoxContainer/multi/GridContainer/start_mult" to="." method="_on_start_mult_button_down"]
 [connection signal="button_down" from="CenterContainer/VBoxContainer/Cont" to="." method="_on_cont_button_down"]
 [connection signal="button_down" from="CenterContainer/VBoxContainer/Start" to="." method="_on_start_button_down"]
 [connection signal="button_down" from="CenterContainer/VBoxContainer/Settings" to="." method="_on_settings_button_down"]

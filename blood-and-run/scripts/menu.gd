@@ -4,6 +4,8 @@ class_name Menu
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$AnimationPlayer.play("RESET")
+	$AnimationPlayer.play("vis")
 	Global._syn_players.connect(on_players_sun)
 	if Global.mp_mode == "offline": $VBoxContainer.queue_free()
 	pass # Replace with function body.
