@@ -12,13 +12,13 @@ resource_name = "Main menu"
 script/source = "extends Menu
 
 
-var lang_file:FileAccess
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if FileAccess.file_exists(\"user://lang.txt\"):
 		lang_file = FileAccess.open(\"user://lang.txt\", FileAccess.READ_WRITE)
-		TranslationServer.set_locale(lang_file.get_as_text())
+		print(lang_file.get_line())
+		TranslationServer.set_locale(lang_file.get_line())
 	else:
 		lang_file = FileAccess.open(\"user://lang.txt\", FileAccess.WRITE)
 	if FileAccess.file_exists(\"user://savegame.save\"):
@@ -92,18 +92,6 @@ func _on_check_button_toggled(toggled_on: bool) -> void:
 
 func _on_start_mult_button_down():
 	_on_host_button_down()
-	pass # Replace with function body.
-
-
-func _on_en_button_down():
-	TranslationServer.set_locale(\"en\")
-	lang_file.store_string(\"en\")
-	pass # Replace with function body.
-
-
-func _on_ru_button_down():
-	TranslationServer.set_locale(\"ru\")
-	lang_file.store_string(\"ru\")
 	pass # Replace with function body.
 "
 

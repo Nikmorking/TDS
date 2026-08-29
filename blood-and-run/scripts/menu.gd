@@ -2,8 +2,13 @@ extends Control
 class_name Menu
 
 
+var lang_file:FileAccess
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	lang_file = FileAccess.open("user://lang.txt", FileAccess.READ_WRITE)
+	print(lang_file.get_line())
+	TranslationServer.set_locale(lang_file.get_line())
 	$AnimationPlayer.play("RESET")
 	$AnimationPlayer.play("vis")
 	Global._syn_players.connect(on_players_sun)
@@ -122,4 +127,15 @@ func on_players_sun(id, nick):
 	item.get_node("Label").text = str(nick)
 	item.list = [id,nick]
 	$VBoxContainer.add_child(item)
-	
+
+
+func _on_en_button_down():
+	TranslationServer.set_locale("en")
+	lang_file.store_line("en")
+	pass # Replace with function body.
+
+
+func _on_ru_button_down():
+	TranslationServer.set_locale("ru")
+	lang_file.store_line("ru")
+	pass # Replace with function body.
