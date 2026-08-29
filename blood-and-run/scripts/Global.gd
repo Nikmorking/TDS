@@ -26,6 +26,7 @@ signal _syn_players
 signal end_dialog
 signal start_dialog
 signal nav_door 
+signal translate 
 
 
 var ekran: MeshInstance3D

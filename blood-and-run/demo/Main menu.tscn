@@ -16,11 +16,15 @@ script/source = "extends Menu
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if FileAccess.file_exists(\"user://lang.txt\"):
-		lang_file = FileAccess.open(\"user://lang.txt\", FileAccess.READ_WRITE)
-		print(lang_file.get_line())
-		TranslationServer.set_locale(lang_file.get_line())
+		lang_file = FileAccess.open(\"user://lang.txt\", FileAccess.READ)
+		var lang = lang_file.get_line()
+		print(lang)
+		TranslationServer.set_locale(lang)
+		lang_file = null
 	else:
 		lang_file = FileAccess.open(\"user://lang.txt\", FileAccess.WRITE)
+		lang_file.store_line(TranslationServer.get_locale().split(\"_\")[0])
+		lang_file.close()
 	if FileAccess.file_exists(\"user://savegame.save\"):
 		var save_file = FileAccess.open(\"user://savegame.save\", FileAccess.READ)
 		if save_file.get_length() > 0:
@@ -60,7 +64,6 @@ func _on_quit__button_down():
 
 func _on_host_button_down():
 	Global.igra = true
-	print($VBoxContainer/CheckButton.button_pressed)
 	if $CenterContainer/VBoxContainer/multi/GridContainer/LineEdit2.text != \"\":
 		Global.mp_mode = \"host\" # Запоминаем, что мы сервер
 		Global.nickname = $CenterContainer/VBoxContainer/multi/GridContainer/LineEdit2.text

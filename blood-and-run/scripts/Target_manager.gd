@@ -83,13 +83,8 @@ func _on_no_human_body_entered(body: Node):
 @rpc("any_peer", "call_local")
 func _pridi(seed):
 	zakaz = zakaz_list[seed]
-	for i in Check_boxes:
-		i.button_pressed = false
-	for i in zakaz.size():
-		Check_boxes[i].show()
 	start_wait()
 	add_child(load("res://scenes/no_human.tscn").instantiate())
-	$"Заправка/Table/CSGPolygon3D/SubViewport/Control/RichTextLabel".text = ""
 	$No_human.connect("body_entered", _on_no_human_body_entered)
 	$No_human.mtp_list = $Markers.get_children()
 	$No_human.position = $"Markers/Marker3D".position 
@@ -98,13 +93,7 @@ func _pridi(seed):
 	$No_human.actor_setup() 
 	$"Заправка/Table/CSGPolygon3D/ekran".change_color(Vector4(0.5, 0.5, 0.5, 0.2))
 	print(zakaz)
-	for i in zakaz:
-		$"Заправка/Table/CSGPolygon3D/SubViewport/Control/RichTextLabel".text += "* "
-		if i == "ahabka_buttonov": 
-			$"Заправка/Table/CSGPolygon3D/SubViewport/Control/RichTextLabel".text += "Hleb"
-		else:
-			$"Заправка/Table/CSGPolygon3D/SubViewport/Control/RichTextLabel".text += i
-		$"Заправка/Table/CSGPolygon3D/SubViewport/Control/RichTextLabel".text += "[br]"
+	$"Заправка/Table/CSGPolygon3D/SubViewport/Control".vis(zakaz)
 	pass # Replace with function body.
 
 func _on_driving_in_my_car_end_put():	

@@ -38,8 +38,8 @@ func _input(event: InputEvent) -> void:
 			show()
 			get_node("AnimationPlayer").play("Open")
 			if  Global.mp_mode != "offline":
-				if Global.lobby_ready: $Label.text = "Лобби закрыто"
-				else: $Label.text = "Лобби открыто"
+				if Global.lobby_ready: $Label.text = "lobby_close"
+				else: $Label.text = "lobby_open"
 				$Save.hide()
 				for i in $VBoxContainer.get_children():
 					if str(i.name) != "ready" or not multiplayer.is_server(): i.queue_free()
@@ -50,7 +50,7 @@ func _input(event: InputEvent) -> void:
 					if Global.lobby_ready: item.get_node("Button").queue_free()
 					$VBoxContainer.add_child(item)
 			else:
-				$Label.text = "Сервер не запущен"
+				$Label.text = "no_server"
 		else:
 			cont()
 
@@ -131,11 +131,19 @@ func on_players_sun(id, nick):
 
 func _on_en_button_down():
 	TranslationServer.set_locale("en")
+	lang_file = FileAccess.open("user://lang.txt", FileAccess.WRITE)
 	lang_file.store_line("en")
+	lang_file.close()
+	lang_file = null
+	Global.translate.emit()
 	pass # Replace with function body.
 
 
 func _on_ru_button_down():
 	TranslationServer.set_locale("ru")
+	lang_file = FileAccess.open("user://lang.txt", FileAccess.WRITE)
 	lang_file.store_line("ru")
+	Global.translate.emit()
+	lang_file.close()
+	lang_file = null
 	pass # Replace with function body.

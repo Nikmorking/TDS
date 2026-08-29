@@ -4,3 +4,18 @@ set,Settings,Настройки
 exit,Quit,Выйти
 mult,Multiplayer,Мультиплеер
 start,Start new game,Начать новую игру
+no_server,Server not running,Сервер не запущен
+lobby_open,Lobby is open,Лобби открыто
+lobby_close,Lobby is closed, Лобби закрыто
+Hleb,* Bread,* Хлеб
+snack,* Snack,* Снек
+Cofe,* Cofe,* Кофе
+Stakan,* Cup,* Стакан
+Zapravka,* Refuel,* Заправить
+Stakan_cofe,* Cup of cofe,* Стакан кофе
+s_cofe,With cofe, С кофе
+s_snacks,With snacks,Со снеками
+s_hleb,With breads,С хлебом
+s_cup, With Cups, Со стаканчиками
+Save,Save,Сохранить
+station,Gas station,Заправка
