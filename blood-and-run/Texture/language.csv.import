@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dv8yk23b66dn4"
+
+[deps]
+
+files=["res://Texture/language.en.translation", "res://Texture/language.ru.translation"]
+
+source_file="res://Texture/language.csv"
+dest_files=["res://Texture/language.en.translation", "res://Texture/language.ru.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true
