@@ -32,10 +32,6 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 
 func _on_обучение_button_down():
 	get_tree().change_scene_to_file(\"res://scenes/main.tscn\")
@@ -204,7 +200,7 @@ visible = false
 layout_mode = 0
 offset_right = 274.0
 offset_bottom = 100.0
-text = "Введите своё имя !"
+text = "name_pl"
 label_settings = SubResource("LabelSettings_k41st")
 
 [node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer/multi" unique_id=754278275]
@@ -222,26 +218,26 @@ columns = 2
 
 [node name="LineEdit" type="LineEdit" parent="CenterContainer/VBoxContainer/multi/GridContainer" unique_id=1044603184]
 layout_mode = 2
-placeholder_text = "Ip адресс сервера"
+placeholder_text = "ip"
 
 [node name="LineEdit2" type="LineEdit" parent="CenterContainer/VBoxContainer/multi/GridContainer" unique_id=1333512734]
 layout_mode = 2
-placeholder_text = "Ваше имя"
+placeholder_text = "name"
 
 [node name="pri" type="Button" parent="CenterContainer/VBoxContainer/multi/GridContainer" unique_id=1475250209]
 layout_mode = 2
-text = "Присоединиться к лобби"
+text = "to_lobby"
 
 [node name="start_mult" type="Button" parent="CenterContainer/VBoxContainer/multi/GridContainer" unique_id=391525873]
 layout_mode = 2
-text = "Создать лобби"
+text = "create_lobb"
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/multi" unique_id=2054836532]
 layout_mode = 0
 offset_top = -44.0
 offset_right = 207.0
 offset_bottom = -21.0
-text = "Настройки сетевой игры:"
+text = "set_net"
 
 [node name="Cont" type="Button" parent="CenterContainer/VBoxContainer" unique_id=362784527]
 process_mode = 3

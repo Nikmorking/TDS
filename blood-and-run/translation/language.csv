@@ -10,7 +10,7 @@ lobby_close,Lobby is closed, Лобби закрыто
 Hleb,* Bread,* Хлеб
 snack,* Snack,* Снек
 Cofe,* Cofe,* Кофе
-Stakan,* Cup,* Стакан
+Stakan,* Cup,* Стаканs
 Zapravka,* Refuel,* Заправить
 Stakan_cofe,* Cup of cofe,* Стакан кофе
 s_cofe,With cofe, С кофе
@@ -19,3 +19,9 @@ s_hleb,With breads,С хлебом
 s_cup, With Cups, Со стаканчиками
 Save,Save,Сохранить
 station,Gas station,Заправка
+name_pl,Enter your name !,Введите своё имя !
+ip,IP addres,IP адресс сервера
+name,Your name,Ваше имя
+to_lobby,Join lobby,Присоединиться к лобби
+create_lobb,Create lobby,Создать лобби
+set_net,Multiplayer settings,Настройки сетевой игры:

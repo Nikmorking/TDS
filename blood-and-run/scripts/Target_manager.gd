@@ -55,7 +55,6 @@ func _on_timer_timeout() -> void:
 
 func _pripersa():
 	$"Заправка/Table/CSGPolygon3D/ekran".change_color(Vector4(0.5, 0.5, 0.5, 1.0))
-	$"Заправка/Table/CSGPolygon3D//SubViewport/Control/RichTextLabel".text = ""
 	$"driving in my car".n = 5
 	$"driving in my car".i -= 1
 	$"driving in my car".rotate_y(-1.57)

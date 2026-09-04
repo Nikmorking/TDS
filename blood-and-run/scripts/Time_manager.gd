@@ -35,7 +35,7 @@ func _on_tick_timeout():
 		#print(energy)
 		if proshlo == 400:
 			energy += 100 # *Zp
-			
+		print(energy)
 		energy += 13
 		energy += randi_range(min_a,max_a)
 		if energy > 2000:
