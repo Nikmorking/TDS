@@ -169,7 +169,7 @@ func _colling():
 	is_rem = false
 	var col: Node3D = $RayCast3D.get_collider()
 	print("coll", col.name)
-	if col.name == "Стены":
+	if col.name == "big musorka":
 		Global.start_dialog.emit("zurk")
 	if col.is_class("Area3D"):
 		if col.name == "No_human" and Global.papa.y_kassu:
@@ -339,7 +339,7 @@ func icons():
 			elif !col_name.find("Door"):
 					$"../game_ui".change("2")
 					Global.nav_door.emit(col, true)
-			elif col_name == "Стены":
+			elif col_name == "big musorka":
 					$"../game_ui".change("Лупа")
 			else:
 				if col.is_class("RigidBody3D") or Global.get_papa(2, col).name == "Ящики":
