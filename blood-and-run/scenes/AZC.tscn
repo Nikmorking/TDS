@@ -314,7 +314,7 @@ shader_parameter/outline_width = 0.40000000596048
 
 [sub_resource type="TextMesh" id="TextMesh_tsu7c"]
 uv2_padding = 1.0
-text = "station"
+text = "Gas station"
 depth = 0.01
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rcbt2"]

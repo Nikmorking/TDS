@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://dep432yv0svyx"]
+
+[ext_resource type="PackedScene" uid="uid://hktmyiqa3jht" path="res://Models/ character_0.fbx" id="1_r8vpt"]
+
+[sub_resource type="Animation" id="Animation_5wq8b"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_vxd5a"]
+resource_name = "walk"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Арматура/Skeleton3D:Кость.008")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.35498092, -0.33173952, 0.6000316, 0.6355309, 0.53333336, 1, -0.56592625, -0.08471394, 0.6803768, 0.45786297, 1.4666667, 1, -0.16541019, -0.48471993, 0.48490793, 0.7089079, 2, 1, -0.35498092, -0.33173952, 0.6000316, 0.6355309)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Арматура/Skeleton3D:Кость.009")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.36625147, 0.35069668, -0.60947436, 0.60943645, 0.53333336, 1, -0.20266098, 0.49163517, -0.5027345, 0.6815288, 1.4666667, 1, 0.5249829, -0.16212203, 0.6842248, -0.47952667, 2, 1, -0.36625147, 0.35069668, -0.60947436, 0.60943645)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Арматура/Skeleton3D:Кость.004")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0.53333336, 1, 0.14206696, -0.2167024, -0.57079095, 0.7791372, 1.4666667, 1, -0.16436194, 0.20044853, -0.5755806, 0.7755724)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Арматура/Skeleton3D:Кость.006")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0.54, 1, -0.12757072, -0.11416929, 0.596245, 0.78433603, 1.4666667, 1, 0.10941436, 0.1948008, 0.6075347, 0.76222223)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_msrie"]
+_data = {
+&"RESET": SubResource("Animation_5wq8b"),
+&"walk": SubResource("Animation_vxd5a")
+}
+
+[node name=" character_0" unique_id=1802653475 instance=ExtResource("1_r8vpt")]
+
+[node name="Skeleton3D" parent="Арматура" parent_id_path=PackedInt32Array(251848817) index="0" unique_id=1695946390]
+bones/0/position = Vector3(0, 4.656613e-10, -0.0024928246)
+bones/0/rotation = Quaternion(0.7041991, -0.0005298858, 0.00093283475, 0.71000177)
+bones/0/scale = Vector3(1.0000001, 0.9999999, 0.9999999)
+bones/3/position = Vector3(-8.050302e-10, 0.012889623, 7.707875e-10)
+bones/3/rotation = Quaternion(-0.00851529, 0.042071283, 0.61371636, 0.7883589)
+bones/3/scale = Vector3(1.0000004, 1.0000002, 1.0000004)
+bones/7/position = Vector3(-1.0984258e-10, 0.011822612, 3.8382406e-10)
+bones/7/rotation = Quaternion(-0.011540733, -0.008413621, -0.5934056, 0.80477697)
+bones/7/scale = Vector3(1.0000001, 1.0000006, 1.0000005)
+bones/13/position = Vector3(0, 4.656613e-10, -0.0024928246)
+bones/13/rotation = Quaternion(-0.35498095, -0.33173954, 0.6000316, 0.6355309)
+bones/13/scale = Vector3(1.0000006, 1.0000006, 1.0000005)
+bones/15/position = Vector3(-4.8135043e-09, 0.0139460955, 3.6528265e-09)
+bones/15/rotation = Quaternion(-0.0028720917, -0.000116666066, -0.028107852, 0.99960077)
+bones/15/scale = Vector3(1.0000018, 1.000001, 1.0000006)
+bones/17/position = Vector3(0, 4.656613e-10, -0.0024928246)
+bones/17/rotation = Quaternion(-0.36625147, 0.35069668, -0.60947436, 0.60943645)
+bones/17/scale = Vector3(1.0000001, 1.0000005, 1.0000002)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=370073005]
+libraries/ = SubResource("AnimationLibrary_msrie")
