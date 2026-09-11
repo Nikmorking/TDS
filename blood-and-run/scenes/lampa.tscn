@@ -3,9 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://cv26yr05sejrc" path="res://Models/smoke_02.png" id="1_0t8sk"]
 [ext_resource type="Script" uid="uid://dkvexistur10e" path="res://scripts/lampa.gd" id="1_q6xv8"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7huvx"]
-albedo_color = Color(0.223103, 0.223103, 0.223103, 1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tcgl4"]
 albedo_color = Color(0.7647059, 0.7490196, 0, 1)
 
@@ -29,23 +26,22 @@ material = SubResource("StandardMaterial3D_q6xv8")
 radius = 0.003
 height = 0.006
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oh7sk"]
+albedo_color = Color(0.23248088, 0.23248091, 0.23248091, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vdo4d"]
+
 [node name="LAmpa" type="Node3D" unique_id=2044625972]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 script = ExtResource("1_q6xv8")
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=348361088]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3125, 0)
-radius = 5.0
-height = 6.625
-material = SubResource("StandardMaterial3D_7huvx")
-
 [node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=1059070482]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(2.6895797, 0, 0, 0, 0.67485404, 0, 0, 0, 0.7321679, 0, 4.332522, 0)
 radius = 4.0
 material = SubResource("StandardMaterial3D_tcgl4")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1372773227]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.59750766, 0)
 light_color = Color(0.69411767, 0.6862745, 0, 1)
 light_energy = 0.8
 light_volumetric_fog_energy = 0.5
@@ -53,10 +49,15 @@ shadow_enabled = true
 omni_range = 15.0
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=126648999]
-transform = Transform3D(7, 0, 0, 0, 10, 0, 0, 0, 7, 0, -9.62016, 0)
+transform = Transform3D(7, 0, 0, 0, 10, 0, 0, 0, 7, 0, -6.217668, 0)
 cast_shadow = 0
 amount = 50
 lifetime = 2.0599999999999996
 trail_enabled = true
 process_material = SubResource("ParticleProcessMaterial_roemw")
 draw_pass_1 = SubResource("SphereMesh_0t8sk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=887755483]
+transform = Transform3D(23.44824, 0, 0, 0, 2.3341055, 0, 0, 0, 7.3794575, 0, 5.436938, 0)
+material_override = SubResource("StandardMaterial3D_oh7sk")
+mesh = SubResource("BoxMesh_vdo4d")
