@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dism06b1iip8u" path="res://scenes/doorS.tscn" id="5_vynuk"]
 [ext_resource type="Texture2D" uid="uid://be2meyinowmx1" path="res://Texture/menu.png" id="8_e63ir"]
 [ext_resource type="PackedScene" uid="uid://ki8fgnhihyot" path="res://scenes/lampa_mini.tscn" id="8_ro5by"]
-[ext_resource type="PackedScene" uid="uid://cgtemd1k4v7db" path="res://Models/musorka.tscn" id="11_1huwv"]
+[ext_resource type="PackedScene" uid="uid://l2fp4bnh6n0b" path="res://scenes/мусорка.tscn" id="10_yyosc"]
 [ext_resource type="Environment" uid="uid://cc7unamcaasd2" path="res://demo/new_environment.tres" id="13_myhle"]
 [ext_resource type="PackedScene" uid="uid://bgvvt712cenew" path="res://Models/zabor.tscn" id="14_vqwn8"]
 [ext_resource type="PackedScene" uid="uid://cjt0bl45rvjh" path="res://Models/fonarny_stolb.tscn" id="15_yyosc"]
@@ -17,7 +17,6 @@
 [ext_resource type="Material" uid="uid://cehxhcf454q5q" path="res://mater/grey.tres" id="16_myhle"]
 [ext_resource type="Script" uid="uid://hajl3xibw433" path="res://addons/LineRenderer/line_renderer.gd" id="17_r1ed2"]
 [ext_resource type="AudioStream" uid="uid://c6a7nunusj1d7" path="res://sounds/Взять из шкафа.mp3" id="18_82sth"]
-[ext_resource type="Script" uid="uid://b2pyl8kn0wkns" path="res://scripts/мусорка.gd" id="18_oou1n"]
 [ext_resource type="PackedScene" uid="uid://cjt85p4cqs12q" path="res://Models/table.tscn" id="19_415sf"]
 [ext_resource type="PackedScene" uid="uid://durjvg6h6emyd" path="res://scenes/driving in my car.tscn" id="19_qyfae"]
 [ext_resource type="PackedScene" uid="uid://c20ih1w6fmbek" path="res://Models/fuel.tscn" id="22_myhle"]
@@ -305,9 +304,6 @@ viewport_path = NodePath("Касса/SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_173o4"]
 viewport_path = NodePath("CSGPolygon3D/SubViewport")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_f5ce8"]
-size = Vector3(0.67614746, 0.321167, 0.6940918)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_173o4"]
 render_priority = 0
@@ -1371,18 +1367,8 @@ texture = SubResource("ViewportTexture_s6jno")
 [node name="Sprite3D" parent="Заправка/Table/CSGPolygon3D" parent_id_path=PackedInt32Array(1041556568, 1147666618) index="3" unique_id=840912229]
 texture = SubResource("ViewportTexture_173o4")
 
-[node name="мусорка" type="Area3D" parent="Заправка" unique_id=289094949]
+[node name="мусорка" parent="Заправка" unique_id=644680310 instance=ExtResource("10_yyosc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.182058, 0.12507287, -3.8709977)
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("18_oou1n")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Заправка/мусорка" unique_id=831463267]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26287842, -0.24395752, 0.013549805)
-shape = SubResource("BoxShape3D_f5ce8")
-
-[node name="musorka" parent="Заправка/мусорка" unique_id=1505271735 instance=ExtResource("11_1huwv")]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.2598114, -0.35092354, 0.005945921)
 
 [node name="Календарь" parent="Заправка" unique_id=524604911 instance=ExtResource("36_tsu7c")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -15.897136, 2.2455337, -16.929031)
@@ -2117,7 +2103,6 @@ spawn_limit = 100
 transform = Transform3D(-0.25, 0, -2.1855694e-08, 0, 0.25, 0, 2.1855694e-08, 0, -0.25, -8.217336, -0.513, -21.867214)
 
 [connection signal="_open" from="Заправка/Door2" to="." method="_on_door_2__open"]
-[connection signal="body_entered" from="Заправка/мусорка" to="Заправка/мусорка" method="_on_body_entered"]
 [connection signal="body_entered" from="Тум-тум-туманище/Area3D" to="Тум-тум-туманище" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="Тум-тум-туманище/Area3D2" to="Тум-тум-туманище" method="_on_area_3d_2_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
