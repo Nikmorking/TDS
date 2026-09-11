@@ -4,6 +4,34 @@
 
 [sub_resource type="Animation" id="Animation_5wq8b"]
 length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Арматура/Skeleton3D:Кость.008")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.35498092, -0.33173952, 0.6000316, 0.6355309)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Арматура/Skeleton3D:Кость.009")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.36625147, 0.35069668, -0.60947436, 0.60943645)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Арматура/Skeleton3D:Кость.004")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -0.011540727, -0.008413638, -0.5934056, 0.80477697)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Арматура/Skeleton3D:Кость.006")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, -0.010214, 0.039987, 0.61364, 0.788508)
 
 [sub_resource type="Animation" id="Animation_vxd5a"]
 resource_name = "walk"
@@ -46,15 +74,15 @@ _data = {
 
 [node name=" character_0" unique_id=1802653475 instance=ExtResource("1_r8vpt")]
 
-[node name="Skeleton3D" parent="Арматура" parent_id_path=PackedInt32Array(251848817) index="0" unique_id=1695946390]
+[node name="Skeleton3D" parent="Арматура" parent_id_path=PackedInt32Array(2003627656) index="0" unique_id=1635855873]
 bones/0/position = Vector3(0, 4.656613e-10, -0.0024928246)
 bones/0/rotation = Quaternion(0.7041991, -0.0005298858, 0.00093283475, 0.71000177)
 bones/0/scale = Vector3(1.0000001, 0.9999999, 0.9999999)
 bones/3/position = Vector3(-8.050302e-10, 0.012889623, 7.707875e-10)
-bones/3/rotation = Quaternion(-0.00851529, 0.042071283, 0.61371636, 0.7883589)
+bones/3/rotation = Quaternion(-0.010213988, 0.039986957, 0.61363935, 0.78850716)
 bones/3/scale = Vector3(1.0000004, 1.0000002, 1.0000004)
 bones/7/position = Vector3(-1.0984258e-10, 0.011822612, 3.8382406e-10)
-bones/7/rotation = Quaternion(-0.011540733, -0.008413621, -0.5934056, 0.80477697)
+bones/7/rotation = Quaternion(-0.011540726, -0.008413639, -0.5934056, 0.80477697)
 bones/7/scale = Vector3(1.0000001, 1.0000006, 1.0000005)
 bones/13/position = Vector3(0, 4.656613e-10, -0.0024928246)
 bones/13/rotation = Quaternion(-0.35498095, -0.33173954, 0.6000316, 0.6355309)

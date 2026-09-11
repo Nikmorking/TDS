@@ -21,6 +21,76 @@ properties/2/path = NodePath("Good:playing")
 properties/2/spawn = true
 properties/2/replication_mode = 2
 
+[sub_resource type="Animation" id="Animation_5wq8b"]
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Арматура/Skeleton3D:Кость.008")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.35498092, -0.33173952, 0.6000316, 0.6355309)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Арматура/Skeleton3D:Кость.009")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.36625147, 0.35069668, -0.60947436, 0.60943645)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Арматура/Skeleton3D:Кость.004")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -0.011540727, -0.008413638, -0.5934056, 0.80477697)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Арматура/Skeleton3D:Кость.006")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, -0.010214, 0.039987, 0.61364, 0.788508)
+
+[sub_resource type="Animation" id="Animation_vxd5a"]
+resource_name = "walk"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Арматура/Skeleton3D:Кость.008")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.35498092, -0.33173952, 0.6000316, 0.6355309, 0.53333336, 1, -0.56592625, -0.08471394, 0.6803768, 0.45786297, 1.4666667, 1, -0.16541019, -0.48471993, 0.48490793, 0.7089079, 2, 1, -0.35498092, -0.33173952, 0.6000316, 0.6355309)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Арматура/Skeleton3D:Кость.009")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.36625147, 0.35069668, -0.60947436, 0.60943645, 0.53333336, 1, -0.20266098, 0.49163517, -0.5027345, 0.6815288, 1.4666667, 1, 0.5249829, -0.16212203, 0.6842248, -0.47952667, 2, 1, -0.36625147, 0.35069668, -0.60947436, 0.60943645)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Арматура/Skeleton3D:Кость.004")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0.53333336, 1, 0.14206696, -0.2167024, -0.57079095, 0.7791372, 1.4666667, 1, -0.16436194, 0.20044853, -0.5755806, 0.7755724)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Арматура/Skeleton3D:Кость.006")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0.54, 1, -0.12757072, -0.11416929, 0.596245, 0.78433603, 1.4666667, 1, 0.10941436, 0.1948008, 0.6075347, 0.76222223)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fhsek"]
+_data = {
+&"RESET": SubResource("Animation_5wq8b"),
+&"walk": SubResource("Animation_vxd5a")
+}
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsvcx"]
 resource_name = "Material"
 vertex_color_use_as_albedo = true
@@ -107,32 +177,6 @@ collision_layer = 65
 collision_mask = 65
 script = ExtResource("1_wlgop")
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=158501101]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34129834, 0.73057866, 0)
-radius = 0.115234375
-height = 1.2700195
-
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." unique_id=1228298741]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20982778, 0.73057866, 0)
-radius = 0.115234375
-height = 1.2700195
-
-[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="." unique_id=789396571]
-transform = Transform3D(0.985491, -0.16972792, 0, 0.16540775, 0.9604067, 0.22418572, -0.038050577, -0.220933, 0.97454643, 0.38039315, 1.9289095, 0)
-radius = 0.115234375
-height = 1.2700195
-
-[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="." unique_id=1296196773]
-transform = Transform3D(0.9808593, 0.17811528, 0.078676395, -0.1909638, 0.9588866, 0.2099268, -0.038050584, -0.22093304, 0.97454655, -0.536676, 1.9289095, 0)
-radius = 0.115234375
-height = 1.2700195
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=1531734527]
-transform = Transform3D(1, 0, 0, 0, 1.9728434, 0, 0, 0, 1, -0.06629312, 1.8534132, -0.08713323)
-
-[node name="CSGSphere3D2" type="CSGSphere3D" parent="." unique_id=973891548]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027885318, 2.9725194, 0)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=49138580]
 transform = Transform3D(0.99999976, 0, 4.3698378e-13, 0, 0.99999976, 0, -4.3698378e-13, 0, 0.99999976, 0, 1.8072509, 0)
 shape = SubResource("CapsuleShape3D_062ft")
@@ -159,15 +203,21 @@ bus = &"Effect"
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1917351285]
 replication_config = SubResource("SceneReplicationConfig_fhsek")
 
-[node name="Skeleton3D" type="Skeleton3D" parent="." unique_id=341516342]
-transform = Transform3D(74.99998, -3.275864e-06, -3.40609e-06, 3.2758644e-06, -2.9222536, 74.94302, -3.4060893e-06, -74.94302, -2.9222536, 5.679118, 0.37711993, -2.4824215e-07)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=686968354]
+libraries/ = SubResource("AnimationLibrary_fhsek")
+
+[node name="Арматура" type="Node3D" parent="." unique_id=1191963079]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.999985, 0, -99.999985, -1.1920929e-05, 0.49555886, -0.7882135, -0.5166105)
+
+[node name="Skeleton3D" type="Skeleton3D" parent="Арматура" unique_id=625131217]
+transform = Transform3D(0.4, -8.881784e-15, -1.0587912e-21, 1.2434498e-14, 0.39999995, 7.1054274e-15, 1.2705494e-21, -7.1054274e-15, 0.39999995, -0.0036758615, -0.0053599826, 0.022205431)
 bones/0/name = "Кость"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, -1.1920929e-07, -0.99999994, 0, 0.99999994, -1.1920929e-07, 0, 0, -0.0024928248)
 bones/0/enabled = true
-bones/0/position = Vector3(-0.00054544955, -0.002835918, -0.0031580226)
-bones/0/rotation = Quaternion(0.7071068, 2.2918105e-15, -2.7324853e-15, 0.7071067)
-bones/0/scale = Vector3(1, 0.9999993, 0.9999993)
+bones/0/position = Vector3(0, 4.656613e-10, -0.0024928246)
+bones/0/rotation = Quaternion(0.7041991, -0.0005298858, 0.00093283475, 0.71000177)
+bones/0/scale = Vector3(1.0000001, 0.9999999, 0.9999999)
 bones/1/name = "Кость.001"
 bones/1/parent = 0
 bones/1/rest = Transform3D(0.99999523, -0.003063143, -5.6652465e-05, 0.0030631484, 0.999315, 0.03687908, -5.6352234e-05, -0.03687908, 0.99931973, 0, 0.012492825, 0)
@@ -186,23 +236,23 @@ bones/3/name = "Кость.006"
 bones/3/parent = 2
 bones/3/rest = Transform3D(0.8621246, -0.50656503, -0.011540899, 0.5065651, 0.8611585, 0.042401753, -0.011540703, -0.042401806, 0.999034, -5.8194822e-09, 0.012889621, -3.729803e-10)
 bones/3/enabled = true
-bones/3/position = Vector3(-6.3604624e-09, 0.012889625, -1.4136947e-10)
-bones/3/rotation = Quaternion(-0.043726787, -0.0044206786, 0.46042964, 0.8866076)
-bones/3/scale = Vector3(0.9999998, 1.0000004, 0.9999998)
+bones/3/position = Vector3(-8.050302e-10, 0.012889623, 7.707875e-10)
+bones/3/rotation = Quaternion(-0.010213988, 0.039986957, 0.61363935, 0.78850716)
+bones/3/scale = Vector3(1.0000004, 1.0000002, 1.0000004)
 bones/4/name = "Кость.007"
 bones/4/parent = 3
 bones/4/rest = Transform3D(0.9913305, -0.13138962, -0.00072562776, 0.1313896, 0.9912698, 0.010997906, -0.0007257178, -0.010997901, 0.99993926, 4.27051e-09, 0.015215511, 3.254243e-10)
 bones/4/enabled = true
-bones/4/position = Vector3(-0.006075479, 0.020128895, -0.0006185341)
-bones/4/rotation = Quaternion(-0.070142046, -0.0068129734, 0.63035107, 0.7731049)
-bones/4/scale = Vector3(0.9999998, 1.0000004, 0.9999999)
+bones/4/position = Vector3(1.0523945e-09, 0.015215513, 2.2351741e-10)
+bones/4/rotation = Quaternion(-0.0055109942, 2.2400688e-08, 0.065838665, 0.9978151)
+bones/4/scale = Vector3(1, 1, 0.99999994)
 bones/5/name = "Кость.007_end"
 bones/5/parent = 4
 bones/5/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0129259415, 0)
 bones/5/enabled = true
-bones/5/position = Vector3(3.6884664e-09, 0.0129259415, 4.2524612e-10)
-bones/5/rotation = Quaternion(-0.10824824, -0.009248383, 0.94551796, 0.30690804)
-bones/5/scale = Vector3(1.0000002, 0.99999964, 1)
+bones/5/position = Vector3(0, 0.0129259415, 0)
+bones/5/rotation = Quaternion(0, 0, 0, 1)
+bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "Кость.003"
 bones/6/parent = 1
 bones/6/rest = Transform3D(-0.003339768, 0.9996464, -0.026377454, -0.99964654, -0.004033208, -0.026280254, -0.026377356, 0.02628036, 0.9993065, -1.0771736e-10, 0.016429173, 2.5007973e-10)
@@ -214,23 +264,23 @@ bones/7/name = "Кость.004"
 bones/7/parent = 6
 bones/7/rest = Transform3D(0.8844513, 0.46661836, 0.003622438, -0.46661836, 0.8843378, 0.0146271065, 0.0036218164, -0.014627259, 0.9998866, 1.9080735e-09, 0.011822612, 7.1344944e-11)
 bones/7/enabled = true
-bones/7/position = Vector3(1.7516034e-09, 0.011822609, 5.3910487e-10)
-bones/7/rotation = Quaternion(-0.01751338, -0.0073298975, -0.470456, 0.8822192)
-bones/7/scale = Vector3(0.9999996, 1.0000005, 1.0000005)
+bones/7/position = Vector3(-1.0984258e-10, 0.011822612, 3.8382406e-10)
+bones/7/rotation = Quaternion(-0.011540726, -0.008413639, -0.5934056, 0.80477697)
+bones/7/scale = Vector3(1.0000001, 1.0000006, 1.0000005)
 bones/8/name = "Кость.005"
 bones/8/parent = 7
 bones/8/rest = Transform3D(0.9884513, 0.15153712, 0.00036196463, -0.15153709, 0.98844016, 0.004750242, 0.0003620576, -0.0047502345, 0.9999887, -3.4322073e-10, 0.016183386, -5.3029986e-10)
 bones/8/enabled = true
-bones/8/position = Vector3(0.0049260547, 0.021693572, -0.00034818333)
-bones/8/rotation = Quaternion(-0.020011978, -0.048454247, -0.602965, 0.7960433)
-bones/8/scale = Vector3(1, 1.0000007, 0.99999994)
+bones/8/position = Vector3(-4.9672055e-10, 0.016183387, 2.3283065e-11)
+bones/8/rotation = Quaternion(0.0142066, -0.02635497, -0.07565305, 0.9966846)
+bones/8/scale = Vector3(0.9999999, 1, 0.9999998)
 bones/9/name = "Кость.005_end"
 bones/9/parent = 8
 bones/9/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.012835796, 0)
 bones/9/enabled = true
-bones/9/position = Vector3(0.0009895364, 0.011500626, 1.27926105e-05)
-bones/9/rotation = Quaternion(0.048537597, 0.041743524, 0.602283, 0.7957115)
-bones/9/scale = Vector3(1, 1, 0.99999994)
+bones/9/position = Vector3(0, 0.012835796, 0)
+bones/9/rotation = Quaternion(0, 0, 0, 1)
+bones/9/scale = Vector3(1, 1, 1)
 bones/10/name = "Кость.014"
 bones/10/parent = 1
 bones/10/rest = Transform3D(0.99999684, 0.0025117395, -7.252479e-05, -0.0025117416, 0.9983322, -0.05767464, -7.2459836e-05, 0.05767464, 0.99833536, -1.0771736e-10, 0.016429173, 2.5007973e-10)
@@ -242,9 +292,9 @@ bones/11/name = "Кость.015"
 bones/11/parent = 10
 bones/11/rest = Transform3D(0.9997831, 0.020824065, -5.835443e-06, -0.020824065, 0.99978286, -0.0005498331, -5.615584e-06, 0.0005498354, 0.9999998, 9.977408e-11, 0.0054795514, -3.0539077e-10)
 bones/11/enabled = true
-bones/11/position = Vector3(-9.779129e-09, 0.005479551, -4.0902427e-11)
-bones/11/rotation = Quaternion(0.110507764, 0.35706854, -0.0024620958, 0.927515)
-bones/11/scale = Vector3(1.0000002, 0.9999996, 0.9999991)
+bones/11/position = Vector3(7.833023e-13, 0.005479553, -7.9213296e-11)
+bones/11/rotation = Quaternion(0.00027493315, -5.4973636e-08, -0.010412596, 0.99994576)
+bones/11/scale = Vector3(1, 0.9999998, 0.9999999)
 bones/12/name = "Кость.015_end"
 bones/12/parent = 11
 bones/12/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.012527422, 0)
@@ -256,9 +306,9 @@ bones/13/name = "Кость.008"
 bones/13/parent = -1
 bones/13/rest = Transform3D(0.05982197, -0.52715504, -0.847661, 0.9982092, 0.031592134, 0.050799645, 1.4901163e-07, -0.8491818, 0.52810085, 0, 0, -0.0024928248)
 bones/13/enabled = true
-bones/13/position = Vector3(0, 0, -0.0024928248)
-bones/13/rotation = Quaternion(-0.35359898, -0.33304256, 0.5993093, 0.6363008)
-bones/13/scale = Vector3(1.0000001, 1.0000001, 1.0000001)
+bones/13/position = Vector3(0, 4.656613e-10, -0.0024928246)
+bones/13/rotation = Quaternion(-0.35498095, -0.33173954, 0.6000316, 0.6355309)
+bones/13/scale = Vector3(1.0000006, 1.0000006, 1.0000005)
 bones/14/name = "Кость.010"
 bones/14/parent = 13
 bones/14/rest = Transform3D(0.99977344, 0.020496242, 0.0057406942, -0.020496244, 0.85430735, 0.51936376, 0.0057406886, -0.5193637, 0.854534, 3.9938536e-10, 0.010911553, -4.9700977e-10)
@@ -270,9 +320,9 @@ bones/15/name = "Кость.012"
 bones/15/parent = 14
 bones/15/rest = Transform3D(1, 0.00037205947, 1.6057687e-06, -0.00037205807, 0.9999556, 0.009427367, 1.9018431e-06, -0.009427368, 0.99995553, -1.359557e-10, 0.013946073, 1.7858363e-10)
 bones/15/enabled = true
-bones/15/position = Vector3(1.8626451e-11, 0.013946073, -5.075708e-10)
-bones/15/rotation = Quaternion(-0.004713742, -7.310182e-08, -0.00018603094, 0.99998885)
-bones/15/scale = Vector3(1, 1.0000001, 0.9999999)
+bones/15/position = Vector3(-4.8135043e-09, 0.0139460955, 3.6528265e-09)
+bones/15/rotation = Quaternion(-0.0028720917, -0.000116666066, -0.028107852, 0.99960077)
+bones/15/scale = Vector3(1.0000018, 1.000001, 1.0000006)
 bones/16/name = "Кость.012_end"
 bones/16/parent = 15
 bones/16/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0126298405, 0)
@@ -284,9 +334,9 @@ bones/17/name = "Кость.009"
 bones/17/parent = -1
 bones/17/rest = Transform3D(0.011106013, 0.48598552, 0.87389636, -0.9999383, 0.0053974986, 0.009706259, 2.3841856e-07, -0.87395024, 0.48601544, 0, 0, -0.0024928248)
 bones/17/enabled = true
-bones/17/position = Vector3(0, 0, -0.0024928248)
-bones/17/rotation = Quaternion(-0.3604487, 0.3564674, -0.6061171, 0.6128864)
-bones/17/scale = Vector3(0.99999994, 1, 1)
+bones/17/position = Vector3(0, 4.656613e-10, -0.0024928246)
+bones/17/rotation = Quaternion(-0.36625147, 0.35069668, -0.60947436, 0.60943645)
+bones/17/scale = Vector3(1.0000001, 1.0000005, 1.0000002)
 bones/18/name = "Кость.011"
 bones/18/parent = 17
 bones/18/rest = Transform3D(0.9997845, -0.02013837, -0.0050225114, 0.02013828, 0.8826732, 0.4695558, -0.00502285, -0.46955585, 0.8828885, -2.9332844e-10, 0.01019056, -1.6069192e-10)
@@ -309,8 +359,37 @@ bones/20/position = Vector3(0, 0.011843399, 0)
 bones/20/rotation = Quaternion(0, 0, 0, 1)
 bones/20/scale = Vector3(1, 1, 1)
 
-[node name="Cube" type="MeshInstance3D" parent="Skeleton3D" unique_id=674776807]
+[node name="Cube" type="MeshInstance3D" parent="Арматура/Skeleton3D" unique_id=933814516]
 mesh = SubResource("ArrayMesh_fhsek")
 skin = SubResource("Skin_anue0")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=490760982]
+visible = false
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Node3D" unique_id=158501101]
+transform = Transform3D(0.99999994, 0, 3.5527137e-15, 0, 0.99999994, 0, -3.5527137e-15, 0, 0.99999994, -0.3412983, 0.7305786, 1.7763568e-15)
+radius = 0.115234375
+height = 1.2700195
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Node3D" unique_id=1228298741]
+transform = Transform3D(0.99999994, 0, 3.5527137e-15, 0, 0.99999994, 0, -3.5527137e-15, 0, 0.99999994, 0.20982778, 0.7305786, 0)
+radius = 0.115234375
+height = 1.2700195
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Node3D" unique_id=789396571]
+transform = Transform3D(0.98549086, -0.1697279, 3.5527137e-15, 0.16540775, 0.96040666, 0.22418572, -0.038050577, -0.22093299, 0.9745464, 0.38039312, 1.9289094, 0)
+radius = 0.115234375
+height = 1.2700195
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Node3D" unique_id=1296196773]
+transform = Transform3D(0.9808592, 0.17811526, 0.078676395, -0.19096379, 0.95888656, 0.2099268, -0.038050584, -0.22093304, 0.9745465, -0.53667593, 1.9289094, -1.7763568e-15)
+radius = 0.115234375
+height = 1.2700195
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Node3D" unique_id=1531734527]
+transform = Transform3D(0.99999994, 0, 3.5527137e-15, 0, 1.9728432, 0, -3.5527137e-15, 0, 0.99999994, -0.06629312, 1.8534132, -0.08713322)
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Node3D" unique_id=973891548]
+transform = Transform3D(0.99999994, 0, 3.5527137e-15, 0, 0.99999994, 0, -3.5527137e-15, 0, 0.99999994, -0.027885316, 2.9725194, 1.110223e-16)
 
 [connection signal="body_entered" from="No_human" to="." method="_on_area_3d_body_entered"]
