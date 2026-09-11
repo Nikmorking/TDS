@@ -35,7 +35,7 @@ func _on_tick_timeout():
 		#print(energy)
 		if proshlo == 400:
 			energy += 100 # *Zp
-			
+		print(energy)
 		energy += 13
 		energy += randi_range(min_a,max_a)
 		if energy > 2000:
@@ -45,7 +45,7 @@ func _on_tick_timeout():
 			if b < -1:
 				if b>=-8 or Global.fara_days < 3:
 					$"driving in my car"._start.rpc()
-				elif proshlo - delta_light >60 and Global.fara_days >= 4:
+				elif proshlo - delta_light >60 and Global.fara_days >= 0:
 					Global.light_off.rpc()
 					delta_light = proshlo
 				else:

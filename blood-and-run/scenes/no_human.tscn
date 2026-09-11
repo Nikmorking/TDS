@@ -313,4 +313,4 @@ bones/20/scale = Vector3(1, 1, 1)
 mesh = SubResource("ArrayMesh_fhsek")
 skin = SubResource("Skin_anue0")
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="No_human" to="." method="_on_area_3d_body_entered"]

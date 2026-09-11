@@ -1269,8 +1269,7 @@ transparent_bg = true
 [node name="Label" type="Label" parent="Заправка/Ящики/Со стаканами/Sprite3D/SubViewport" unique_id=28336153]
 offset_right = 40.0
 offset_bottom = 23.0
-text = "Cо стаканчиками
-"
+text = "s_cup"
 label_settings = SubResource("LabelSettings_415sf")
 
 [node name="С кофе" type="CSGBox3D" parent="Заправка/Ящики" unique_id=1888951877]
@@ -1298,8 +1297,7 @@ transparent_bg = true
 [node name="Label" type="Label" parent="Заправка/Ящики/С кофе/Sprite3D/SubViewport" unique_id=2135213261]
 offset_right = 40.0
 offset_bottom = 23.0
-text = "С кофе
-"
+text = "s_cofe"
 label_settings = SubResource("LabelSettings_415sf")
 
 [node name="c батонами" type="CSGBox3D" parent="Заправка/Ящики" unique_id=1306427694]
@@ -1327,7 +1325,7 @@ transparent_bg = true
 [node name="Label" type="Label" parent="Заправка/Ящики/c батонами/Sprite3D/SubViewport" unique_id=2012778597]
 offset_right = 40.0
 offset_bottom = 23.0
-text = "c батонами"
+text = "s_hleb"
 label_settings = SubResource("LabelSettings_415sf")
 
 [node name="с снеками" type="CSGBox3D" parent="Заправка/Ящики" unique_id=442880669]
@@ -1355,7 +1353,7 @@ transparent_bg = true
 [node name="Label" type="Label" parent="Заправка/Ящики/с снеками/Sprite3D/SubViewport" unique_id=328535700]
 offset_right = 40.0
 offset_bottom = 23.0
-text = "со снеками"
+text = "s_snacks"
 label_settings = SubResource("LabelSettings_415sf")
 
 [node name="Table" parent="Заправка" unique_id=1041556568 instance=ExtResource("19_415sf")]

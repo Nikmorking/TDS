@@ -254,41 +254,31 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_bn35v")
 
-[sub_resource type="Theme" id="Theme_8oxcy"]
-default_font_size = 27
-RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
-RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
-RichTextLabel/colors/font_selected_color = Color(0, 0, 0, 1)
-RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
-RichTextLabel/colors/selection_color = Color(0, 0, 0, 1)
-RichTextLabel/colors/table_border = Color(0, 0, 0, 1)
-RichTextLabel/colors/table_even_row_bg = Color(0, 0, 0, 1)
-RichTextLabel/colors/table_odd_row_bg = Color(0, 0, 0, 1)
-RichTextLabel/constants/line_separation = 0
-RichTextLabel/constants/outline_size = 0
-RichTextLabel/constants/paragraph_separation = 0
-RichTextLabel/constants/shadow_offset_x = 0
-RichTextLabel/constants/shadow_offset_y = 0
-RichTextLabel/constants/shadow_outline_size = 0
-RichTextLabel/constants/strikethrough_alpha = 0
-RichTextLabel/constants/table_h_separation = 0
-RichTextLabel/constants/table_v_separation = 0
-RichTextLabel/constants/text_highlight_h_padding = 0
-RichTextLabel/constants/text_highlight_v_padding = 0
-RichTextLabel/constants/underline_alpha = 0
-RichTextLabel/font_sizes/bold_font_size = 27
-RichTextLabel/font_sizes/bold_italics_font_size = 27
-RichTextLabel/font_sizes/italics_font_size = 27
-RichTextLabel/font_sizes/mono_font_size = 27
-RichTextLabel/font_sizes/normal_font_size = 27
-RichTextLabel/fonts/bold_font = null
-RichTextLabel/fonts/bold_italics_font = null
-RichTextLabel/fonts/italics_font = null
-RichTextLabel/fonts/mono_font = null
-RichTextLabel/fonts/normal_font = null
-RichTextLabel/icons/horizontal_rule = null
-RichTextLabel/styles/focus = null
-RichTextLabel/styles/normal = null
+[sub_resource type="GDScript" id="GDScript_3dp1s"]
+resource_name = "Ekran"
+script/source = "extends Control
+
+@onready var labels = $VBoxContainer.get_children()
+@onready var checks = $Control.get_children()
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+func vis(zakaz):
+	for i in checks:
+		i.button_pressed = false
+	for i in zakaz.size():
+		checks[i].show()
+		if zakaz[i] == \"ahabka_buttonov\": 
+			labels[i].text.text = \"Hleb\"
+		else:
+			labels[i].text = zakaz[i]
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_4p7hl"]
 viewport_path = NodePath("CSGPolygon3D/SubViewport")
@@ -677,68 +667,70 @@ transparent_bg = true
 size = Vector2i(256, 256)
 render_target_update_mode = 4
 
-[node name="Control" type="Control" parent="CSGPolygon3D/SubViewport" unique_id=1330116561]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 129.0
-offset_top = 42.0
-offset_right = 399.0
-offset_bottom = 340.0
+[node name="Control" type="HBoxContainer" parent="CSGPolygon3D/SubViewport" unique_id=1665608920]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 142.0
+grow_vertical = 2
+script = SubResource("GDScript_3dp1s")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CSGPolygon3D/SubViewport/Control" unique_id=481161717]
-layout_mode = 0
-offset_left = -128.21
-offset_top = 21.0
-offset_right = 89.33499
-offset_bottom = 275.0
-theme = SubResource("Theme_8oxcy")
-bbcode_enabled = true
-tab_size = 0
+[node name="VBoxContainer" type="VBoxContainer" parent="CSGPolygon3D/SubViewport/Control" unique_id=2093017629]
+layout_mode = 2
 
-[node name="Control" type="Control" parent="CSGPolygon3D/SubViewport/Control" unique_id=1904294015]
-anchors_preset = 0
-offset_left = 11.65
-offset_right = 51.65
-offset_bottom = 40.0
+[node name="Label" type="Label" parent="CSGPolygon3D/SubViewport/Control/VBoxContainer" unique_id=670282258]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CSGPolygon3D/SubViewport/Control/VBoxContainer" unique_id=1060974640]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="CSGPolygon3D/SubViewport/Control/VBoxContainer" unique_id=896741768]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="CSGPolygon3D/SubViewport/Control/VBoxContainer" unique_id=2122520981]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Label5" type="Label" parent="CSGPolygon3D/SubViewport/Control/VBoxContainer" unique_id=113875281]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="CSGPolygon3D/SubViewport/Control" unique_id=1303847947]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="Control" type="VBoxContainer" parent="CSGPolygon3D/SubViewport/Control" unique_id=1763153970]
+layout_mode = 2
 
 [node name="CheckBox1" type="CheckBox" parent="CSGPolygon3D/SubViewport/Control/Control" unique_id=2112553547]
 visible = false
-layout_mode = 0
-offset_left = 43.0
-offset_top = 24.0
-offset_right = 67.0
-offset_bottom = 48.0
-scale = Vector2(1.7, 1.7)
+layout_mode = 2
 
 [node name="CheckBox2" type="CheckBox" parent="CSGPolygon3D/SubViewport/Control/Control" unique_id=1813691608]
 visible = false
-layout_mode = 0
-offset_left = 43.0
-offset_top = 59.0
-offset_right = 67.0
-offset_bottom = 83.0
-scale = Vector2(1.7, 1.7)
+layout_mode = 2
 
 [node name="CheckBox3" type="CheckBox" parent="CSGPolygon3D/SubViewport/Control/Control" unique_id=1435809963]
 visible = false
-layout_mode = 0
-offset_left = 43.0
-offset_top = 96.0
-offset_right = 67.0
-offset_bottom = 120.0
-scale = Vector2(1.7, 1.7)
+layout_mode = 2
 
 [node name="CheckBox4" type="CheckBox" parent="CSGPolygon3D/SubViewport/Control/Control" unique_id=981422632]
 visible = false
-layout_mode = 0
-offset_left = 43.0
-offset_top = 133.0
-offset_right = 67.0
-offset_bottom = 157.0
-scale = Vector2(1.7, 1.7)
+layout_mode = 2
+
+[node name="CheckBox5" type="CheckBox" parent="CSGPolygon3D/SubViewport/Control/Control" unique_id=663396736]
+visible = false
+layout_mode = 2
 
 [node name="Sprite3D" type="Sprite3D" parent="CSGPolygon3D" unique_id=840912229]
-transform = Transform3D(-3.7638564e-08, -0.12706447, 0.9918925, -4.8216102e-09, 0.99189365, 0.12706435, -0.8681064, 4.440892e-16, -4.3711303e-08, -0.27310848, 0.016986847, -0.16230774)
+transform = Transform3D(-3.7638564e-08, -0.12706447, 0.9918925, -4.8216102e-09, 0.99189365, 0.12706435, -0.8681064, 4.440892e-16, -4.3711303e-08, -0.27310848, -0.5814158, -0.19419098)
 texture = SubResource("ViewportTexture_4p7hl")
 
 [node name="ekran" type="MeshInstance3D" parent="CSGPolygon3D" unique_id=1759406873]
