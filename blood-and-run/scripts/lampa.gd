@@ -28,7 +28,7 @@ func power_off():
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if get_node("CSGSphere3D"):
-		m = get_node("CSGSphere3D").material
+		m = $CSGSphere3D.material
 	if get_node("CSGCylinder3D2"):
 		m = get_node("CSGCylinder3D2").material
 	m.albedo_color = Color("c3bf00")

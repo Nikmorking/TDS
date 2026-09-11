@@ -33,6 +33,7 @@ func back():
 		$No_human.movement_target_position = $Markers/Marker3D.position
 		$No_human.rotation_degrees = Vector3(0,90,0)
 		$No_human.actor_setup()
+		$No_human/AnimationPlayer.play("walk")
 	print("back")
 
 func start_wait():
@@ -49,6 +50,7 @@ func next():
 		$No_human.movement_target_position = $Markers/Marker3D3.position
 		$No_human.rotation_degrees = Vector3(0,180,0)
 		$No_human.actor_setup()
+		$No_human/AnimationPlayer.play("RESET")
 	pass # Replace with function body.
 
 @rpc("any_peer", "call_local")

@@ -10,6 +10,7 @@ var mtp_list:Array
 
 func _ready():
 	Global.connect("end_dialog", to_norm)
+	$AnimationPlayer.play("walk")
 	# These values need to be adjusted for the actor's speed
 	# and the navigation layout.
 	navigation_agent.path_desired_distance = 0.5
