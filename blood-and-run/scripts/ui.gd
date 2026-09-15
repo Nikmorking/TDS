@@ -26,4 +26,5 @@ func back():
 	$"2".hide()
 	$"Разговор".hide()
 	$"Лупа".hide()
+	$work.hide()
 	Global.nav_door.emit(null, false)

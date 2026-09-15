@@ -17,8 +17,11 @@ func bros_musor():
 
 func _on_body_entered(body: Node3D):
 	if !body.freeze:
+		if body.named == "paket":
+			return
 		printerr("Буква: E")
 		body.queue_free()
+		bros_musor()
 	pass # Replace with function body.
 
 

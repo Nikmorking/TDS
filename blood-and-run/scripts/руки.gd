@@ -292,6 +292,7 @@ func add_in_hand(data):
 		node.position = Vector3.ZERO
 		node.name = node.name + str(kol)
 		node.freeze = true
+		node.get_node('Coll').disabled = true
 		kol += 1
 		print(node.get_class())
 		hand_marker.add_child(node)
@@ -334,6 +335,7 @@ func icons():
 		var col = $RayCast3D.get_collider()
 		if col:
 			var col_name: String = col.name
+			print(col.name)
 			if col_name == "No_human" && Global.papa.y_kassu:
 					$"../game_ui".change("Разговор")
 			elif !col_name.find("Door"):
@@ -341,6 +343,12 @@ func icons():
 					Global.nav_door.emit(col, true)
 			elif col_name == "big musorka":
 					$"../game_ui".change("Лупа")
+			elif col_name == "schitok": 
+				if $SpringArm3D/Hand.get_child_count() == 0  and !Global.light_work:
+					$"../game_ui".change("work")
+			elif str(col_name) == "мусорка": 
+				if $SpringArm3D/Hand.get_child_count() == 1:
+					$"../gamen/ _ui".change("work")
 			else:
 				if col.is_class("RigidBody3D") or col.name == "Бак" or Global.get_papa(2, col).name == "Ящики":
 					$"../game_ui".change("Sprite2D")

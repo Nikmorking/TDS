@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://be2meyinowmx1" path="res://Texture/menu.png" id="6_fulsm"]
 [ext_resource type="Texture2D" uid="uid://df444fyycj6dw" path="res://icons/E.png" id="6_pf23h"]
 [ext_resource type="AudioStream" uid="uid://dkmxx220ci41x" path="res://sounds/close.wav" id="7_4r5pv"]
+[ext_resource type="Texture2D" uid="uid://dmpbm1e6fal6q" path="res://icons/icons8-работа-100.png" id="7_dt7fs"]
 [ext_resource type="PackedScene" uid="uid://cbe6pu0sxv4kl" path="res://Расходники/Stakan.tscn" id="7_l71n6"]
 [ext_resource type="AudioStream" uid="uid://b6abahg8uksh6" path="res://sounds/open.wav" id="8_60mlk"]
 [ext_resource type="PackedScene" uid="uid://cymwf4jdrq86o" path="res://Расходники/Stakan_s_cofe.tscn" id="8_ke2ow"]
@@ -25,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://cbaviyah5c6ud" path="res://Models/button/source/poly.glb" id="13_4ni07"]
 [ext_resource type="PackedScene" uid="uid://cflmsb81hgmv" path="res://Models/шланг.tscn" id="13_f1ej7"]
 [ext_resource type="AudioStream" uid="uid://b7djpdlxind5d" path="res://sounds/шаги.mp3" id="13_ke2ow"]
+[ext_resource type="PackedScene" uid="uid://3ydtqma4aa1n" path="res://Расходники/paket.tscn" id="17_pf23h"]
 [ext_resource type="PackedScene" uid="uid://dbbxrfoqjd3ae" path="res://dialog/control.tscn" id="23_l71n6"]
 [ext_resource type="Texture2D" uid="uid://cvn643y4b6o27" path="res://icons/разговор.png" id="25_ujl30"]
 
@@ -797,10 +799,16 @@ position = Vector2(575, 325.00003)
 scale = Vector2(0.1640631, 0.15625)
 texture = ExtResource("6_pf23h")
 
+[node name="work" type="Sprite2D" parent="Camera3D/game_ui" unique_id=1002839183]
+visible = false
+position = Vector2(573, 325)
+scale = Vector2(0.26999998, 0.2699999)
+texture = ExtResource("7_dt7fs")
+
 [node name="руки" type="Node3D" parent="Camera3D" unique_id=1062435021]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1837149)
 script = ExtResource("4_a8ls1")
-rashodniki = [[["Со стаканами", "Stakanchiki"], ExtResource("5_a38lo")], [["С кофе", "Cofe"], ExtResource("6_4ni07")], [["Stakan"], ExtResource("7_l71n6")], [["Stakan_cofe"], ExtResource("8_ke2ow")], [["batonovo", "ahabka_buttonov"], ExtResource("9_ujl30")], [["pachka_snackov", "с снеками"], ExtResource("10_31cv2")], [["snack"], ExtResource("11_pf23h")], [["Krest"], ExtResource("12_dt7fs")], [["button"], ExtResource("13_4ni07")]]
+rashodniki = [[["Со стаканами", "Stakanchiki"], ExtResource("5_a38lo")], [["С кофе", "Cofe"], ExtResource("6_4ni07")], [["Stakan"], ExtResource("7_l71n6")], [["Stakan_cofe"], ExtResource("8_ke2ow")], [["batonovo", "ahabka_buttonov"], ExtResource("9_ujl30")], [["pachka_snackov", "с снеками"], ExtResource("10_31cv2")], [["snack"], ExtResource("11_pf23h")], [["Krest"], ExtResource("12_dt7fs")], [["button"], ExtResource("13_4ni07")], [["paket"], ExtResource("17_pf23h")]]
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D/руки" unique_id=576354602]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8498604)
@@ -1155,8 +1163,8 @@ label_settings = SubResource("LabelSettings_f1ej7")
 
 [connection signal="timeout" from="Camera3D/game_ui/Timer" to="Camera3D/game_ui" method="_on_timer_timeout"]
 [connection signal="animation_finished" from="Camera3D/руки/SpringArm3D/AnimationPlayer" to="Camera3D/руки" method="_on_animation_player_animation_finished"]
-[connection signal="timeout" from="Camera3D/руки/Timer" to="Camera3D/руки" method="_on_tik_timeout"]
 [connection signal="timeout" from="Camera3D/руки/Timer" to="Camera3D/руки" method="icons"]
+[connection signal="timeout" from="Camera3D/руки/Timer" to="Camera3D/руки" method="_on_tik_timeout"]
 [connection signal="timeout" from="Camera3D/руки/Timer3" to="Camera3D/руки" method="_on_timer_3_timeout"]
 [connection signal="button_down" from="Camera3D/Menu/continue" to="Camera3D/Menu" method="_on_continue_button_down"]
 [connection signal="focus_entered" from="Camera3D/Menu/continue" to="Camera3D/Menu" method="focus_entered"]

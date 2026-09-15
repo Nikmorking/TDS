@@ -1,6 +1,44 @@
 [gd_scene format=4 uid="uid://5fibawxaliiy"]
 
 [ext_resource type="Material" uid="uid://cehxhcf454q5q" path="res://mater/grey.tres" id="1_3hh0f"]
+[ext_resource type="AudioStream" uid="uid://5oo2vcocnoj3" path="res://sounds/rabotaet.mp3" id="2_8eaym"]
+[ext_resource type="AudioStream" uid="uid://cbayau7q31px5" path="res://sounds/nerabotaet_.mp3" id="3_67vfj"]
+
+[sub_resource type="GDScript" id="GDScript_ntbx5"]
+resource_name = "Schitok"
+script/source = "extends Area3D
+
+var now_play = \"work\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	Global.connect(\"_light_off\", change)
+	pass # Replace with function body.
+
+func change():
+	if now_play == 'work':
+		$work.stop()
+		$no_work.play()
+		now_play = 'no_work'
+	else:
+		$work.play()
+		$no_work.stop()
+		now_play = 'work'
+	pass
+
+
+
+func _on_work_finished() -> void:
+	await get_tree().create_timer(10).timeout
+	$work.play()
+	pass # Replace with function body.'
+
+
+func _on_no_work_finished() -> void:
+	await get_tree().create_timer(10).timeout
+	$no_work.play()
+	pass # Replace with function body.
+"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8fn78"]
 size = Vector3(1, 1.1244507, 0.46826172)
@@ -268,6 +306,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_jshnp")
 
 [node name="schitok" type="Area3D" unique_id=2007825618]
+script = SubResource("GDScript_ntbx5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1500603742]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.013824463, -0.26586914)
@@ -317,3 +356,18 @@ transform = Transform3D(100, 0, 0, 0, -4.3711384e-06, 99.99999, 0, -99.99999, -4
 material_override = SubResource("StandardMaterial3D_77tl1")
 mesh = SubResource("ArrayMesh_fys16")
 skeleton = NodePath("")
+
+[node name="work" type="AudioStreamPlayer3D" parent="." unique_id=1694457861]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.12968475)
+stream = ExtResource("2_8eaym")
+volume_db = 23.0
+autoplay = true
+max_distance = 7.0
+
+[node name="no_work" type="AudioStreamPlayer3D" parent="." unique_id=691696835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.12968475)
+stream = ExtResource("3_67vfj")
+max_distance = 6.5
+
+[connection signal="finished" from="work" to="." method="_on_work_finished"]
+[connection signal="finished" from="no_work" to="." method="_on_no_work_finished"]

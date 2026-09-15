@@ -205,9 +205,10 @@ replication_config = SubResource("SceneReplicationConfig_fhsek")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=686968354]
 libraries/ = SubResource("AnimationLibrary_fhsek")
+speed_scale = 1.5
 
 [node name="Арматура" type="Node3D" parent="." unique_id=1191963079]
-transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.999985, 0, -99.999985, -1.1920929e-05, 0.49555886, -0.7882135, -0.5166105)
+transform = Transform3D(100, -4.5474735e-13, 0, 0, -1.1920929e-05, 99.99996, 0, -99.99996, -1.1920929e-05, 0.3950228, -1.2384647, -0.5166105)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Арматура" unique_id=625131217]
 transform = Transform3D(0.4, -8.881784e-15, -1.0587912e-21, 1.2434498e-14, 0.39999995, 7.1054274e-15, 1.2705494e-21, -7.1054274e-15, 0.39999995, -0.0036758615, -0.0053599826, 0.022205431)
