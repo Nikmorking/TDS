@@ -52,11 +52,12 @@ func _input(event: InputEvent) -> void:
 		$AnimationPlayer.play("RESET")
 
 func cont():
-			Global.esc()
-			$Close.play()
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			get_parent().get_node("game_ui").show()
-			hide()
+	Global.esc()
+	$Close.play()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if get_parent().has_node("game_ui"):
+		get_parent().get_node("game_ui").show()
+	hide()
 
 func _on_quit_button_down() -> void:
 	if  Global.mp_mode == "offline": Global.save()
@@ -82,7 +83,7 @@ func _on_settings_button_down():
 	if settin == 6:
 		Global.achivka("Достижение: \nМастер по настройке")
 		printerr("Буква: P")
-	get_tree().change_scene_to_file("res://demo/Options.tscn")
+	#get_tree().change_scene_to_file("res://demo/Options.tscn")
 	pass # Replace with function body.
 
 

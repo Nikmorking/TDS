@@ -35,6 +35,7 @@ var aim = false
 var pr = false
 
 func _on_timer_3_timeout() -> void:
+	
 		if is_rem and pr and !Global.light_work and !obj:
 			$"../game_ui/TextureProgressBar".show()
 			chin += 2
@@ -232,12 +233,13 @@ func _colling():
 		if !col.freeze:
 			await get_tree().create_timer(0.05).timeout
 			if Global.mp_mode == "offline": add_in_hand(col.named)
-			else: spawner_hand.spawn(col.named)
+			else: add_in_hand.rpc(col.named)
 			if col.get_parent().name == "Расходники":
 				Global.papa.destroy_col.rpc(col.name)
 	elif Global.papa.get_node("Расходники").get_children().size() < col_rashod:
 		if Global.mp_mode == "offline": add_in_hand(col.name)
-		else: spawner_hand.spawn(col.name)
+		else: 
+			add_in_hand.rpc(col.name)
 		print(col.get_parent())
 		if Global.get_papa(2, col).name == "Ящики":
 			col.get_parent().get_node("AudioStreamPlayer3D").play()
@@ -285,13 +287,14 @@ func _stavit(stav):
 	if Global.player: node.look_at(Global.player.position)
 	node.rotation.x = 0
 	node.rotation.z = 0
+	if str(stav.get(0)) == "snack": node.rotate_y(1.57)
 	return node
 
 @rpc("any_peer", "call_local")
 func add_in_hand(data):
 	await get_tree().create_timer(0.05).timeout
 	var item_name = data
-	var node = instance_na(item_name)
+	var node:Node3D = instance_na(item_name)
 	print(data)
 	if node:
 		node.position = Vector3.ZERO
@@ -304,9 +307,8 @@ func add_in_hand(data):
 
 func _in_hand(data):
 	await get_tree().create_timer(0.05).timeout
-	var item_name = data
-	var node = instance_na(item_name)
-	print(data)
+	var node = instance_na(str(data))
+	print(node)
 	if node:
 		node.position = Vector3.ZERO
 		node.name = node.name + str(kol)
@@ -324,6 +326,6 @@ func request_spawn_hand_on_server(stav):
 @rpc("any_peer", "call_local")
 func request_spawn_ras_on_server(stav):
 	if multiplayer.is_server():
-		$SpringArm3D/Hand.get_child(0).queue_free()
-		spawner_ras.spawn(stav)
+		if $SpringArm3D/Hand.get_child_count()>0: $SpringArm3D/Hand.get_child(0).queue_free()
+		Global.papa.get_node("Расходники").add_child(_stavit(stav))
 		
