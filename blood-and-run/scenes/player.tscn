@@ -813,7 +813,7 @@ rashodniki = [[["Со стаканами", "Stakanchiki"], ExtResource("5_a38lo"
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D/руки" unique_id=576354602]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8498604)
 target_position = Vector3(0, 0, -3)
-collision_mask = 8195
+collision_mask = 8396803
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0, 1, 1)
 

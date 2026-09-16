@@ -40,6 +40,9 @@ points = PackedVector3Array(0.006614015, 0.0041915216, 0.011073016, 0.006634798,
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5u8gd"]
 points = PackedVector3Array(-0.0013439704, 0.007652381, -0.008996826, 0.0059222225, 0.0052304296, 0.011073016, 0.0059222225, 0.004884127, 0.011073016, -0.0016904764, 0.0073063495, 0.011073016, 0.0041919285, 0.004884127, -0.008996826, 0.0028073948, 0.0073063495, -0.008996826, 0.0014243515, 0.007652381, 0.011073016, -0.0016904764, 0.006614015, 0.011073016, -0.0016904764, 0.006614015, -0.008996826, 0.0059222225, 0.0052304296, -0.008996826, 0.0041919285, 0.004884127, 0.011073016, 0.0041919285, 0.006614015, 0.011073016, -0.0013439704, 0.007652381, 0.011073016, 0.0014243515, 0.007652381, -0.008996826, 0.0052292105, 0.005922493, -0.008996826, 0.0059222225, 0.004884127, -0.008996826, 0.0028073948, 0.0073063495, 0.011073016, -0.0016904764, 0.0073063495, -0.008996826, 0.0041919285, 0.006614015, -0.008996826, 0.0052292105, 0.005922493, 0.011073016)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_8pedn"]
+size = Vector3(1, 1.7557373, 1)
+
 [node name="мусорка" type="Area3D" unique_id=644680310]
 collision_layer = 2
 collision_mask = 2
@@ -58,43 +61,43 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14961126, 1.2135768, 0)
 [node name="RigidBody3D" parent="musor" unique_id=1161992268 instance=ExtResource("3_8pedn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.40325558, -0.0646286)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=411822780]
+[node name="musorka2" type="StaticBody3D" parent="." unique_id=411822780]
 transform = Transform3D(70, 0, 0, 0, -8.34465e-06, 69.99999, 0, -69.99999, -8.34465e-06, 0.2598114, 0.408962, 0.005945921)
-collision_layer = 8328
-collision_mask = 8328
+collision_layer = 136
+collision_mask = 136
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=156033400]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="musorka2" unique_id=156033400]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 1.4210855e-14, 0, -1.4210855e-14, 0.99999994, 0, 1.4551915e-11, -9.0176705e-05)
 shape = SubResource("ConvexPolygonShape3D_7rcfh")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=870904873]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="musorka2" unique_id=870904873]
 shape = SubResource("ConvexPolygonShape3D_8pedn")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=1148062558]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="musorka2" unique_id=1148062558]
 shape = SubResource("ConvexPolygonShape3D_a755n")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D" unique_id=468496713]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="musorka2" unique_id=468496713]
 shape = SubResource("ConvexPolygonShape3D_2i6xu")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D" unique_id=1148576224]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="musorka2" unique_id=1148576224]
 shape = SubResource("ConvexPolygonShape3D_0tjjo")
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D" unique_id=916028110]
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="musorka2" unique_id=916028110]
 shape = SubResource("ConvexPolygonShape3D_clwl6")
 
-[node name="CollisionShape3D7" type="CollisionShape3D" parent="StaticBody3D" unique_id=82077446]
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="musorka2" unique_id=82077446]
 shape = SubResource("ConvexPolygonShape3D_l2b2c")
 
-[node name="CollisionShape3D8" type="CollisionShape3D" parent="StaticBody3D" unique_id=1782754821]
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="musorka2" unique_id=1782754821]
 shape = SubResource("ConvexPolygonShape3D_pl64w")
 
-[node name="CollisionShape3D9" type="CollisionShape3D" parent="StaticBody3D" unique_id=108181069]
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="musorka2" unique_id=108181069]
 shape = SubResource("ConvexPolygonShape3D_3gmt2")
 
-[node name="CollisionShape3D10" type="CollisionShape3D" parent="StaticBody3D" unique_id=1809363091]
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="musorka2" unique_id=1809363091]
 shape = SubResource("ConvexPolygonShape3D_650lv")
 
-[node name="CollisionShape3D11" type="CollisionShape3D" parent="StaticBody3D" unique_id=1693990267]
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="musorka2" unique_id=1693990267]
 shape = SubResource("ConvexPolygonShape3D_5u8gd")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1314262289]
@@ -102,6 +105,14 @@ transform = Transform3D(1, 0, 0, 0, 0.099615015, 0.99502605, 0, -0.99502605, 0.0
 fov = 80.22789
 
 [node name="Timer" type="Timer" parent="." unique_id=1645082585]
+
+[node name="musorka3" type="Area3D" parent="." unique_id=187503335]
+collision_layer = 8192
+collision_mask = 8192
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="musorka3" unique_id=2078457602]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23803139, 0.37786865, 0)
+shape = SubResource("BoxShape3D_8pedn")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

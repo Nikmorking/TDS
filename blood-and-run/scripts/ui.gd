@@ -28,3 +28,29 @@ func back():
 	$"Лупа".hide()
 	$work.hide()
 	Global.nav_door.emit(null, false)
+
+
+var chin = 0
+func remont() -> void:
+		if !Global.light_work:
+			if chin == 0:
+				$TextureProgressBar.max_value = 100
+			elif chin == 100:
+				chin = 0
+				$TextureProgressBar.hide()
+				Global.light_off.rpc()
+		else:
+			if chin == 0:
+				$"../game_ui/TextureProgressBar".max_value = 50
+			elif chin == 50:
+				chin = 0
+				$"../game_ui/TextureProgressBar".hide()
+			print("affsafsfadfsfas")
+		$"../game_ui/TextureProgressBar".show()
+		chin += 2
+		$TextureProgressBar.value = chin
+		pass # Replace with function body.
+
+func off():
+	chin = 0
+	$TextureProgressBar.hide()

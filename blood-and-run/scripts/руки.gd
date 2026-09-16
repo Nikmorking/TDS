@@ -27,18 +27,11 @@ var aim = false
 var pr = false
 
 func _on_timer_3_timeout() -> void:
-		if is_rem and pr and !Global.light_work and !obj:
-			$"../game_ui/TextureProgressBar".show()
-			chin += 2
-			$"../game_ui/TextureProgressBar".value = chin
-			if chin == 100:
-				chin = 0
-				$"../game_ui/TextureProgressBar".hide()
-				Global.light_off.rpc()
-		else:
-			chin = 0
-			$"../game_ui/TextureProgressBar".hide()
-		pass # Replace with function body.
+	if is_rem and pr:
+		$"../game_ui".remont()
+	else:
+		$"../game_ui".off()
+	pass # Replace with function body.
 
 func _input(event):
 	if Global.mp_mode != "offline" and multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.CONNECTION_CONNECTED:
@@ -222,7 +215,7 @@ func _colling():
 					add_in_hand.rpc( "snack")
 					kasa.vzat_snack.rpc()
 			pass
-		elif col.name == "schitok":
+		elif col.name == "schitok" or col.name == "musorka3":
 			get_node("Timer3").start()
 			is_rem = true
 	elif col.is_class("RigidBody3D"):
@@ -335,7 +328,6 @@ func icons():
 		var col = $RayCast3D.get_collider()
 		if col:
 			var col_name: String = col.name
-			print(col.name)
 			if col_name == "No_human" && Global.papa.y_kassu:
 					$"../game_ui".change("Разговор")
 			elif !col_name.find("Door"):
@@ -346,9 +338,9 @@ func icons():
 			elif col_name == "schitok": 
 				if $SpringArm3D/Hand.get_child_count() == 0  and !Global.light_work:
 					$"../game_ui".change("work")
-			elif str(col_name) == "мусорка": 
-				if $SpringArm3D/Hand.get_child_count() == 1:
-					$"../gamen/ _ui".change("work")
+			elif col_name == "musorka3": 
+				#if $SpringArm3D/Hand.get_child_count() == 1:
+				$"../game_ui".change("work")
 			else:
 				if col.is_class("RigidBody3D") or col.name == "Бак" or Global.get_papa(2, col).name == "Ящики":
 					$"../game_ui".change("Sprite2D")
