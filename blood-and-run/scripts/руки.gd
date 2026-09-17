@@ -72,7 +72,7 @@ func _input(event):
 			$SpringArm3D.spring_length -= 0.1
 	elif Input.is_action_just_pressed("eat"):
 		eat()
-			
+
 var tea = 0
 func eat():
 		var chi = get_node("SpringArm3D/Hand").get_child(0)
@@ -217,7 +217,7 @@ func _colling():
 			pass
 		elif col.name == "schitok" or col.name == "musorka3":
 			get_node("Timer3").start()
-			is_rem = true
+			Global.target = col.get_path()
 	elif col.is_class("RigidBody3D"):
 		if !col.freeze:
 			await get_tree().create_timer(0.05).timeout

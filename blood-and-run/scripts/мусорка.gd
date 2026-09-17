@@ -19,11 +19,13 @@ func _on_body_entered(body: Node3D):
 	if !body.freeze:
 		if body.named == "paket":
 			return
-		printerr("Буква: E")
-		body.queue_free()
+		print("Буква: E")
 		bros_musor()
 	pass # Replace with function body.
 
+func pochin():
+	for i in $musor.get_children():
+		i.queue_free()
 
 func _on_timer_timeout():
 	bros_musor()

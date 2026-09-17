@@ -18,6 +18,7 @@ var light_work = true
 var mouse_sens = 0.3
 var krest = false
 var krest_pos:Vector3
+var target 
 
 signal bad
 signal load
