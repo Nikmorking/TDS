@@ -4,6 +4,9 @@ var kol_musor = 0
 var mus = load("res://Расходники/rigid_body_3d.tscn")
 @export var maxim = 7
 
+func _ready():
+	bros_musor()
+
 func bros_musor():
 	kol_musor += 1
 	if kol_musor > maxim:

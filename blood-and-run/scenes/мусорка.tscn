@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://b2pyl8kn0wkns" path="res://scripts/мусорка.gd" id="1_7rcfh"]
 [ext_resource type="PackedScene" uid="uid://cgtemd1k4v7db" path="res://Models/musorka.tscn" id="2_8pedn"]
-[ext_resource type="PackedScene" uid="uid://c3n0drr2tc1tm" path="res://Расходники/rigid_body_3d.tscn" id="3_8pedn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f5ce8"]
 size = Vector3(0.67614746, 0.321167, 0.6940918)
@@ -47,6 +46,7 @@ size = Vector3(1, 1.7557373, 1)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_7rcfh")
+maxim = 10
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1123356258]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26287842, -0.24395752, 0.013549805)
@@ -56,10 +56,7 @@ shape = SubResource("BoxShape3D_f5ce8")
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.2598114, -0.35092354, 0.005945921)
 
 [node name="musor" type="Node3D" parent="." unique_id=675623749]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14961126, 1.2135768, 0)
-
-[node name="RigidBody3D" parent="musor" unique_id=1161992268 instance=ExtResource("3_8pedn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.40325558, -0.0646286)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2642703, 1.7586776, 0.017133176)
 
 [node name="musorka2" type="StaticBody3D" parent="." unique_id=411822780]
 transform = Transform3D(70, 0, 0, 0, -8.34465e-06, 69.99999, 0, -69.99999, -8.34465e-06, 0.2598114, 0.408962, 0.005945921)
@@ -105,6 +102,7 @@ transform = Transform3D(1, 0, 0, 0, 0.099615015, 0.99502605, 0, -0.99502605, 0.0
 fov = 80.22789
 
 [node name="Timer" type="Timer" parent="." unique_id=1645082585]
+autostart = true
 
 [node name="musorka3" type="Area3D" parent="." unique_id=187503335]
 collision_layer = 8192

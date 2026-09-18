@@ -33,19 +33,7 @@ func _on_timer_3_timeout() -> void:
 		$"../game_ui".off()
 	pass # Replace with function body.
 
-func _input(event):
-	if Global.mp_mode != "offline" and multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.CONNECTION_CONNECTED:
-			if not is_multiplayer_authority():
-				return # Если это сетевой клон чужого игрока, полностью игнорируем нажатие
-	elif Input.is_action_just_released("ui_open"):
-		pr = false
-	elif Input.is_action_just_pressed("ui_open") and !Global.isOnMenu:
-		print("click")
-		pr = true
-		if $SpringArm3D/Hand.get_child_count() >0: obj = $SpringArm3D/Hand.get_child(0)
-		if Global.mp_mode == "offline":
-			printt(obj)
-			if obj:
+func stav_to()->Node:
 				var stav = [obj.named, obj.global_position]
 				obj.queue_free()
 				await get_tree().create_timer(0.0_7).timeout
@@ -54,6 +42,32 @@ func _input(event):
 				node.look_at(Global.get_papa(2, self).global_position)
 				node.rotation.x = 0
 				node.rotation.z = 0
+				return node
+
+
+
+func _input(event):
+	if Global.mp_mode != "offline" and multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.CONNECTION_CONNECTED:
+			if not is_multiplayer_authority():
+				return # Если это сетевой клон чужого игрока, полностью игнорируем нажатие
+	elif Input.is_action_just_released("ui_open"):
+		pr = false
+	elif Input.is_action_just_pressed("pkm") and !Global.isOnMenu:
+		$Timer2.start()
+	elif Input.is_action_just_released("pkm") and !Global.isOnMenu:
+		if $SpringArm3D/Hand.get_child_count() >0: obj = $SpringArm3D/Hand.get_child(0)
+		if obj:
+			var node = await stav_to()
+			print((1+sin(get_parent().rotation.x))/2, " ", (1+cos(get_parent().rotation.x))/2)
+			node.linear_velocity = (global_position - Global.player.global_position)*$Timer2.time_left*0.03
+	elif Input.is_action_just_pressed("ui_open") and !Global.isOnMenu:
+		print("click")
+		pr = true
+		if $SpringArm3D/Hand.get_child_count() >0: obj = $SpringArm3D/Hand.get_child(0)
+		if Global.mp_mode == "offline":
+			printt(obj)
+			if obj: var node = await stav_to()
+				#node.linear_velocity.z = -10 * cos(get_parent().rotation.z)
 			else:
 				if $RayCast3D.is_colliding(): _colling()
 		else: if Global.lobby_ready:

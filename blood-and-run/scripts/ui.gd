@@ -38,22 +38,26 @@ func back():
 
 var chin = 0
 func remont() -> void:
-		if !Global.light_work and Global.target.name == "schitok":
+		var path = str(Global.target).split('/')
+		var node = get_tree().root.get_node(Global.target)
+		if !Global.light_work and node.name == "schitok":
 			if chin == 0:
 				$TextureProgressBar.max_value = 100
 			elif chin == 100:
 				chin = 0
 				$TextureProgressBar.hide()
 				Global.light_off.rpc()
-		elif Global.target.name == "musorka2":
+		elif node.name == "musorka3":
+			if node.get_parent().kol_musor ==0: return
 			if chin == 0:
 				$"../game_ui/TextureProgressBar".max_value = 50
 			elif chin == 50:
+				print("affsafsfadfsfas")
 				chin = 0
 				$"../game_ui/TextureProgressBar".hide()
-				$"../руки".add_in_hand('paket')
-				#Global.target.get_parent().pochin()
-			print("affsafsfadfsfas")
+				if node.get_parent().kol_musor != 0:
+					$"../руки".add_in_hand('paket')
+					node.get_parent().pochin()
 		$"../game_ui/TextureProgressBar".show()
 		chin += 2
 		$TextureProgressBar.value = chin

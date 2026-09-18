@@ -160,3 +160,8 @@ func load_game():
 		papa.min = int(node_data.get(8))
 		load.emit()
 	pass
+
+func sgn(vec1, vec2)->int:
+	if vec1 - vec2 >0: return 1
+	elif vec1 - vec2 <0: return -1
+	else: return 0
