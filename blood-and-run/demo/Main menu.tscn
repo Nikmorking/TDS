@@ -15,6 +15,7 @@ script/source = "extends Menu
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$CenterContainer/VBoxContainer/Start.grab_focus()
 	if FileAccess.file_exists(\"user://lang.txt\"):
 		lang_file = FileAccess.open(\"user://lang.txt\", FileAccess.READ)
 		var lang = lang_file.get_line()

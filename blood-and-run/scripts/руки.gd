@@ -29,6 +29,7 @@ var pr = false
 func _on_timer_3_timeout() -> void:
 	if is_rem and pr:
 		$"../game_ui".remont()
+		$"../minigame_musor".start()
 	else:
 		$"../game_ui".off()
 	pass # Replace with function body.
@@ -363,3 +364,8 @@ func icons():
 						$"../game_ui".change("Sprite2D")
 	if !$RayCast3D.get_collider(): $"../game_ui".back()
 	pass
+
+
+func _on_minigame_musor_win() -> void:
+	add_in_hand('paket')
+	pass # Replace with function body.
