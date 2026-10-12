@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bx7b8ca2ksxe4"
-path.s3tc="res://.godot/imported/Wood_02.jpg-5c965478e41c53bfbaad8aa86388871c.s3tc.ctex"
+path.etc2="res://.godot/imported/Wood_02.jpg-5c965478e41c53bfbaad8aa86388871c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Texture/Wood_02.jpg"
-dest_files=["res://.godot/imported/Wood_02.jpg-5c965478e41c53bfbaad8aa86388871c.s3tc.ctex"]
+dest_files=["res://.godot/imported/Wood_02.jpg-5c965478e41c53bfbaad8aa86388871c.etc2.ctex"]
 
 [params]
 

@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dpc252sw3uqw1"
-path.s3tc="res://.godot/imported/сетка.png-077e5102c3239e6edc79f6c4fa387f4c.s3tc.ctex"
+path.etc2="res://.godot/imported/сетка.png-077e5102c3239e6edc79f6c4fa387f4c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Models/сетка.png"
-dest_files=["res://.godot/imported/сетка.png-077e5102c3239e6edc79f6c4fa387f4c.s3tc.ctex"]
+dest_files=["res://.godot/imported/сетка.png-077e5102c3239e6edc79f6c4fa387f4c.etc2.ctex"]
 
 [params]
 

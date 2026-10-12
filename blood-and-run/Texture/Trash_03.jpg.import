@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bmxiv13mdk0ad"
-path.s3tc="res://.godot/imported/Trash_03.jpg-fd4ebfb27991a7ccde97c7e4779656bd.s3tc.ctex"
+path.etc2="res://.godot/imported/Trash_03.jpg-fd4ebfb27991a7ccde97c7e4779656bd.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Texture/Trash_03.jpg"
-dest_files=["res://.godot/imported/Trash_03.jpg-fd4ebfb27991a7ccde97c7e4779656bd.s3tc.ctex"]
+dest_files=["res://.godot/imported/Trash_03.jpg-fd4ebfb27991a7ccde97c7e4779656bd.etc2.ctex"]
 
 [params]
 

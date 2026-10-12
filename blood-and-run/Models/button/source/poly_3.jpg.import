@@ -3,9 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://qtfmqdw17hn7"
-path.s3tc="res://.godot/imported/poly_3.jpg-66a4cd531abf26d95199f6390719b2f4.s3tc.ctex"
+path.etc2="res://.godot/imported/poly_3.jpg-66a4cd531abf26d95199f6390719b2f4.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +15,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Models/button/source/poly_3.jpg"
-dest_files=["res://.godot/imported/poly_3.jpg-66a4cd531abf26d95199f6390719b2f4.s3tc.ctex"]
+dest_files=["res://.godot/imported/poly_3.jpg-66a4cd531abf26d95199f6390719b2f4.etc2.ctex"]
 
 [params]
 

@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bvmyaqt4cgpaj"
-path.s3tc="res://.godot/imported/318748684_bc04d5c7d7c38229a9a8e5933851aab1.png-47a8dd6bbd59570f1f720b21a91362f0.s3tc.ctex"
+path.etc2="res://.godot/imported/318748684_bc04d5c7d7c38229a9a8e5933851aab1.png-47a8dd6bbd59570f1f720b21a91362f0.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://scenes/318748684_bc04d5c7d7c38229a9a8e5933851aab1.png"
-dest_files=["res://.godot/imported/318748684_bc04d5c7d7c38229a9a8e5933851aab1.png-47a8dd6bbd59570f1f720b21a91362f0.s3tc.ctex"]
+dest_files=["res://.godot/imported/318748684_bc04d5c7d7c38229a9a8e5933851aab1.png-47a8dd6bbd59570f1f720b21a91362f0.etc2.ctex"]
 
 [params]
 

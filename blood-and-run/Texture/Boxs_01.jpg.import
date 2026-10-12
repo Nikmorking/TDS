@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://sh0npllqioix"
-path.s3tc="res://.godot/imported/Boxs_01.jpg-bcc3d6f96e176069c9c9c29d108ed113.s3tc.ctex"
+path.etc2="res://.godot/imported/Boxs_01.jpg-bcc3d6f96e176069c9c9c29d108ed113.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Texture/Boxs_01.jpg"
-dest_files=["res://.godot/imported/Boxs_01.jpg-bcc3d6f96e176069c9c9c29d108ed113.s3tc.ctex"]
+dest_files=["res://.godot/imported/Boxs_01.jpg-bcc3d6f96e176069c9c9c29d108ed113.etc2.ctex"]
 
 [params]
 
