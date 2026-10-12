@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://x71wn3l31m2k"]
+
+[ext_resource type="Script" uid="uid://cc4vq7cr8pd4r" path="res://scripts/line_2d.gd" id="1_4vkq6"]
+
+[node name="minigame_schitok" type="Control" unique_id=929253845]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 11.0
+offset_top = 3.0
+offset_right = 1167.0
+offset_bottom = 656.0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=741522787]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 94.0
+offset_right = 196.0
+offset_bottom = 233.0
+color = Color(0, 1, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1814694614]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 87.0
+offset_right = 326.0
+offset_bottom = 226.0
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=1902528739]
+layout_mode = 0
+offset_left = 399.0
+offset_top = 89.0
+offset_right = 465.0
+offset_bottom = 228.0
+color = Color(1, 1, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="." unique_id=929225724]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 89.0
+offset_right = 606.0
+offset_bottom = 228.0
+color = Color(0, 0, 1, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="." unique_id=1576869496]
+layout_mode = 0
+offset_left = 271.0
+offset_top = 374.0
+offset_right = 337.0
+offset_bottom = 513.0
+color = Color(0, 1, 0, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="." unique_id=92339041]
+layout_mode = 0
+offset_left = 418.0
+offset_top = 367.0
+offset_right = 484.0
+offset_bottom = 506.0
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="." unique_id=507351460]
+layout_mode = 0
+offset_left = 556.0
+offset_top = 366.0
+offset_right = 622.0
+offset_bottom = 505.0
+color = Color(1, 1, 0, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="." unique_id=229901048]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 385.0
+offset_right = 208.0
+offset_bottom = 524.0
+color = Color(0, 0, 1, 1)
+
+[node name="Line2D" type="Line2D" parent="." unique_id=132292067]
+position = Vector2(176, 422)
+points = PackedVector2Array(0, 0, 412, -266)
+default_color = Color(0, 0, 1, 1)
+script = ExtResource("1_4vkq6")
+
+[node name="Button" type="Button" parent="Line2D" unique_id=1522844104]
+offset_left = -36.0
+offset_top = -39.0
+offset_right = 33.0
+offset_bottom = 103.0
+
+[node name="Line2D2" type="Line2D" parent="." unique_id=494555499]
+position = Vector2(176, 422)
+points = PackedVector2Array(442, -1, 259, -271)
+default_color = Color(1, 1, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="." unique_id=1243943757]
+position = Vector2(176, 422)
+points = PackedVector2Array(264, 17, 105, -227)
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D4" type="Line2D" parent="." unique_id=1572291902]
+position = Vector2(176, 422)
+points = PackedVector2Array(144, 0, -8, -207)
+default_color = Color(0, 1, 0, 1)

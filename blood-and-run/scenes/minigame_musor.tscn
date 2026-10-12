@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://daotjxau714ps"]
+
+[ext_resource type="Script" uid="uid://d0gbt6wokyeeb" path="res://scripts/minigame_musor.gd" id="1_kxeep"]
+[ext_resource type="Texture2D" uid="uid://dk0fnk86l0oi5" path="res://icon.png" id="2_xbjue"]
+[ext_resource type="Texture2D" uid="uid://devplyctska5l" path="res://icon.svg" id="3_xbjue"]
+
+[sub_resource type="GDScript" id="GDScript_xbjue"]
+resource_name = "mini_game"
+script/source = "extends Control
+
+@export var need_colstvo = 3
+var teck_colstvo = 0
+
+signal win
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed(\"K\"):
+		if Global.isOnMenu:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			Global.isOnMenu = false
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			Global.isOnMenu = true
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+
+
+func start():
+	show()
+	for i in need_colstvo-1:
+		var node = $Area2D.duplicate()
+		node.position = node.position + Vector2(randi_range(-200, 200), randi_range(-200, 200))
+		add_child(node)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	Global.isOnMenu = true
+
+func _on_area_2d_2_area_entered(area: Area2D) -> void:
+	teck_colstvo += 1
+	area.queue_free()
+	if teck_colstvo == need_colstvo:
+		win.emit()
+		hide()
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		Global.isOnMenu = false
+	pass # Replace with function body.
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_487ah"]
+radius = 67.18631
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbbut"]
+size = Vector2(176, 315)
+
+[node name="minigame_musor" type="Control" unique_id=750896181]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1136.0
+offset_bottom = 682.0
+script = SubResource("GDScript_xbjue")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1702450192]
+position = Vector2(293, 260)
+script = ExtResource("1_kxeep")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=777512470]
+position = Vector2(98, 40)
+shape = SubResource("CircleShape2D_487ah")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1726194052]
+position = Vector2(100, 37)
+texture = ExtResource("2_xbjue")
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=237095069]
+position = Vector2(886, 162)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=385062196]
+position = Vector2(78, 147.5)
+shape = SubResource("RectangleShape2D_cbbut")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D2" unique_id=1242624675]
+position = Vector2(71, 135)
+scale = Vector2(1.3196024, 2.5860937)
+texture = ExtResource("3_xbjue")
+
+[connection signal="input_event" from="Area2D" to="Area2D" method="_on_input_event"]
+[connection signal="renamed" from="Area2D" to="." method="_on_area_2d_renamed"]
+[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]
