@@ -29,6 +29,8 @@
 [ext_resource type="PackedScene" uid="uid://3ydtqma4aa1n" path="res://Расходники/paket.tscn" id="17_pf23h"]
 [ext_resource type="PackedScene" uid="uid://dbbxrfoqjd3ae" path="res://dialog/control.tscn" id="23_l71n6"]
 [ext_resource type="Texture2D" uid="uid://cvn643y4b6o27" path="res://icons/разговор.png" id="25_ujl30"]
+[ext_resource type="PackedScene" uid="uid://daotjxau714ps" path="res://scenes/minigame_musor.tscn" id="29_wqfne"]
+[ext_resource type="PackedScene" uid="uid://x71wn3l31m2k" path="res://scenes/minigame_schitok.tscn" id="30_wnwbv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yyosc"]
 radius = 0.382215
@@ -1118,6 +1120,12 @@ base_alpha = 0.0
 [node name="Dialog" parent="Camera3D" unique_id=1175453783 instance=ExtResource("23_l71n6")]
 visible = false
 
+[node name="minigame_musor" parent="Camera3D" unique_id=750896181 instance=ExtResource("29_wqfne")]
+visible = false
+
+[node name="minigame_schitok" parent="Camera3D" unique_id=929253845 instance=ExtResource("30_wnwbv")]
+visible = false
+
 [node name="Marker3D" type="Marker3D" parent="." unique_id=374591385]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0656533, 0)
 
@@ -1186,6 +1194,7 @@ label_settings = SubResource("LabelSettings_f1ej7")
 [connection signal="animation_finished" from="Camera3D/end_day/AnimationPlayer" to="Camera3D/end_day/AnimationPlayer" method="_on_day_finished"]
 [connection signal="timeout" from="Camera3D/Duhota/Out" to="Camera3D/Duhota" method="_on_out_timeout"]
 [connection signal="timeout" from="Camera3D/Duhota/In" to="Camera3D/Duhota" method="_on_in_timeout"]
+[connection signal="win" from="Camera3D/minigame_musor" to="Camera3D/руки" method="_on_minigame_musor_win"]
 [connection signal="area_entered" from="Area3D" to="Camera3D/руки" method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Area3D" to="Camera3D/руки" method="_on_area_3d_area_exited"]
 
