@@ -76,7 +76,7 @@ color = Color(0, 0, 1, 1)
 
 [node name="Line2D" type="Line2D" parent="." unique_id=132292067]
 position = Vector2(176, 422)
-points = PackedVector2Array(0, 0, 412, -266)
+points = PackedVector2Array(0, 0, 0, 0)
 default_color = Color(0, 0, 1, 1)
 script = ExtResource("1_4vkq6")
 
@@ -85,18 +85,80 @@ offset_left = -36.0
 offset_top = -39.0
 offset_right = 33.0
 offset_bottom = 103.0
+pivot_offset = Vector2(34, 79)
+flat = true
 
-[node name="Line2D2" type="Line2D" parent="." unique_id=494555499]
-position = Vector2(176, 422)
-points = PackedVector2Array(442, -1, 259, -271)
-default_color = Color(1, 1, 0, 1)
+[node name="Button2" type="Button" parent="Line2D" unique_id=1355601046]
+offset_left = 365.0
+offset_top = -331.0
+offset_right = 434.0
+offset_bottom = -189.0
+pivot_offset = Vector2(40, 65)
+flat = true
 
-[node name="Line2D3" type="Line2D" parent="." unique_id=1243943757]
-position = Vector2(176, 422)
-points = PackedVector2Array(264, 17, 105, -227)
+[node name="Line2D2" type="Line2D" parent="." unique_id=123984828]
+position = Vector2(301, 411)
+points = PackedVector2Array(0, 0, 0, 0)
+default_color = Color(0.19641912, 1, 0, 1)
+script = ExtResource("1_4vkq6")
+
+[node name="Button" type="Button" parent="Line2D2" unique_id=910790672]
+offset_left = -33.0
+offset_top = -37.0
+offset_right = 36.0
+offset_bottom = 105.0
+pivot_offset = Vector2(35, 72)
+flat = true
+
+[node name="Button2" type="Button" parent="Line2D2" unique_id=869249460]
+offset_left = -171.0
+offset_top = -316.0
+offset_right = -102.0
+offset_bottom = -174.0
+pivot_offset = Vector2(33, 75)
+flat = true
+
+[node name="Line2D3" type="Line2D" parent="." unique_id=744621824]
+position = Vector2(454, 404)
+points = PackedVector2Array(0, 0, 0, 0)
 default_color = Color(1, 0, 0, 1)
+script = ExtResource("1_4vkq6")
 
-[node name="Line2D4" type="Line2D" parent="." unique_id=1572291902]
-position = Vector2(176, 422)
-points = PackedVector2Array(144, 0, -8, -207)
-default_color = Color(0, 1, 0, 1)
+[node name="Button" type="Button" parent="Line2D3" unique_id=1461525905]
+offset_left = -36.0
+offset_top = -39.0
+offset_right = 33.0
+offset_bottom = 103.0
+pivot_offset = Vector2(40, 69)
+flat = true
+
+[node name="Button2" type="Button" parent="Line2D3" unique_id=13460215]
+offset_left = -195.0
+offset_top = -318.0
+offset_right = -126.0
+offset_bottom = -176.0
+pivot_offset = Vector2(32, 68)
+flat = true
+
+[node name="Line2D4" type="Line2D" parent="." unique_id=137186474]
+position = Vector2(593, 404)
+points = PackedVector2Array(0, 0, 0, 0)
+default_color = Color(1, 1, 0, 1)
+script = ExtResource("1_4vkq6")
+
+[node name="Button" type="Button" parent="Line2D4" unique_id=987624549]
+offset_left = -38.0
+offset_top = -38.0
+offset_right = 31.0
+offset_bottom = 104.0
+pivot_offset = Vector2(36, 72)
+flat = true
+
+[node name="Button2" type="Button" parent="Line2D4" unique_id=1735020879]
+offset_left = -196.0
+offset_top = -316.0
+offset_right = -127.0
+offset_bottom = -174.0
+pivot_offset = Vector2(38, 68)
+flat = true
+metadata/_edit_use_anchors_ = true

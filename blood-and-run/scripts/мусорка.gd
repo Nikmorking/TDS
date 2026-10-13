@@ -14,7 +14,8 @@ func bros_musor():
 	var musor = mus.instantiate()
 	$musor.add_child(musor)
 	for i in kol_musor:
-		$musor.get_children()[i].show()
+		if $musor.get_child_count() != 1:
+			$musor.get_children()[i].show()
 	pass
 
 

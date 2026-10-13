@@ -368,5 +368,5 @@ func icons():
 
 func _on_minigame_musor_win():
 	add_in_hand("paket")
-	get_tree().root.get_node(Global.target).pochin()
+	get_tree().root.get_node(Global.target).get_parent().pochin()
 	pass # Replace with function body.
