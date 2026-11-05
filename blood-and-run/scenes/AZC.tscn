@@ -1029,7 +1029,7 @@ environment = ExtResource("13_myhle")
 [node name="Заправка" type="Node" parent="." unique_id=126791314]
 
 [node name="Door" parent="Заправка" unique_id=582810663 instance=ExtResource("1_0u5sq")]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 1.3631004, 0, 1.7484555e-07, 0, -2, -31.302753, -0.63350385, -14.101424)
+transform = Transform3D(-1.9999998, 0, -1.7484554e-07, 0, 1.3631002, 0, 1.7484554e-07, 0, -1.9999998, -31.241535, -0.63350385, -12.434396)
 collision_layer = 15
 collision_mask = 15
 start_rot = Vector3(0, 180, 0)
